@@ -33,6 +33,7 @@ PATH+=":$HOME/.cargo/bin"            # Rust binary path
 PATH+=":$HOMEBREW_PREFIX/heroku/bin"
 PATH+=":$HOMEBREW_PREFIX/bin"
 PATH+=":$HOMEBREW_PREFIX/sbin"
+PATH+=":/usr/local/opt/findutils/libexec/gnubin"
 PATH+=":/usr/local/bin"
 PATH+=":/usr/local/sbin"
 PATH+=":/usr/bin"

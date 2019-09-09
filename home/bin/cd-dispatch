@@ -57,7 +57,7 @@ class CDDispatch
   # Build and execute the command to recursively search for version-controlled
   # projects. Return the result (stdout contents) as a string.
   def self.find_command(root_dir)
-    %x(/usr/local/bin/find \
+    %x(/usr/local/opt/findutils/libexec/gnubin/find \
          #{root_dir} \
          -regextype posix-extended \
          -maxdepth #{MAX_DEPTH} \
