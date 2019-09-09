@@ -31,6 +31,14 @@ step() {
   echo sudo xcodebuild -license accept
   sudo xcodebuild -license accept
 
+  # see
+  # https://stackoverflow.com/a/54492339/2845260
+  # https://stackoverflow.com/a/52530212/2845260
+  step "Installing Mac OS X CLI tool headers (press any key when complete)"
+  open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg
+  getc
+  sudo xcode-select -s /Library/Developer/CommandLineTools
+
   step "Cloning dotfiles"
   if [ ! -d "$LOCAL_DOTFILES" ]; then
     git clone --recursive \
