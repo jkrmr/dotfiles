@@ -7,6 +7,8 @@ brew install gnuplot
 brew install osxutils
 brew install pinentry-mac
 
+brew install reattach-to-user-namespace
+
 brew tap d12frosted/emacs-plus
 brew install emacs-plus
 
