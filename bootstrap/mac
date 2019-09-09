@@ -28,8 +28,8 @@ step() {
   fi
 
   step "Accepting the Xcode CLI tools license"
-  echo sudo xcodebuild -license
-  sudo xcodebuild -license
+  echo sudo xcodebuild -license accept
+  sudo xcodebuild -license accept
 
   step "Cloning dotfiles"
   if [ ! -d "$LOCAL_DOTFILES" ]; then
