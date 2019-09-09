@@ -137,33 +137,13 @@ step() {
   done
 
   step "Downloading installers"
-  wget -O ~/Desktop/delivery-status.zip \
-    https://junecloud.com/get/delivery-status-widget
+  wget -O ~/Desktop/delivery-status.zip https://junecloud.com/get/delivery-status-widget
 
-  source "$HOME/.zshrc"
-
-  echo "Installing node..."
-  asdf plugin-add nodejs
-  bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
-  node_version="$(asdf list-all nodejs | tail -1)"
-  asdf install nodejs "$node_version"
-  asdf global nodejs "$node_version"
-
-  echo "Installing Python..."
-  asdf plugin-add python
-  asdf install python anaconda3-2019.07
-  pip install pynvim
-  pip2 install pynvim
-
-  echo "Installing Java..."
-  asdf plugin-add java
-  asdf install java openjdk-11
+  step "Install ASDF"
+  zsh "$LOCAL_DOTFILES/bootstrap/packages-asdf.zsh"
 
   step "Install Vim Packages"
   vim +PlugUpgrade +PlugUpdate +PlugInstall +UpdateRemotePlugins +qall
-
-  step "Securing zsh compinit directories"
-  compaudit | xargs chmod go-w
 
   step "Setup script is complete"
 ) | tee "$BOOTSTRAP_LOG_PATH"
