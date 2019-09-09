@@ -126,6 +126,7 @@ step() {
   step "Creating ~/.gnupg"
   gpg --list-keys
   cp -r "$SYNCED"/gnupg/* "$HOME/.gnupg"
+  chmod 700 -R ~/.gnupg
 
   step "Setting Mac OS X defaults"
   source "$LOCAL_DOTFILES/bootstrap/defaults-mac.sh"
