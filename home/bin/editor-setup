@@ -21,6 +21,7 @@ set -e
 setup_ruby() {
     gem install --update-sources \
         bundler-gtags \
+        colorize \
         fastri \
         gem-browse \
         gem-ctags \
@@ -35,6 +36,7 @@ setup_ruby() {
         seeing_is_believing \
         solargraph \
         sqlint \
+        thor \
         tmuxinator
 }
 

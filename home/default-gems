@@ -1,10 +1,11 @@
 awesome_print
 benchmark-ips
 bundler
-fastri
-gem-ctags
 bundler-gtags
+colorize
+fastri
 gem-browse
+gem-ctags
 hirb
 jazz_fingers
 neovim
@@ -22,4 +23,5 @@ rufo
 seeing_is_believing
 solargraph
 sqlint
+thor
 tmuxinator
