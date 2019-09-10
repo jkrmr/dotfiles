@@ -111,7 +111,6 @@ export LDFLAGS
 CPPFLAGS="-I/usr/local/opt/gettext/include"
 CPPFLAGS+=" -I/usr/local/opt/libxml2/include"
 CPPFLAGS+=" -I/usr/local/opt/llvm/include"
-CPPFLAGS+=" -I/usr/local/opt/llvm/include/c++/v1"
 CPPFLAGS+=" -I/usr/local/opt/ncurses/include"
 CPPFLAGS+=" -I/usr/local/opt/openssl/include"
 CPPFLAGS+=" -I/usr/local/opt/readline/include"
