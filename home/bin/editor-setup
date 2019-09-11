@@ -50,6 +50,7 @@ setup_javascript() {
         markdownlint-cli \
         neovim \
         prettier \
+        prettier-standard \
         typescript \
         vmd
 }
