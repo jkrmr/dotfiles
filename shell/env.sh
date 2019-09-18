@@ -128,6 +128,7 @@ export PKG_CONFIG_PATH
 RUBY_CONFIGURE_OPTS="--with-readline-dir=/usr/local/opt/readline"
 RUBY_CONFIGURE_OPTS+=" --with-openssl-dir=/usr/local/opt/openssl"
 RUBY_CONFIGURE_OPTS+=" --enable-shared"
+RUBY_CONFIGURE_OPTS+=" --disable-libedit"
 export RUBY_CONFIGURE_OPTS
 
 export CFLAGS="-O3 -g"
