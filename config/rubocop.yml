@@ -118,7 +118,7 @@ Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 
 Layout/SpaceInsideHashLiteralBraces:
-  EnforcedStyle: no_space
+  EnforcedStyle: space
 
 Layout/SpaceInLambdaLiteral:
   EnforcedStyle: require_space
