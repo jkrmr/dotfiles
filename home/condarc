@@ -1,0 +1,4 @@
+ssl_verify: true
+channels:
+  - defaults
+env_prompt: '[conda: {name}]'
