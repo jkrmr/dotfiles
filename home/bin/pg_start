@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+source "$ASDF_DIR/asdf.sh"
+
+brew services stop postgresql 2>/dev/null
+
+for version in $(asdf list postgres); do
+  asdf shell postgres "$version"
+  pg_ctl stop 2>/dev/null
+done
+
+unset ASDF_POSTGRES_VERSION
+
+pg_ctl start
