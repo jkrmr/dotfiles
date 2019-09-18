@@ -1869,10 +1869,10 @@ Only equations at the beginning of a line are justified."
    rspec-use-opts-file-when-available nil
    rspec-autosave-buffer t
    rspec-before-verification-hook #'switch-to-rspec-compilation-buffer
-   rspec-use-spring-when-possible nil
-   rspec-use-bundler-when-possible nil
-   rspec-spec-command "bin/parallel_rspec"
-   rspec-command-options "--test-options='--format progress --no-profile'")
+   rspec-use-spring-when-possible t
+   rspec-use-bundler-when-possible t
+   rspec-spec-command "rspec"
+   rspec-command-options "--format progress --no-profile")
 
   (defun rails--find-related-file (path)
     "Toggle between controller implementation and request spec.
