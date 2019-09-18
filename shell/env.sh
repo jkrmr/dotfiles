@@ -123,6 +123,8 @@ PKG_CONFIG_PATH+=":/usr/local/opt/ncurses/lib/pkgconfig"
 PKG_CONFIG_PATH+=":/usr/local/opt/openssl/lib/pkgconfig"
 PKG_CONFIG_PATH+=":/usr/local/opt/readline/lib/pkgconfig"
 PKG_CONFIG_PATH+=":/usr/local/opt/zlib/lib/pkgconfig"
+PKG_CONFIG_PATH+=":/usr/local/Cellar/imagemagick@6/6.9.10-62/lib/pkgconfig"
+PKG_CONFIG_PATH+=":/usr/local/Cellar/imagemagick/7.0.8-59/lib/pkgconfig"
 export PKG_CONFIG_PATH
 
 RUBY_CONFIGURE_OPTS="--with-readline-dir=/usr/local/opt/readline"
