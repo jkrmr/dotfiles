@@ -71,7 +71,7 @@ brew cask install skim
 # video conferencing
 brew cask install zoomus
 # instant messaging
-brew cask install ripcord                                                                                                                                                              [insert]
+brew cask install ripcord
 # torrent machine
 brew cask install transmission
 # video player
@@ -85,11 +85,10 @@ brew cask install amethyst
 # documentation browser
 brew cask install dash
 # media management
+
 brew cask install 4k-stogram
 brew cask install 4k-video-downloader
 brew cask install 4k-youtube-to-mp3
-# streaming music, rss
-brew cask install spotify
 
 brew cask install visual-studio-code
 brew cask install screenflow
@@ -97,6 +96,5 @@ brew cask install divvy
 brew cask install keycastr
 brew cask install kindle
 brew cask install nvalt
-brew cask install postman
-brew cask install zeplin
 brew cask install julia
+brew cask install slack

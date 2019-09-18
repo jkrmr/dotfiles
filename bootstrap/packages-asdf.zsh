@@ -3,6 +3,26 @@
 step "Securing zsh compinit directories"
 compaudit | xargs chmod go-w
 
+step "Setting up asdf"
+source "$(brew --prefix asdf)/asdf.sh"
+source "$(brew --prefix asdf)/etc/bash_completion.d/asdf.bash"
+
+step "Setting Ruby compilation vars"
+source "$HOME/.ruby-build-vars"
+
+step "Installing Ruby"
+ruby_version="$(asdf list-all ruby | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$' | sort | tail -1)"
+if ! asdf versions ruby | grep -Fq "$ruby_version"; then
+    step "Installing Ruby $ruby_version"
+    asdf install ruby "$ruby_version"
+    asdf global ruby "$ruby_version"
+    gem ctags
+
+    step "Configuring Bundler"
+    number_of_cores=$(sysctl -n hw.ncpu)
+    bundle config --global jobs "$((number_of_cores - 1))"
+fi
+
 echo "Installing node..."
 asdf plugin-add nodejs
 bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring

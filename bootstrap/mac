@@ -78,12 +78,8 @@ step() {
 
   step "Setting up LaunchAgents"
   mkdir -p ~/Library/LaunchAgents
-  ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
-  ln -sfv /usr/local/opt/redis/*.plist ~/Library/LaunchAgents
   ln -sfv /usr/local/opt/emacs/*.plist ~/Library/LaunchAgents
   ln -sfv "$HOME/.dotfiles/launch_agents/jmromer.cdd-prune-history.plist" ~/Library/LaunchAgents
-  launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
-  launchctl load ~/Library/LaunchAgents/homebrew.mxcl.redis.plist
   launchctl load ~/Library/LaunchAgents/homebrew.mxcl.emacs.plist
 
   step "Setting zsh as the default shell"
@@ -100,31 +96,29 @@ step() {
   ln -s "$SYNCED/config/hub" "$HOME/.config/hub"
   ln -s "$SYNCED/config/git" "$HOME/.config/git"
   ln -s "$SYNCED/karabiner" "$HOME/.config/karabiner"
+  ln -s "$SYNCED/dotfiles/netrc" "$HOME/.netrc"
+  ln -s "$SYNCED/dotfiles/authinfo" "$HOME/.authinfo"
+  ln -s "$SYNCED/dotfiiles/aws" "$HOME/.aws"
+  ln -s "$SYNCED/dotfiiles/env.secure.sh" "$HOME/.env"
+  ln -s "$SYNCED/dotfiiles/gitconfig.local" "$HOME/.gitconfig"
+  ln -s "$SYNCED/dotfiiles/gitconfig.secure" "$HOME/.gitconfig"
+  ln -s "$SYNCED/dotfiiles/init.local.el" "$HOME/.init"
+  ln -s "$SYNCED/dotfiiles/netrc" "$HOME/.netrc"
+  ln -s "$SYNCED/dotfiiles/pryrc.local" "$HOME/.pryrc"
+  ln -s "$SYNCED/dotfiiles/zshrc.local" "$HOME/.zshrc"
 
   step "Setting up Dropbox (press any key when complete)"
   brew cask install dropbox
   open /Applications/Dropbox.app
   getc
 
-  step "Setting up asdf"
-  . "$(brew --prefix asdf)/asdf.sh"
-  . "$(brew --prefix asdf)/etc/bash_completion.d/asdf.bash"
+  step "Installing system ruby gems"
+  for lib in $(cat ~/.default-gems | grep -E --invert-match 'rufo|tmuxinator|rubocop'); do
+      gem install --user "$lib"
+  done
 
-  step "Setting Ruby compilation vars"
-  . "$HOME/.ruby-build-vars"
-
-  step "Installing Ruby"
-  ruby_version="$(asdf list-all ruby | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$' | sort | tail -1)"
-  if ! asdf versions ruby | grep -Fq "$ruby_version"; then
-    step "Installing Ruby $ruby_version"
-    asdf install ruby "$ruby_version"
-    asdf global ruby "$ruby_version"
-    gem ctags
-
-    step "Configuring Bundler"
-    number_of_cores=$(sysctl -n hw.ncpu)
-    bundle config --global jobs "$((number_of_cores - 1))"
-  fi
+  step "Creating Home directories"
+  mkdir ~/Work ~/Projects
 
   step "Creating ~/.ssh"
   mkdir "$HOME/.ssh"
@@ -134,10 +128,11 @@ step() {
   step "Creating ~/.gnupg"
   gpg --list-keys
   cp -r "$SYNCED"/gnupg/* "$HOME/.gnupg"
-  chmod 700 -R ~/.gnupg
+  chmod 700 ~/.gnupg
+  chmod 644 -R ~/.gnupg/*
 
   step "Setting Mac OS X defaults"
-  source "$LOCAL_DOTFILES/bootstrap/defaults-mac.sh"
+  bash "$LOCAL_DOTFILES/bootstrap/defaults-mac.sh"
 
   step "Creating terminfo entries"
   for file in "$HOME"/.dotfiles/terminfo/*; do
