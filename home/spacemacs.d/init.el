@@ -601,7 +601,6 @@ dump.")
   (setq-default compilation-scroll-output 'first-error)
 
   ;; lsp
-  (add-hook 'python-mode-hook #'lsp)
   (add-hook 'elixir-mode-hook #'lsp)
 
   ;; tramp
