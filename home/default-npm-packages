@@ -1,5 +1,4 @@
 babel-eslint
-bash-language-server
 catj
 create-react-app
 eslint
@@ -11,6 +10,7 @@ markdownlint-cli
 neovim
 npm
 prettier
+prettier-standard
 react-native-cli
 standard
 tern

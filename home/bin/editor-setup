@@ -19,63 +19,27 @@
 set -e
 
 setup_ruby() {
-    gem install --update-sources \
-        bundler-gtags \
-        colorize \
-        fastri \
-        gem-browse \
-        gem-ctags \
-        jazz_fingers \
-        neovim \
-        pretty_backtrace \
-        pry \
-        pry-byebug \
-        pry-theme \
-        rcodetools \
-        rufo \
-        seeing_is_believing \
-        solargraph \
-        sqlint \
-        thor \
-        tmuxinator
+  while read -r package; do
+    gem install --update-sources "${package}"
+  done < "${HOME}/.default-gems"
+}
+
+setup_system_ruby() {
+  while read -r package; do
+    gem install --user --update-sources "${package}"
+  done < "${HOME}/.default-gems"
 }
 
 setup_javascript() {
-    npm install --update --global \
-        babel-eslint \
-        bash-language-server \
-        eslint \
-        eslint-plugin-react \
-        javascript-typescript-langserver \
-        markdownlint-cli \
-        neovim \
-        prettier \
-        prettier-standard \
-        typescript \
-        vmd
+  while read -r package; do
+    npm install --update --global "${package}"
+  done < "${HOME}/.default-npm-packages"
 }
 
 setup_python() {
-    pip install --upgrade \
-        "jedi<0.15.0" \
-        "json-rpc>=1.8.1" \
-        "service_factory>=0.1.5" \
-        autoflake \
-        black \
-        epc \
-        hy \
-        importmagic \
-        ipdb \
-        ipython \
-        isort \
-        mypy \
-        pyls-black \
-        pyls-isort \
-        pyls-mypy \
-        pynvim \
-        solargraph-utils.py \
-        vim-vint \
-        yapf
+  while read -r package; do
+    pip install --upgrade "${package}"
+  done < "${HOME}/.default-python-packages"
 }
 
 setup_mac() {
@@ -121,6 +85,11 @@ while [ $# -gt -1 ]; do
         'rb')
             message "Installing Ruby Libraries"
             setup_ruby
+            shift
+            ;;
+      'sysrb')
+            message "Installing System Ruby Libraries"
+            setup_system_ruby
             shift
             ;;
         'mac')
