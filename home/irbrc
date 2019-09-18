@@ -1,1 +1,3 @@
-require 'interactive_editor'
+# frozen_string_literal: true
+
+require "interactive_editor"
