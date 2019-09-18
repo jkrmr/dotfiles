@@ -9,4 +9,8 @@ sed -E 's/\(set.+//g' tool-versions |
 
 rm -f tool-versions
 
-vim .tool-versions
+if [[ -z "$INSIDE_EMACS" ]]; then
+  vim .tool-versions
+else
+  cat .tool-versions
+fi
