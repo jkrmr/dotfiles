@@ -4,8 +4,6 @@
 
 # rubocop:disable Style/MixinUsage
 
-Pry.config.theme = "solarized"
-
 # Return only the methods not present on basic objects
 # alternatively, use `ls <object> -m`
 class Object
@@ -38,12 +36,6 @@ if defined?(Rails)
   end
 end
 
-if defined?(JazzFingers) && !defined?(Rails)
-  JazzFingers.configure do |config|
-    config.application_name = "jmromer"
-  end
-end
-
 # Format stacktraces
 Pry.config.exception_handler = proc do |output, exception, _|
   output.puts "#{exception.class}: #{exception.message}"
@@ -68,7 +60,7 @@ if defined?(PryByebug)
 end
 
 if defined?(AwesomePrint)
-  AwesomePrint.defaults = {indent: -2}
+  AwesomePrint.defaults = { indent: -2 }
   AwesomePrint.pry!
 end
 
@@ -77,11 +69,27 @@ if defined?(Hirb)
   extend Hirb::Console
 end
 
+Pry.config.color = true
+
+if defined?(JazzFingers)
+  JazzFingers.configure do |config|
+    config.colored_prompt = true
+    config.application_name = ENV["USER"] unless defined?(Rails)
+  end
+end
+
 if ENV["TERM"] == "emacs" || !ENV["INSIDE_EMACS"].nil?
   Pry.prompt = Pry::Prompt[:default][:value]
-  Pry.config.color = true
   Pry.config.pager = false
   Pry.config.auto_indent = false
+  # TODO: Update rspec plugin
+  # Pry.prompt = JazzFingers::Prompt.new(colored: true,
+  #                                      separator: ">",
+  #                                      application_name: "").config
+else
+  Pry.config.pager = true
+  Pry.config.auto_indent = true
+  Pry.config.theme = "solarized"
 end
 
 pryrc_local = File.expand_path("~/.pryrc.local")
