@@ -72,10 +72,8 @@ export ANDROID_HOME="$ANDROID_SDK_ROOT"
 #-------------------------------------------------------------
 # JAVA
 #-------------------------------------------------------------
-# java_path=/usr/libexec/java_home
-# JAVA_HOME=$($java_path)
-
-JAVA_HOME="$HOME/.asdf/installs/java/jdk-12.0.2+10"
+JAVA_VERSION=adopt-openjdk-12.0.2+10
+JAVA_HOME="$HOME/.asdf/installs/java/${JAVA_VERSION}"
 export JAVA_HOME
 
 if [[ "$MACHINE" == "mac" ]]; then
