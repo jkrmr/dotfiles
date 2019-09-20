@@ -77,10 +77,13 @@ step() {
   source "$HOME/.dotfiles/bootstrap/packages-cask.sh"
 
   step "Setting up LaunchAgents"
+  echo mkdir -p ~/Library/LaunchAgents
   mkdir -p ~/Library/LaunchAgents
-  ln -sfv /usr/local/opt/emacs/*.plist ~/Library/LaunchAgents
-  ln -sfv "$HOME/.dotfiles/launch_agents/jmromer.cdd-prune-history.plist" ~/Library/LaunchAgents
-  launchctl load ~/Library/LaunchAgents/homebrew.mxcl.emacs.plist
+
+  while read -r plist; do
+      echo ln -sfv "${plist}" ~/Library/LaunchAgents/
+      ln -sfv "${plist}" ~/Library/LaunchAgents/
+  done < <(find "${DOTFILE_PATH}"/launch_agents/* -maxdepth 1 -type f)
 
   step "Setting zsh as the default shell"
   brew_prefix="$(brew --prefix)"
