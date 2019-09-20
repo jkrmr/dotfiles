@@ -52,17 +52,19 @@ running_tmux_sessions() {
 }
 
 tmuxinator_templates() {
-    ls "${TMUXINATOR_TEMPLATES_HOME}"/*.{yml,yaml} 2>/dev/null |
+    find "${TMUXINATOR_TEMPLATES_HOME}"/* 2>/dev/null |
         sed -E 's/.+\/(.+)\.ya?ml/\1/'
 }
 
 open_or_switch_to_session() {
+    name="$(echo "$1" | sed -E 's/\s/\\\ /g')"
+
     if [[ -z "$TMUX" ]]; then
         echo tmux attach-session -t "$1"
-        tmux attach-session -t "$1"
+        tmux attach-session -t "$name"
     else
         echo tmux switch-client -t "$1"
-        tmux switch-client -t "$1"
+        tmux switch-client -t "$name"
     fi
 }
 
@@ -87,8 +89,8 @@ tmux_dwim() {
     selection=$(echo "$selections_list" | fzf --ansi --preview="mx-fzf-preview {+}")
     [[ -z "$selection" ]] && exit 0
 
-    kind="$(echo $selection | awk '{ print $1 }')"
-    name="$(echo $selection | sed -E 's/.+\s(.+)$/\1/')"
+    kind="$(echo "${selection}" | awk '{ print $1 }')"
+    name="$(echo "${selection}" | sed -E 's/^\w+\s+(.+)$/\1/')"
 
     if [[ "$kind" == 'session' ]]; then
         open_or_switch_to_session "$name"
