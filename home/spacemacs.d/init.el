@@ -1869,7 +1869,7 @@ Only equations at the beginning of a line are justified."
    rspec-use-opts-file-when-available nil
    rspec-autosave-buffer t
    rspec-before-verification-hook #'switch-to-rspec-compilation-buffer
-   rspec-use-spring-when-possible t
+   rspec-use-spring-when-possible nil
    rspec-use-bundler-when-possible t
    rspec-spec-command "rspec"
    rspec-command-options "--format progress --no-profile")
