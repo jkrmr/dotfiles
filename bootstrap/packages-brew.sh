@@ -18,7 +18,6 @@ brew install fd
 brew install fzf
 brew install gpg2
 brew install hub
-brew install hugo
 brew install imagemagick
 brew install ispell
 brew install libffi
@@ -30,10 +29,8 @@ brew install ncurses
 brew install openssl
 brew install pgcli
 brew install pkg-config
-brew install postgres
 brew install python@2
 brew install ranger
-brew install redis
 brew install re2
 brew install rcm
 brew install readline
@@ -41,7 +38,6 @@ brew install ripgrep
 brew install shellcheck
 brew install source-highlight
 brew install the_silver_searcher
-brew install tldr
 brew install tree
 brew install universal-ctags --HEAD
 brew install zlib
