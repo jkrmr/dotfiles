@@ -92,6 +92,13 @@ else
   Pry.config.theme = "solarized"
 end
 
+def timeit
+  starting = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+  yield if block_given?
+  ending = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+  (ending - starting).round(4)
+end
+
 pryrc_local = File.expand_path("~/.pryrc.local")
 load(pryrc_local) if File.exist?(pryrc_local)
 
