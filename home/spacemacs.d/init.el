@@ -1802,6 +1802,7 @@ Only equations at the beginning of a line are justified."
   (setq-default projectile-completion-system 'ivy
                 projectile-enable-caching t
                 projectile-find-dir-includes-top-level t
+                projectile-git-submodule-command nil
                 projectile-project-search-path '("~/Projects" "~/Work"))
 
   (if (bound-and-true-p projectile-globally-ignored-directories)
