@@ -1572,7 +1572,13 @@ Excludes the ibuffer."
 
     (setq-default
      org-todo-keywords
-     '((sequence "TODO(t)" "NEXT(n)" "INPROGRESS(i)" "|" "DONE(d)" "CANCELLED(c)")))
+     '((sequence "TODO(t)"
+                 "NEXT(n)"
+                 "INPROGRESS(i)"
+                 "BLOCKED(b)"
+                 "|"
+                 "DONE(d)"
+                 "CANCELLED(c)")))
 
     ;; Keybindings
     (evil-define-key 'hybrid evil-org-mode-map (kbd "C-H-<return>") 'org-insert-subheading)
