@@ -746,6 +746,23 @@ a communication channel."
   (let ((amx-prompt-string (format "%s commands: " major-mode)))
     (amx-major-mode-commands)))
 
+(defun spacemacs/ruby-toggle-breakpoint (&optional in-pipeline)
+  "Add a break point, highlight it. Pass IN-PIPELINE to add using tap."
+  (interactive (cond
+                ((equal current-prefix-arg nil) (list nil))
+                ((equal current-prefix-arg '(4)) (list t))))
+  (let ((trace (cond (in-pipeline ".tap { |result| require \"pry\"; binding.pry }")
+                     (t "require \"pry\"; binding.pry")))
+        (line (thing-at-point 'line)))
+    (if (and line (string-match trace line))
+        (kill-whole-line)
+      (progn
+        (back-to-indentation)
+        (indent-according-to-mode)
+        (insert trace)
+        (insert "\n")
+        (indent-according-to-mode)))))
+
 ;; company
 
 (defun company-tng-on ()
@@ -1938,6 +1955,10 @@ Fall back to controller spec."
 
   ;; Enable pry in test runs
   (add-hook 'compilation-filter-hook 'inf-ruby-auto-enter)
+
+  ;; Toggle breakpoint
+  (spacemacs/set-leader-keys-for-major-mode 'ruby-mode "d b" #'spacemacs/ruby-toggle-breakpoint)
+  (spacemacs/set-leader-keys-for-major-mode 'ruby-mode "d p" #'(lambda () (interactive) (spacemacs/ruby-toggle-breakpoint t)))
 
   ;; Define keybinding to manually trigger autoformat
   (spacemacs/set-leader-keys-for-major-mode 'ruby-mode "=" #'rufo-format-buffer))
