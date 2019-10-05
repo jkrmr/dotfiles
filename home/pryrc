@@ -79,13 +79,9 @@ if defined?(JazzFingers)
 end
 
 if ENV["TERM"] == "emacs" || !ENV["INSIDE_EMACS"].nil?
-  Pry.prompt = Pry::Prompt[:default][:value]
   Pry.config.pager = false
   Pry.config.auto_indent = false
-  # TODO: Update rspec plugin
-  # Pry.prompt = JazzFingers::Prompt.new(colored: true,
-  #                                      separator: ">",
-  #                                      application_name: "").config
+  Pry.prompt = Pry::Prompt[:default][:value]
 else
   Pry.config.pager = true
   Pry.config.auto_indent = true

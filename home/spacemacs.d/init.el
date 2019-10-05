@@ -1949,10 +1949,6 @@ Fall back to controller spec."
   (add-hook 'before-save-hook #'ruby-before-save-hooks)
   (add-hook 'after-save-hook #'ruby-after-save-hooks)
 
-  ;; jazz_fingers prompt regex
-  ;; (setq inf-ruby-prompt-pattern "^\\[[0-9]+\\] pry\\((.*)\\)[>*\"'] *")
-  ;; (setq inf-ruby-prompt-pattern "^\\[[0-9]+\\] pry\\((.*)\\)[>*\"'] *")
-
   ;; Enable pry in test runs
   (add-hook 'compilation-filter-hook 'inf-ruby-auto-enter)
 
