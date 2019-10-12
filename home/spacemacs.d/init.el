@@ -1594,6 +1594,7 @@ Excludes the ibuffer."
                  "NEXT(n)"
                  "INPROGRESS(i)"
                  "BLOCKED(b)"
+                 "QUESTION(q)"
                  "|"
                  "DONE(d)"
                  "CANCELLED(c)")))
