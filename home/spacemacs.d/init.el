@@ -1573,6 +1573,7 @@ Excludes the ibuffer."
 
   (with-eval-after-load 'org
     (setq-default
+     org-bullets-bullet-list '("⁖" "◉" "○" "►" "◈")
      org-confirm-babel-evaluate nil
      org-startup-indented t
      org-edit-src-content-indentation 0
