@@ -7,7 +7,6 @@ exa \
     --long \
     --group-directories-first \
     --color=always \
-    --git \
     --header \
     "$path" \
     2>/dev/null
