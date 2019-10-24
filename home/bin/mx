@@ -28,6 +28,7 @@
 set -e
 
 TMUXINATOR_TEMPLATES_HOME="${TMUXINATOR_TEMPLATES_HOME:-$HOME/.config/tmuxinator}"
+FZF="fzf --ansi --layout=reverse --preview-window=up:75%"
 
 usage() {
     grep '^#' < "$0" | tail -n +2 | cut -c 3-
@@ -86,7 +87,7 @@ tmux_dwim() {
 
     selections_list=$(echo -e "$selections_list" | sed '/^[[:space:]]*$/d')
 
-    selection=$(echo "$selections_list" | fzf --ansi --preview="mx-fzf-preview {+}")
+    selection=$(echo "$selections_list" | $FZF --preview="mx-fzf-preview {+}")
     [[ -z "$selection" ]] && exit 0
 
     kind="$(echo "${selection}" | awk '{ print $1 }')"
@@ -107,7 +108,7 @@ tmux_attach() {
     available_sessions="$(running_tmux_sessions)"
     [[ -z "$available_sessions" ]] && exit 0
 
-    selection=$(echo "$available_sessions" | fzf --preview="mx-fzf-preview 'session' {+}")
+    selection=$(echo "$available_sessions" | $FZF --preview="mx-fzf-preview 'session' {+}")
     [[ -z "$selection" ]] && exit 0
 }
 
@@ -129,7 +130,7 @@ kill_session_or_template() {
 
     selections_list=$(echo -e "$selections_list" | sed '/^[[:space:]]*$/d')
 
-    selection=$(echo "$selections_list" | fzf --ansi --multi --preview="mx-fzf-preview {}")
+    selection=$(echo "$selections_list" | $FZF --multi --preview="mx-fzf-preview {}")
     [[ -z "$selection" ]] && exit 0
 
 
@@ -185,7 +186,7 @@ tmuxinator_fuzzy_select() {
     templates="$(tmuxinator_templates)"
     [[ -z "$templates" ]] && exit 0
 
-    selection=$(echo "$templates" | fzf --preview="mx-fzf-preview 'template' {+}" | sed 's/^ *//;s/ *$//')
+    selection=$(echo "$templates" | $FZF --preview="mx-fzf-preview 'template' {+}" | sed 's/^ *//;s/ *$//')
     [[ -z "$selection" ]] && exit 0
 
     echo tmuxinator "$1" "$selection"
@@ -230,7 +231,7 @@ while [ $# -gt -1 ]; do
             if [[ "$generate" == "y" ]]; then
                 available_sessions="$(running_tmux_sessions)"
 
-                selection=$(echo "$available_sessions" | fzf --preview="mx-fzf-preview 'session' {+}")
+                selection=$(echo "$available_sessions" | $FZF --preview="mx-fzf-preview 'session' {+}")
                 [[ -z "$selection" ]] && exit 0
 
                 tmuxinator new "$2" "$selection"
