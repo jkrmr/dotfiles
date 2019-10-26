@@ -213,7 +213,6 @@ values."
      emoji-cheat-sheet-plus
      company-emoji
      fancy-battery
-     google-translate
      magithub
      rbenv
      rvm
@@ -1267,16 +1266,6 @@ Excludes the ibuffer."
 
 (defun config/google-translate ()
   "Configure google-translate."
-  (load "google-translate/google-translate-backend.el")
-  (load "google-translate/google-translate-tk.el")
-  (load "google-translate/google-translate-core.el")
-  (load "google-translate/google-translate-core-ui.el")
-  (load "google-translate/google-translate-smooth-ui.el")
-  (load "google-translate/google-translate-default-ui.el")
-  (load "google-translate/google-translate.el")
-  (require 'google-translate)
-  (require 'google-translate-smooth-ui)
-
   (setq-default google-translate-backend-method 'curl
                 ;; 'popup 'kill-ring 'current-buffer
                 google-translate-output-destination 'current-buffer
