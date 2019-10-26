@@ -638,6 +638,7 @@ dump.")
   (spacemacs/set-leader-keys
     "L" nil
     "L r" #'layouts-reset
+    "L b" #'layouts-blog
     "L o" #'layouts-org
     "L d" #'layouts-dotfiles)
 
@@ -823,6 +824,16 @@ a communication channel."
     (rename-buffer "*agenda*")
 
     (select-window (get-buffer-window "*sprint*"))))
+
+(defun layouts-blog ()
+  "Set up blog layout."
+  (interactive)
+  (progn
+    (persp-switch "blog")
+    (delete-other-windows)
+    (start-process "hugo-server" "*blog-server*" "blog-serve")
+    (find-file (expand-file-name org-default-blog-file))
+    (rename-buffer "*blog*")))
 
 (defun layouts-dotfiles ()
   "Set up dotfiles layout."
@@ -1584,6 +1595,7 @@ Excludes the ibuffer."
      org-export-with-sub-superscripts '{}
      org-export-coding-system 'utf-8
      org-directory "~/Dropbox/org"
+     org-default-blog-file "~/Dropbox/org/blog.org"
      org-default-notes-file "~/Dropbox/org/sprint-today.org"
      org-default-backlog-file "~/Dropbox/org/sprint-backlog.org"
      org-archive-location "~/Dropbox/org/archive.org::* %s")
