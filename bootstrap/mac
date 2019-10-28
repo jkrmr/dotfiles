@@ -98,6 +98,7 @@ step() {
   mkdir "$HOME/.config"
   ln -s "$SYNCED/config/hub" "$HOME/.config/hub"
   ln -s "$SYNCED/config/git" "$HOME/.config/git"
+  ln -s "$SYNCED/config/tridactyl" "$HOME/.config/tridactyl"
   ln -s "$SYNCED/karabiner" "$HOME/.config/karabiner"
   ln -s "$SYNCED/dotfiles/netrc" "$HOME/.netrc"
   ln -s "$SYNCED/dotfiles/authinfo" "$HOME/.authinfo"
