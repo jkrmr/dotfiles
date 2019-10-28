@@ -888,6 +888,12 @@ a communication channel."
 
 ;; Org Export: Hugo
 
+(defun org-hugo-blog-open ()
+  "Open Hugo blog, served locally using the default port, in a browser."
+  (interactive)
+  (async-shell-command "open http://127.0.0.1:1313")
+  (delete-window))
+
 (defun org-hugo-new-post-capture-template ()
   "Return `org-capture' template string for new Hugo post.
 See `org-capture-templates' for more information."
