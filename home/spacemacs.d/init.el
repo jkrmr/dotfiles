@@ -790,6 +790,8 @@ a communication channel."
                 (delq (current-buffer) (buffer-list))))
     (layouts-org)
     (layouts-dotfiles)
+    (layouts-blog)
+    (layouts-notes)
     (spacemacs/layout-goto-default)))
 
 (defun layouts-org ()
@@ -833,6 +835,15 @@ a communication channel."
     (start-process "hugo-server" "*blog-server*" "blog-serve")
     (find-file (expand-file-name org-default-blog-file))
     (rename-buffer "*blog*")))
+
+(defun layouts-notes ()
+  "Set up notes layout."
+  (interactive)
+  (progn
+    (persp-switch "notes")
+    (delete-other-windows)
+    (deft)
+    (rename-buffer "*notes*")))
 
 (defun layouts-dotfiles ()
   "Set up dotfiles layout."
