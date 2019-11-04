@@ -55,6 +55,7 @@ values."
           elm-format-on-save t
           elm-format-command "elm-format")
      emacs-lisp
+     emoji
      evil-commentary
      finance
      git
@@ -210,8 +211,6 @@ values."
    dotspacemacs-excluded-packages
    '(
      ace-jump-mode
-     emoji-cheat-sheet-plus
-     company-emoji
      fancy-battery
      magithub
      rbenv
@@ -622,6 +621,10 @@ dump.")
   (global-set-key (kbd "s-=") #'spacemacs/scale-up-font)
   (global-set-key (kbd "s--") #'spacemacs/scale-down-font)
   (global-set-key (kbd "s-0") #'spacemacs/reset-font-size)
+
+  ;; display emoji as emoji
+  (add-hook 'after-init-hook #'global-emojify-mode)
+  (set-fontset-font t 'unicode "Apple Color Emoji" nil 'prepend)
 
   ;; leader-fp to open file at point
   (spacemacs/set-leader-keys
