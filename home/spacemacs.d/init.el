@@ -1303,7 +1303,11 @@ Excludes the ibuffer."
   ;; Enable direnv-mode, so bundler-gtags-produced .envrc is activated
   (direnv-mode)
   ;; Add GNU Global as an xref-backend
-  (add-to-list 'xref-backend-functions 'gxref-xref-backend))
+  (setq-default
+   xref-backend-functions '(ggtags--xref-backend
+                            elisp--xref-backend
+                            gxref-xref-backend
+                            etags--xref-backend)))
 
 (defun config/helpful ()
   "Configure Helpful."
