@@ -69,7 +69,8 @@ values."
             gtags-enable-by-default t)
      (helm :variables
            helm-enable-auto-resize t
-           helm-no-header t
+           helm-no-header nil
+           helm-position 'bottom
            helm-use-fuzzy 'always ; source
            spacemacs-helm-rg-max-column-number 1024) ; 512
      (html :variables
