@@ -1814,7 +1814,7 @@ Only equations at the beginning of a line are justified."
                 projectile-enable-caching t
                 projectile-find-dir-includes-top-level t
                 projectile-git-submodule-command nil
-                projectile-project-search-path '("~/Projects" "~/Work"))
+                projectile-project-search-path '("~/Projects" "~/Work" "~/Resources" "~/Exercism"))
 
   (if (bound-and-true-p projectile-globally-ignored-directories)
       (setq-default projectile-globally-ignored-directories
