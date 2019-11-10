@@ -67,15 +67,17 @@ values."
      graphviz
      (gtags :variables
             gtags-enable-by-default t)
+     (helm :variables
+           helm-enable-auto-resize t
+           helm-no-header t
+           helm-use-fuzzy 'always ; source
+           spacemacs-helm-rg-max-column-number 1024) ; 512
      (html :variables
            web-fmt-tool 'prettier)
      imenu-list
      ipython-notebook
      (ibuffer :variables
               ibuffer-group-buffers-by 'projects)
-     (ivy :variables
-          ivy-enable-advanced-buffer-information t
-          ivy-wrap t)
      (javascript :variables
                  javascript-backend 'tern
                  javascript-fmt-tool 'prettier
@@ -563,8 +565,6 @@ dump.")
   (config/gtags)
   (config/helpful)
   (config/highlight-lines-at-length 80)
-  (config/ivy)
-  (config/ivy-rich)
   (config/javascript-modes)
   (config/latex-mode)
   (config/ligatures)
@@ -1344,42 +1344,6 @@ Excludes the ibuffer."
   ;; which `dotspacemacs-whitespace-cleanup 'all' uses.)
   (add-hook 'before-save-hook #'delete-trailing-whitespace))
 
-(defun config/ivy ()
-  "Configure Ivy."
-  (setq-default ivy-re-builders-alist '((ivy-switch-buffer . ivy--regex-fuzzy)
-                                        (mx . ivy--regex-fuzzy)
-                                        (swiper . ivy--regex-plus)
-                                        (counsel-git-grep . ivy--regex-fuzzy)
-                                        (t . ivy--regex-fuzzy))
-                ivy-initial-inputs-alist nil))
-
-(defun config/ivy-rich ()
-  "Configure ivy-rich-mode."
-  (defun ivy-rich-switch-buffer-icon (candidate)
-    (with-current-buffer
-        (get-buffer candidate)
-      (let ((icon (all-the-icons-icon-for-mode major-mode)))
-        (if (symbolp icon)
-            (all-the-icons-icon-for-mode 'fundamental-mode)
-          icon))))
-
-  (setq-default
-   ivy-rich--display-transformers-list
-   '(ivy-switch-buffer
-     (:columns
-      ((ivy-rich-switch-buffer-icon :width 2)
-       (ivy-rich-candidate (:width 30))
-       (ivy-rich-switch-buffer-size (:width 7))
-       (ivy-rich-switch-buffer-indicators (:width 4 :face error :align right))
-       (ivy-rich-switch-buffer-major-mode (:width 12 :face warning))
-       (ivy-rich-switch-buffer-project (:width 15 :face success))
-       (ivy-rich-switch-buffer-path (:width (lambda (x) (ivy-rich-switch-buffer-shorten-path x (ivy-rich-minibuffer-width 0.3))))))
-      :predicate
-      (lambda (cand) (get-buffer cand)))))
-
-  (ivy-rich-mode -1)
-  (ivy-rich-mode +1))
-
 (defun config/javascript-modes ()
   "Configure JavaScript modes: js, js2, react."
   (setq-default js-indent-level 2
@@ -1846,7 +1810,7 @@ Only equations at the beginning of a line are justified."
 
 (defun config/projectile ()
   "Configure Projectile."
-  (setq-default projectile-completion-system 'ivy
+  (setq-default projectile-completion-system 'helm
                 projectile-enable-caching t
                 projectile-find-dir-includes-top-level t
                 projectile-git-submodule-command nil
@@ -2098,7 +2062,6 @@ Fall back to controller spec."
     (if (and (boundp 'magit-completing-read-function)
              (boundp 'magit-mode-map))
         (progn
-          (setq magit-completing-read-function 'ivy-completing-read)
           (define-key magit-mode-map (kbd "<tab>") 'magit-section-toggle))
       (error "Failed setting up magit")))
 
@@ -2179,7 +2142,6 @@ Provides facilities for yanking formatted code snippets."
 
   (define-key global-map (kbd "C-j") nil)
   (spacemacs/declare-prefix (kbd "C-j") "tools")
-  (define-key global-map (kbd "C-j C-j") #'ivy-yasnippet)
   (define-key global-map (kbd "C-j C-;") #'yas-expand))
 
 ;;; init.el ends here
