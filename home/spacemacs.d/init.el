@@ -171,7 +171,7 @@ values."
      company-flx
      company-jedi
      company-tabnine
-     conda
+     ;; conda
      csv-mode
      direnv
      (doom-modeline :location (recipe :fetcher github :repo "seagle0128/doom-modeline" :branch "master"))
@@ -1841,10 +1841,10 @@ Only equations at the beginning of a line are justified."
   (add-hook 'python-mode-hook #'evil-text-object-python-add-bindings)
 
   ;; conda-env
-  (setq-default conda-anaconda-home (getenv "ANACONDA_HOME"))
-  (conda-env-initialize-interactive-shells)
-  (conda-env-initialize-eshell)
-  (conda-env-autoactivate-mode)
+  ;; (setq-default conda-anaconda-home (getenv "ANACONDA_HOME"))
+  ;; (conda-env-initialize-interactive-shells)
+  ;; (conda-env-initialize-eshell)
+  ;; (conda-env-autoactivate-mode)
 
   ;; traad
   ;; Expects a conda env of the same name be defined
