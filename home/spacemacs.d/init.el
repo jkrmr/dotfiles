@@ -176,6 +176,7 @@ values."
      direnv
      (doom-modeline :location (recipe :fetcher github :repo "seagle0128/doom-modeline" :branch "master"))
      editorconfig
+     elpy
      emmet-mode
      evil-collection
      evil-ledger
@@ -1846,6 +1847,7 @@ Only equations at the beginning of a line are justified."
   ;; (conda-env-initialize-eshell)
   ;; (conda-env-autoactivate-mode)
 
+  (elpy-enable)
   ;; traad
   ;; Expects a conda env of the same name be defined
   ;; Execute (traad-install-server) to set up
