@@ -915,13 +915,16 @@ a communication channel."
   "Return `org-capture' template string for new Hugo post.
 See `org-capture-templates' for more information."
   (save-match-data
-    (let* ((title (read-from-minibuffer "Post Title: "))
-           (fname (org-hugo-slug title)))
+    (let* ((date (format-time-string "%Y-%m-%d" (current-time)))
+           (title (read-from-minibuffer "Post Title: " (format "Update %s" date)))
+           (location (read-from-minibuffer "Location: " "New York"))
+           (slug (org-hugo-slug title)))
       (mapconcat #'identity
                  `(
                    ,(concat "* DRAFT " title)
                    ":PROPERTIES:"
-                   ,(concat ":EXPORT_FILE_NAME: " fname)
+                   ,(concat ":EXPORT_FILE_NAME: " date "-" slug)
+                   ,(concat ":EXPORT_HUGO_CUSTOM_FRONT_MATTER: :location " location)
                    ":END:"
                    "%?\n")
                  "\n"))))
