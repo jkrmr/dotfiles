@@ -1641,7 +1641,10 @@ Excludes the ibuffer."
     (add-hook 'org-capture-mode-hook #'org-align-all-tags)
 
     ;; ox-hugo
-    (setq-default org-hugo-export-with-toc t)
+    (setq-default
+     org-hugo-export-with-toc nil
+     org-hugo-export-with-section-numbers nil)
+
 
     ;; Org capture templates
     (setq-default
