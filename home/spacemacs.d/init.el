@@ -729,14 +729,11 @@ a communication channel."
          (t
           (let* ((anchor (format "{#%s}" ;https://gohugo.io/extras/crossreferences/
                                  (org-hugo--get-anchor headline info)))
-                 (headline-title (org-hugo--headline-title style level loffset title
-                                                           todo-fmtd numbers))
+                 (headline-title (org-hugo--headline-title style level loffset title todo-fmtd "" ""))
                  (content-str (or (org-string-nw-p contents) "")))
             (format "%s%s" headline-title content-str))))))))
 
 ;; Custom functions
-
-;; org-hugo
 
 ;; amx
 
