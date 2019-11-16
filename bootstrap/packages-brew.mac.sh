@@ -9,9 +9,11 @@ brew install pinentry-mac
 
 brew install reattach-to-user-namespace
 
-brew tap d12frosted/emacs-plus
-brew install emacs-plus
+# brew tap railwaycat/emacsmacport
+# brew cask install emacs-mac-spacemacs-icon
 
+brew tap d12frosted/emacs-plus
+brew install emacs-plus --with-no-frame-refocus --with-no-titlebar
 ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications
 brew services start d12frosted/emacs-plus/emacs-plus
 
