@@ -1497,20 +1497,24 @@ Excludes the ibuffer."
 
   ;; doom-modeline
   (setq-default doom-modeline-buffer-file-name-style 'truncate-with-project
+                doom-modeline-buffer-modification-icon t
+                doom-modeline-buffer-state-icon t
+                doom-modeline-env-command nil
+                doom-modeline-evil-state-icon t
                 doom-modeline-github t
-                doom-modeline-icon t
+                doom-modeline-icon (display-graphic-p)
+                doom-modeline-lsp t
                 doom-modeline-major-mode-color-icon t
                 doom-modeline-major-mode-icon t
                 doom-modeline-minor-modes nil
-                doom-modeline-lsp t
-                doom-modeline-python-executable nil
-                doom-modeline-version nil
-                doom-modeline-env-command nil)
+                doom-modeline-persp-name t
+                doom-modeline-project-detection 'project
+                doom-modeline-version t)
 
   (doom-modeline-def-modeline 'main
     '(workspace-name window-number modals matches
-                       " " buffer-info remote-host buffer-position
-                       " " selection-info)
+                     " " buffer-info remote-host buffer-position
+                     " " selection-info)
     '(misc-info persp-name lsp github debug minor-modes input-method buffer-encoding major-mode process vcs checker))
 
   (defun enable-doom-modeline-in-messages ()
