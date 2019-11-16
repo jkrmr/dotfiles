@@ -6,9 +6,3 @@
 	path = home/vim/vim-plug
 	url = https://github.com/junegunn/vim-plug.git
 	branch = master
-[submodule "home/spacemacs.d/layers/w3m"]
-	path = home/spacemacs.d/layers/w3m
-	url = https://github.com/jmromer/w3m.git
-[submodule "home/spacemacs.d/local/google-translate"]
-	path = home/spacemacs.d/local/google-translate
-	url = https://github.com/atykhonov/google-translate.git
