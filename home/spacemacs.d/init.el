@@ -620,6 +620,7 @@ dump.")
   ;; Mac-like keybindings
   (setq-default mac-command-modifier 'super)
   (global-set-key (kbd "s-s") #'save-buffer)
+  (global-set-key (kbd "s-k") #'kill-buffer-and-window)
   (global-set-key (kbd "s-=") #'spacemacs/scale-up-font)
   (global-set-key (kbd "s--") #'spacemacs/scale-down-font)
   (global-set-key (kbd "s-0") #'spacemacs/reset-font-size)
