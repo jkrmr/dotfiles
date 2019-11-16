@@ -654,8 +654,7 @@ dump.")
 (with-eval-after-load 'doom-modeline-segments
   (defun doom-modeline-update-persp-name (&rest _)
     "Update perspective name in mode-line.
-Overrides doom-modeline's version to respect
-`dotspacemacs-display-default-layout'."
+Overwrites doom-modeline's version to display on default layout and simplify."
     (setq doom-modeline--persp-name
           ;; Support `persp-mode', while not support `perspective'
           (when (and doom-modeline-persp-name
@@ -663,26 +662,11 @@ Overrides doom-modeline's version to respect
                      (fboundp 'safe-persp-name)
                      (fboundp 'get-current-persp))
             (let* ((persp (get-current-persp))
-                   (name (safe-persp-name persp)))
-              (unless (and (string-equal persp-nil-name name)
-                           ;; NB: Added the below
-                           (not dotspacemacs-display-default-layout))
-                (propertize
-                 (format " #%s " name)
-                 'face (if (and persp
-                                (not (persp-contain-buffer-p (current-buffer) persp)))
-                           'doom-modeline-persp-buffer-not-in-persp
-                         'doom-modeline-persp-name)
-                 'help-echo "mouse-1: Switch perspective, mouse-2: Show help for minor mode"
-                 'mouse-face 'mode-line-highlight
-                 'local-map (let ((map (make-sparse-keymap)))
-                              (define-key map [mode-line mouse-1]
-                                #'persp-switch)
-                              (define-key map [mode-line mouse-2]
-                                (lambda ()
-                                  (interactive)
-                                  (describe-function 'persp-mode)))
-                              map))))))))
+                   (name (safe-persp-name persp))
+                   (face 'doom-modeline-persp-buffer-not-in-persp))
+              (concat (doom-modeline-spc)
+                      (propertize name 'face face)
+                      (doom-modeline-spc)))))))
 
 (with-eval-after-load 'ox-hugo
   ;; TODO: submit upstream
