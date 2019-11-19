@@ -1108,6 +1108,7 @@ Provides facilities for yanking formatted code snippets."
 
   (define-key global-map (kbd "C-j") nil)
   (spacemacs/declare-prefix (kbd "C-j") "tools")
+  (define-key global-map (kbd "C-j C-j") #'company-yasnippet)
   (define-key global-map (kbd "C-j C-;") #'yas-expand))
 
 (provide 'config-functions)
