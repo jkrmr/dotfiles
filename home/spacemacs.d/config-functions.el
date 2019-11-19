@@ -906,7 +906,12 @@ Fall back to controller spec."
   (spacemacs/set-leader-keys-for-major-mode 'ruby-mode "d p" #'(lambda () (interactive) (spacemacs/ruby-toggle-breakpoint t)))
 
   ;; Define keybinding to manually trigger autoformat
-  (spacemacs/set-leader-keys-for-major-mode 'ruby-mode "=" #'rufo-format-buffer))
+  (spacemacs/set-leader-keys-for-major-mode
+    'ruby-mode "=" nil)
+  (spacemacs/declare-prefix-for-mode
+    'ruby-mode "=" "format")
+  (spacemacs/set-leader-keys-for-major-mode
+    'ruby-mode "==" #'rufo-format-buffer))
 
 (defun config/ruby-in-buffer-eval ()
   "Configure and enable seeing-is-believing and xmpfilter for Ruby."

@@ -125,7 +125,9 @@ This function should only modify configuration layer settings."
      restclient
      (ruby :variables
            ruby-enable-enh-ruby-mode nil
-           ruby-version-manager nil ruby-test-runner 'rspec)
+           ruby-backend 'lsp
+           ruby-version-manager nil
+           ruby-test-runner 'rspec)
      ruby-on-rails
      rust
      scala
@@ -169,9 +171,6 @@ This function should only modify configuration layer settings."
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages
    '(
-     (doom-modeline :location (recipe :fetcher github :repo "jmromer/doom-modeline"))
-     (yankee :location (recipe :fetcher github :repo "jmromer/yankee.el" :branch "develop"))
-
      amx
      (beacon :location (recipe :fetcher github :repo "Malabarba/beacon"))
      coffee-mode
@@ -181,11 +180,10 @@ This function should only modify configuration layer settings."
      ;; conda
      csv-mode
      direnv
+     (doom-modeline :location (recipe :fetcher github :repo "jmromer/doom-modeline"))
      editorconfig
-     ;;elpy
      emmet-mode
      evil-collection
-     ;; evil-ledger
      evil-lion
      evil-quickscope
      evil-rails
@@ -204,9 +202,10 @@ This function should only modify configuration layer settings."
      ;; pyimport
      rjsx-mode
      (rufo :location (recipe :fetcher github :repo "aleandros/emacs-rufo" :branch "master"))
-     seeing-is-believing
      toc-org
      traad
+     writeroom-mode
+     (yankee :location (recipe :fetcher github :repo "jmromer/yankee.el" :branch "develop"))
      )
 
    dotspacemacs-frozen-packages
