@@ -158,8 +158,8 @@
   (async-shell-command "open http://127.0.0.1:1313")
   (delete-window))
 
-(defun org-hugo-new-post-capture-template ()
-  "Return `org-capture' template string for new Hugo post.
+(defun org-hugo-new-blog-capture-template ()
+  "Return `org-capture' template string for new Hugo blog post.
 See `org-capture-templates' for more information."
   (save-match-data
     (let* ((date (format-time-string "%Y-%m-%d" (current-time)))
@@ -176,15 +176,32 @@ See `org-capture-templates' for more information."
                    "%?\n")
                  "\n"))))
 
+(defun org-hugo-new-marginalia-capture-template ()
+  "Return `org-capture' template string for new Hugo marginalia post.
+See `org-capture-templates' for more information."
+  (save-match-data
+    (let* ((title (format-time-string "%Y-%m-%d-%H:%m" (current-time)))
+           (slug (org-hugo-slug title)))
+      (mapconcat #'identity
+                 `(
+                   ,(concat "* DRAFT " title)
+                   ":PROPERTIES:"
+                   ,(concat ":EXPORT_FILE_NAME: " slug)
+                   ":END:"
+                   "%?\n")
+                 "\n"))))
+
 (defun org-hugo-clean-export-deploy ()
   "Clean export destination for hugo blog, export org file to markdown, build production and deploy."
   (if (and (boundp 'hugo-base-dir)
            (boundp 'hugo-section))
-      (progn
-        (delete-directory (format "%s/content/%s" hugo-base-dir hugo-section) :recursive)
-        (org-hugo-export-wim-to-md :all-subtrees nil :visible-only nil)
-        (call-process-shell-command (format "(cd %s && bin/deploy) &" hugo-base-dir) nil 0))
-    (error "Ensure HUGO_BASE_DIR and HUGO_SECTION are set as local variables")))
+      (let ((dir (format "%s/content/%s" hugo-base-dir hugo-section)))
+        (progn
+          (message (format "Exporting to %s..." dir))
+          (delete-directory dir :recursive)
+          (org-hugo-export-wim-to-md :all-subtrees nil :visible-only nil)
+          (call-process-shell-command (format "(cd %s && bin/deploy) &" hugo-base-dir) nil 0)))
+    (error "Ensure HUGO-BASE-DIR and HUGO-SECTION are set as local variables")))
 
 (define-minor-mode org-hugo-auto-clean-export-deploy-mode
   "Toggle auto cleaning the export destination using `ox-hugo'."

@@ -580,6 +580,14 @@
     (add-hook 'org-journal-mode-hook #'org-mode)
     (add-hook 'org-capture-mode-hook #'org-align-all-tags)
 
+    (defun org-capture-marginalia-display-word-count (change-beg change-end prev-len)
+      "Display word count in the messages buffer if in org-capture mode."
+      (when (and (eq major-mode 'org-mode)
+                 (string-match-p "CAPTURE-marginalia.org" (format "%s" (current-buffer))))
+        (message "%s characters left" (- 240 (- (point-max) (point-min) 81)))))
+
+    (add-to-list 'after-change-functions #'org-capture-marginalia-display-word-count)
+
     ;; ox-hugo
     (setq-default
      org-hugo-export-with-toc nil
@@ -601,9 +609,6 @@
        ("t" "Task (Today's Sprint)" entry (file+headline org-default-notes-file "To Do Today")
         "** TODO %?\nSCHEDULED: %t\n %U" :empty-lines 1)
 
-       ("m" "Meeting" entry (file+headline org-default-backlog-file "Captures")
-        "** Meeting: %?\n %^t\n %U" :empty-lines 1)
-
        ("n" "Note" plain (function org-capture-deft-new-file)
         "%(format \"#+TITLE: %s\n#+DATE: %s\n\" org-capture-deft--title %U)\n*  %?")
 
@@ -611,7 +616,10 @@
         "** %(format-time-string org-journal-time-format)%^{Title}\n%i%?" :empty-lines 1)
 
        ("p" "Blog post" entry (file+headline "blog.org" "Blog")
-        (function org-hugo-new-post-capture-template) :empty-lines 1 :prepend t)
+        (function org-hugo-new-blog-capture-template) :empty-lines 1 :prepend t)
+
+       ("m" "Marginalia post" entry (file+headline "marginalia.org" "Marginalia")
+        (function org-hugo-new-marginalia-capture-template) :empty-lines 1 :prepend t)
 
        ("s" "Standup" plain (file+olp+datetree "~/Dropbox/org/journal-standup.org")
         "     %?")
