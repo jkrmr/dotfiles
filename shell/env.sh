@@ -52,8 +52,10 @@ export ELM_HOME="$HOME/.elm"
 export KERL_CONFIGURE_OPTIONS="--disable-debug --without-javac"
 export KERL_BUILD_DOCS=no
 export ERL_AFLAGS="-kernel shell_history enabled"
-unset GOPATH
-unset GOROOT
+# unset GOPATH
+# unset GOROOT
+GOPATH="$(go env GOPATH)"
+export GOPATH
 
 #-------------------------------------------------------------
 # Use Ripgrep for FZF instead of find
