@@ -387,6 +387,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (add-to-load-path "~/.spacemacs.d")
   (load "layers.el")
   (load "exec-path.el")
+  (load "colors.el")
 
   ;; Separate server socket location for CLI emacs
   (when (not window-system)
@@ -418,7 +419,6 @@ configuration."
   (load "functions.el")
   (load "config-functions.el")
   (load "overrides.el")
-  (load "colors.el")
   (load "customizations.el"))
 
 ;; Do not write anything past this comment. This is where Emacs will

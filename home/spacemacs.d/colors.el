@@ -110,7 +110,7 @@ TODO: Simplify this macro"
   (string             colors-green)
 
   ;; Fonts
-  (sans-font          "Source Code Pro")
+  (sans-font          "Source Sans Pro")
   (et-font            "EtBembo")
   (mono-font          "Source Code Pro"))
 
@@ -594,7 +594,7 @@ TODO: Simplify this macro"
    (:foreground ,comment)
    (:height 0.8 :foreground ,gray))
   (org-document-title
-   (:inherit variable-pitch :height 1.3 :weight normal :foreground ,gray)
+   (:inherit variable-pitch :height 1.3 :weight normal :foreground ,gray :underline nil)
    (:inherit nil :family ,et-font :height 1.4 :foreground ,bg-dark :underline nil))
   (org-done
    (:inherit variable-pitch :foreground ,colors-blue)
