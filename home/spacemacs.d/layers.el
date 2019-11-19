@@ -26,6 +26,7 @@ This function should only modify configuration layer settings."
                       auto-completion-idle-delay 0.1
                       auto-completion-private-snippets-directory "~/.spacemacs.d/snippets"
                       auto-completion-return-key-behavior 'complete
+                      auto-completion-use-company-box t
                       auto-completion-tab-key-behavior 'complete)
      better-defaults
      bm
