@@ -49,8 +49,7 @@
   (with-eval-after-load 'company
     (progn
       (company-flx-mode +1)
-      (add-hook 'text-mode-hook #'company-mode-on)
-      ;; (add-hook 'text-mode-hook #'company-tng-on)
+      ;; (add-hook 'text-mode-hook #'company-mode-on)
 
       (if (boundp 'company-backends)
           (progn
@@ -73,13 +72,8 @@
        ;; Trigger completion immediately.
        company-idle-delay 0.0)
 
-      ;; Use the tab-and-go frontend.
-      ;; Allows TAB to select and complete at the same time.
-      (company-tng-configure-default)
-
       (if (boundp 'company-frontends)
           (progn
-            (add-to-list 'company-frontends 'company-tng-frontend)
             (add-to-list 'company-frontends 'company-pseudo-tooltip-frontend)
             (add-to-list 'company-frontends 'company-echo-metadata-frontend))
         (error "Not adding company front-ends")))))
@@ -161,11 +155,12 @@
 
 (defun config/evil-collection ()
   "Enable evil keybindings everywhere."
-  (setq-default evil-collection-company-use-tng t
-                evil-collection-outline-bind-tab-p t
-                evil-collection-term-sync-state-and-mode-p t
-                evil-collection-setup-minibuffer t
-                evil-collection-setup-debugger-keys t)
+  (setq-default
+   evil-collection-outline-bind-tab-p t
+   evil-collection-term-sync-state-and-mode-p t
+   evil-collection-setup-minibuffer t
+   evil-collection-setup-debugger-keys t)
+
   ;; load init evil-collection after loading evil
   (when (require 'evil-collection nil t)
     (evil-collection-init)))

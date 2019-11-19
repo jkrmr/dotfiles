@@ -31,21 +31,6 @@
         (insert "\n")
         (indent-according-to-mode)))))
 
-;; company
-
-(defun company-tng-on ()
-  "Enable company-tng-defaults, override TAB, RET, S-TAB key bindings."
-  (company-tng-configure-default)
-  (if (boundp 'company-active-map)
-      (let ((keymap company-active-map))
-        (define-key keymap [return] #'company-complete)
-        (define-key keymap (kbd "RET") #'company-complete)
-        (define-key keymap [tab] #'company-complete)
-        (define-key keymap (kbd "TAB") #'company-select-next)
-        (define-key keymap [backtab] nil)
-        (define-key keymap (kbd "S-TAB") nil))
-    (error "Not overriding company-tng keybindings")))
-
 ;; layout
 
 (defun layouts-reset ()
