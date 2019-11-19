@@ -466,20 +466,23 @@
    evil-operator-state-tag (propertize "[Operator]" 'face '((:background "purple"))))
 
   ;; doom-modeline
-  (setq-default doom-modeline-buffer-file-name-style 'truncate-with-project
-                doom-modeline-buffer-modification-icon t
-                doom-modeline-buffer-state-icon t
-                doom-modeline-env-command nil
-                doom-modeline-evil-state-icon t
-                doom-modeline-github t
-                doom-modeline-icon (display-graphic-p)
-                doom-modeline-lsp t
-                doom-modeline-major-mode-color-icon t
-                doom-modeline-major-mode-icon t
-                doom-modeline-minor-modes nil
-                doom-modeline-persp-name t
-                doom-modeline-project-detection 'project
-                doom-modeline-version t)
+  (setq-default
+   doom-modeline-buffer-file-name-style 'truncate-with-project
+   doom-modeline-buffer-modification-icon t
+   doom-modeline-buffer-state-icon t
+   doom-modeline-enable-word-count t
+   doom-modeline-env-command nil
+   doom-modeline-evil-state-icon t
+   doom-modeline-github t
+   doom-modeline-icon (display-graphic-p)
+   doom-modeline-lsp t
+   doom-modeline-major-mode-color-icon t
+   doom-modeline-major-mode-icon t
+   doom-modeline-minor-modes nil
+   doom-modeline-persp-name t
+   doom-modeline-project-detection 'project
+   doom-modeline-version t)
+
 
   (defun enable-doom-modeline-in-messages ()
     "Enable doom-modeline in messages buffer."
