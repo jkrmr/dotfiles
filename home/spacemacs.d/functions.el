@@ -85,14 +85,9 @@
   (progn
     (persp-switch "blog")
     (delete-other-windows)
-
     (find-file (expand-file-name org-default-blog-file))
     (rename-buffer "*blog*")
-
-    (split-window-right-and-focus)
-
-    (find-file (expand-file-name org-default-commonplaces-file))
-    (rename-buffer "*marginalia*")))
+    (writeroom-mode)))
 
 (defun layouts-notes ()
   "Set up notes layout."
@@ -197,7 +192,7 @@ See `org-capture-templates' for more information."
            (slug (org-hugo-slug title)))
       (mapconcat #'identity
                  `(
-                   ,(concat "* DRAFT " title)
+                   ,(concat "* " title)
                    ":PROPERTIES:"
                    ,(concat ":EXPORT_FILE_NAME: " slug)
                    ":END:"
