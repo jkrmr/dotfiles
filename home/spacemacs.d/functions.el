@@ -85,9 +85,14 @@
   (progn
     (persp-switch "blog")
     (delete-other-windows)
-    (start-process "hugo-server" "*blog-server*" "blog-serve")
+
     (find-file (expand-file-name org-default-blog-file))
-    (rename-buffer "*blog*")))
+    (rename-buffer "*blog*")
+
+    (split-window-right-and-focus)
+
+    (find-file (expand-file-name org-default-commonplaces-file))
+    (rename-buffer "*marginalia*")))
 
 (defun layouts-notes ()
   "Set up notes layout."
@@ -150,13 +155,21 @@
       (find-file org-default-backlog-file)
     (error "No `org-default-backlog-file' set")))
 
-;; Org Export: Hugo
+;; Hugo
 
-(defun org-hugo-blog-open ()
+(defun hugo-blog-open ()
   "Open Hugo blog, served locally using the default port, in a browser."
   (interactive)
-  (async-shell-command "open http://127.0.0.1:1313")
-  (delete-window))
+  (progn
+    (async-shell-command "open http://127.0.0.1:1313")
+    (delete-window)))
+
+(defun hugo-blog-serve ()
+  "Start the hugo server."
+  (interactive)
+  (start-process "hugo-server" "*blog-server*" "blog-serve"))
+
+;; Org Export: Hugo
 
 (defun org-hugo-new-blog-capture-template ()
   "Return `org-capture' template string for new Hugo blog post.

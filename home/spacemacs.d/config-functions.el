@@ -532,6 +532,7 @@
     (setq-default
      org-directory "~/Dropbox/org"
      org-default-blog-file "~/Dropbox/org/blog.org"
+     org-default-commonplaces-file "~/Dropbox/org/marginalia.org"
      org-default-notes-file "~/Dropbox/org/sprint-today.org"
      org-default-backlog-file "~/Dropbox/org/sprint-backlog.org"
      org-archive-location "~/Dropbox/org/archive.org::* %s")
