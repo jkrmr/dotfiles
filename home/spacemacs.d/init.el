@@ -86,7 +86,7 @@ It should only modify the values of Spacemacs settings."
    ;; directory. A string value must be a path to an image format supported
    ;; by your Emacs build.
    ;; If the value is nil then no banner is displayed. (default 'official)
-   dotspacemacs-startup-banner 'official
+   dotspacemacs-startup-banner nil
 
    ;; List of items to show in startup buffer or an association list of
    ;; the form `(list-type . list-size)`. If nil then it is disabled.
@@ -289,9 +289,9 @@ It should only modify the values of Spacemacs settings."
    ;; When used in a plist, `visual' takes precedence over `relative'.
    ;; (default nil)
    dotspacemacs-line-numbers '(:relative t
-                               :enabled-for-modes prog-mode
-                               :disabled-for-modes pdf-view-mode org-mode doc-view-mode dired-mode
-                               :size-limit-kb 1024)
+                                         :enabled-for-modes prog-mode
+                                         :disabled-for-modes pdf-view-mode org-mode doc-view-mode dired-mode
+                                         :size-limit-kb 1024)
 
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
