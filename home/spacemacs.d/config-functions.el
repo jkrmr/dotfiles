@@ -47,36 +47,46 @@
 (defun config/company ()
   "Configure company auto-completion mode."
   (with-eval-after-load 'company
+    ;; (company-flx-mode +1)
     (progn
-      (company-flx-mode +1)
-      ;; (add-hook 'text-mode-hook #'company-mode-on)
+      (define-key company-active-map (kbd "C-h") #'company-show-doc-buffer)
+      (define-key company-active-map (kbd "C-w") #'company-show-location)
+      (define-key company-active-map (kbd "C-r") #'company-search-candidates)
+      (define-key company-active-map (kbd "C-f") #'company-filter-candidates)
+      (define-key company-active-map [return] #'company-complete-selection)
+      (define-key company-active-map (kbd "RET") #'company-complete-selection)
+      (define-key company-active-map [tab] #'company-complete-selection)
+      (define-key company-active-map (kbd "TAB") #'company-complete-selection)
+      (define-key company-active-map [backtab] #'spacemacs//company-complete-common-or-cycle-backward)
+      (define-key company-active-map (kbd "S-TAB") #'spacemacs//company-complete-common-or-cycle-backward))
 
-      (if (boundp 'company-backends)
-          (progn
-            ;; (add-to-list 'company-backends #'company-tabnine)
-            ;; (add-to-list 'company-backends '(company-jedi :with company-yasnippet))
-            (add-to-list 'company-backends '(company-anaconda :with company-yasnippet))
-            (add-to-list 'company-backends '(company-capf :with company-yasnippet))
-            (add-to-list 'company-backends '(company-dabbrev :with company-yasnippet))
-            (add-to-list 'company-backends '(company-dabbrev-code :with company-yasnippet))
-            (add-to-list 'company-backends '(company-keywords :with company-yasnippet))
-            (add-to-list 'company-backends '(company-gtags :with company-yasnippet))
-            (add-to-list 'company-backends '(company-etags :with company-yasnippet))
-            (add-to-list 'company-backends '(company-files :with company-yasnippet))
-            (add-to-list 'company-backends '(company-tern :with company-yasnippet)))
-        (error "Not adding company backends"))
+    (setq-default
+     ;; Number the candidates (use M-1, M-2 etc to select completions).
+     company-show-numbers t
+     ;; Trigger completion immediately.
+     company-box-doc-delay 0.0
+     company-tooltip-idle-delay 0.0
+     company-quickhelp-delay 0.0
+     company-idle-delay 0.0)
 
-      (setq-default
-       ;; Number the candidates (use M-1, M-2 etc to select completions).
-       company-show-numbers t
-       ;; Trigger completion immediately.
-       company-idle-delay 0.0)
+    (if (boundp 'company-backends)
+        (progn
+          (add-to-list 'company-backends '(company-anaconda :with company-yasnippet))
+          (add-to-list 'company-backends '(company-capf :with company-yasnippet))
+          (add-to-list 'company-backends '(company-dabbrev :with company-yasnippet))
+          (add-to-list 'company-backends '(company-dabbrev-code :with company-yasnippet))
+          (add-to-list 'company-backends '(company-keywords :with company-yasnippet))
+          (add-to-list 'company-backends '(company-gtags :with company-yasnippet))
+          (add-to-list 'company-backends '(company-etags :with company-yasnippet))
+          (add-to-list 'company-backends '(company-files :with company-yasnippet))
+          (add-to-list 'company-backends '(company-tern :with company-yasnippet)))
+      (error "Not adding company backends"))
 
-      (if (boundp 'company-frontends)
-          (progn
-            (add-to-list 'company-frontends 'company-pseudo-tooltip-frontend)
-            (add-to-list 'company-frontends 'company-echo-metadata-frontend))
-        (error "Not adding company front-ends")))))
+    (if (boundp 'company-frontends)
+        (progn
+          (add-to-list 'company-frontends 'company-pseudo-tooltip-frontend)
+          (add-to-list 'company-frontends 'company-echo-metadata-frontend))
+      (error "Not adding company front-ends"))))
 
 (defun config/compilation-buffers ()
   "Configure compilation buffer settings."
