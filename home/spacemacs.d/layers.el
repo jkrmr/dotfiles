@@ -176,9 +176,6 @@ This function should only modify configuration layer settings."
      (beacon :location (recipe :fetcher github :repo "Malabarba/beacon"))
      coffee-mode
      company-flx
-     ;; company-jedi
-     ;; company-tabnine
-     ;; conda
      csv-mode
      direnv
      (doom-modeline :location (recipe :fetcher github :repo "jmromer/doom-modeline"))
@@ -193,14 +190,12 @@ This function should only modify configuration layer settings."
      graphql-mode
      gxref
      helpful
-     ;; indium
      magit-todos
      (org-pretty-table :location (recipe :fetcher github :repo "Fuco1/org-pretty-table"))
      (org-books :location (recipe :fetcher github :repo "lepisma/org-books"))
      (org-expand :location (recipe :fetcher github :repo "lepisma/org-expand"))
      ov
      pretty-mode
-     ;; pyimport
      rjsx-mode
      (rufo :location (recipe :fetcher github :repo "aleandros/emacs-rufo" :branch "master"))
      toc-org
