@@ -203,15 +203,24 @@ See `org-capture-templates' for more information."
   (save-match-data
     (let ((title (read-from-minibuffer "Title: "))
           (author (read-from-minibuffer "Author: "))
-          (citation (read-from-minibuffer "Citation: "))
-          (year (read-from-minibuffer "Date: ")))
+          (source (read-from-minibuffer "Citation: "))
+          (cite (read-from-minibuffer "Date: "))
+          (date (format-time-string "%Y-%m-%d" (current-time)))
+          (is-book (string-equal
+                    "y"
+                    (read-from-minibuffer
+                     "Is collection title? (y/n): " "y"))))
       (mapconcat #'identity
                  `(
                    ,(concat "* DRAFT " title)
                    ":PROPERTIES:"
                    ,(concat ":EXPORT_FILE_NAME: " (org-hugo-slug title))
-                   ,(concat ":EXPORT_AUTHOR:" author)
-                   ,(concat ":EXPORT_HUGO_CUSTOM_FRONT_MATTER: :source " citation " :year " year)
+                   ,(concat ":EXPORT_AUTHOR: " author)
+                   ,(concat ":EXPORT_DATE: " date)
+                   ,(concat ":EXPORT_HUGO_CUSTOM_FRONT_MATTER: "
+                            ":source " source
+                            " :cite " cite
+                            " :book " (if is-book "true" "false"))
                    ":END:"
                    "%?\n")
                  "\n"))))
