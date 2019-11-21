@@ -152,6 +152,17 @@
 
 ;; Hugo
 
+(defun hugo-timestamp ()
+  "Return a timestamp in ISO 8601 format."
+  (concat
+     (format-time-string "%Y-%m-%dT%T")
+     ((lambda (x)
+        (concat
+         (substring x 0 3)
+         ":"
+         (substring x 3 5)))
+      (format-time-string "%z"))))
+
 (defun hugo-blog-open ()
   "Open Hugo blog, served locally using the default port, in a browser."
   (interactive)
@@ -171,6 +182,7 @@
 See `org-capture-templates' for more information."
   (save-match-data
     (let ((date (format-time-string "%Y-%m-%d" (current-time)))
+          (timestamp (hugo-timestamp))
           (title (read-from-minibuffer "Title: " "New Post"))
           (location (read-from-minibuffer "Location: " "New York")))
       (mapconcat #'identity
@@ -178,6 +190,7 @@ See `org-capture-templates' for more information."
                    ,(concat "* DRAFT " title)
                    ":PROPERTIES:"
                    ,(concat ":EXPORT_FILE_NAME: " date "-" (org-hugo-slug title))
+                   ,(concat ":EXPORT_DATE: " timestamp)
                    ,(concat ":EXPORT_HUGO_CUSTOM_FRONT_MATTER: :location " location)
                    ":END:"
                    "%?\n")
@@ -187,12 +200,13 @@ See `org-capture-templates' for more information."
   "Return `org-capture' template string for new Hugo marginalia post.
 See `org-capture-templates' for more information."
   (save-match-data
-    (let ((title (format-time-string "%Y-%m-%d-%H:%m" (current-time))))
+    (let ((timestamp (hugo-timestamp)))
       (mapconcat #'identity
                  `(
-                   ,(concat "* " title)
+                   ,(concat "* " timestamp)
                    ":PROPERTIES:"
-                   ,(concat ":EXPORT_FILE_NAME: " (org-hugo-slug title))
+                   ,(concat ":EXPORT_FILE_NAME: " (org-hugo-slug timestamp))
+                   ,(concat ":EXPORT_DATE: " timestamp)
                    ":END:"
                    "%?\n")
                  "\n"))))
@@ -205,22 +219,25 @@ See `org-capture-templates' for more information."
           (author (read-from-minibuffer "Author: "))
           (source (read-from-minibuffer "Citation: "))
           (cite (read-from-minibuffer "Date: "))
-          (date (format-time-string "%Y-%m-%d" (current-time)))
+          (desc (read-from-minibuffer "Description: "))
+          (timestamp (hugo-timestamp))
+          ;; TODO: use a selection
           (is-book (string-equal
                     "y"
                     (read-from-minibuffer
-                     "Is collection title? (y/n): " "y"))))
+                     "title is a collection? (y/n): " "y"))))
       (mapconcat #'identity
                  `(
                    ,(concat "* DRAFT " title)
                    ":PROPERTIES:"
                    ,(concat ":EXPORT_FILE_NAME: " (org-hugo-slug title))
                    ,(concat ":EXPORT_AUTHOR: " author)
-                   ,(concat ":EXPORT_DATE: " date)
+                   ,(concat ":EXPORT_DATE: " timestamp)
                    ,(concat ":EXPORT_HUGO_CUSTOM_FRONT_MATTER: "
                             ":source " source
                             " :cite " cite
                             " :book " (if is-book "true" "false"))
+                   ,(concat ":EXPORT_DESCRIPTION: " desc)
                    ":END:"
                    "%?\n")
                  "\n"))))
