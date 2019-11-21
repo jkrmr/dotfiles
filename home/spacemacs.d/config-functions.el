@@ -531,8 +531,7 @@
   (with-eval-after-load 'org
     (setq-default
      org-directory "~/Dropbox/org"
-     org-default-blog-file "~/Dropbox/org/blog.org"
-     org-default-commonplaces-file "~/Dropbox/org/marginalia.org"
+     org-default-blog-file "~/Dropbox/org/blog/blog.org"
      org-default-notes-file "~/Dropbox/org/sprint-today.org"
      org-default-backlog-file "~/Dropbox/org/sprint-backlog.org"
      org-archive-location "~/Dropbox/org/archive.org::* %s")
@@ -611,29 +610,34 @@
     (setq-default
      org-capture-templates
      '(
-       ("b" "Backlog" entry (file+headline org-default-backlog-file "Captures")
-        "** %?\n%U" :empty-lines 1)
-
-       ("a" "Annotation" entry (file+headline org-default-backlog-file "Captures")
-        "** %?\n%a\n%U" :empty-lines 1)
-
-       ("d" "Deadline" entry (file+headline org-default-backlog-file "Captures")
-        "** %?\nDEADLINE: %^t\n %U" :empty-lines 1)
-
-       ("t" "Task (Today's Sprint)" entry (file+headline org-default-notes-file "To Do Today")
+       ("c" "Capture")
+       ("ct" "Task (Today's Sprint)" entry (file+headline org-default-notes-file "To Do Today")
         "** TODO %?\nSCHEDULED: %t\n %U" :empty-lines 1)
 
-       ("n" "Note" plain (function org-capture-deft-new-file)
-        "%(format \"#+TITLE: %s\n#+DATE: %s\n\" org-capture-deft--title %U)\n*  %?")
+       ("cb" "Backlog" entry (file+headline org-default-backlog-file "Captures")
+        "** %?\n%U" :empty-lines 1)
 
-       ("j" "Journal entry" plain (function org-journal-find-location)
-        "** %(format-time-string org-journal-time-format)%^{Title}\n%i%?" :empty-lines 1)
+       ("ca" "Annotation" entry (file+headline org-default-backlog-file "Captures")
+        "** %?\n%a\n%U" :empty-lines 1)
 
-       ("p" "Blog post" entry (file+headline "blog.org" "Blog")
+       ("cd" "Deadline" entry (file+headline org-default-backlog-file "Captures")
+        "** %?\nDEADLINE: %^t\n %U" :empty-lines 1)
+
+       ("cp" "Paste from clipboard" entry (file+headline org-default-backlog-file "Captures")
+        "** %^{Title} %^G\n%?\n%c")
+
+       ("b" "Blog")
+       ("bp" "Post" entry (file+headline "blog/blog.org" "Blog")
         (function org-hugo-new-blog-capture-template) :empty-lines 1 :prepend t)
 
-       ("m" "Marginalia post" entry (file+headline "marginalia.org" "Marginalia")
+       ("bn" "Notes" entry (file+headline "blog/notes.org" "Notes")
+        (function org-hugo-new-blog-capture-template) :empty-lines 1 :prepend t)
+
+       ("bm" "Marginalia" entry (file+headline "blog/marginalia.org" "Marginalia")
         (function org-hugo-new-marginalia-capture-template) :empty-lines 1 :prepend t)
+
+       ("bc" "Commonplace" entry (file+headline "blog/commonplaces.org" "Commonplaces")
+        (function org-hugo-new-commonplace-capture-template) :empty-lines 1 :prepend t)
 
        ("s" "Standup" plain (file+olp+datetree "~/Dropbox/org/journal-standup.org")
         "     %?")
@@ -641,11 +645,12 @@
        ("h" "Health / Diet journal" entry (file+olp+datetree "~/Dropbox/org/journal-health.org")
         "**** [%<%l:%M %p>] %^{Entry} %^g" :immediate-finish t)
 
-       ("v" "Paste from clipboard" entry (file+headline org-default-backlog-file "Captures")
-        "** %^{Title} %^G\n%?\n%c")
+       ("n" "Note" plain (function org-capture-deft-new-file)
+        "%(format \"#+TITLE: %s\n#+DATE: %s\n\" org-capture-deft--title %U)\n*  %?")
 
-       ("c" "Commonplace" entry (file "~/Dropbox/org/journal-commonplaces.org")
-        "* %^{Title} %^G\n%?")))
+       ("j" "Journal entry" plain (function org-journal-find-location)
+        "** %(format-time-string org-journal-time-format)%^{Title}\n%i%?" :empty-lines 1)))
+
 
     ;; Org Babel languages
     (org-babel-do-load-languages

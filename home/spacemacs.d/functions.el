@@ -170,15 +170,14 @@
   "Return `org-capture' template string for new Hugo blog post.
 See `org-capture-templates' for more information."
   (save-match-data
-    (let* ((date (format-time-string "%Y-%m-%d" (current-time)))
-           (title (read-from-minibuffer "Post Title: " (format "Update %s" date)))
-           (location (read-from-minibuffer "Location: " "New York"))
-           (slug (org-hugo-slug title)))
+    (let ((date (format-time-string "%Y-%m-%d" (current-time)))
+          (title (read-from-minibuffer "Title: " "New Post"))
+          (location (read-from-minibuffer "Location: " "New York")))
       (mapconcat #'identity
                  `(
                    ,(concat "* DRAFT " title)
                    ":PROPERTIES:"
-                   ,(concat ":EXPORT_FILE_NAME: " date "-" slug)
+                   ,(concat ":EXPORT_FILE_NAME: " date "-" (org-hugo-slug title))
                    ,(concat ":EXPORT_HUGO_CUSTOM_FRONT_MATTER: :location " location)
                    ":END:"
                    "%?\n")
@@ -188,13 +187,31 @@ See `org-capture-templates' for more information."
   "Return `org-capture' template string for new Hugo marginalia post.
 See `org-capture-templates' for more information."
   (save-match-data
-    (let* ((title (format-time-string "%Y-%m-%d-%H:%m" (current-time)))
-           (slug (org-hugo-slug title)))
+    (let ((title (format-time-string "%Y-%m-%d-%H:%m" (current-time))))
       (mapconcat #'identity
                  `(
                    ,(concat "* " title)
                    ":PROPERTIES:"
-                   ,(concat ":EXPORT_FILE_NAME: " slug)
+                   ,(concat ":EXPORT_FILE_NAME: " (org-hugo-slug title))
+                   ":END:"
+                   "%?\n")
+                 "\n"))))
+
+(defun org-hugo-new-commonplace-capture-template ()
+  "Return `org-capture' template string for new Hugo commonplace post.
+See `org-capture-templates' for more information."
+  (save-match-data
+    (let ((title (read-from-minibuffer "Title: "))
+          (author (read-from-minibuffer "Author: "))
+          (citation (read-from-minibuffer "Citation: "))
+          (year (read-from-minibuffer "Date: ")))
+      (mapconcat #'identity
+                 `(
+                   ,(concat "* DRAFT " title)
+                   ":PROPERTIES:"
+                   ,(concat ":EXPORT_FILE_NAME: " (org-hugo-slug title))
+                   ,(concat ":EXPORT_AUTHOR:" author)
+                   ,(concat ":EXPORT_HUGO_CUSTOM_FRONT_MATTER: :source " citation " :year " year)
                    ":END:"
                    "%?\n")
                  "\n"))))
