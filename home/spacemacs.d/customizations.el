@@ -62,6 +62,7 @@
 (config/gtags)
 (config/helpful)
 (config/highlight-lines-at-length 80)
+(config/ido)
 (config/javascript-modes)
 (config/latex-mode)
 (config/ligatures)

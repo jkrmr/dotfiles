@@ -304,6 +304,13 @@
   ;; which `dotspacemacs-whitespace-cleanup 'all' uses.)
   (add-hook 'before-save-hook #'delete-trailing-whitespace))
 
+(defun config/ido ()
+  "Enable and configure ido mode."
+  (ido-vertical-mode -1)
+  (add-hook 'after-init-hook #'ido-mode)
+  (add-hook 'after-init-hook #'flx-ido-mode)
+  (spacemacs/set-leader-keys "a d" #'ido-dired))
+
 (defun config/javascript-modes ()
   "Configure JavaScript modes: js, js2, react."
   (setq-default js-indent-level 2
