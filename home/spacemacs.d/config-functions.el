@@ -243,8 +243,10 @@
 
 (defun config/global-modes ()
   "Enable globally set modes."
+  (ido-mode)
   (flx-ido-mode)
   (global-evil-quickscope-mode 1)
+  (global-evil-matchit-mode 1)
   (smartparens-global-strict-mode)
   (visual-line-mode))
 
