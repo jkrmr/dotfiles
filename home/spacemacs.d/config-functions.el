@@ -212,31 +212,34 @@
 
 (defun config/flycheck ()
   "Configure and enable Flycheck."
+  (add-hook 'after-init-hook #'global-flycheck-mode)
+
   (setq-default
+   flycheck-disabled-checkers '(javascript-jshint
+                                markdown-markdownlint-cli)
    flycheck-global-modes '(LaTeX-mode
-                           c++-mode
-                           c-mode
-                           coffee-mode
-                           elixir-mode
-                           emacs-lisp-mode
-                           enh-ruby-mode
-                           go-mode
-                           haml-mode
-                           haskell-mode
-                           js2-mode
-                           json-mode
-                           less-mode
-                           markdown-mode
-                           pug-mode
-                           python-mode
-                           react-mode
-                           ruby-mode
-                           sass-mode
-                           scss-mode
-                           slim-mode
-                           web-mode
-                           yaml-mode))
-  (global-flycheck-mode))
+                            c++-mode
+                            c-mode
+                            coffee-mode
+                            elixir-mode
+                            emacs-lisp-mode
+                            enh-ruby-mode
+                            go-mode
+                            haml-mode
+                            haskell-mode
+                            js2-mode
+                            json-mode
+                            less-mode
+                            markdown-mode
+                            pug-mode
+                            python-mode
+                            react-mode
+                            ruby-mode
+                            sass-mode
+                            scss-mode
+                            slim-mode
+                            web-mode
+                            yaml-mode)))
 
 (defun config/global-modes ()
   "Enable globally set modes."
