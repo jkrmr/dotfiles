@@ -216,16 +216,18 @@ See `org-capture-templates' for more information."
 See `org-capture-templates' for more information."
   (save-match-data
     (let ((title (read-from-minibuffer "Title: "))
-          (author (read-from-minibuffer "Author: "))
-          (source (read-from-minibuffer "Citation: "))
-          (cite (read-from-minibuffer "Date: "))
           (desc (read-from-minibuffer "Description: "))
+          (author (read-from-minibuffer "Author: "))
+          (source (read-from-minibuffer "Source Title: "))
+          (cite (read-from-minibuffer "Citation Date: "))
+          (url (read-from-minibuffer "Source URL: "))
           (timestamp (hugo-timestamp))
-          ;; TODO: use a selection
-          (is-book (string-equal
-                    "y"
-                    (read-from-minibuffer
-                     "title is a collection? (y/n): " "y"))))
+          (type (car (cdr  (read-multiple-choice
+                            "Source Type: "
+                            '((?b "book" "Book / Magazine / Film / Album")
+                              (?a "article" "Article / Essay")
+                              (?p "poem" "Poem")
+                              (?t "tweet" "Tweet")))))))
       (mapconcat #'identity
                  `(
                    ,(concat "* DRAFT " title)
@@ -236,7 +238,8 @@ See `org-capture-templates' for more information."
                    ,(concat ":EXPORT_HUGO_CUSTOM_FRONT_MATTER: "
                             ":source " source
                             " :cite " cite
-                            " :book " (if is-book "true" "false"))
+                            " :type " type
+                            " :sourceurl " url)
                    ,(concat ":EXPORT_DESCRIPTION: " desc)
                    ":END:"
                    "%?\n")
