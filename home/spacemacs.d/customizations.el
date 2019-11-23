@@ -45,7 +45,6 @@
 
 ;; Pre-config
 (config/frames)
-(config/global-modes)
 
 (config/amx)
 (config/code-folding)
@@ -146,6 +145,12 @@
   "L b" #'layouts-blog
   "L o" #'layouts-org
   "L d" #'layouts-dotfiles)
+
+;; globally enabled minor modes
+(add-hook 'after-init-hook #'visual-line-mode)
+(global-evil-quickscope-mode 1)
+(global-evil-matchit-mode 1)
+(smartparens-global-strict-mode)
 
 ;; Transparency
 (setq-default dotspacemacs-active-transparency 95
