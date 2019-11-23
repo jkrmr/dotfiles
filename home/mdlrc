@@ -1,1 +1,1 @@
-style "#{ENV['HOME']}/.dotfiles/linters/mdl_style.rb"
+style "#{ENV['HOME']}/.dotfiles/config/mdl_rules.rb"
