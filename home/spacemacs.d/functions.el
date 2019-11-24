@@ -245,25 +245,9 @@ See `org-capture-templates' for more information."
                    "%?\n")
                  "\n"))))
 
-(defun org-hugo-clean-export-deploy ()
-  "Clean export destination for hugo blog, export org file to markdown, build production and deploy."
-  (if (and (boundp 'hugo-base-dir)
-           (boundp 'hugo-section))
-      (let ((dir (format "%s/content/%s" hugo-base-dir hugo-section)))
-        (progn
-          (message (format "Exporting to %s..." dir))
-          ;; (delete-directory dir :recursive)
-          (org-hugo-export-wim-to-md :all-subtrees nil :visible-only nil)))
-          ;; (call-process-shell-command (format "(cd %s && bin/deploy) &" hugo-base-dir) nil 0)))
-    (error "Ensure HUGO-BASE-DIR and HUGO-SECTION are set as local variables")))
-
-(define-minor-mode org-hugo-auto-clean-export-deploy-mode
-  "Toggle auto cleaning the export destination using `ox-hugo'."
-  :global nil
-  :lighter ""
-  (if org-hugo-auto-clean-export-deploy-mode
-      (add-hook 'after-save-hook #'org-hugo-clean-export-deploy :append :local)
-    (remove-hook 'after-save-hook #'org-hugo-clean-export-deploy :local)))
+(defun org-hugo-deploy ()
+  "Commit and deploy hugo blog."
+  nil)
 
 ;; yasnippet
 
