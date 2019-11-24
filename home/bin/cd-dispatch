@@ -49,7 +49,7 @@ class CDDispatch
       .flat_map { |root_dir| find_command(root_dir).split("\n") }
       .map! { |path| path.sub("/.git", "") }
       .to_set
-      .difference(entries.map { |count, path, label| path })
+      .difference(entries.map { |_count, path, _label| path })
       .tap { |s| puts "New Projects: #{s.to_a}" }
       .map! { |path| [1, path, build_label(path)] }
   end
