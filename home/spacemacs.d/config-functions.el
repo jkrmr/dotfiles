@@ -596,13 +596,30 @@
     (add-hook 'org-journal-mode-hook #'org-mode)
     (add-hook 'org-capture-mode-hook #'org-align-all-tags)
 
-    (defun org-capture-marginalia-display-word-count (change-beg change-end prev-len)
-      "Display word count in the messages buffer if in org-capture mode."
+
+    (defun org-capture-marginalia-display-char-countdown (change-beg change-end prev-len)
+      "Display character countdown in the messages buffer if in org-capture mode."
       (when (and (eq major-mode 'org-mode)
                  (string-match-p "CAPTURE-marginalia.org" (format "%s" (current-buffer))))
-        (message "%s characters left" (- 240 (- (point-max) (point-min) 81)))))
+        (let ((chars-present (- (point-max) (point-min)))
+              (prefilled-chars 133)
+              (max-chars 240))
+          (message "%s characters left"
+                   (- (+ max-chars prefilled-chars) chars-present)))))
 
-    (add-to-list 'after-change-functions #'org-capture-marginalia-display-word-count)
+    (add-to-list 'after-change-functions
+                 #'org-capture-marginalia-display-char-countdown)
+
+    (defun text-modes-display-word-count (change-beg change-end prev-len)
+      "Display word count in the messages buffer if in a text mode."
+      (when (and (or (eq major-mode 'org-mode)
+                     (eq major-mode 'markdown-mode))
+                 (not (string-match-p
+                       "CAPTURE-marginalia.org"
+                       (format "%s" (current-buffer)))))
+        (message "%s words" (count-words (point-min) (point-max)))))
+
+    (add-to-list 'after-change-functions #'text-modes-display-word-count)
 
     ;; ox-hugo
     (setq-default
