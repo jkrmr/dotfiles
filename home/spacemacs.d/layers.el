@@ -158,7 +158,10 @@ This function should only modify configuration layer settings."
                treemacs-use-follow-mode t)
      typescript
      typography
-     (version-control :variables version-control-diff-tool 'git-gutter version-control-global-margin t version-control-diff-side 'left)
+     (version-control :variables
+                      version-control-diff-tool 'git-gutter
+                      version-control-global-margin t
+                      version-control-diff-side 'left)
      vimscript
      vinegar
      yaml)
