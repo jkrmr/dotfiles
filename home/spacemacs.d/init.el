@@ -406,7 +406,6 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
    ;; don't warn about large files
    large-file-warning-threshold nil))
 
-
 (defun dotspacemacs/user-load ()
   "Library to load while dumping.
 This function is called only while dumping Spacemacs configuration."
