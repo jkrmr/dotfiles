@@ -45,7 +45,6 @@ brew install zsh
 brew install zsh-completions
 brew install zsh-syntax-highlighting
 
-brew install tmux
 brew install curl
 brew install git
 brew install global
