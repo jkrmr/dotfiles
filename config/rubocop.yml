@@ -58,7 +58,7 @@ Layout/SpaceAroundEqualsInParameterDefault:
     - space
     - no_space
 
-Layout/TrailingBlankLines:
+Layout/TrailingEmptyLines:
   EnforcedStyle: final_newline
   SupportedStyles:
     - final_newline
