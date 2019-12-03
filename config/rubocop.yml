@@ -5,7 +5,7 @@ Rails:
 AllCops:
   TargetRubyVersion: 2.3
 
-Layout/AlignParameters:
+Layout/ParameterAlignment:
   # Alignment of parameters in multi-line method calls.
   #
   # The `with_first_parameter` style aligns the following lines along the same
