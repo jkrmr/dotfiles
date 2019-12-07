@@ -20,7 +20,7 @@ echo ---------------------
 echo
 echo Updating Emacs config
 echo ---------------------
-(cd ~/.emacs.d && git pull --rebase --autostash)
+(cd ~/.emacs.d && git pull origin develop --rebase --autostash)
 
 echo
 echo Updating Vim packages
