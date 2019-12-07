@@ -70,6 +70,7 @@ This function should only modify configuration layer settings."
            helm-position 'bottom
            helm-use-fuzzy 'always
            spacemacs-helm-rg-max-column-number 512)
+     helpful
      (html :variables
            web-fmt-tool 'prettier)
      (ibuffer :variables
@@ -193,7 +194,6 @@ This function should only modify configuration layer settings."
      flx
      graphql-mode
      gxref
-     helpful
      magit-todos
      (org-pretty-table :location (recipe :fetcher github :repo "Fuco1/org-pretty-table"))
      (org-books :location (recipe :fetcher github :repo "lepisma/org-books"))
