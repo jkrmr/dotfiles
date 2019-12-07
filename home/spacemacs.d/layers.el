@@ -117,10 +117,11 @@ This function should only modify configuration layer settings."
      prodigy
      (python :variables
              python-backend 'lsp
-             python-enable-yapf-format-on-save nil
+             python-format-on-save t
+             python-formatter 'yapf
              python-fill-docstring-style 'django
              python-save-before-test t
-             python-sort-imports-on-save nil
+             python-sort-imports-on-save t
              python-test-runner 'pytest)
      react
      restclient
