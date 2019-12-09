@@ -853,12 +853,15 @@ Only equations at the beginning of a line are justified."
     (when (and python-format-on-save
                (eq major-mode 'python-mode))
       (progn
-        (pyimport-remove-unused)
+        (spacemacs/python-remove-unused-imports)
         (importmagic-fix-imports)
         (py-isort-buffer)
         (yapfify-buffer))))
 
-  (add-hook 'before-save-hook #'python-before-save-hooks))
+  ;; (add-hook 'before-save-hook #'python-before-save-hooks)
+  nil)
+
+
 
 (defun config/ruby ()
   "Configure packages for Ruby mode."
