@@ -847,6 +847,12 @@ Only equations at the beginning of a line are justified."
                                     :compile "pipenv run compile"
                                     :test "pipenv run test"
                                     :test-suffix "_test")
+  (projectile-register-project-type 'python-pytest '(".pytest_cache")
+                                    :compile ""
+                                    :test "pytest"
+                                    :test-prefix "test_"
+                                    :test-suffix "_test")
+
 
   (setq-default python-format-on-save t)
   (defun python-before-save-hooks ()
