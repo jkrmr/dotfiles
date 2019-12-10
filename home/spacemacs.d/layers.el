@@ -128,7 +128,7 @@ This function should only modify configuration layer settings."
      restclient
      (ruby :variables
            ruby-enable-enh-ruby-mode nil
-           ruby-backend 'lsp
+           ruby-backend 'robe
            ruby-version-manager nil
            ruby-test-runner 'rspec)
      ruby-on-rails
