@@ -921,13 +921,17 @@ Fall back to controller spec."
 
   (defun ruby-before-save-hooks ()
     (when (and ruby-format-on-save
-               (eq major-mode 'ruby-mode))
+               (or
+                (eq major-mode 'ruby-mode)
+                (eq major-mode 'enh-ruby-mode)))
       (setq ruby-current-line (line-number-at-pos))
       (rufo-format-buffer)))
 
   (defun ruby-after-save-hooks ()
     (when (and ruby-format-on-save
-               (eq major-mode 'ruby-mode))
+               (or
+                (eq major-mode 'ruby-mode)
+                (eq major-mode 'enh-ruby-mode)))
       (when ruby-current-line
         (evil-scroll-line-to-center ruby-current-line))))
 
