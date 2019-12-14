@@ -132,7 +132,7 @@ RUBY_CONFIGURE_OPTS+=" --enable-shared"
 RUBY_CONFIGURE_OPTS+=" --disable-libedit"
 export RUBY_CONFIGURE_OPTS
 
-export CFLAGS="-O3 -g"
+export CFLAGS="-O3 -g -I/usr/local/opt/openssl/include"
 export ARCHFLAGS="-arch x86_64"
 export RUBY_CFLAGS="-march=native -Os"
 export RUBY_GC_MALLOC_LIMIT=60000000
