@@ -40,7 +40,8 @@ This function should only modify configuration layer settings."
            helm-dash-docset-newpath "~/Library/Application Support/Dash/DocSets/")
      deft
      django
-     docker
+     (docker :variables
+             docker-dockerfile-backend 'lsp)
      elixir
      (elm :variables
           elm-sort-imports-on-save t
