@@ -185,6 +185,7 @@ This function should only modify configuration layer settings."
      direnv
      (doom-modeline :location (recipe :fetcher github :repo "jmromer/doom-modeline"))
      editorconfig
+     elpy
      emmet-mode
      evil-collection
      evil-lion

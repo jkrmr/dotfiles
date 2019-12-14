@@ -825,6 +825,7 @@ Only equations at the beginning of a line are justified."
                 python-shell-interpreter-args "-i --simple-prompt")
 
   (add-hook 'python-mode-hook #'anaconda-eldoc-mode)
+  (add-hook 'python-mode-hook #'elpy-enable)
   (add-hook 'python-mode-hook #'anaconda-mode)
   (add-hook 'python-mode-hook #'evil-text-object-python-add-bindings)
 
@@ -833,9 +834,6 @@ Only equations at the beginning of a line are justified."
   ;; (conda-env-initialize-interactive-shells)
   ;; (conda-env-initialize-eshell)
   ;; (conda-env-autoactivate-mode)
-
-  ;; elpy
-  ;;(elpy-enable)
 
   ;; traad
   ;; Expects a conda env of the same name be defined
@@ -852,7 +850,6 @@ Only equations at the beginning of a line are justified."
                                     :test "pytest"
                                     :test-prefix "test_"
                                     :test-suffix "_test")
-
 
   (setq-default python-format-on-save t)
   (defun python-before-save-hooks ()
