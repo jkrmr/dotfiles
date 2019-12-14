@@ -17,6 +17,7 @@ brew install exa
 brew install fd
 brew install fzf
 brew install gpg2
+brew install hadolint
 brew install hub
 brew install httpie --HEAD
 brew install imagemagick
