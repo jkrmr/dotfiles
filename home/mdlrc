@@ -1,1 +1,5 @@
+show_kramdown_warnings true
+git_recurse true
+ignore_front_matter true
+
 style "#{ENV['HOME']}/.dotfiles/config/mdl_rules.rb"
