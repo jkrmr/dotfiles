@@ -13,10 +13,7 @@ Plug 'SevereOverfl0w/deoplete-github'
 Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 Plug 'zchee/deoplete-clang'
 Plug 'zchee/deoplete-zsh'
-
 Plug 'Shougo/neco-vim'
-Plug 'osyo-manga/vim-over'
-Plug 'posva/vim-vue'
 Plug 'wellle/tmux-complete.vim'
 
 Plug 'SirVer/ultisnips'               " snippets engine, integrates with YCM
@@ -43,7 +40,6 @@ Plug 'tpope/vim-surround'             " surround text block with delimiters
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'              " enhancements to netrw
 Plug 'vim-scripts/YankRing.vim'       " maintain yank/del history
-Plug 'w0rp/ale'                       " linting, autoformatting
 
 " Text objects
 Plug 'kana/vim-textobj-entire' " Adds ae/ie
@@ -52,34 +48,32 @@ Plug 'kana/vim-textobj-user'   " custom text objects
 Plug 'kana/vim-textobj-line'   " Adds l
 
 " Ruby
-Plug 'ck3g/vim-change-hash-syntax', { 'for': 'ruby' }
-Plug 'ecomba/vim-ruby-refactoring', { 'for': 'ruby' }
-Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
-Plug 'noprompt/vim-yardoc', { 'for': 'ruby' }
-Plug 't9md/vim-ruby-xmpfilter', { 'for': 'ruby' }
+Plug 'ck3g/vim-change-hash-syntax', { 'for': ['ruby'] }
+Plug 'ecomba/vim-ruby-refactoring', { 'for': ['ruby'] }
+Plug 'nelstrom/vim-textobj-rubyblock', { 'for': ['ruby'] }
+Plug 'noprompt/vim-yardoc', { 'for': ['ruby'] }
+Plug 't9md/vim-ruby-xmpfilter', { 'for': ['ruby'] }
 Plug 'tpope/vim-bundler'
-Plug 'tpope/vim-endwise', { 'for': 'ruby' }
+Plug 'tpope/vim-endwise', { 'for': ['ruby'] }
 Plug 'tpope/vim-projectionist' | Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rails', { 'for': ['ruby']  }
-Plug 'vim-ruby/vim-ruby' " can't be lazy-loaded with { 'for': 'ruby' }
-Plug 'airblade/vim-localorie'
-Plug 'stefanoverna/vim-i18n'
+Plug 'vim-ruby/vim-ruby', { 'for': ['ruby'] }
 
 " JS
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-Plug 'elzr/vim-json'
-Plug 'wizicer/vim-jison'
+Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript'], 'do': 'npm install -g tern' }
+Plug 'elzr/vim-json', { 'for': ['json'] }
+Plug 'wizicer/vim-jison', { 'for': ['json'] }
 
 " Python
-Plug 'cjrh/vim-conda'
-Plug 'jeetsukumaran/vim-pythonsense'
-Plug 'plytophogy/vim-virtualenv'
-Plug 'python-mode/python-mode', { 'branch': 'develop' }
-Plug 'tweekmonster/django-plus.vim'
-Plug 'vim-scripts/indentpython.vim'
-Plug 'zchee/deoplete-jedi'
+Plug 'cjrh/vim-conda', { 'for': ['python'] }
+Plug 'jeetsukumaran/vim-pythonsense', { 'for': ['python'] }
+Plug 'plytophogy/vim-virtualenv', { 'for': ['python'] }
+Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': ['python'] }
+Plug 'tweekmonster/django-plus.vim', { 'for': ['python'] }
+Plug 'vim-scripts/indentpython.vim', { 'for': ['python'] }
+Plug 'zchee/deoplete-jedi', { 'for': ['python'] }
 
 " Elixir
-Plug 'elixir-editors/vim-elixir'
-Plug 'mhinz/vim-mix-format'
+Plug 'elixir-editors/vim-elixir', { 'for': ['elixir'] }
+Plug 'mhinz/vim-mix-format', { 'for': ['elixir'] }
 Plug 'c-brenn/phoenix.vim' | Plug 'tpope/vim-projectionist'
