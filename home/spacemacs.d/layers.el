@@ -159,7 +159,12 @@ This function should only modify configuration layer settings."
                treemacs-follow-after-init nil
                treemacs-use-filewatch-mode t
                treemacs-use-follow-mode t)
-     typescript
+     (typescript :variables
+                 typescript-backend 'tide
+                 typescript-lsp-linter nil
+                 typescript-fmt-tool 'typescript-formatter
+                 typescript-linter 'tslint
+                 typescript-fmt-on-save t)
      typography
      (version-control :variables
                       version-control-diff-tool 'git-gutter
