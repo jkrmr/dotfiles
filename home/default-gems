@@ -8,6 +8,7 @@ gem-browse
 gem-ctags
 hirb
 jazz_fingers
+mdl
 neovim
 pretty_backtrace
 pry
