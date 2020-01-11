@@ -1,9 +1,9 @@
 # Common configuration.
-Rails:
-  Enabled: true
+require: rubocop-rails
 
 AllCops:
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.5
+  TargetRailsVersion: 5.2
 
 Layout/ParameterAlignment:
   # Alignment of parameters in multi-line method calls.
