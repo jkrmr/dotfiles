@@ -18,6 +18,7 @@ rake
 rcodetools
 rspec
 rubocop
+rubocop-rails
 rubygems-bundler
 rubygems-update
 rufo
