@@ -8,6 +8,7 @@ brew install osxutils
 brew install pinentry-mac
 
 brew install reattach-to-user-namespace
+brew install github/gh/gh
 
 # brew tap railwaycat/emacsmacport
 # brew cask install emacs-mac-spacemacs-icon
