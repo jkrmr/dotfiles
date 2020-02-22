@@ -116,9 +116,9 @@ end
 class App < Thor
   LOG_FILE = "/tmp/jmromer.cdd-sync.log"
 
-  def initialize(*args, out: $stdout, **kwargs, &block)
-    super(*args, **kwargs, &block)
-    self.out = out
+  def initialize(args, opts, config, &block)
+    super(args, opts, config, &block)
+    self.out = $stdout
     self.logger = Logger.new(LOG_FILE, "daily", 5)
   end
 
