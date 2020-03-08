@@ -9,6 +9,7 @@ ipython
 isort
 jedi<0.15.0
 json-rpc>=1.8.1
+msgpack
 mypy
 ptvsd>=4.2
 pyls-black
