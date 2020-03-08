@@ -16,6 +16,7 @@ pry-byebug
 pry-theme
 rake
 rcodetools
+reek
 rspec
 rubocop
 rubocop-rails
