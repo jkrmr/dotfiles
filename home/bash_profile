@@ -24,9 +24,12 @@ g() {
 #-------------------------------------------------------------
 # COMMAND COMPLETION
 #-------------------------------------------------------------
-if [ -f "$HOMEBREW_PREFIX/etc/bash_completion" ]; then
-  source "$HOMEBREW_PREFIX/etc/bash_completion"
-fi
+[[ -f "$HOMEBREW_PREFIX/etc/bash_completion" ]] && \
+  . "$HOMEBREW_PREFIX/etc/bash_completion"
+
+[[ -f "$HOMEBREW_PREFIX/opt/asdf/etc/bash_completion.d/asdf.bash" ]] && \
+    . "$HOMEBREW_PREFIX/opt/asdf/etc/bash_completion.d/asdf.bash"
+
 source "$HOME/.dotfiles/shell/git-completion.bash"
 complete -C aws_completer aws
 

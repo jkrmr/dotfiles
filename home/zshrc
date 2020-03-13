@@ -446,9 +446,6 @@ disable r # disable zsh's r
 [[ -f "$HOMEBREW_PREFIX/opt/asdf/asdf.sh" ]] && \
     . "$HOMEBREW_PREFIX/opt/asdf/asdf.sh"
 
-[[ -f "$HOMEBREW_PREFIX/opt/asdf/etc/bash_completion.d/asdf.bash" ]] && \
-    . "$HOMEBREW_PREFIX/opt/asdf/etc/bash_completion.d/asdf.bash"
-
 [[ -f $HOME/.anaconda/etc/profile.d/conda.sh ]] && \
     . "$HOME/.anaconda/etc/profile.d/conda.sh"
 
