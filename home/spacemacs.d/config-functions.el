@@ -944,6 +944,8 @@ Fall back to controller spec."
   ;; Toggle breakpoint
   (spacemacs/set-leader-keys-for-major-mode 'ruby-mode "d b" #'spacemacs/ruby-toggle-breakpoint)
   (spacemacs/set-leader-keys-for-major-mode 'ruby-mode "d p" #'(lambda () (interactive) (spacemacs/ruby-toggle-breakpoint t)))
+  (spacemacs/set-leader-keys-for-major-mode 'enh-ruby-mode "d b" #'spacemacs/ruby-toggle-breakpoint)
+  (spacemacs/set-leader-keys-for-major-mode 'enh-ruby-mode "d p" #'(lambda () (interactive) (spacemacs/ruby-toggle-breakpoint t)))
 
   ;; Define keybinding to manually trigger autoformat
   (spacemacs/set-leader-keys-for-major-mode
@@ -951,7 +953,14 @@ Fall back to controller spec."
   (spacemacs/declare-prefix-for-mode
     'ruby-mode "=" "format")
   (spacemacs/set-leader-keys-for-major-mode
-    'ruby-mode "==" #'rufo-format-buffer))
+    'ruby-mode "==" #'rufo-format-buffer)
+
+  (spacemacs/set-leader-keys-for-major-mode
+    'enh-ruby-mode "=" nil)
+  (spacemacs/declare-prefix-for-mode
+    'enh-ruby-mode "=" "format")
+  (spacemacs/set-leader-keys-for-major-mode
+    'enh-ruby-mode "==" #'rufo-format-buffer))
 
 (defun config/ruby-in-buffer-eval ()
   "Configure and enable seeing-is-believing and xmpfilter for Ruby."
@@ -965,13 +974,21 @@ Fall back to controller spec."
 
   (defun define-xmpfilter-keybindings ()
     "Define keybindings for xmpfilter."
-    (if (boundp 'ruby-mode-map)
-        (progn
-          (define-key ruby-mode-map (kbd "C-c C-c") 'xmpfilter-eval-current-line)
-          (define-key ruby-mode-map (kbd "C-c C-v") 'seeing-is-believing-clear)
-          (define-key ruby-mode-map (kbd "C-c C-f") 'seeing-is-believing-run))
-      (error "Failed setting up xmpfilter keybindings")))
+    (cond
+     ((boundp 'ruby-mode-map)
+      (progn
+        (define-key ruby-mode-map (kbd "C-c C-c") 'xmpfilter-eval-current-line)
+        (define-key ruby-mode-map (kbd "C-c C-v") 'seeing-is-believing-clear)
+        (define-key ruby-mode-map (kbd "C-c C-f") 'seeing-is-believing-run)))
+     ((boundp 'enh-ruby-mode-map)
+      (progn
+        (define-key enh-ruby-mode-map (kbd "C-c C-c") 'xmpfilter-eval-current-line)
+        (define-key enh-ruby-mode-map (kbd "C-c C-v") 'seeing-is-believing-clear)
+        (define-key enh-ruby-mode-map (kbd "C-c C-f") 'seeing-is-believing-run)))
+     (t
+      (error "Failed setting up xmpfilter keybindings"))))
 
+  (add-hook 'enh-ruby-mode-hook 'define-xmpfilter-keybindings)
   (add-hook 'ruby-mode-hook 'define-xmpfilter-keybindings))
 
 (defun config/ruby-folding ()
