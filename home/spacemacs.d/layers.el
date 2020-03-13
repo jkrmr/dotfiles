@@ -157,6 +157,9 @@ This function should only modify configuration layer settings."
      theming
      (treemacs :variables
                treemacs-follow-after-init nil
+               treemacs-use-git-mode 'simple
+               treemacs-collapse-dirs 3
+               treemacs-lock-width t
                treemacs-use-filewatch-mode t
                treemacs-use-follow-mode t)
      (typescript :variables
