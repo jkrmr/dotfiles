@@ -881,6 +881,7 @@ Only equations at the beginning of a line are justified."
    rspec-use-spring-when-possible nil
    rspec-use-bundler-when-possible t
    rspec-spec-command "rspec"
+   ruby-test-rspec-options '()
    rspec-command-options "--format progress --no-profile")
 
   (defun rails--find-related-file (path)
