@@ -36,6 +36,7 @@ This function should only modify configuration layer settings."
      command-log
      copy-as-format
      csv
+     dap
      (dash :variables
            helm-dash-docset-newpath "~/Library/Application Support/Dash/DocSets/")
      deft
