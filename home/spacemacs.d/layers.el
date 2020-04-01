@@ -88,11 +88,12 @@ This function should only modify configuration layer settings."
             latex-enable-folding t)
      (lsp :variables
           lsp-navigation 'both
-          lsp-ui-remap-xref-keybindings nil
+          lsp-ui-remap-xref-keybindings t
           lsp-ui-doc-enable t
-          lsp-ui-doc-include-signature nil
-          lsp-ui-sideline-enable nil
-          lsp-ui-sideline-show-symbol nil)
+          lsp-ui-doc-include-signature t
+          lsp-ui-sideline-enable t
+          lsp-ui-sideline-ignore-duplicate t
+          lsp-ui-sideline-show-symbol t)
      (markdown :variables
                markdown-live-preview-engine 'vmd)
      multiple-cursors
