@@ -327,6 +327,12 @@
       (prettier-js)))
   (add-hook 'before-save-hook #'js-before-save-hooks)
 
+  (setq-default sp-ignore-modes-list '(minibuffer-inactive-mode
+                                       rjsx-mode
+                                       js2-mode
+                                       typescript-mode
+                                       typescript-tsx-mode))
+
   (defun json-mode-hooks ()
     (progn
       (setq tab-width 2)
@@ -413,7 +419,6 @@
   "Configure Lisp modes."
   ;; evil-cleverparens
   (require 'evil-cleverparens-text-objects)
-  (smartparens-strict-mode)
   (spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hooks)
 
   (setq-default
