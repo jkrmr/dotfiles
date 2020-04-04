@@ -94,8 +94,8 @@ export GTAGSLABEL=pygments
 #-------------------------------------------------------------
 # Compilation flags
 #-------------------------------------------------------------
-export CC=gcc-9
-export CXX=g++-9
+# export CC=gcc-9
+# export CXX=g++-9
 
 LDFLAGS="-L/usr/local/opt/gettext/lib"
 LDFLAGS+=" -L/usr/local/opt/libffi/lib"
