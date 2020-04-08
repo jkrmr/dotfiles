@@ -18,6 +18,16 @@
 
 set -e
 
+setup_golang() {
+  GO111MODULE=on CGO_ENABLED=0 \
+    go get -v -trimpath -ldflags '-s -w' \
+    github.com/golangci/golangci-lint/cmd/golangci-lint
+
+  while read -r package; do
+    go get -u -v "${package}"
+  done < "${HOME}/.default-golang-packages"
+}
+
 setup_ruby() {
   while read -r package; do
     gem install --update-sources "${package}"
@@ -71,6 +81,11 @@ while [ $# -gt -1 ]; do
     case "$1" in
         'all')
             set -- mac py rb js
+            ;;
+        'go')
+            message "Installing Go Libraries"
+            setup_golang
+            shift
             ;;
         'js')
             message "Installing JavaScript Libraries"
