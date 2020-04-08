@@ -28,7 +28,7 @@
 set -e
 
 TMUXINATOR_TEMPLATES_HOME="${TMUXINATOR_TEMPLATES_HOME:-$HOME/.config/tmuxinator}"
-FZF="fzf --ansi --layout=reverse --preview-window=up:75%"
+FZF="fzf --ansi --layout=reverse --preview-window=right:65%"
 
 usage() {
     grep '^#' < "$0" | tail -n +2 | cut -c 3-
