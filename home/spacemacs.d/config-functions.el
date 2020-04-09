@@ -1071,21 +1071,6 @@ Fall back to controller spec."
 
 (defun config/version-control ()
   "Configure version-control-related settings."
-  (with-eval-after-load 'magit
-    (magit-todos-mode)
-
-    ;; Display Magit full-screen
-    (setq-default git-magit-status-fullscreen t)
-
-    (spacemacs/set-leader-keys-for-major-mode
-      'magit-status-mode "t" #'magit-todos-jump-to-todos)
-
-    (if (and (boundp 'magit-completing-read-function)
-             (boundp 'magit-mode-map))
-        (progn
-          (define-key magit-mode-map (kbd "<tab>") 'magit-section-toggle))
-      (error "Failed setting up magit")))
-
   (setq-default
    magit-repository-directories '(("~/Projects/" . 2)
                                   ("~/Documents/". 2)))
@@ -1094,11 +1079,7 @@ Fall back to controller spec."
   (spacemacs/set-leader-keys "gb" #'magit-branch-or-checkout)
 
   ;; leader gB to display Git blame
-  (spacemacs/set-leader-keys "gB" #'spacemacs/git-blame-micro-state)
-
-  ;; Git Gutter: Display fringe on left
-  (setq-default git-gutter-fr+-side 'left-fringe
-                git-gutter-fr:side 'left-fringe))
+  (spacemacs/set-leader-keys "gB" #'spacemacs/git-blame-micro-state))
 
 (defun config/web-beautify ()
   "Configure web-beautify hooks."
