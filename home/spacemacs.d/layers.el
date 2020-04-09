@@ -59,10 +59,12 @@ This function should only modify configuration layer settings."
      github
      (go :variables
          go-backend 'lsp
-         gofmt-command "goimports"
-         go-use-gometalinter t
          go-format-before-save t
-         go-tab-width 4)
+         go-use-golangci-lint t
+         go-use-gometalinter t
+         go-tab-width 4
+         godoc-at-point-function 'godoc-gogetdoc
+         gofmt-command "goimports")
      graphviz
      (gtags :variables
             gtags-enable-by-default t)
