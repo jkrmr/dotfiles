@@ -329,12 +329,25 @@ Excludes the ibuffer."
   (if (buffer-exists-p "*Ibuffer*")  (kill-buffer "*Ibuffer*"))
   (switch-to-buffer (other-buffer (current-buffer) 1)))
 
-(defun split-term-window-right-and-focus ()
-  "Open an `ansi-term' split to the right and focus it."
+(defun split-shell-window-right-and-focus ()
+  "Open a terminal split to the right and focus it."
   (interactive)
   (defvar shell-default-term-shell)
   (split-window-right-and-focus)
-  (ansi-term shell-default-term-shell))
+  (vterm shell-default-term-shell))
+
+(defun split-shell-window-below-and-focus ()
+  "Open a terminal split below and focus it."
+  (interactive)
+  (defvar shell-default-term-shell)
+  (split-window-below-and-focus)
+  (vterm shell-default-term-shell))
+
+(defun shell-window-full ()
+  "Open a terminal in the current window."
+  (interactive)
+  (defvar shell-default-term-shell)
+  (vterm shell-default-term-shell))
 
 (defun rerun-term-command-right ()
    "Re-issue previously issued command in terminal split to the right."

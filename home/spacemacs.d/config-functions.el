@@ -1032,27 +1032,19 @@ Fall back to controller spec."
   (if (not (display-graphic-p))
       (spacemacs/load-theme 'spacemacs-dark)))
 
-(defun config/terminal-buffers ()
-  "Configure terminal buffers."
-  (evil-set-initial-state 'term-mode 'insert)
 
-  (defun term-send-ctrl-y ()
-    (interactive)
-    (term-send-raw-string "\C-y"))
-
-  (defun term-mode-config ()
-    (if (boundp 'term-raw-map)
+(defun config/shell-buffers ()
+  "Configure shell buffers."
+  (with-eval-after-load 'vterm
+    (if (boundp 'vterm-mode-map)
         (progn
-          (define-key term-raw-map (kbd "C-y") #'term-send-ctrl-y)
-          (define-key term-raw-map (kbd "C-p") #'term-send-up)
-          (define-key term-raw-map (kbd "C-n") #'term-send-down)
-          (evil-define-key 'normal term-raw-map (kbd "C-p") #'evil-scroll-page-up)
-          (evil-define-key 'normal term-raw-map (kbd "C-n") #'evil-scroll-page-down)
-          (define-key term-raw-map (kbd "C-v") #'term-paste)
-          (goto-address-mode))
-      (error "Failed setting up term mode keybindings")))
+          (define-key vterm-mode-map (kbd "C-y") #'vterm-send-C-y)
+          (define-key vterm-mode-map (kbd "C-d") #'vterm-send-C-d))
+      (error "Failed setting vterm keybindings")))
 
-  (add-hook 'term-mode-hook #'term-mode-config)
+  (spacemacs/set-leader-keys "asf" #'shell-window-full)
+  (spacemacs/set-leader-keys "asr" #'split-shell-window-right-and-focus)
+  (spacemacs/set-leader-keys "asb" #'split-shell-window-below-and-focus)
 
   ;; Use utf8
   (defun my-term-use-utf8 ()
@@ -1151,8 +1143,7 @@ Fall back to controller spec."
   (spacemacs/set-leader-keys "ws" #'split-window-below-and-focus)
   (spacemacs/set-leader-keys "wS" #'split-window-below)
   (spacemacs/set-leader-keys "wv" #'split-window-right-and-focus)
-  (spacemacs/set-leader-keys "wV" #'split-window-right)
-  (spacemacs/set-leader-keys "wT" #'split-term-window-right-and-focus))
+  (spacemacs/set-leader-keys "wV" #'split-window-right))
 
 (defun config/yankee ()
   "Load and configure yankee.el.

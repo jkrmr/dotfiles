@@ -142,10 +142,10 @@ This function should only modify configuration layer settings."
      semantic
      (shell :variables
             multi-term-program "zsh"
-            shell-default-full-span nil
+            shell-default-full-span t
             shell-default-height 30
             shell-default-position 'bottom
-            shell-default-shell 'multi-term
+            shell-default-shell 'vterm
             shell-default-term-shell "zsh"
             shell-enable-smart-eshell nil)
      shell-scripts
