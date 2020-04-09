@@ -54,7 +54,8 @@ This function should only modify configuration layer settings."
      erlang
      evil-commentary
      finance
-     git
+     (git :variables
+          git-magit-status-fullscreen t)
      github
      (go :variables
          go-backend 'lsp
