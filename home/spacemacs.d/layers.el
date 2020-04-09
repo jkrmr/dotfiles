@@ -139,7 +139,6 @@ This function should only modify configuration layer settings."
            ruby-test-runner 'rspec)
      ruby-on-rails
      rust
-     scala
      search-engine
      semantic
      (shell :variables
