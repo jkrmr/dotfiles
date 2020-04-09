@@ -444,7 +444,6 @@ This function should only modify configuration layer settings."
      (ibuffer :variables
               ibuffer-group-buffers-by 'projects)
      imenu-list
-     ipython-notebook
      (javascript :variables
                  javascript-backend 'tern
                  javascript-fmt-tool 'prettier
