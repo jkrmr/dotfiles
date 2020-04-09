@@ -1,4 +1,9 @@
-;; Overrides
+;;; overrides.el --- Emacs package overrides.
+
+;;; Commentary:
+;; Functions from dependencies that have to be overriden should be defined here.
+
+;;; Code:
 
 (with-eval-after-load 'doom-modeline-segments
   (defun doom-modeline-update-persp-name (&rest _)
@@ -65,3 +70,6 @@ a communication channel."
                  (headline-title (org-hugo--headline-title style level loffset title todo-fmtd "" ""))
                  (content-str (or (org-string-nw-p contents) "")))
             (format "%s%s" headline-title content-str))))))))
+
+(provide 'overrides)
+;;; overrides.el ends here

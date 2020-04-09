@@ -1,4 +1,10 @@
-;; Custom functions
+;;; functions.el --- Summary
+
+;;; Commentary:
+
+;; Custom functions used interactively or as auxiliaries
+
+;;; Code:
 
 ;; amx
 
@@ -403,3 +409,6 @@ Excludes the ibuffer."
     (with-current-buffer buff
       (if (string-equal "org-mode" major-mode)
           (org-mode)))))
+
+(provide 'functions)
+;;; functions.el ends here

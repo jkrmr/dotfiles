@@ -1,7 +1,8 @@
 ;;; config-functions.el --- Emacs configuration functions.
 
 ;;; Commentary:
-;; Loaded from customizations.el
+;; Functions invoked from customizations.el
+;; Defined separately to facilitate isolated and granular debugging.
 
 ;;; Code:
 (defun config/load-local-config ()
