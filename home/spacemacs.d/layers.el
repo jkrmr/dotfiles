@@ -209,7 +209,6 @@ This function should only modify configuration layer settings."
      flx
      graphql-mode
      gxref
-     magit-todos
      (org-pretty-table :location (recipe :fetcher github :repo "Fuco1/org-pretty-table"))
      (org-books :location (recipe :fetcher github :repo "lepisma/org-books"))
      (org-expand :location (recipe :fetcher github :repo "lepisma/org-expand"))
