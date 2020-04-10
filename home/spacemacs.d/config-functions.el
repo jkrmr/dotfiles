@@ -1020,7 +1020,6 @@ Fall back to controller spec."
   (if (not (display-graphic-p))
       (spacemacs/load-theme 'spacemacs-dark)))
 
-
 (defun config/shell-buffers ()
   "Configure shell buffers."
   (with-eval-after-load 'vterm
