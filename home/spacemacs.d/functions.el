@@ -37,6 +37,21 @@
         (insert "\n")
         (indent-according-to-mode)))))
 
+;; kill other buffers
+
+(defun kill-other-buffers-rudely ()
+  "Kill all other buffers, including those in other layouts.
+Do not request confirmation for buffers outside the current perspective."
+  (interactive)
+  (if (boundp 'persp-kill-foreign-buffer-behaviour)
+      (let ((original-behavior persp-kill-foreign-buffer-behaviour)
+            (buffers-to-kill (delq (current-buffer) (buffer-list))))
+        (setq persp-kill-foreign-buffer-behaviour 'kill)
+        (mapc 'kill-buffer buffers-to-kill)
+        (setq persp-kill-foreign-buffer-behaviour original-behavior)
+        (delete-other-windows))
+    (error "`persp-kill-foreign-buffer-behaviour' not set")))
+
 ;; layout
 
 (defun layouts-reset ()
