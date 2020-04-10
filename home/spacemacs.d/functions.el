@@ -77,6 +77,7 @@
     (switch-to-buffer "*backlog*")
     (split-window-below-and-focus)
     (switch-to-buffer "*journal*")
+    (save-buffer)
 
     (select-window (get-buffer-window "*sprint*"))
     (split-window-below-and-focus)
