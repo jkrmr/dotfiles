@@ -600,7 +600,7 @@
                   org-journal-file-type 'monthly)
 
     (add-hook 'org-journal-mode-hook #'org-mode)
-    (add-hook 'org-capture-mode-hook #'org-align-all-tags)
+    (add-hook 'org-capture-mode-hook #'org-align-tags)
 
 
     (defun org-capture-marginalia-display-char-countdown (change-beg change-end prev-len)
