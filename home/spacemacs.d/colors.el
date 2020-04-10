@@ -594,10 +594,10 @@ TODO: Simplify this macro"
    (:foreground ,comment)
    (:height 0.8 :foreground ,gray))
   (org-document-title
-   (:inherit variable-pitch :height 1.3 :weight normal :foreground ,gray :underline nil)
+   (:inherit nil :height 1.3 :weight normal :foreground ,gray :underline nil)
    (:inherit nil :family ,et-font :height 1.4 :foreground ,bg-dark :underline nil))
   (org-done
-   (:inherit variable-pitch :foreground ,colors-blue)
+   (:inherit nil :foreground ,colors-blue)
    (:strike-through t :family ,et-font))
   (org-ellipsis
    (:underline nil :background nil :foreground ,doc)
@@ -612,31 +612,31 @@ TODO: Simplify this macro"
    nil
    nil)
   (org-indent
-   (:inherit org-hide)
+   (:inherit (org-hide fixed-pitch))
    (:inherit (org-hide fixed-pitch)))
   (org-level-1
-   (:inherit variable-pitch :height 1.1 :weight bold :foreground ,keyword)
+   (:inherit nil :height 1.1 :weight bold :foreground ,keyword)
    (:inherit nil :family ,et-font :height 1.4 :weight normal :slant normal :foreground ,bg-dark))
   (org-level-2
-   (:inherit variable-pitch :weight bold :height 1.1 :foreground ,accent-light)
+   (:inherit nil :weight bold :height 1.1 :foreground ,accent-light)
    (:inherit nil :family ,et-font :weight normal :height 1.3 :slant italic :foreground ,bg-dark))
   (org-level-3
-   (:inherit variable-pitch :weight bold :height 1.1 :foreground ,gray)
+   (:inherit nil :weight bold :height 1.1 :foreground ,gray)
    (:inherit nil :family ,et-font :weight normal :slant italic :height 1.2 :foreground ,bg-dark))
   (org-level-4
-   (:inherit variable-pitch :weight bold :height 1.0 :foreground ,gray)
+   (:inherit nil :weight bold :height 1.0 :foreground ,gray)
    (:inherit nil :family ,et-font :weight normal :slant italic :height 1.2 :foreground ,bg-dark))
   (org-level-5
-   (:inherit variable-pitch :weight bold :height 1.0 :foreground ,gray)
+   (:inherit nil :weight bold :height 1.0 :foreground ,gray)
    (:inherit nil :family ,et-font :weight normal :slant italic :height 1.2 :foreground ,bg-dark))
   (org-level-6
-   (:inherit variable-pitch :weight bold :height 1.0 :foreground ,gray)
+   (:inherit nil :weight bold :height 1.0 :foreground ,gray)
    (:inherit nil :family ,et-font :weight normal :slant italic :height 1.2 :foreground ,bg-dark))
   (org-level-7
-   (:inherit variable-pitch :weight bold :height 1.0 :foreground ,gray)
+   (:inherit nil :weight bold :height 1.0 :foreground ,gray)
    (:inherit nil :family ,et-font :weight normal :slant italic :height 1.2 :foreground ,bg-dark))
   (org-level-8
-   (:inherit variable-pitch :weight bold :height 1.0 :foreground ,gray)
+   (:inherit nil :weight bold :height 1.0 :foreground ,gray)
    (:inherit nil :family ,et-font :weight normal :slant italic :height 1.2 :foreground ,bg-dark))
   (org-link
    (:underline nil :weight normal :foreground ,slate)
