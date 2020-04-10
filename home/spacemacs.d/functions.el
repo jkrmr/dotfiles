@@ -58,10 +58,7 @@ Do not request confirmation for buffers outside the current perspective."
   "Reset to the default set of layouts."
   (interactive)
   (progn
-    ;; Kill other buffers, don't prompt for confirmation.
-    (mapc 'kill-buffer
-          (mapc 'switch-to-buffer
-                (delq (current-buffer) (buffer-list))))
+    (kill-other-buffers-rudely)
     (layouts-org)
     (layouts-dotfiles)
     (layouts-blog)
