@@ -30,7 +30,7 @@
    org-edit-src-content-indentation 0
    org-ellipsis "  "
    org-export-coding-system 'utf-8
-   org-export-with-sub-superscripts '{}
+   org-export-with-sub-superscripts nil
    org-fontify-done-headline t
    org-fontify-quote-and-verse-blocks t
    org-fontify-whole-heading-line t
