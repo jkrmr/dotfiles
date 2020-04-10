@@ -835,12 +835,6 @@ Only equations at the beginning of a line are justified."
   (add-hook 'python-mode-hook #'anaconda-mode)
   (add-hook 'python-mode-hook #'evil-text-object-python-add-bindings)
 
-  ;; conda-env
-  ;; (setq-default conda-anaconda-home (getenv "ANACONDA_HOME"))
-  ;; (conda-env-initialize-interactive-shells)
-  ;; (conda-env-initialize-eshell)
-  ;; (conda-env-autoactivate-mode)
-
   ;; Register Pipenv project type with projectile
   (projectile-register-project-type 'python-pipenv '("Pipfile")
                                     :compile "pipenv run compile"
