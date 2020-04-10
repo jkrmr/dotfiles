@@ -16,6 +16,7 @@
               projectile-project-search-path '("~/Projects" "~/Work" "~/Resources" "~/Exercism"))
 
 (with-eval-after-load 'org
+  ;; (add-hook 'org-mode-hook #'variable-pitch-mode)
   (setq-default
    org-adapt-indentation t
    org-agenda-block-separator ""
@@ -41,8 +42,7 @@
    org-src-tab-acts-natively t
    org-startup-indented t
    spaceline-org-clock-p t)
-
-  (add-hook 'org-mode-hook #'variable-pitch-mode))
+  nil)
 
 ;; Pre-config
 (config/frames)
