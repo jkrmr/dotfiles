@@ -612,7 +612,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (add-to-load-path "~/.spacemacs.d")
 
   ;; color scheme definitions
-  (load "colors.el")
+  (load "colors")
 
   ;; exec-path
   (setq-default
@@ -673,16 +673,16 @@ This function is called only while dumping Spacemacs configuration.")
 This function is called at the very end of Spacemacs startup, after layer
 configuration."
   ;; define interactive functions
-  (load "functions.el")
+  (load "functions")
 
   ;; define package configurations
-  (load "config-functions.el")
+  (load "config-functions")
 
   ;; define overrides of package methods
-  (load "overrides.el")
+  (load "overrides")
 
   ;; Set customizations, invoke customization functions
-  (load "customizations.el"))
+  (load "customizations"))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variables.
