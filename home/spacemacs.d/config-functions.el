@@ -841,11 +841,6 @@ Only equations at the beginning of a line are justified."
   ;; (conda-env-initialize-eshell)
   ;; (conda-env-autoactivate-mode)
 
-  ;; traad
-  ;; Expects a conda env of the same name be defined
-  ;; Execute (traad-install-server) to set up
-  (setq-default traad-environment-name "traad")
-
   ;; Register Pipenv project type with projectile
   (projectile-register-project-type 'python-pipenv '("Pipfile")
                                     :compile "pipenv run compile"

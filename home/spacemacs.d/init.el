@@ -578,7 +578,6 @@ This function should only modify configuration layer settings."
      rjsx-mode
      (rufo :location (recipe :fetcher github :repo "aleandros/emacs-rufo" :branch "master"))
      toc-org
-     traad
      writeroom-mode
      (yankee :location (recipe :fetcher github :repo "jmromer/yankee.el" :branch "develop"))
      )
