@@ -24,9 +24,11 @@
    org-catch-invisible-edits 'show-and-error
    org-clock-idle-time 5
    org-confirm-babel-evaluate nil
-   org-cycle-separator-lines 0
+   org-cycle-separator-lines 1
    org-edit-src-content-indentation 0
    org-ellipsis "  "
+   org-blank-before-new-entry '((heading . t)
+                                (plain-list-item . t))
    org-export-coding-system 'utf-8
    org-export-with-sub-superscripts '{}
    org-fontify-done-headline t
