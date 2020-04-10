@@ -92,7 +92,7 @@
   (progn
     (persp-switch "blog")
     (delete-other-windows)
-    (find-file (expand-file-name org-default-blog-file))
+    (dired (file-name-directory (expand-file-name org-default-blog-file)))
     (rename-buffer "*blog*")
     (writeroom-mode)))
 
