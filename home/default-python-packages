@@ -1,9 +1,7 @@
 autoflake
-black
 epc
 flake8
 hy
-importmagic
 ipdb
 ipython
 isort
@@ -13,11 +11,9 @@ msgpack
 mypy
 pip
 ptvsd>=4.2
-pyls-black
 pyls-isort
 pyls-mypy
 pynvim
-python-language-server
 service_factory>=0.1.5
 solargraph-utils.py
 vim-vint
