@@ -958,32 +958,22 @@ Fall back to controller spec."
 
 (defun config/ruby-in-buffer-eval ()
   "Configure and enable seeing-is-believing and xmpfilter for Ruby."
-  (require 'seeing-is-believing)
-  (add-hook 'ruby-mode-hook 'seeing-is-believing)
-
   (defun xmpfilter-eval-current-line ()
     (interactive)
     (seeing-is-believing-mark-current-line-for-xmpfilter)
     (seeing-is-believing-run-as-xmpfilter))
 
-  (defun define-xmpfilter-keybindings ()
-    "Define keybindings for xmpfilter."
-    (cond
-     ((boundp 'ruby-mode-map)
-      (progn
-        (define-key ruby-mode-map (kbd "C-c C-c") 'xmpfilter-eval-current-line)
-        (define-key ruby-mode-map (kbd "C-c C-v") 'seeing-is-believing-clear)
-        (define-key ruby-mode-map (kbd "C-c C-f") 'seeing-is-believing-run)))
-     ((boundp 'enh-ruby-mode-map)
-      (progn
-        (define-key enh-ruby-mode-map (kbd "C-c C-c") 'xmpfilter-eval-current-line)
-        (define-key enh-ruby-mode-map (kbd "C-c C-v") 'seeing-is-believing-clear)
-        (define-key enh-ruby-mode-map (kbd "C-c C-f") 'seeing-is-believing-run)))
-     (t
-      (error "Failed setting up xmpfilter keybindings"))))
-
-  (add-hook 'enh-ruby-mode-hook 'define-xmpfilter-keybindings)
-  (add-hook 'ruby-mode-hook 'define-xmpfilter-keybindings))
+  (cond
+   ((boundp 'ruby-mode-map)
+    (progn
+      (define-key ruby-mode-map (kbd "C-c C-c") 'xmpfilter-eval-current-line)
+      (define-key ruby-mode-map (kbd "C-c C-v") 'seeing-is-believing-clear)
+      (define-key ruby-mode-map (kbd "C-c C-f") 'seeing-is-believing-run)))
+   ((boundp 'enh-ruby-mode-map)
+    (progn
+      (define-key enh-ruby-mode-map (kbd "C-c C-c") 'xmpfilter-eval-current-line)
+      (define-key enh-ruby-mode-map (kbd "C-c C-v") 'seeing-is-believing-clear)
+      (define-key enh-ruby-mode-map (kbd "C-c C-f") 'seeing-is-believing-run)))))
 
 (defun config/ruby-folding ()
   "Configure ruby folding."
