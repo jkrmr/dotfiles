@@ -486,7 +486,7 @@ This function should only modify configuration layer settings."
      prodigy
      (python :variables
              python-backend 'lsp
-             python-lsp-server 'pyls
+             python-lsp-server 'mspyls
              python-format-on-save t
              python-formatter 'yapf
              python-fill-docstring-style 'django
@@ -556,6 +556,7 @@ This function should only modify configuration layer settings."
      amx
      (beacon :location (recipe :fetcher github :repo "Malabarba/beacon"))
      coffee-mode
+     company-jedi
      csv-mode
      direnv
      (doom-modeline :location (recipe :fetcher github :repo "jmromer/doom-modeline"))
