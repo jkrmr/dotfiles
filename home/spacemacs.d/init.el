@@ -682,7 +682,8 @@ configuration."
   (load "overrides")
 
   ;; Set customizations, invoke customization functions
-  (load "customizations"))
+  (load "customizations")
+  nil)
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variables.
