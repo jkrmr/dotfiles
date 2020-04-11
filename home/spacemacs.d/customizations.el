@@ -49,6 +49,7 @@
 
 (config/amx)
 (config/code-folding)
+(config/company)
 (config/compilation-buffers)
 (config/copy-as-format)
 (config/deft)
@@ -89,7 +90,6 @@
 (config/yasnippet)
 
 ;; Post-config
-(config/company)
 (config/diminish)
 (config/prettify-symbols)
 
