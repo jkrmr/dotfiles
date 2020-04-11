@@ -69,8 +69,8 @@
        ;; Number the candidates (use M-1, M-2 etc to select completions).
        company-show-numbers t
        ;; Trigger completion immediately.
-       company-box-doc-delay 0.0
-       company-tooltip-idle-delay 0.0)
+       company-box-doc-delay 0.1
+       company-tooltip-idle-delay 0.1)
 
       (if (boundp 'company-active-map)
           (progn
