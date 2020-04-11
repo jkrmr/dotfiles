@@ -47,47 +47,51 @@
 
 (defun config/company ()
   "Configure company auto-completion mode."
-  (with-eval-after-load 'company
-    ;; (company-flx-mode +1)
+  (defun company-mode-settings ()
+    "Set company backends and keybindings."
     (progn
-      (define-key company-active-map (kbd "C-h") #'company-show-doc-buffer)
-      (define-key company-active-map (kbd "C-w") #'company-show-location)
-      (define-key company-active-map (kbd "C-r") #'company-search-candidates)
-      (define-key company-active-map (kbd "C-f") #'company-filter-candidates)
-      (define-key company-active-map [return] #'company-complete-selection)
-      (define-key company-active-map (kbd "RET") #'company-complete-selection)
-      (define-key company-active-map [tab] #'company-complete-selection)
-      (define-key company-active-map (kbd "TAB") #'company-complete-selection)
-      (define-key company-active-map [backtab] #'spacemacs//company-complete-common-or-cycle-backward)
-      (define-key company-active-map (kbd "S-TAB") #'spacemacs//company-complete-common-or-cycle-backward))
+      (if (boundp 'company-backends)
+          (progn
+            (add-to-list 'company-backends '(company-capf :with company-yasnippet))
+            (add-to-list 'company-backends '(company-bbdb :with company-yasnippet))
+            (add-to-list 'company-backends '(company-clang :with company-yasnippet))
+            (add-to-list 'company-backends '(company-cmake :with company-yasnippet))
+            (add-to-list 'company-backends '(company-eclim :with company-yasnippet))
+            (add-to-list 'company-backends '(company-oddmuse :with company-yasnippet))
+            (add-to-list 'company-backends '(company-xcode :with company-yasnippet))
+            (add-to-list 'company-backends '(company-robe :with company-capf company-yasnippet))
+            (add-to-list 'company-backends '(company-anaconda :with company-jedi company-capf company-yasnippet))
+            (add-to-list 'company-backends '(company-tern :with company-yasnippet))
+            nil)
+        (error "Could not add to `company-backends'"))
 
-    (setq-default
-     ;; Number the candidates (use M-1, M-2 etc to select completions).
-     company-show-numbers t
-     ;; Trigger completion immediately.
-     company-box-doc-delay 0.0
-     company-tooltip-idle-delay 0.0
-     company-quickhelp-delay 0.0
-     company-idle-delay 0.0)
+      (setq-default
+       ;; Number the candidates (use M-1, M-2 etc to select completions).
+       company-show-numbers t
+       ;; Trigger completion immediately.
+       company-box-doc-delay 0.0
+       company-tooltip-idle-delay 0.0)
 
-    (if (boundp 'company-backends)
-        (progn
-          (add-to-list 'company-backends '(company-anaconda :with company-yasnippet))
-          (add-to-list 'company-backends '(company-capf :with company-yasnippet))
-          (add-to-list 'company-backends '(company-dabbrev :with company-yasnippet))
-          (add-to-list 'company-backends '(company-dabbrev-code :with company-yasnippet))
-          (add-to-list 'company-backends '(company-keywords :with company-yasnippet))
-          (add-to-list 'company-backends '(company-gtags :with company-yasnippet))
-          (add-to-list 'company-backends '(company-etags :with company-yasnippet))
-          (add-to-list 'company-backends '(company-files :with company-yasnippet))
-          (add-to-list 'company-backends '(company-tern :with company-yasnippet)))
-      (error "Not adding company backends"))
+      (if (boundp 'company-active-map)
+          (progn
+            (define-key company-active-map (kbd "C-h") #'company-show-doc-buffer)
+            (define-key company-active-map (kbd "C-w") #'company-show-location)
+            (define-key company-active-map (kbd "C-r") #'company-search-candidates)
+            (define-key company-active-map (kbd "C-f") #'company-filter-candidates)
+            (define-key company-active-map [return] #'company-complete-selection)
+            (define-key company-active-map (kbd "RET") #'company-complete-selection)
+            (define-key company-active-map [tab] #'company-complete-selection)
+            (define-key company-active-map (kbd "TAB") #'company-complete-selection)
+            (define-key company-active-map [backtab] #'spacemacs//company-complete-common-or-cycle-backward)
+            (define-key company-active-map (kbd "S-TAB") #'spacemacs//company-complete-common-or-cycle-backward))
+        (error "Could not define `company-active-map' keybindings"))
+      nil))
 
-    (if (boundp 'company-frontends)
-        (progn
-          (add-to-list 'company-frontends 'company-pseudo-tooltip-frontend)
-          (add-to-list 'company-frontends 'company-echo-metadata-frontend))
-      (error "Not adding company front-ends"))))
+  (add-hook 'company-mode-hook #'company-mode-settings)
+
+  ;; Enable fuzzy-matching in company results
+  (company-flx-mode +1))
+
 
 (defun config/compilation-buffers ()
   "Configure compilation buffer settings."
@@ -830,9 +834,9 @@ Only equations at the beginning of a line are justified."
                 python-shell-interpreter "ipython"
                 python-shell-interpreter-args "-i --simple-prompt")
 
-  (add-hook 'python-mode-hook #'anaconda-eldoc-mode)
-  (add-hook 'python-mode-hook #'elpy-enable)
+  ;; (add-hook 'python-mode-hook #'elpy-enable)
   (add-hook 'python-mode-hook #'anaconda-mode)
+  (add-hook 'python-mode-hook #'anaconda-eldoc-mode)
   (add-hook 'python-mode-hook #'evil-text-object-python-add-bindings)
 
   ;; Register Pipenv project type with projectile
@@ -851,8 +855,8 @@ Only equations at the beginning of a line are justified."
     (when (and python-format-on-save
                (eq major-mode 'python-mode))
       (progn
-        (spacemacs/python-remove-unused-imports)
-        (importmagic-fix-imports)
+        ;; (spacemacs/python-remove-unused-imports)
+        ;; (importmagic-fix-imports)
         (py-isort-buffer)
         (yapfify-buffer))))
 
@@ -913,24 +917,8 @@ Fall back to controller spec."
   (eval-after-load 'evil-mode
     (require 'evil-rails))
 
-  (defun ruby-before-save-hooks ()
-    (when (and ruby-format-on-save
-               (or
-                (eq major-mode 'ruby-mode)
-                (eq major-mode 'enh-ruby-mode)))
-      (setq ruby-current-line (line-number-at-pos))
-      (rufo-format-buffer)))
-
-  (defun ruby-after-save-hooks ()
-    (when (and ruby-format-on-save
-               (or
-                (eq major-mode 'ruby-mode)
-                (eq major-mode 'enh-ruby-mode)))
-      (when ruby-current-line
-        (evil-scroll-line-to-center ruby-current-line))))
-
-  (add-hook 'before-save-hook #'ruby-before-save-hooks)
-  (add-hook 'after-save-hook #'ruby-after-save-hooks)
+  ;; Robe mode for additional completions
+  (add-hook 'ruby-mode-hook #'robe-mode)
 
   ;; Enable pry in test runs
   (add-hook 'compilation-filter-hook 'inf-ruby-auto-enter)
