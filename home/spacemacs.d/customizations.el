@@ -152,6 +152,7 @@
 (add-hook 'after-init-hook #'visual-line-mode)
 (global-evil-quickscope-mode 1)
 (global-evil-matchit-mode 1)
+(global-company-mode)
 (smartparens-global-strict-mode)
 
 ;; Transparency
