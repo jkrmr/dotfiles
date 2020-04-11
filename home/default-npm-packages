@@ -1,6 +1,7 @@
 babel-eslint
 catj
 create-react-app
+dockerfile-language-server-nodejs
 eslint
 eslint-plugin-react
 git-pending
