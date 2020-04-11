@@ -556,7 +556,6 @@ This function should only modify configuration layer settings."
      amx
      (beacon :location (recipe :fetcher github :repo "Malabarba/beacon"))
      coffee-mode
-     company-flx
      csv-mode
      direnv
      (doom-modeline :location (recipe :fetcher github :repo "jmromer/doom-modeline"))

@@ -88,9 +88,7 @@
       nil))
 
   (add-hook 'company-mode-hook #'company-mode-settings)
-
-  ;; Enable fuzzy-matching in company results
-  (company-flx-mode +1))
+  nil)
 
 
 (defun config/compilation-buffers ()
