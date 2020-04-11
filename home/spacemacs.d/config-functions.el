@@ -924,10 +924,10 @@ Fall back to controller spec."
   (add-hook 'compilation-filter-hook 'inf-ruby-auto-enter)
 
   ;; Toggle breakpoint
-  (spacemacs/set-leader-keys-for-major-mode 'ruby-mode "d b" #'spacemacs/ruby-toggle-breakpoint)
-  (spacemacs/set-leader-keys-for-major-mode 'ruby-mode "d p" #'(lambda () (interactive) (spacemacs/ruby-toggle-breakpoint t)))
-  (spacemacs/set-leader-keys-for-major-mode 'enh-ruby-mode "d b" #'spacemacs/ruby-toggle-breakpoint)
-  (spacemacs/set-leader-keys-for-major-mode 'enh-ruby-mode "d p" #'(lambda () (interactive) (spacemacs/ruby-toggle-breakpoint t)))
+  (spacemacs/set-leader-keys-for-major-mode 'ruby-mode "D b" #'spacemacs/ruby-toggle-breakpoint)
+  (spacemacs/set-leader-keys-for-major-mode 'ruby-mode "D p" #'(lambda () (interactive) (spacemacs/ruby-toggle-breakpoint t)))
+  (spacemacs/set-leader-keys-for-major-mode 'enh-ruby-mode "D b" #'spacemacs/ruby-toggle-breakpoint)
+  (spacemacs/set-leader-keys-for-major-mode 'enh-ruby-mode "D p" #'(lambda () (interactive) (spacemacs/ruby-toggle-breakpoint t)))
 
   ;; Define keybinding to manually trigger autoformat
   (spacemacs/set-leader-keys-for-major-mode
