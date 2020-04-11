@@ -328,6 +328,13 @@ See `org-capture-templates' for more information."
 
 ;; Utilities
 
+(defun helm-select-session ()
+  "Select an active Helm session."
+  (interactive)
+  (helm-resume 10))
+
+(spacemacs/set-leader-keys "r L" #'helm-select-session)
+
 (defun display-and-copy-file-path ()
   "Print the path of the current buffer's file.
 Depends on yankee.el."
