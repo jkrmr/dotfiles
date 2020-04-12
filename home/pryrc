@@ -59,11 +59,6 @@ if defined?(PryByebug)
   Pry.commands.alias_command "f", "finish"
 end
 
-if defined?(AwesomePrint)
-  AwesomePrint.defaults = { indent: -2 }
-  AwesomePrint.pry!
-end
-
 if defined?(Hirb)
   Hirb.enable
   extend Hirb::Console
@@ -78,10 +73,15 @@ if defined?(JazzFingers)
   end
 end
 
-if ENV["TERM"] == "emacs" || !ENV["INSIDE_EMACS"].nil?
+if %w[emacs dumb].include?(ENV["TERM"]) || !ENV["INSIDE_EMACS"].nil?
   Pry.config.pager = false
   Pry.config.auto_indent = false
-  Pry.prompt = Pry::Prompt[:default][:value]
+
+  if Pry::VERSION < "0.13.0"
+    Pry.prompt = Pry::Prompt[:default][:value]
+  else
+    Pry.prompt = Pry::Prompt[:default]
+  end
 else
   Pry.config.pager = true
   Pry.config.auto_indent = true
@@ -93,6 +93,28 @@ def timeit
   yield if block_given?
   ending = Process.clock_gettime(Process::CLOCK_MONOTONIC)
   (ending - starting).round(4)
+end
+
+if defined?(AwesomePrint)
+  AwesomePrint.defaults = { indent: -2 }
+  AwesomePrint.pry!
+end
+
+# https://github.com/awesome-print/awesome_print/pull/373
+module AwesomePrint
+  module Formatters
+    class BaseFormatter
+      def indented(&block)
+        inspector.increase_indentation(&block)
+      end
+    end
+  end
+
+  class Inspector
+    def increase_indentation(&block)
+      indentator.indent(&block)
+    end
+  end
 end
 
 pryrc_local = File.expand_path("~/.pryrc.local")
