@@ -433,6 +433,9 @@ This function should only modify configuration layer settings."
             gtags-enable-by-default t)
      haskell
      (helm :variables
+           completion-styles '(helm-flex)
+           helm-candidate-number-limit 100
+           helm-completion-style 'emacs
            helm-enable-auto-resize t
            helm-no-header nil
            helm-position 'bottom
