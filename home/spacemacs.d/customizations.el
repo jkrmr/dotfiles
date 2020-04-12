@@ -21,13 +21,14 @@
    org-adapt-indentation t
    org-agenda-block-separator ""
    org-babel-python-command "python3"
-   org-blank-before-new-entry '((heading . t) (plain-list-item . t))
+   org-blank-before-new-entry '((heading . t) (plain-list-item . 'auto))
    org-bullets-bullet-list '("› ")
    org-catch-invisible-edits 'show-and-error
    org-clock-idle-time 5
    org-confirm-babel-evaluate nil
    org-cycle-separator-lines 2
    org-edit-src-content-indentation 0
+   org-list-use-circular-motion t
    org-ellipsis " ▾ "
    org-export-coding-system 'utf-8
    org-export-with-sub-superscripts nil
