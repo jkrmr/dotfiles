@@ -26,7 +26,7 @@
    org-catch-invisible-edits 'show-and-error
    org-clock-idle-time 5
    org-confirm-babel-evaluate nil
-   org-cycle-separator-lines 1
+   org-cycle-separator-lines 2
    org-edit-src-content-indentation 0
    org-ellipsis " ▾ "
    org-export-coding-system 'utf-8
