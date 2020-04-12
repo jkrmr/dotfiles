@@ -28,7 +28,7 @@
    org-confirm-babel-evaluate nil
    org-cycle-separator-lines 1
    org-edit-src-content-indentation 0
-   org-ellipsis "  "
+   org-ellipsis " ▾ "
    org-export-coding-system 'utf-8
    org-export-with-sub-superscripts nil
    org-fontify-done-headline t
