@@ -1005,9 +1005,10 @@ Fall back to controller spec."
           (define-key vterm-mode-map (kbd "C-d") #'vterm-send-C-d))
       (error "Failed setting vterm keybindings")))
 
-  (spacemacs/set-leader-keys "asf" #'shell-window-full)
-  (spacemacs/set-leader-keys "asr" #'split-shell-window-right-and-focus)
-  (spacemacs/set-leader-keys "asb" #'split-shell-window-below-and-focus)
+  (spacemacs/set-leader-keys "a s f" #'shell-full)
+  (spacemacs/set-leader-keys "a s r" #'shell-right)
+  (spacemacs/set-leader-keys "a s b" #'shell-below)
+  (spacemacs/set-leader-keys "\'" #'shell-below-full-span)
 
   ;; Use utf8
   (defun my-term-use-utf8 ()

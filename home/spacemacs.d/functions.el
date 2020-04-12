@@ -355,25 +355,47 @@ Excludes the ibuffer."
   (if (buffer-exists-p "*Ibuffer*")  (kill-buffer "*Ibuffer*"))
   (switch-to-buffer (other-buffer (current-buffer) 1)))
 
-(defun split-shell-window-right-and-focus ()
+(defun shell-right ()
   "Open a terminal split to the right and focus it."
   (interactive)
-  (defvar shell-default-term-shell)
-  (split-window-right-and-focus)
-  (vterm shell-default-term-shell))
+  (let ((default-directory (project-root-or-default-dir))
+        (shell-pop-full-span nil)
+        (shell-pop-window-position "right")
+        (shell-pop-window-size 35))
+    (call-interactively #'spacemacs/shell-pop-vterm)))
 
-(defun split-shell-window-below-and-focus ()
+(defun shell-below ()
   "Open a terminal split below and focus it."
   (interactive)
-  (defvar shell-default-term-shell)
-  (split-window-below-and-focus)
-  (vterm shell-default-term-shell))
+  (let ((default-directory (project-root-or-default-dir))
+        (shell-pop-full-span nil)
+        (shell-pop-window-position "below")
+        (shell-pop-window-size 50))
+    (call-interactively #'spacemacs/shell-pop-vterm)))
 
-(defun shell-window-full ()
+(defun shell-below-full-span ()
+  "Open a terminal below across the full frame."
+  (interactive)
+  (let ((default-directory (project-root-or-default-dir))
+        (shell-pop-full-span t)
+        (shell-pop-window-position "below")
+        (shell-pop-window-size 30))
+    (call-interactively #'spacemacs/shell-pop-vterm)))
+
+(defun shell-full ()
   "Open a terminal in the current window."
   (interactive)
-  (defvar shell-default-term-shell)
-  (vterm shell-default-term-shell))
+  (let ((default-directory (project-root-or-default-dir))
+        (shell-pop-full-span nil)
+        (shell-pop-window-position "top")
+        (shell-pop-window-size 100))
+    (vterm)))
+
+(defun project-root-or-default-dir ()
+  "Return the projectile project root if in a project.
+If not in a project, return the current `default-dir'."
+  (let ((proj-root (projectile-project-root)))
+    (or proj-root default-directory)))
 
 (defun rerun-term-command-right ()
    "Re-issue previously issued command in terminal split to the right."
