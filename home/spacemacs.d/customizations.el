@@ -119,7 +119,7 @@
 ;; Mac-like keybindings
 (setq-default mac-command-modifier 'super)
 
-(global-set-key (kbd "s-m") #'popwin:messages)
+(global-set-key (kbd "s-m") #'toggle-messages-window)
 (global-set-key (kbd "s--") #'spacemacs/scale-down-font)
 (global-set-key (kbd "s-0") #'spacemacs/reset-font-size)
 (global-set-key (kbd "s-=") #'spacemacs/scale-up-font)

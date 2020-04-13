@@ -404,6 +404,14 @@ If not in a project, return the current `default-dir'."
   (let ((proj-root (projectile-project-root)))
     (or proj-root default-directory)))
 
+(defun toggle-messages-window ()
+  "Toggle the messages popup window."
+  (interactive)
+  (let* ((msg-window (get-buffer-window "*Messages*")))
+    (if msg-window
+        (popwin:close-popup-window)
+      (popwin:messages))))
+
 (defun rerun-term-command-right ()
    "Re-issue previously issued command in terminal split to the right."
    (interactive)
