@@ -149,6 +149,10 @@
   "L o" #'layouts-org
   "L d" #'layouts-dotfiles)
 
+;; messages buffer keybindings
+(spacemacs/set-leader-keys "b m" #'popwin:messages)
+(spacemacs/set-leader-keys "b M" #'spacemacs/switch-to-messages-buffer)
+
 ;; globally enabled minor modes
 (add-hook 'after-init-hook #'visual-line-mode)
 (global-evil-quickscope-mode 1)
