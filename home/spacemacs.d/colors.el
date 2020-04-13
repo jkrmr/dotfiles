@@ -600,8 +600,8 @@ TODO: Simplify this macro"
    (:inherit nil :foreground ,colors-blue)
    (:strike-through t :family ,et-font))
   (org-ellipsis
-   (:underline nil :background nil :foreground ,doc)
-   (:underline nil :foreground ,comment))
+   (:inherit fixed-pitch :underline nil :background nil :foreground ,doc)
+   (:inherit fixed-pitch :underline nil :foreground ,comment))
   (org-formula
    (:foreground ,type)
    nil)
