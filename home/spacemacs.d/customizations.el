@@ -127,6 +127,9 @@
 (global-set-key (kbd "s-g") #'avy-goto-char-2)
 (global-set-key (kbd "s-,") #'popwin:messages)
 (global-set-key (kbd "s-d") #'shell-below-full-span)
+(global-set-key (kbd "s-n") #'deft)
+(global-set-key (kbd "s-o") #'spacemacs/layout-goto-default)
+(global-set-key (kbd "s-w") #'spacemacs/delete-window)
 
 ;; org mode
 (with-eval-after-load 'org
