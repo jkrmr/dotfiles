@@ -123,7 +123,7 @@ Do not request confirmation for buffers outside the current perspective."
   (progn
     (persp-switch "dotfiles")
     (delete-other-windows)
-    (spacemacs/find-dotfile)
+    (find-file "~/.spacemacs.d/")
     (rename-buffer "*init.el*")))
 
 ;; Org mode
