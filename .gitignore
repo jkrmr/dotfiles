@@ -25,5 +25,6 @@ home/bundle/cache
 home/lein/repl-port
 home/spacemacs.d/local/sensitive
 home/spacemacs.d/.spacemacs.env
+home/spacemacs.d/*.elc
 default.vim
 .dir-locals.el
