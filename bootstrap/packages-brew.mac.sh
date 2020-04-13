@@ -15,10 +15,10 @@ brew install emacs-mac \
   --with-dbus \
   --with-glib \
   --with-imagemagick \
+  --with-modern-icon \
   --with-modules \
   --with-natural-title-bar \
   --with-rsvg \
-  --with-spacemacs-icon \
   --with-xml2
 ln -sf /usr/local/opt/emacs-mac/Emacs.app /Applications
 
