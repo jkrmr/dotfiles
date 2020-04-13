@@ -130,15 +130,16 @@ Do not request confirmation for buffers outside the current perspective."
 
 (defun org-capture-deft-new-file ()
   "Open a new deft notes file, prompting for the file name."
-  (require 'deft)
-  (setq org-capture-deft--title (read-string "Title: ")
-        org-capture-deft--timestamp (format-time-string "%Y%m%d%H%M%S"))
-
-  (if (and (boundp 'org-capture-deft--title)
-           (not (string-blank-p org-capture-deft--title)))
-      (deft-new-file-named
-        (downcase (replace-regexp-in-string " " "-" org-capture-deft--title)))
-    (deft-new-file)))
+  (interactive)
+  (defvar org-capture-deft--title ""
+    "Note title. Used by Deft to prepopulate metadata.")
+  (defvar org-capture-deft--timestamp nil
+    "Creation timestamp. Used by Deft to prepopulate metadata.")
+  (let ((org-capture-deft--title (read-string "Title: "))
+        (org-capture-deft--timestamp (format-time-string "%Y%m%d%H%M%S")))
+    (if (string-blank-p org-capture-deft--title)
+        (deft-new-file)
+      (deft-new-file-named (downcase (replace-regexp-in-string " " "-" org-capture-deft--title))))))
 
 (defun org-journal-find-location ()
   "Open today's journal entry."
