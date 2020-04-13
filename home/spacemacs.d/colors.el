@@ -18,14 +18,18 @@
 
 (defmacro r-set-pair-faces (themes consts faces-alist)
   "Macro for pair setting of custom faces.
-THEMES name the pair (theme-one theme-two). CONSTS sets the variables like
-  ((sans-font \"Some Sans Font\") ...). FACES-ALIST has the actual faces
-like:
+
+THEMES name the pair (theme-one theme-two).
+
+CONSTS sets the variables like
+  ((sans-font \"Some Sans Font\") ...).
+
+FACES-ALIST has the actual faces like:
   ((face1 theme-one-attr theme-two-atrr)
    (face2 theme-one-attr nil           )
    (face3 nil            theme-two-attr)
-   ...)
-TODO: Simplify this macro"
+   ...)"
+  ;; TODO: Simplify this macro
   (defmacro r-get-proper-faces ()
     `(let* (,@consts)
        (backquote ,faces-alist)))
