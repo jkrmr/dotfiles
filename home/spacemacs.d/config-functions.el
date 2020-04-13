@@ -322,20 +322,11 @@
                 prettier-js-command "prettier-standard"
                 prettier-js-show-errors 'echo)
 
-  (setq-default javascript-format-on-save t)
-  (defun js-before-save-hooks ()
-    (when (and javascript-format-on-save
-               (or (eq major-mode 'rjsx-mode)
-                   (eq major-mode 'js2-mode)))
-      (prettier-js)))
-  (add-hook 'before-save-hook #'js-before-save-hooks)
-
   (setq-default sp-ignore-modes-list '(minibuffer-inactive-mode
                                        rjsx-mode
                                        js2-mode
                                        typescript-mode
                                        typescript-tsx-mode))
-
   (defun json-mode-hooks ()
     (progn
       (setq tab-width 2)
