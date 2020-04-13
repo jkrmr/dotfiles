@@ -57,11 +57,15 @@ Do not request confirmation for buffers outside the current perspective."
 (defun layouts-reset ()
   "Reset to the default set of layouts."
   (interactive)
-  (progn
+  (let ((delay 1))
     (kill-other-buffers-rudely)
+    (sleep-for delay)
     (layouts-org)
+    (sleep-for delay)
     (layouts-dotfiles)
+    (sleep-for delay)
     (layouts-blog)
+    (sleep-for delay)
     (layouts-notes)
     (spacemacs/layout-goto-default)))
 
@@ -73,30 +77,30 @@ Do not request confirmation for buffers outside the current perspective."
     (delete-other-windows)
 
     ;; Kill the journal buffer, since it might need to visit a new file
-    (when (get-buffer "*journal*")
-      (kill-buffer "*journal*"))
+    (when (get-buffer "[journal]")
+      (kill-buffer "[journal]"))
 
     (find-file (expand-file-name org-default-notes-file))
-    (rename-buffer "*sprint*")
+    (rename-buffer "[sprint]")
     (find-file (expand-file-name org-default-backlog-file))
-    (rename-buffer "*backlog*")
+    (rename-buffer "[backlog]")
     (org-journal-today)
-    (rename-buffer "*journal*")
+    (rename-buffer "[journal]")
     (delete-other-windows)
 
-    (switch-to-buffer "*sprint*")
+    (switch-to-buffer "[sprint]")
     (split-window-right-and-focus)
-    (switch-to-buffer "*backlog*")
+    (switch-to-buffer "[backlog]")
     (split-window-below-and-focus)
-    (switch-to-buffer "*journal*")
+    (switch-to-buffer "[journal]")
     (save-buffer)
 
-    (select-window (get-buffer-window "*sprint*"))
+    (select-window (get-buffer-window "[sprint]"))
     (split-window-below-and-focus)
     (org-agenda-list)
-    (rename-buffer "*agenda*")
+    (rename-buffer "[agenda]")
 
-    (select-window (get-buffer-window "*sprint*"))))
+    (select-window (get-buffer-window "[sprint]"))))
 
 (defun layouts-blog ()
   "Set up blog layout."
@@ -104,8 +108,10 @@ Do not request confirmation for buffers outside the current perspective."
   (progn
     (persp-switch "blog")
     (delete-other-windows)
-    (dired (file-name-directory (expand-file-name org-default-blog-file)))
-    (rename-buffer "*blog*")
+    (if (and (boundp 'org-default-blog-file) org-default-blog-file)
+        (dired (file-name-directory (expand-file-name org-default-blog-file)))
+      (error "Org blog path `org-default-blog-file' not set"))
+    (rename-buffer "[blog]")
     (writeroom-mode)))
 
 (defun layouts-notes ()
@@ -115,7 +121,7 @@ Do not request confirmation for buffers outside the current perspective."
     (persp-switch "notes")
     (delete-other-windows)
     (deft)
-    (rename-buffer "*notes*")))
+    (rename-buffer "[notes]")))
 
 (defun layouts-dotfiles ()
   "Set up dotfiles layout."
@@ -124,7 +130,7 @@ Do not request confirmation for buffers outside the current perspective."
     (persp-switch "dotfiles")
     (delete-other-windows)
     (find-file "~/.spacemacs.d/")
-    (rename-buffer "*init.el*")))
+    (rename-buffer "[dotfiles]")))
 
 ;; Org mode
 
