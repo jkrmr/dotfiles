@@ -1096,9 +1096,10 @@ Provides facilities for yanking formatted code snippets."
         (define-key lispy-mode-map (kbd "C-j") nil)))
   (if (boundp 'evil-hybrid-state-map)
       (progn
-        (define-key evil-hybrid-state-map (kbd "C-j") nil)
-        (define-key evil-hybrid-state-map (kbd "C-j C-j") #'company-yasnippet)
-        (define-key evil-hybrid-state-map (kbd "C-j C-;") #'yas-expand))
+        (define-key prog-mode-map (kbd "C-j") nil)
+        (define-key prog-mode-map (kbd "C-j C-j") #'company-yasnippet)
+        (define-key prog-mode-map (kbd "C-j C-;") #'yas-expand)
+        nil)
     (error "Could not set yasnippet keybindings"))
   nil)
 
