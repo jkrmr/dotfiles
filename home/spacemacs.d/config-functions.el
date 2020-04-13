@@ -1092,14 +1092,15 @@ Provides facilities for yanking formatted code snippets."
 (defun config/yasnippet ()
   "Define yasnippet keybindings."
   (with-eval-after-load 'lispy
-    (if (boundp 'lispy-mode-map)
-        (define-key lispy-mode-map (kbd "C-j") nil)
-      (error "Not overriding `lispy-mode-map' for yasnippet")))
-
-  (define-key global-map (kbd "C-j") nil)
-  (spacemacs/declare-prefix (kbd "C-j") "tools")
-  (define-key global-map (kbd "C-j C-j") #'company-yasnippet)
-  (define-key global-map (kbd "C-j C-;") #'yas-expand))
+    (when (boundp 'lispy-mode-map)
+        (define-key lispy-mode-map (kbd "C-j") nil)))
+  (if (boundp 'evil-hybrid-state-map)
+      (progn
+        (define-key evil-hybrid-state-map (kbd "C-j") nil)
+        (define-key evil-hybrid-state-map (kbd "C-j C-j") #'company-yasnippet)
+        (define-key evil-hybrid-state-map (kbd "C-j C-;") #'yas-expand))
+    (error "Could not set yasnippet keybindings"))
+  nil)
 
 (provide 'config-functions)
 ;;; config-functions.el ends here
