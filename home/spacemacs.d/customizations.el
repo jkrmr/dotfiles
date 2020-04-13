@@ -123,6 +123,18 @@
 (global-set-key (kbd "s-=") #'spacemacs/scale-up-font)
 (global-set-key (kbd "s--") #'spacemacs/scale-down-font)
 (global-set-key (kbd "s-0") #'spacemacs/reset-font-size)
+(global-set-key (kbd "s-f") #'avy-goto-char-timer)
+(global-set-key (kbd "s-g") #'avy-goto-char-2)
+(global-set-key (kbd "s-,") #'popwin:messages)
+(global-set-key (kbd "s-d") #'shell-below-full-span)
+
+;; org mode
+(with-eval-after-load 'org
+  (if (boundp 'org-mode-map)
+      (progn
+        (define-key org-mode-map (kbd "s-g") #'avy-org-goto-heading-timer)
+        (define-key org-mode-map (kbd "s-r") #'avy-org-refile-as-child))
+    (error "Failed setting org mode super-key keybindings")))
 
 ;; Cycle theme
 (global-set-key (kbd "M-m T n") 'r/cycle-theme)
@@ -149,10 +161,6 @@
   "L o" #'layouts-org
   "L n" #'layouts-notes
   "L d" #'layouts-dotfiles)
-
-;; messages buffer keybindings
-(spacemacs/set-leader-keys "b m" #'popwin:messages)
-(spacemacs/set-leader-keys "b M" #'spacemacs/switch-to-messages-buffer)
 
 ;; globally enabled minor modes
 (add-hook 'after-init-hook #'visual-line-mode)
