@@ -16,7 +16,7 @@
               projectile-project-search-path '("~/Projects" "~/Work" "~/Resources" "~/Exercism"))
 
 (with-eval-after-load 'org
-  ;; (add-hook 'org-mode-hook #'variable-pitch-mode)
+  (add-hook 'org-mode-hook #'variable-pitch-mode)
   (setq-default
    org-adapt-indentation t
    org-agenda-block-separator ""
