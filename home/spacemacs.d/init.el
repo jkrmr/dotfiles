@@ -447,9 +447,16 @@ This function should only modify configuration layer settings."
      (ibuffer :variables
               ibuffer-group-buffers-by 'projects)
      imenu-list
+     import-js
      (javascript :variables
-                 javascript-backend 'tern
+                 javascript-backend 'lsp
+                 javascript-fmt-on-save t
                  javascript-fmt-tool 'prettier
+                 javascript-import-tool 'import-js
+                 javascript-lsp-linter t
+                 javascript-repl 'nodejs
+                 js2-mode-show-parse-errors nil
+                 js2-mode-show-strict-warnings nil
                  node-add-modules-path t)
      (latex :variables
             latex-enable-auto-fill t
