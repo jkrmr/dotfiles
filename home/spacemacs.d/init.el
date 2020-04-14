@@ -563,7 +563,7 @@ This function should only modify configuration layer settings."
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages
    '(
-     amx
+     amx ;; depends on ido-completing-read+
      (beacon :location (recipe :fetcher github :repo "Malabarba/beacon"))
      coffee-mode
      company-jedi
@@ -581,6 +581,7 @@ This function should only modify configuration layer settings."
      flx
      graphql-mode
      gxref
+     ido-completing-read+ ;; dependency of amx
      (org-pretty-table :location (recipe :fetcher github :repo "Fuco1/org-pretty-table"))
      (org-books :location (recipe :fetcher github :repo "lepisma/org-books"))
      (org-expand :location (recipe :fetcher github :repo "lepisma/org-expand"))
