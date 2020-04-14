@@ -21,7 +21,7 @@
    org-adapt-indentation t
    org-agenda-block-separator ""
    org-babel-python-command "python3"
-   org-blank-before-new-entry '((heading . t) (plain-list-item . 'auto))
+   org-blank-before-new-entry '((heading . auto) (plain-list-item . auto))
    org-bullets-bullet-list '("› ")
    org-catch-invisible-edits 'show-and-error
    org-clock-idle-time 5
