@@ -913,10 +913,8 @@ Fall back to controller spec."
   (add-hook 'compilation-filter-hook 'inf-ruby-auto-enter)
 
   ;; Toggle breakpoint
-  (spacemacs/set-leader-keys-for-major-mode 'ruby-mode "D b" #'spacemacs/ruby-toggle-breakpoint)
-  (spacemacs/set-leader-keys-for-major-mode 'ruby-mode "D p" #'(lambda () (interactive) (spacemacs/ruby-toggle-breakpoint t)))
-  (spacemacs/set-leader-keys-for-major-mode 'enh-ruby-mode "D b" #'spacemacs/ruby-toggle-breakpoint)
-  (spacemacs/set-leader-keys-for-major-mode 'enh-ruby-mode "D p" #'(lambda () (interactive) (spacemacs/ruby-toggle-breakpoint t)))
+  (spacemacs/set-leader-keys-for-major-mode 'ruby-mode "d b" #'spacemacs/ruby-toggle-breakpoint)
+  ;; (spacemacs/set-leader-keys-for-major-mode 'ruby-mode "d p" #'(lambda () (interactive) (spacemacs/ruby-toggle-breakpoint t)))
 
   ;; Define keybinding to manually trigger autoformat
   (spacemacs/set-leader-keys-for-major-mode
@@ -924,14 +922,7 @@ Fall back to controller spec."
   (spacemacs/declare-prefix-for-mode
     'ruby-mode "=" "format")
   (spacemacs/set-leader-keys-for-major-mode
-    'ruby-mode "==" #'rufo-format-buffer)
-
-  (spacemacs/set-leader-keys-for-major-mode
-    'enh-ruby-mode "=" nil)
-  (spacemacs/declare-prefix-for-mode
-    'enh-ruby-mode "=" "format")
-  (spacemacs/set-leader-keys-for-major-mode
-    'enh-ruby-mode "==" #'rufo-format-buffer))
+    'ruby-mode "==" #'rufo-format-buffer))
 
 (defun config/ruby-in-buffer-eval ()
   "Configure and enable seeing-is-believing and xmpfilter for Ruby."
