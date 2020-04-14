@@ -119,11 +119,12 @@
 ;; Mac-like keybindings
 (setq-default mac-command-modifier 'super)
 
-(global-set-key (kbd "s-m") #'toggle-messages-window)
 (global-set-key (kbd "s--") #'spacemacs/scale-down-font)
 (global-set-key (kbd "s-0") #'spacemacs/reset-font-size)
+(global-set-key (kbd "s-;") #'spacemacs/jump-to-last-layout)
+(global-set-key (kbd "s-d") #'spacemacs/close-compilation-window)
 (global-set-key (kbd "s-=") #'spacemacs/scale-up-font)
-(global-set-key (kbd "s-b") #'spacemacs/jump-to-last-layout)
+(global-set-key (kbd "s-m") #'toggle-messages-window)
 (global-set-key (kbd "s-q") #'kill-buffer-and-window)
 (global-set-key (kbd "s-f") #'avy-goto-char-timer)
 (global-set-key (kbd "s-g") #'avy-goto-char-2)
@@ -133,6 +134,11 @@
 (global-set-key (kbd "s-s") #'save-buffer)
 (global-set-key (kbd "s-t") #'shell-below-full-span)
 (global-set-key (kbd "s-w") #'spacemacs/delete-window)
+
+(with-eval-after-load 'evil
+  (if (boundp 'evil-hybrid-state-map)
+      (define-key evil-hybrid-state-map (kbd "s-v") #'evil-paste-after)
+    (error "Failed setting evil hybrid maps")))
 
 ;; org mode
 (with-eval-after-load 'org
