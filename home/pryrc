@@ -6,11 +6,6 @@
 
 # Return only the methods not present on basic objects
 # alternatively, use `ls <object> -m`
-class Object
-  def method_list
-    (methods - Object.instance_methods).sort
-  end
-end
 
 unless defined?(Rails) && Rails.env
   begin
@@ -45,18 +40,26 @@ Pry.config.exception_handler = proc do |output, exception, _|
   end
 end
 
+# Hit Enter to repeat last command
+Pry::Commands.command(/^$/, "repeat last command") do
+  last_cmd = Pry.history.to_a.last
+  puts last_cmd
+  pry_instance.run_command(last_cmd)
+end
+
 # Aliases for common commands
-Pry.commands.alias_command "q", "exit"
+Pry.commands.alias_command ".q", "exit"
 Pry.commands.alias_command "!!", "disable-pry"
-Pry.commands.alias_command "w", "whereami"
-Pry.commands.alias_command "sh", "shell-mode"
-Pry.commands.alias_command "ss", "show-source"
+Pry.commands.alias_command ".w", "whereami"
+Pry.commands.alias_command ".sh", "shell-mode"
+Pry.commands.alias_command ".ss", "show-source"
+Pry.commands.alias_command ".methods", "ls -m"
 
 if defined?(PryByebug)
-  Pry.commands.alias_command "c", "continue"
-  Pry.commands.alias_command "s", "step"
-  Pry.commands.alias_command "n", "next"
-  Pry.commands.alias_command "f", "finish"
+  Pry.commands.alias_command ".c", "continue"
+  Pry.commands.alias_command ".s", "step"
+  Pry.commands.alias_command ".n", "next"
+  Pry.commands.alias_command ".f", "finish"
 end
 
 if defined?(Hirb)
@@ -64,27 +67,23 @@ if defined?(Hirb)
   extend Hirb::Console
 end
 
-Pry.config.color = true
-
-if defined?(JazzFingers)
+if defined?(JazzFingers) && !defined?(Rails)
   JazzFingers.configure do |config|
     config.colored_prompt = true
-    config.application_name = ENV["USER"] unless defined?(Rails)
+    config.application_name = ENV.fetch("USER")
   end
 end
 
 if %w[emacs dumb].include?(ENV["TERM"]) || !ENV["INSIDE_EMACS"].nil?
-  Pry.config.pager = false
   Pry.config.auto_indent = false
-
-  if Pry::VERSION < "0.13.0"
-    Pry.prompt = Pry::Prompt[:default][:value]
-  else
-    Pry.prompt = Pry::Prompt[:default]
-  end
+  Pry.config.color = true
+  Pry.config.pager = false
+  default = Pry::Prompt[:default]
+  Pry.config.prompt = Pry::VERSION < "0.13.0" ? default[:value] : default
 else
-  Pry.config.pager = true
   Pry.config.auto_indent = true
+  Pry.config.color = true
+  Pry.config.pager = true
   Pry.config.theme = "solarized"
 end
 
