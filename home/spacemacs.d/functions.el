@@ -38,19 +38,37 @@
         (indent-according-to-mode)))))
 
 ;; kill other buffers
+(defun kob-deletable-buffer-list ()
+  "Return a list of all open buffers, excluding current one.
+Also exclude any buffers with names matching the pattern in
+`kob-buffer-to-keep-name-pattern'."
+  (interactive)
 
-(defun kill-other-buffers-rudely ()
-  "Kill all other buffers, including those in other layouts.
+  (defvar kob-keep-buffers-named-pattern
+    "company\\|scratch"
+    "When deleting all buffers, keep buffers with names that match this
+    pattern.")
+
+  (remove-if
+   #'(lambda (x)
+       (or
+        (string-match-p kob-keep-buffers-named-pattern (buffer-name x))
+        (eq x (current-buffer))))
+   (buffer-list)))
+
+(defun kob-rudely ()
+  "Kill other buffers, including those in other layouts.
 Do not request confirmation for buffers outside the current perspective."
   (interactive)
   (if (boundp 'persp-kill-foreign-buffer-behaviour)
-      (let ((original-behavior persp-kill-foreign-buffer-behaviour)
-            (buffers-to-kill (delq (current-buffer) (buffer-list))))
+      (let ((original-behavior persp-kill-foreign-buffer-behaviour))
         (setq persp-kill-foreign-buffer-behaviour 'kill)
-        (mapc 'kill-buffer buffers-to-kill)
-        (setq persp-kill-foreign-buffer-behaviour original-behavior)
-        (delete-other-windows))
-    (error "`persp-kill-foreign-buffer-behaviour' not set")))
+        (mapc 'kill-buffer (kob-deletable-buffer-list))
+        (delete-other-windows)
+        (setq persp-kill-foreign-buffer-behaviour original-behavior))
+    (progn
+      (mapc 'kill-buffer (kob-deletable-buffer-list))
+      (delete-other-windows))))
 
 ;; layout
 
