@@ -309,7 +309,6 @@
 
 (defun config/ido ()
   "Enable and configure ido mode."
-  (ido-vertical-mode -1)
   (add-hook 'after-init-hook #'ido-mode)
   (add-hook 'after-init-hook #'flx-ido-mode)
   (spacemacs/set-leader-keys "a d" #'ido-dired))
