@@ -43,7 +43,7 @@ end
 # Hit Enter to repeat last command
 Pry::Commands.command(/^$/, "repeat last command") do
   last_cmd = Pry.history.to_a.last
-  puts last_cmd
+  puts ["\e[37m\e[1m", last_cmd, "\e[0m"].join
   pry_instance.run_command(last_cmd)
 end
 
