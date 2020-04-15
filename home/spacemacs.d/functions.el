@@ -423,7 +423,7 @@ If not in a project, return the current `default-dir'."
     (cond
      ((and notes-buf notes-win)
       (progn
-        (kill-buffer notes-buf)))
+        (quit-window notes-win)))
      (notes-buf
       (progn
         (switch-to-buffer notes-buf)))
