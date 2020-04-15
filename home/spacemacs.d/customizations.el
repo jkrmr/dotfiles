@@ -172,7 +172,6 @@
   "L r" #'layouts-reset
   "L b" #'layouts-blog
   "L o" #'layouts-org
-  "L n" #'layouts-notes
   "L d" #'layouts-dotfiles)
 
 ;; globally enabled minor modes

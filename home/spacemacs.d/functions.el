@@ -83,8 +83,6 @@ Do not request confirmation for buffers outside the current perspective."
     (layouts-dotfiles)
     (sleep-for delay)
     (layouts-blog)
-    (sleep-for delay)
-    (layouts-notes)
     (spacemacs/layout-goto-default)))
 
 (defun layouts-org ()
@@ -131,15 +129,6 @@ Do not request confirmation for buffers outside the current perspective."
       (error "Org blog path `org-default-blog-file' not set"))
     (rename-buffer "[blog]")
     (writeroom-mode)))
-
-(defun layouts-notes ()
-  "Set up notes layout."
-  (interactive)
-  (progn
-    (persp-switch "notes")
-    (delete-other-windows)
-    (deft)
-    (rename-buffer "[notes]")))
 
 (defun layouts-dotfiles ()
   "Set up dotfiles layout."
