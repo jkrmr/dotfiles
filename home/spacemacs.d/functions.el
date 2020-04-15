@@ -420,7 +420,7 @@ If not in a project, return the current `default-dir'."
       (popwin:messages))))
 
 (defun toggle-notes-window ()
-  "Open deft in a pop-up window below."
+  "Toggle notes in the current window."
   (interactive)
   (let* ((notes-buf (get-buffer "*Deft*"))
          (notes-win (get-buffer-window notes-buf)))
