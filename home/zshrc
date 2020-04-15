@@ -440,16 +440,22 @@ fi
 #-------------------------------------------------------------
 disable r # disable zsh's r
 
-[[ -f $HOME/.fzf.zsh ]] && \
+#-------------------------------------------------------------
+# Autocompletion setup scripts
+#-------------------------------------------------------------
+[[ -f "$HOME/.fzf.zsh" ]] && \
     . "$HOME/.fzf.zsh"
 
 [[ -f "$HOMEBREW_PREFIX/opt/asdf/asdf.sh" ]] && \
     . "$HOMEBREW_PREFIX/opt/asdf/asdf.sh"
 
-[[ -f $HOME/.anaconda/etc/profile.d/conda.sh ]] && \
+[[ -f "$HOME/.anaconda/etc/profile.d/conda.sh" ]] && \
     . "$HOME/.anaconda/etc/profile.d/conda.sh"
 
-[[ -f $HOME/.zshrc.local ]] && \
+[[ -f "$HOME/Library/Caches/heroku/autocomplete/zsh_setup" ]] && \
+    . "$HOME/Library/Caches/heroku/autocomplete/zsh_setup"
+
+[[ -f "$HOME/.zshrc.local" ]] && \
     . "$HOME/.zshrc.local"
 
 # shellcheck source=/dev/null
