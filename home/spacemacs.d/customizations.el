@@ -152,7 +152,10 @@
     (error "Failed setting org mode super-key keybindings")))
 
 ;; Cycle theme
-(global-set-key (kbd "M-m T n") 'r/cycle-theme)
+(spacemacs/set-leader-keys "T n" 'r/cycle-theme)
+
+;; toggle debug-on-error
+(spacemacs/set-leader-keys "T D" #'spacemacs/toggle-debug-on-error)
 
 ;; Markdown-mode
 (with-eval-after-load 'markdown-mode
