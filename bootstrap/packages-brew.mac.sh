@@ -10,6 +10,7 @@ brew install pinentry-mac
 brew install reattach-to-user-namespace
 brew install github/gh/gh
 
+# emacs-mac (potentially slower / unstable)
 brew tap railwaycat/emacsmacport
 brew install emacs-mac \
   --with-dbus \
@@ -22,10 +23,12 @@ brew install emacs-mac \
   --with-xml2
 ln -sf /usr/local/opt/emacs-mac/Emacs.app /Applications
 
-# brew tap d12frosted/emacs-plus
-# brew install emacs-plus --with-no-frame-refocus --with-no-titlebar
-# ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications
-# brew services start d12frosted/emacs-plus/emacs-plus
+# emacs-plus
+brew tap d12frosted/emacs-plus
+brew install emacs-plus
+
+brew services start d12frosted/emacs-plus/emacs-plus
+ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications
 
 emacs_version="$(emacs --version | head -1 | sed -E 's/.+\s([0-9]+\.[0-9]+)$/\1/')"
 tic -o ~/.terminfo "/usr/local/share/emacs/$emacs_version/etc/e/eterm-color.ti"
