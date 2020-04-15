@@ -149,7 +149,7 @@
   (if (boundp 'org-mode-map)
       (progn
         (define-key org-mode-map (kbd "s-j") #'org-occur)
-        (define-key org-mode-map (kbd "s-g") #'avy-org-goto-heading-timer)
+        (define-key org-mode-map (kbd "s-F") #'avy-org-goto-heading-timer)
         (define-key org-mode-map (kbd "s-r") #'avy-org-refile-as-child)
         (define-key org-mode-map (kbd "s-<return>") #'evil-org-org-insert-heading-respect-content-below)
         nil)
