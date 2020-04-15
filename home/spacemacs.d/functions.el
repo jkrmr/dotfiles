@@ -76,7 +76,7 @@ Do not request confirmation for buffers outside the current perspective."
   "Reset to the default set of layouts."
   (interactive)
   (let ((delay 1))
-    (kill-other-buffers-rudely)
+    (kob-rudely)
     (sleep-for delay)
     (layouts-org)
     (sleep-for delay)
