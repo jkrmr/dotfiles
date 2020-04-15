@@ -618,7 +618,7 @@
      org-capture-templates
      '(
        ("c" "Capture")
-       ("ct" "Task (Today's Sprint)" entry (file+headline org-default-notes-file "To Do Today")
+       ("ct" "Task (Today's Sprint)" entry (file+headline org-default-notes-file "Today")
         "** TODO %?\nSCHEDULED: %t\n %U" :empty-lines 1)
 
        ("cb" "Backlog" entry (file+headline org-default-backlog-file "Captures")
