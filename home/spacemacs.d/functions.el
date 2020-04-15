@@ -433,6 +433,14 @@ If not in a project, return the current `default-dir'."
         (goto-char (point-min))
         (evil-append-line 1))))))
 
+(defun toggle-magit-status ()
+  "Toggle the magit status window."
+  (interactive)
+  (if (eq 'magit-status-mode
+          (buffer-local-value 'major-mode (current-buffer)))
+      (magit-mode-bury-buffer)
+    (magit-status)))
+
 (defun rerun-term-command-right ()
    "Re-issue previously issued command in terminal split to the right."
    (interactive)
