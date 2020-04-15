@@ -425,7 +425,7 @@ If not in a project, return the current `default-dir'."
 (defun toggle-messages-window ()
   "Toggle the messages popup window."
   (interactive)
-  (let* ((msg-window (get-buffer-window "*Messages*")))
+  (let ((msg-window (get-buffer-window "*Messages*")))
     (if msg-window
         (popwin:close-popup-window)
       (popwin:messages))))
