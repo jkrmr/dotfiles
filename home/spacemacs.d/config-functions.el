@@ -218,7 +218,8 @@
 
   (setq-default
    flycheck-disabled-checkers '(javascript-jshint
-                                markdown-markdownlint-cli)
+                                ruby-reek
+                                markdown-mdl)
    flycheck-global-modes '(LaTeX-mode
                             c++-mode
                             c-mode
@@ -236,10 +237,13 @@
                             pug-mode
                             python-mode
                             react-mode
+                            rjsx-mode
                             ruby-mode
                             sass-mode
                             scss-mode
                             slim-mode
+                            typescript-mode
+                            typescript-tsx-mode
                             web-mode
                             yaml-mode)))
 
