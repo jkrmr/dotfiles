@@ -275,11 +275,10 @@
   ;; Note that the built-in `describe-function' includes both functions
   ;; and macros. `helpful-function' is functions only, so we provide
   ;; `helpful-callable' as a drop-in replacement.
+  (setq-default helpful-max-buffers 1)
   (global-set-key (kbd "C-h f") #'helpful-callable)
-
   (global-set-key (kbd "C-h v") #'helpful-variable)
   (global-set-key (kbd "C-h k") #'helpful-key)
-
   ;; Lookup the current symbol at point. C-c C-d is a common keybinding
   ;; for this in lisp modes.
   (global-set-key (kbd "C-h SPC") #'helpful-at-point)
