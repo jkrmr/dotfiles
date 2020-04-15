@@ -419,6 +419,14 @@ If not in a project, return the current `default-dir'."
         (popwin:close-popup-window)
       (popwin:messages))))
 
+(defun toggle-home-layout ()
+  "Toggle the home layout."
+  (interactive)
+  (if (eq dotspacemacs-default-layout-name
+          (safe-persp-name (get-current-persp)))
+      (spacemacs/jump-to-last-layout)
+    (spacemacs/layout-goto-default)))
+
 (defun toggle-notes-window ()
   "Toggle notes in the current window."
   (interactive)
