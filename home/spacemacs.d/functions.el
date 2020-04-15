@@ -357,18 +357,6 @@ Depends on yankee.el."
     (kill-new file-path)
     (message file-path)))
 
-(defun buffer-exists-p (bufname)
-  "Check if a buffer with the given name BUFNAME exists."
-  (not (eq nil (get-buffer bufname))))
-
-(defun switch-to-previous-buffer ()
-  "Switch to the previously open buffer.
-Repeated invocations toggle between the two most recently open buffers.
-Excludes the ibuffer."
-  (interactive)
-  (if (buffer-exists-p "*Ibuffer*")  (kill-buffer "*Ibuffer*"))
-  (switch-to-buffer (other-buffer (current-buffer) 1)))
-
 (defun shell-right ()
   "Open a terminal split to the right and focus it."
   (interactive)
