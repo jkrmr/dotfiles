@@ -430,6 +430,24 @@ If not in a project, return the current `default-dir'."
         (popwin:close-popup-window)
       (popwin:messages))))
 
+(defun toggle-notes-window ()
+  "Open deft in a pop-up window below."
+  (interactive)
+  (let* ((notes-buf (get-buffer "*Deft*"))
+         (notes-win (get-buffer-window notes-buf)))
+    (cond
+     ((and notes-buf notes-win)
+      (progn
+        (kill-buffer notes-buf)))
+     (notes-buf
+      (progn
+        (switch-to-buffer notes-buf)))
+     (t
+      (progn
+        (deft)
+        (goto-char (point-min))
+        (evil-append-line 1))))))
+
 (defun rerun-term-command-right ()
    "Re-issue previously issued command in terminal split to the right."
    (interactive)
