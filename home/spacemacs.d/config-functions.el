@@ -270,6 +270,11 @@
                             gxref-xref-backend
                             etags--xref-backend)))
 
+(defun config/helm ()
+  "Configure Helm."
+  (setq-default helm-no-header t
+                helm-display-header-line nil))
+
 (defun config/helpful ()
   "Configure Helpful."
   ;; Note that the built-in `describe-function' includes both functions

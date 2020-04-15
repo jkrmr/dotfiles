@@ -63,6 +63,7 @@
 (config/flycheck)
 (config/google-translate)
 (config/gtags)
+(config/helm)
 (config/helpful)
 (config/highlight-lines-at-length 80)
 (config/ido)
