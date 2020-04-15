@@ -90,7 +90,6 @@
   (add-hook 'company-mode-hook #'company-mode-settings)
   nil)
 
-
 (defun config/compilation-buffers ()
   "Configure compilation buffer settings."
   (defun compilation-mode-settings ()
@@ -445,24 +444,15 @@
 
 (defun config/markdown-mode ()
   "Configure Markdown mode."
-  (defun alchemist-iex-send-current-code-block ()
-    "Send the current Markdown code block to iex."
-    (interactive)
-    (save-excursion
-      (re-search-backward "```")
-      (forward-line)
-      (push-mark)
-      (re-search-forward "```")
-      (forward-line -1)
-      (move-end-of-line nil)
-      (alchemist-iex-send-region (region-beginning) (region-end))
-      (pop-mark)))
-
-  ;; markdown mode leader keybindings
-  (spacemacs/declare-prefix-for-mode 'markdown-mode "e" "markdown/evaluate")
-  (spacemacs/set-leader-keys-for-major-mode 'markdown-mode "ee" #'alchemist-iex-send-current-code-block)
-
-  (setq-default markdown-asymmetric-header t))
+  (setq-default markdown-asymmetric-header t)
+  (with-eval-after-load 'markdown-mode
+    (if (boundp 'markdown-mode-map)
+        (progn
+          (define-key markdown-mode-map (kbd "C-j") #'markdown-next-visible-heading)
+          (define-key markdown-mode-map (kbd "C-k") #'markdown-previous-visible-heading)
+          nil)
+      (error "Failed setting markdown mode super-key keybindings")))
+  nil)
 
 (defun config/modeline ()
   "Configure the modeline."
@@ -493,7 +483,6 @@
    doom-modeline-persp-name t
    doom-modeline-project-detection 'project
    doom-modeline-version t)
-
 
   (defun enable-doom-modeline-in-messages ()
     "Enable doom-modeline in messages buffer."

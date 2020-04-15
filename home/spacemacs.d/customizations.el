@@ -160,14 +160,6 @@
 ;; toggle debug-on-error
 (spacemacs/set-leader-keys "T D" #'spacemacs/toggle-debug-on-error)
 
-;; Markdown-mode
-(with-eval-after-load 'markdown-mode
-  (if (boundp 'markdown-mode-map)
-      (progn
-        (define-key markdown-mode-map (kbd "C-j") #'markdown-next-visible-heading)
-        (define-key markdown-mode-map (kbd "C-k") #'markdown-previous-visible-heading)
-        nil)
-    (error "Failed setting markdown mode super-key keybindings")))
 
 ;; display emoji as emoji
 (add-hook 'after-init-hook #'global-emojify-mode)
