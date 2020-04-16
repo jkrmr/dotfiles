@@ -138,6 +138,20 @@
         (define-key evil-hybrid-state-map (kbd "C-j") nil))
     (error "Failed setting evil hybrid maps")))
 
+(defun org-insert-heading-above ()
+  "Insert heading above the current one."
+  (interactive)
+  (move-beginning-of-line 1)
+  (org-insert-heading)
+  (evil-insert 1))
+
+(defun org-insert-subheading-below ()
+  "Insert heading above the current one."
+  (interactive)
+  (move-end-of-line 1)
+  (org-insert-subheading 1)
+  (evil-insert 1))
+
 ;; org mode
 (with-eval-after-load 'org
   (if (boundp 'org-mode-map)
@@ -145,8 +159,9 @@
         (define-key org-mode-map (kbd "s-j") #'org-occur)
         (define-key org-mode-map (kbd "s-F") #'avy-org-goto-heading-timer)
         (define-key org-mode-map (kbd "s-r") #'avy-org-refile-as-child)
-        (define-key org-mode-map (kbd "s-<return>") #'org-insert-subheading)
-        (define-key org-mode-map (kbd "s-S-<return>") #'evil-org-org-insert-heading-respect-content-below))
+        (define-key org-mode-map (kbd "s-C-<return>") 'org-insert-heading-above)
+        (define-key org-mode-map (kbd "s-<return>") #'org-insert-subheading-below)
+        (define-key org-mode-map (kbd "s-S-<return>") #'org-insert-heading-respect-content))
     (error "Failed setting org mode super-key keybindings")))
 
 ;; cycle theme
