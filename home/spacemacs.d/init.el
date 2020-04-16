@@ -454,7 +454,7 @@ This function should only modify configuration layer settings."
            helm-completion-style 'emacs
            helm-display-header-line nil
            helm-enable-auto-resize t
-           helm-no-header t
+           helm-no-header nil
            helm-position 'bottom
            helm-use-fuzzy 'always
            spacemacs-helm-rg-max-column-number 512)
