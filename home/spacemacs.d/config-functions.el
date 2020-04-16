@@ -95,13 +95,6 @@
 
 (defun config/deft ()
   "Configure deft notes browser."
-  (setq-default
-   deft-auto-save-interval 10
-   deft-directory "~/Dropbox/deft"
-   deft-extensions '("txt" "text" "tex" "md" "markdown" "org")
-   deft-default-extension "org"
-   deft-recursive t)
-
   (spacemacs/set-leader-keys
     "a n" nil
     "a n RET" #'spacemacs/deft
@@ -110,7 +103,6 @@
     "a n s" #'org-notes-open-sprint
     "a n b" #'org-notes-open-backlog)
   (spacemacs/declare-prefix "a n" "notes")
-
   (spacemacs/set-leader-keys-for-major-mode 'deft-mode
     "g" #'deft-refresh))
 
@@ -128,13 +120,10 @@
 
 (defun config/elixir ()
   "Configure Elixir mode."
-  (setq-default flycheck-elixir-credo-strict t)
-
   (projectile-register-project-type 'elixir-mix '("mix.exs")
                                     :compile "mix compile"
                                     :test "mix test"
                                     :test-suffix "_test")
-
   (defun elixir-format-buffer ()
     (interactive)
     (shell-command-on-region
@@ -201,38 +190,7 @@
 
 (defun config/flycheck ()
   "Configure and enable Flycheck."
-  (add-hook 'after-init-hook #'global-flycheck-mode)
-
-  (setq-default
-   flycheck-disabled-checkers '(javascript-jshint
-                                ruby-reek
-                                markdown-mdl)
-   flycheck-global-modes '(LaTeX-mode
-                            c++-mode
-                            c-mode
-                            coffee-mode
-                            elixir-mode
-                            emacs-lisp-mode
-                            enh-ruby-mode
-                            go-mode
-                            haml-mode
-                            haskell-mode
-                            js2-mode
-                            json-mode
-                            less-mode
-                            markdown-mode
-                            pug-mode
-                            python-mode
-                            react-mode
-                            rjsx-mode
-                            ruby-mode
-                            sass-mode
-                            scss-mode
-                            slim-mode
-                            typescript-mode
-                            typescript-tsx-mode
-                            web-mode
-                            yaml-mode)))
+  (add-hook 'after-init-hook #'global-flycheck-mode))
 
 (defun config/google-translate ()
   "Configure google-translate."
@@ -249,25 +207,13 @@
 (defun config/gtags ()
   "Configure GNU Global tag backend."
   ;; Enable direnv-mode, so bundler-gtags-produced .envrc is activated
-  (direnv-mode)
-  ;; Add GNU Global as an xref-backend
-  (setq-default
-   xref-backend-functions '(ggtags--xref-backend
-                            elisp--xref-backend
-                            gxref-xref-backend
-                            etags--xref-backend)))
-
-(defun config/helm ()
-  "Configure Helm."
-  (setq-default helm-no-header t
-                helm-display-header-line nil))
+  (direnv-mode))
 
 (defun config/helpful ()
   "Configure Helpful."
   ;; Note that the built-in `describe-function' includes both functions
   ;; and macros. `helpful-function' is functions only, so we provide
   ;; `helpful-callable' as a drop-in replacement.
-  (setq-default helpful-max-buffers 1)
   (global-set-key (kbd "C-h f") #'helpful-callable)
   (global-set-key (kbd "C-h v") #'helpful-variable)
   (global-set-key (kbd "C-h k") #'helpful-key)
@@ -309,17 +255,6 @@
 
 (defun config/javascript-modes ()
   "Configure JavaScript modes: js, js2, react."
-  (setq-default js-indent-level 2
-                js2-basic-offset 2
-                js2-strict-missing-semi-warning nil
-                prettier-js-command "prettier-standard"
-                prettier-js-show-errors 'echo)
-
-  (setq-default sp-ignore-modes-list '(minibuffer-inactive-mode
-                                       rjsx-mode
-                                       js2-mode
-                                       typescript-mode
-                                       typescript-tsx-mode))
   (defun json-mode-hooks ()
     (progn
       (setq tab-width 2)
@@ -408,16 +343,6 @@
   (require 'evil-cleverparens-text-objects)
   (spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hooks)
 
-  (setq-default
-   parinfer-extensions '(
-                         defaults
-                         pretty-parens
-                         evil
-                         ;; lispy
-                         paredit
-                         smart-tab
-                         smart-yank))
-
   ;; Lisp modes
   (defun add-lisp-modes-hook (func)
     "Add FUNC as a hook to each of the major Lisp major modes."
@@ -439,7 +364,6 @@
 
 (defun config/markdown-mode ()
   "Configure Markdown mode."
-  (setq-default markdown-asymmetric-header t)
   (with-eval-after-load 'markdown-mode
     (if (boundp 'markdown-mode-map)
         (progn
@@ -492,9 +416,6 @@
   "Configure and enable org mode."
   (with-eval-after-load 'org-agenda
     (require 'org-projectile)
-    (setq-default org-agenda-files '("~/Dropbox/org")
-                  org-agenda-window-setup 'current-window)
-
     (if (boundp 'org-agenda-files)
         (mapc
          #'(lambda (file)
@@ -503,22 +424,7 @@
          (org-projectile-todo-files))
       (error "Failed: 'org-agenda-files not bound")))
 
-  (setq-default
-   org-refile-use-outline-path 'file
-   org-refile-allow-creating-parent-nodes 'confirm
-   org-outline-path-complete-in-steps nil
-   org-refile-targets '(("~/Dropbox/org/sprint-today.org" :maxlevel . 1)
-                        ("~/Dropbox/org/sprint-backlog.org" :maxlevel . 1)
-                        ("~/Dropbox/org/sprint-icebox.org" :maxlevel . 1)))
-
   (with-eval-after-load 'org
-    (setq-default
-     org-directory "~/Dropbox/org"
-     org-default-blog-file "~/Dropbox/org/blog/blog.org"
-     org-default-notes-file "~/Dropbox/org/sprint-today.org"
-     org-default-backlog-file "~/Dropbox/org/sprint-backlog.org"
-     org-archive-location "~/Dropbox/org/archive.org::* %s")
-
     (setq-default
      org-todo-keywords
      '((sequence "TODO(t)"
@@ -529,10 +435,6 @@
                  "|"
                  "DONE(d)"
                  "CANCELLED(c)")))
-
-    ;; Keybindings
-    (evil-define-key 'hybrid evil-org-mode-map (kbd "C-H-<return>") 'org-insert-subheading)
-
     ;; Save clocks
     (setq-default org-clock-persist t)
     (org-clock-persistence-insinuate)
@@ -569,10 +471,7 @@
       "a j d" #'org-journal-new-date-entry)
     (spacemacs/declare-prefix "a j" "org-journal")
 
-    (setq-default org-journal-find-file #'find-file
-                  org-journal-file-format "%Y%m%d"
-                  org-journal-file-type 'monthly)
-
+    ;; mode hooks
     (add-hook 'org-journal-mode-hook #'org-mode)
     (add-hook 'org-capture-mode-hook #'org-align-tags)
 
@@ -589,11 +488,6 @@
 
     (add-to-list 'after-change-functions
                  #'org-capture-marginalia-display-char-countdown)
-
-    ;; ox-hugo
-    (setq-default
-     org-hugo-export-with-toc nil
-     org-hugo-export-with-section-numbers nil)
 
     ;; Org capture templates
     (setq-default
@@ -639,7 +533,6 @@
 
        ("j" "Journal entry" plain (function org-journal-find-location)
         "** %(format-time-string org-journal-time-format)%^{Title}\n%i%?" :empty-lines 1)))
-
 
     ;; Org Babel languages
     (org-babel-do-load-languages
@@ -798,12 +691,6 @@ Only equations at the beginning of a line are justified."
     (setq-default conda-anaconda-home conda-path
                   exec-path (cons python-path exec-path)))
 
-  (setq-default python-guess-indent nil
-                python-indent-offset 4
-                python-shell-completion-native-enable t
-                python-shell-interpreter "ipython"
-                python-shell-interpreter-args "-i --simple-prompt")
-
   ;; (add-hook 'python-mode-hook #'elpy-enable)
   (add-hook 'python-mode-hook #'anaconda-mode)
   (add-hook 'python-mode-hook #'anaconda-eldoc-mode)
@@ -820,7 +707,6 @@ Only equations at the beginning of a line are justified."
                                     :test-prefix "test_"
                                     :test-suffix "_test")
 
-  (setq-default python-format-on-save t)
   (defun python-before-save-hooks ()
     (when (and python-format-on-save
                (eq major-mode 'python-mode))
@@ -837,18 +723,6 @@ Only equations at the beginning of a line are justified."
   (defun switch-to-rspec-compilation-buffer ()
     "Switch to the RSpec compilation buffer."
     (switch-to-buffer "*rspec-compilation*"))
-
-  (setq-default
-   ruby-format-on-save t
-   ruby-current-line nil
-   rspec-use-opts-file-when-available nil
-   rspec-autosave-buffer t
-   rspec-before-verification-hook #'switch-to-rspec-compilation-buffer
-   rspec-use-spring-when-possible nil
-   rspec-use-bundler-when-possible t
-   rspec-spec-command "rspec"
-   ruby-test-rspec-options '()
-   rspec-command-options "--format progress --no-profile")
 
   (defun rails--find-related-file (path)
     "Toggle between controller implementation and request spec.
@@ -1031,12 +905,6 @@ Fall back to controller spec."
 
 (defun config/web-mode ()
   "Configure web-mode (for CSS, HTML)."
-  (setq-default css-indent-offset 2
-                web-mode-markup-indent-offset 4
-                web-mode-css-indent-offset 2
-                web-mode-attr-indent-offset 2
-                web-mode-code-indent-offset 2)
-
   (with-eval-after-load 'web-mode
     (if (boundp 'web-mode-indentation-params)
         (progn

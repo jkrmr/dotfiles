@@ -61,7 +61,6 @@
 (config/flycheck)
 (config/google-translate)
 (config/gtags)
-(config/helm)
 (config/helpful)
 (config/highlight-lines-at-length 80)
 (config/ido)
@@ -70,7 +69,6 @@
 (config/ligatures)
 (config/lisps)
 (config/markdown-mode)
-(config/modeline)
 (config/org-latex-preview)
 (config/org-mode)
 (config/projectile)
@@ -197,7 +195,6 @@
 (editorconfig-mode 1)
 
 ;; Post-config
-(config/diminish)
 (config/prettify-symbols)
 (config/company)
 

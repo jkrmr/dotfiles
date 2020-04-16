@@ -407,11 +407,17 @@ This function should only modify configuration layer settings."
      dap
      (dash :variables
            helm-dash-docset-newpath "~/Library/Application Support/Dash/DocSets/")
-     deft
+     (deft :variables
+       deft-auto-save-interval 10
+       deft-default-extension "org"
+       deft-directory "~/Dropbox/deft"
+       deft-extensions '("txt" "text" "tex" "md" "markdown" "org")
+       deft-recursive t)
      django
      (docker :variables
              docker-dockerfile-backend 'lsp)
-     elixir
+     (elixir :variables
+             flycheck-elixir-credo-strict t)
      (elm :variables
           elm-sort-imports-on-save t
           elm-format-on-save t
@@ -435,20 +441,32 @@ This function should only modify configuration layer settings."
          gofmt-command "goimports")
      graphviz
      (gtags :variables
-            gtags-enable-by-default t)
+            gtags-enable-by-default t
+            ;; Add GNU Global as an xref-backend
+            xref-backend-functions '(ggtags--xref-backend
+                                     elisp--xref-backend
+                                     gxref-xref-backend
+                                     etags--xref-backend))
      haskell
      (helm :variables
            completion-styles '(helm-flex)
            helm-candidate-number-limit 100
            helm-completion-style 'emacs
+           helm-display-header-line nil
            helm-enable-auto-resize t
-           helm-no-header nil
+           helm-no-header t
            helm-position 'bottom
            helm-use-fuzzy 'always
            spacemacs-helm-rg-max-column-number 512)
-     helpful
+     (helpful :variables
+              helpful-max-buffers 1)
      (html :variables
-           web-fmt-tool 'prettier)
+           css-indent-offset 2
+           web-fmt-tool 'prettier
+           web-mode-attr-indent-offset 2
+           web-mode-code-indent-offset 2
+           web-mode-css-indent-offset 2
+           web-mode-markup-indent-offset 4)
      (ibuffer :variables
               ibuffer-group-buffers-by 'projects)
      imenu-list
@@ -460,8 +478,13 @@ This function should only modify configuration layer settings."
                  javascript-import-tool 'import-js
                  javascript-lsp-linter t
                  javascript-repl 'nodejs
+                 js-indent-level 2
+                 js2-basic-offset 2
                  js2-mode-show-parse-errors nil
                  js2-mode-show-strict-warnings nil
+                 js2-strict-missing-semi-warning nil
+                 prettier-js-command "prettier-standard"
+                 prettier-js-show-errors 'echo
                  node-add-modules-path t)
      (latex :variables
             latex-enable-auto-fill t
@@ -475,17 +498,35 @@ This function should only modify configuration layer settings."
           lsp-ui-sideline-ignore-duplicate t
           lsp-ui-sideline-show-symbol t)
      (markdown :variables
+               markdown-asymmetric-header t
                markdown-live-preview-engine 'vmd)
      multiple-cursors
      nginx
      (org :variables
+          org-agenda-files '("~/Dropbox/org")
+          org-agenda-window-setup 'current-window
+          org-archive-location "~/Dropbox/org/archive.org::* %s"
+          org-default-backlog-file "~/Dropbox/org/sprint-backlog.org"
+          org-default-blog-file "~/Dropbox/org/blog/blog.org"
+          org-default-notes-file "~/Dropbox/org/sprint-today.org"
+          org-directory "~/Dropbox/org"
           org-enable-bootstrap-support t
           org-enable-github-support t
           org-enable-hugo-support t
           org-enable-org-journal-support t
           org-enable-reveal-js-support t
+          org-hugo-export-with-section-numbers nil
+          org-hugo-export-with-toc nil
           org-journal-dir "~/Dropbox/org/journal"
-          org-projectile-file "TODOS.org")
+          org-journal-file-format "%Y%m%d"
+          org-journal-file-type 'monthly
+          org-journal-find-file #'find-file
+          org-outline-path-complete-in-steps nil
+          org-projectile-file "TODOS.org"
+          org-refile-allow-creating-parent-nodes 'confirm
+          org-refile-targets '(("~/Dropbox/org/sprint-today.org" :maxlevel . 1)
+                               ("~/Dropbox/org/sprint-backlog.org" :maxlevel . 1))
+          org-refile-use-outline-path 'file)
      (osx :variables
           osx-command-as 'hyper
           osx-control-as 'control
@@ -494,27 +535,48 @@ This function should only modify configuration layer settings."
           osx-right-command-as 'left
           osx-right-control-as 'left
           osx-right-option-as 'none)
-     parinfer
+     (parinfer :variables
+               parinfer-extensions '(defaults
+                                      pretty-parens
+                                      evil
+                                      paredit
+                                      smart-tab
+                                      smart-yank))
      pdf
      phoenix
      prettier
      prodigy
      (python :variables
              python-backend 'lsp
-             python-lsp-server 'mspyls
+             python-fill-docstring-style 'django
              python-format-on-save t
              python-formatter 'yapf
-             python-fill-docstring-style 'django
+             python-guess-indent nil
+             python-indent-offset 4
+             python-lsp-server 'mspyls
              python-save-before-test t
+             python-shell-completion-native-enable t
+             python-shell-interpreter "ipython"
+             python-shell-interpreter-args "-i --simple-prompt"
              python-sort-imports-on-save t
              python-test-runner 'pytest)
      react
      restclient
      (ruby :variables
-           ruby-enable-enh-ruby-mode nil
+           rspec-autosave-buffer t
+           rspec-before-verification-hook #'switch-to-rspec-compilation-buffer
+           rspec-command-options "--format progress --no-profile"
+           rspec-spec-command "rspec"
+           rspec-use-bundler-when-possible t
+           rspec-use-opts-file-when-available nil
+           rspec-use-spring-when-possible nil
            ruby-backend 'robe
-           ruby-version-manager nil
-           ruby-test-runner 'rspec)
+           ruby-current-line nil
+           ruby-enable-enh-ruby-mode nil
+           ruby-format-on-save nil
+           ruby-test-rspec-options '()
+           ruby-test-runner 'rspec
+           ruby-version-manager nil)
      ruby-on-rails
      rust
      search-engine
@@ -534,6 +596,9 @@ This function should only modify configuration layer settings."
           sql-capitalize-keywords t
           sql-auto-indent t)
      (syntax-checking :variables
+                      flycheck-disabled-checkers '(javascript-jshint
+                                                   ruby-reek
+                                                   markdown-mdl)
                       syntax-checking-enable-by-default t
                       syntax-checking-enable-tooltips t)
      theming
