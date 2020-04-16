@@ -100,6 +100,7 @@ Do not request confirmation for buffers outside the current perspective."
       (when (get-buffer journal)
         (kill-buffer journal))
 
+      ;; create buffers
       (find-file (expand-file-name org-default-notes-file))
       (rename-buffer today)
       (find-file (expand-file-name org-default-backlog-file))
@@ -109,15 +110,21 @@ Do not request confirmation for buffers outside the current perspective."
       (delete-other-windows)
 
       (switch-to-buffer today)
+      (purpose-toggle-window-buffer-dedicated)
+
       (split-window-right-and-focus)
       (switch-to-buffer backlog)
+      (purpose-toggle-window-buffer-dedicated)
+
       (split-window-below-and-focus)
       (switch-to-buffer journal)
+      (purpose-toggle-window-buffer-dedicated)
       (save-buffer)
 
       (select-window (get-buffer-window today))
       (split-window-below-and-focus)
       (org-agenda-list)
+      (purpose-toggle-window-buffer-dedicated)
 
       (select-window (get-buffer-window today)))))
 
@@ -144,8 +151,10 @@ Do not request confirmation for buffers outside the current perspective."
     (split-window-right-and-focus)
     (org-projectile/goto-todos)
     (rename-buffer (format "[%s]" dotfiles))
+    (purpose-toggle-window-buffer-dedicated)
     (split-window-below-and-focus)
     (find-file org-default-notes-file)
+    (purpose-toggle-window-buffer-dedicated)
     (enlarge-window-horizontally (-  (/ (window-body-width) 2) (window-body-width)))))
 
 ;; Org mode
