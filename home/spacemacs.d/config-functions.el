@@ -856,6 +856,15 @@ Fall back to controller spec."
     (interactive (list shell-default-term-shell)))
   (ad-activate #'ansi-term))
 
+(defun config/smartparens ()
+  "Configure smartparens."
+  (setq-default sp-ignore-modes-list
+                '(minibuffer-inactive-mode
+                  rjsx-mode
+                  js2-mode
+                  typescript-mode
+                  typescript-tsx-mode)))
+
 (defun config/underscore-to-word-char-list ()
   "Add underscore to word char list in prog and other modes."
   (defun add-underscore-to-word-chars ()

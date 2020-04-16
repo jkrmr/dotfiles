@@ -79,6 +79,7 @@
 (config/semantic)
 (config/set-terminal-emacs-theme)
 (config/shell-buffers)
+(config/smartparens)
 (config/underscore-to-word-char-list)
 (config/version-control)
 (config/web-beautify)
