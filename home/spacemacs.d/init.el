@@ -698,7 +698,9 @@ configuration."
   (load "overrides")
 
   ;; set customizations, invoke customization functions
-  (load "customizations"))
+  (load "customizations")
+
+  (message-banner "done configuring emacs"))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variables.

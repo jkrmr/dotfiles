@@ -157,6 +157,12 @@ Do not request confirmation for buffers outside the current perspective."
     (purpose-toggle-window-buffer-dedicated)
     (enlarge-window-horizontally (-  (/ (window-body-width) 2) (window-body-width)))))
 
+(defun message-banner (msg)
+  "Print MSG banner to the messages buffer."
+  (let ((template "%s [%s] %s")
+        (dashes (make-string 25 ?-)))
+    (message (format template dashes msg dashes))))
+
 ;; Org mode
 
 (defun org-capture-deft-new-file ()
