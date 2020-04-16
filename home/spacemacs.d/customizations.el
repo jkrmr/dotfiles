@@ -140,7 +140,10 @@
 
 (with-eval-after-load 'evil
   (if (boundp 'evil-hybrid-state-map)
-      (define-key evil-hybrid-state-map (kbd "s-v") #'evil-paste-after)
+      (progn
+        (define-key evil-hybrid-state-map (kbd "s-v") #'evil-paste-after)
+        ;; disable which-key keybinding
+        (define-key evil-hybrid-state-map (kbd "C-j") nil))
     (error "Failed setting evil hybrid maps")))
 
 ;; org mode
