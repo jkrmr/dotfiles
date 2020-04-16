@@ -443,17 +443,17 @@ disable r # disable zsh's r
 #-------------------------------------------------------------
 # Autocompletion setup scripts
 #-------------------------------------------------------------
+[[ -f "$HOME/Library/Caches/heroku/autocomplete/zsh_setup" ]] && \
+    . "$HOME/Library/Caches/heroku/autocomplete/zsh_setup"
+
+[[ -f "$HOME/.anaconda/etc/profile.d/conda.sh" ]] && \
+    . "$HOME/.anaconda/etc/profile.d/conda.sh"
+
 [[ -f "$HOME/.fzf.zsh" ]] && \
     . "$HOME/.fzf.zsh"
 
 [[ -f "$HOMEBREW_PREFIX/opt/asdf/asdf.sh" ]] && \
     . "$HOMEBREW_PREFIX/opt/asdf/asdf.sh"
-
-[[ -f "$HOME/.anaconda/etc/profile.d/conda.sh" ]] && \
-    . "$HOME/.anaconda/etc/profile.d/conda.sh"
-
-[[ -f "$HOME/Library/Caches/heroku/autocomplete/zsh_setup" ]] && \
-    . "$HOME/Library/Caches/heroku/autocomplete/zsh_setup"
 
 [[ -f "$HOME/.zshrc.local" ]] && \
     . "$HOME/.zshrc.local"
