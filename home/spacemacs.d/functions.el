@@ -92,52 +92,61 @@ Do not request confirmation for buffers outside the current perspective."
     (spacemacs/layout-goto-default)
     (delete-other-windows)
 
-    ;; Kill the journal buffer, since it might need to visit a new file
-    (when (get-buffer "[journal]")
-      (kill-buffer "[journal]"))
+    (let ((journal "[journal]")
+          (today "[today]")
+          (backlog "[backlog]"))
 
-    (find-file (expand-file-name org-default-notes-file))
-    (rename-buffer "[sprint]")
-    (find-file (expand-file-name org-default-backlog-file))
-    (rename-buffer "[backlog]")
-    (org-journal-today)
-    (rename-buffer "[journal]")
-    (delete-other-windows)
+      ;; Kill the journal buffer, since it might need to visit a new file
+      (when (get-buffer journal)
+        (kill-buffer journal))
 
-    (switch-to-buffer "[sprint]")
-    (split-window-right-and-focus)
-    (switch-to-buffer "[backlog]")
-    (split-window-below-and-focus)
-    (switch-to-buffer "[journal]")
-    (save-buffer)
+      (find-file (expand-file-name org-default-notes-file))
+      (rename-buffer today)
+      (find-file (expand-file-name org-default-backlog-file))
+      (rename-buffer backlog)
+      (org-journal-today)
+      (rename-buffer journal)
+      (delete-other-windows)
 
-    (select-window (get-buffer-window "[sprint]"))
-    (split-window-below-and-focus)
-    (org-agenda-list)
-    (rename-buffer "[agenda]")
+      (switch-to-buffer today)
+      (split-window-right-and-focus)
+      (switch-to-buffer backlog)
+      (split-window-below-and-focus)
+      (switch-to-buffer journal)
+      (save-buffer)
 
-    (select-window (get-buffer-window "[sprint]"))))
+      (select-window (get-buffer-window today))
+      (split-window-below-and-focus)
+      (org-agenda-list)
+
+      (select-window (get-buffer-window today)))))
 
 (defun layouts-blog ()
   "Set up blog layout."
   (interactive)
-  (progn
-    (persp-switch "blog")
+  (let ((blog "blog"))
+    (persp-switch blog)
     (delete-other-windows)
     (if (and (boundp 'org-default-blog-file) org-default-blog-file)
         (dired (file-name-directory (expand-file-name org-default-blog-file)))
       (error "Org blog path `org-default-blog-file' not set"))
-    (rename-buffer "[blog]")
+    (rename-buffer (format "[%s]" blog))
     (writeroom-mode)))
 
 (defun layouts-dotfiles ()
   "Set up dotfiles layout."
   (interactive)
-  (progn
-    (persp-switch "dotfiles")
+  (let ((dotfiles "dotfiles")
+        (dotfiles-dir "~/.spacemacs.d/"))
+    (persp-switch dotfiles)
     (delete-other-windows)
-    (find-file "~/.spacemacs.d/")
-    (rename-buffer "[dotfiles]")))
+    (find-file dotfiles-dir)
+    (split-window-right-and-focus)
+    (org-projectile/goto-todos)
+    (rename-buffer (format "[%s]" dotfiles))
+    (split-window-below-and-focus)
+    (find-file org-default-notes-file)
+    (enlarge-window-horizontally (-  (/ (window-body-width) 2) (window-body-width)))))
 
 ;; Org mode
 
