@@ -49,7 +49,6 @@
 
 (config/amx)
 (config/code-folding)
-(config/company)
 (config/compilation-buffers)
 (config/copy-as-format)
 (config/deft)
@@ -89,12 +88,6 @@
 (config/window-splitting)
 (config/yankee)
 (config/yasnippet)
-
-;; Post-config
-(config/diminish)
-(config/prettify-symbols)
-
-(editorconfig-mode 1)
 
 ;; compilation buffer
 (setq-default compilation-scroll-output 'first-error)
@@ -201,6 +194,12 @@
 (spacemacs/enable-transparency)
 (add-hook 'after-make-frame-functions #'spacemacs/enable-transparency)
 (beacon-mode +1)
+(editorconfig-mode 1)
+
+;; Post-config
+(config/diminish)
+(config/prettify-symbols)
+(config/company)
 
 (provide 'customizations)
 ;;; customizations.el ends here

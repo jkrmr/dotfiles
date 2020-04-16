@@ -47,48 +47,35 @@
 
 (defun config/company ()
   "Configure company auto-completion mode."
-  (defun company-mode-settings ()
-    "Set company backends and keybindings."
-    (progn
-      (if (boundp 'company-backends)
-          (progn
-            (add-to-list 'company-backends '(company-capf :with company-yasnippet))
-            (add-to-list 'company-backends '(company-bbdb :with company-yasnippet))
-            (add-to-list 'company-backends '(company-clang :with company-yasnippet))
-            (add-to-list 'company-backends '(company-cmake :with company-yasnippet))
-            (add-to-list 'company-backends '(company-eclim :with company-yasnippet))
-            (add-to-list 'company-backends '(company-oddmuse :with company-yasnippet))
-            (add-to-list 'company-backends '(company-xcode :with company-yasnippet))
-            (add-to-list 'company-backends '(company-robe :with company-capf company-yasnippet))
-            (add-to-list 'company-backends '(company-anaconda :with company-jedi company-capf company-yasnippet))
-            (add-to-list 'company-backends '(company-tern :with company-yasnippet))
-            nil)
-        (error "Could not add to `company-backends'"))
-
-      (setq-default
-       ;; Number the candidates (use M-1, M-2 etc to select completions).
-       company-show-numbers t
-       ;; Trigger completion immediately.
-       company-box-doc-delay 0.1
-       company-tooltip-idle-delay 0.1)
-
-      (if (boundp 'company-active-map)
-          (progn
-            (define-key company-active-map (kbd "C-h") #'company-show-doc-buffer)
-            (define-key company-active-map (kbd "C-w") #'company-show-location)
-            (define-key company-active-map (kbd "C-r") #'company-search-candidates)
-            (define-key company-active-map (kbd "C-f") #'company-filter-candidates)
-            (define-key company-active-map [return] #'company-complete-selection)
-            (define-key company-active-map (kbd "RET") #'company-complete-selection)
-            (define-key company-active-map [tab] #'company-complete-selection)
-            (define-key company-active-map (kbd "TAB") #'company-complete-selection)
-            (define-key company-active-map [backtab] #'spacemacs//company-complete-common-or-cycle-backward)
-            (define-key company-active-map (kbd "S-TAB") #'spacemacs//company-complete-common-or-cycle-backward))
-        (error "Could not define `company-active-map' keybindings"))
-      nil))
-
-  (add-hook 'company-mode-hook #'company-mode-settings)
-  nil)
+  (with-eval-after-load 'company
+    (if (boundp 'company-backends)
+        (progn
+          (add-to-list 'company-backends '(company-capf :with company-yasnippet))
+          (add-to-list 'company-backends '(company-bbdb :with company-yasnippet))
+          (add-to-list 'company-backends '(company-clang :with company-yasnippet))
+          (add-to-list 'company-backends '(company-cmake :with company-yasnippet))
+          (add-to-list 'company-backends '(company-eclim :with company-yasnippet))
+          (add-to-list 'company-backends '(company-oddmuse :with company-yasnippet))
+          (add-to-list 'company-backends '(company-xcode :with company-yasnippet))
+          (add-to-list 'company-backends '(company-robe :with company-capf company-yasnippet))
+          (add-to-list 'company-backends '(company-anaconda :with company-jedi company-capf company-yasnippet))
+          (add-to-list 'company-backends '(company-tern :with company-yasnippet))
+          (message-banner "backends added"))
+      (error "Could not add to `company-backends'"))
+    (if (boundp 'company-active-map)
+        (progn
+          (define-key company-active-map (kbd "C-h") #'company-show-doc-buffer)
+          (define-key company-active-map (kbd "C-w") #'company-show-location)
+          (define-key company-active-map (kbd "C-r") #'company-search-candidates)
+          (define-key company-active-map (kbd "C-f") #'company-filter-candidates)
+          (define-key company-active-map [return] #'company-complete-selection)
+          (define-key company-active-map (kbd "RET") #'company-complete-selection)
+          (define-key company-active-map [tab] #'company-complete-selection)
+          (define-key company-active-map (kbd "TAB") #'company-complete-selection)
+          (define-key company-active-map [backtab] #'spacemacs//company-complete-common-or-cycle-backward)
+          (define-key company-active-map (kbd "S-TAB") #'spacemacs//company-complete-common-or-cycle-backward)
+          (message-banner "company map set"))
+      (error "Could not define `company-active-map' keybindings"))))
 
 (defun config/compilation-buffers ()
   "Configure compilation buffer settings."
