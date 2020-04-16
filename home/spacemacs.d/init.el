@@ -592,7 +592,7 @@ This function should only modify configuration layer settings."
      toc-org
      writeroom-mode
      (yankee :location (recipe :fetcher github :repo "jmromer/yankee.el" :branch "develop"))
-     nil)
+     )
 
 
    dotspacemacs-frozen-packages
@@ -600,7 +600,7 @@ This function should only modify configuration layer settings."
    dotspacemacs-excluded-packages
    '(
      importmagic
-     nil)
+     )
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
@@ -697,9 +697,8 @@ configuration."
   ;; define overrides of package methods
   (load "overrides")
 
-  ;; Set customizations, invoke customization functions
-  (load "customizations")
-  nil)
+  ;; set customizations, invoke customization functions
+  (load "customizations"))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variables.

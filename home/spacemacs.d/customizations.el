@@ -42,8 +42,7 @@
    org-pretty-entities t
    org-src-tab-acts-natively t
    org-startup-indented t
-   spaceline-org-clock-p t)
-  nil)
+   spaceline-org-clock-p t))
 
 ;; Pre-config
 (config/frames)
@@ -151,8 +150,7 @@
         (define-key org-mode-map (kbd "s-j") #'org-occur)
         (define-key org-mode-map (kbd "s-F") #'avy-org-goto-heading-timer)
         (define-key org-mode-map (kbd "s-r") #'avy-org-refile-as-child)
-        (define-key org-mode-map (kbd "s-<return>") #'evil-org-org-insert-heading-respect-content-below)
-        nil)
+        (define-key org-mode-map (kbd "s-<return>") #'evil-org-org-insert-heading-respect-content-below))
     (error "Failed setting org mode super-key keybindings")))
 
 ;; cycle theme

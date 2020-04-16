@@ -457,10 +457,8 @@
     (if (boundp 'markdown-mode-map)
         (progn
           (define-key markdown-mode-map (kbd "C-j") #'markdown-next-visible-heading)
-          (define-key markdown-mode-map (kbd "C-k") #'markdown-previous-visible-heading)
-          nil)
-      (error "Failed setting markdown mode super-key keybindings")))
-  nil)
+          (define-key markdown-mode-map (kbd "C-k") #'markdown-previous-visible-heading))
+      (error "Failed setting markdown mode super-key keybindings"))))
 
 (defun config/modeline ()
   "Configure the modeline."
@@ -845,8 +843,7 @@ Only equations at the beginning of a line are justified."
         (py-isort-buffer)
         (yapfify-buffer))))
 
-  (add-hook 'before-save-hook #'python-before-save-hooks)
-  nil)
+  (add-hook 'before-save-hook #'python-before-save-hooks))
 
 (defun config/ruby ()
   "Configure packages for Ruby mode."
@@ -1084,10 +1081,8 @@ Provides facilities for yanking formatted code snippets."
   (if (boundp 'evil-hybrid-state-map)
       (progn
         (define-key evil-hybrid-state-map (kbd "C-;") nil)
-        (define-key evil-hybrid-state-map (kbd "C-; C-;") #'company-yasnippet)
-        nil)
-    (error "Could not set yasnippet keybindings"))
-  nil)
+        (define-key evil-hybrid-state-map (kbd "C-; C-;") #'company-yasnippet))
+    (error "Could not set yasnippet keybindings")))
 
 (provide 'config-functions)
 ;;; config-functions.el ends here
