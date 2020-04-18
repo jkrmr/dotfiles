@@ -50,7 +50,6 @@
 (config/amx)
 (config/compilation-buffers)
 (config/copy-as-format)
-(config/deft)
 (config/elixir)
 (config/elm)
 (config/evil-collection)

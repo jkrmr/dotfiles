@@ -413,7 +413,8 @@ This function should only modify configuration layer settings."
        deft-default-extension "org"
        deft-directory "~/Dropbox/deft"
        deft-extensions '("txt" "text" "tex" "md" "markdown" "org")
-       deft-recursive t)
+       deft-recursive t
+       deft-use-filter-string-for-filename t)
      django
      (docker :variables
              docker-dockerfile-backend 'lsp)

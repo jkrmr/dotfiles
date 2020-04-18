@@ -67,19 +67,6 @@
    copy-as-format-asciidoc-include-file-name t
    copy-as-format-default "github"))
 
-(defun config/deft ()
-  "Configure deft notes browser."
-  (spacemacs/set-leader-keys
-    "a n" nil
-    "a n RET" #'spacemacs/deft
-    "a n f" #'deft-find-file
-    "a n n" #'deft-new-file-named
-    "a n s" #'org-notes-open-sprint
-    "a n b" #'org-notes-open-backlog)
-  (spacemacs/declare-prefix "a n" "notes")
-  (spacemacs/set-leader-keys-for-major-mode 'deft-mode
-    "g" #'deft-refresh))
-
 (defun config/elixir ()
   "Configure Elixir mode."
   (projectile-register-project-type 'elixir-mix '("mix.exs")
