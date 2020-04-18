@@ -62,8 +62,7 @@
   "H b" #'hs-hide-block
   "H B" #'hs-show-block
   "H l" #'hs-hide-level
-  "H L" #'hs-show-level
-  "H r" #'hs-hide-level-recursive)
+  "H L" #'hs-hide-level-recursive)
 
 ;; cycle theme
 (spacemacs/set-leader-keys "T n" 'r/cycle-theme)
