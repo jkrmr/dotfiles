@@ -465,7 +465,7 @@ If not in a project, return the current `default-dir'."
   (if (eq 'magit-status-mode
           (buffer-local-value 'major-mode (current-buffer)))
       (magit-mode-bury-buffer)
-    (magit-status)))
+    (magit-status-setup-buffer)))
 
 (defun rerun-term-command-right ()
    "Re-issue previously issued command in terminal split to the right."
