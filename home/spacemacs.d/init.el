@@ -407,7 +407,7 @@ This function should only modify configuration layer settings."
      csv
      dap
      (dash :variables
-           helm-dash-docset-newpath "~/Library/Application Support/Dash/DocSets/")
+           dash-docs-docset-newpath "~/Library/Application Support/Dash/DocSets/")
      (deft :variables
        deft-auto-save-interval 10
        deft-default-extension "org"
