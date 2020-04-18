@@ -450,7 +450,7 @@ This function should only modify configuration layer settings."
                                      etags--xref-backend))
      haskell
      (helm :variables
-           completion-styles '(helm-flex)
+           completion-styles '(flex)
            helm-candidate-number-limit 100
            helm-completion-style 'emacs
            helm-display-header-line nil
