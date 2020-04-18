@@ -785,9 +785,10 @@ Fall back to controller spec."
   (spacemacs/set-leader-keys "\'" #'shell-below-full-span)
 
   ;; Use utf8
-  (defun my-term-use-utf8 ()
+  (defun term-use-utf8 ()
+    (interactive)
     (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix))
-  (add-hook 'term-exec-hook #'my-term-use-utf8)
+  (add-hook 'term-exec-hook #'term-use-utf8)
 
   ;; ansi-term: always use default shell
   (defadvice ansi-term (before force-bash)
