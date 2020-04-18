@@ -442,46 +442,35 @@
     (setq-default
      org-capture-templates
      '(
-       ("c" "Capture")
-       ("ct" "Task (Today's Sprint)" entry (file+headline org-default-notes-file "Today")
-        "** TODO %?\nSCHEDULED: %t\n %U" :empty-lines 1)
-
-       ("cb" "Backlog" entry (file+headline org-default-backlog-file "Captures")
+       ("t" "Todo" entry (file+headline org-default-backlog-file "Captures")
         "** %?\n%U" :empty-lines 1)
 
-       ("ca" "Annotation" entry (file+headline org-default-backlog-file "Captures")
-        "** %?\n%a\n%U" :empty-lines 1)
-
-       ("cd" "Deadline" entry (file+headline org-default-backlog-file "Captures")
-        "** %?\nDEADLINE: %^t\n %U" :empty-lines 1)
-
-       ("cp" "Paste from clipboard" entry (file+headline org-default-backlog-file "Captures")
-        "** %^{Title} %^G\n%?\n%c")
-
-       ("b" "Blog")
-       ("bp" "Post" entry (file+headline "blog/blog.org" "Blog")
-        (function org-hugo-new-blog-capture-template) :empty-lines 1 :prepend t)
-
-       ("bn" "Notes" entry (file+headline "blog/notes.org" "Notes")
-        (function org-hugo-new-blog-capture-template) :empty-lines 1 :prepend t)
-
-       ("bm" "Marginalia" entry (file+headline "blog/marginalia.org" "Marginalia")
-        (function org-hugo-new-marginalia-capture-template) :empty-lines 1 :prepend t)
-
-       ("bc" "Commonplace" entry (file+headline "blog/commonplaces.org" "Commonplaces")
+       ("c" "Commonplace" entry (file+headline "blog/commonplaces.org" "Commonplaces")
         (function org-hugo-new-commonplace-capture-template) :empty-lines 1 :prepend t)
+
+       ("m" "Marginalia" entry (file+headline "blog/marginalia.org" "Marginalia")
+        (function org-hugo-new-marginalia-capture-template) :empty-lines 1 :prepend t)
 
        ("s" "Standup" plain (file+olp+datetree "~/Dropbox/org/journal-standup.org")
         "     %?")
 
+       ("r" "Reference" entry (file+headline org-default-backlog-file "Captures")
+        "** %?\n%a\n%U" :empty-lines 1)
+
+       ("n" "Notes" entry (file+headline "blog/notes.org" "Notes")
+        (function org-hugo-new-blog-capture-template) :empty-lines 1 :prepend t)
+
+       ("p" "Blog Post" entry (file+headline "blog/blog.org" "Blog")
+        (function org-hugo-new-blog-capture-template) :empty-lines 1 :prepend t)
+
        ("h" "Health / Diet journal" entry (file+olp+datetree "~/Dropbox/org/journal-health.org")
         "**** [%<%l:%M %p>] %^{Entry} %^g" :immediate-finish t)
 
-       ("n" "Note" plain (function org-capture-deft-new-file)
-        "%(format \"#+TITLE: %s\n#+DATE: %s\n\" org-capture-deft--title %U)\n*  %?")
-
        ("j" "Journal entry" plain (function org-journal-find-location)
-        "** %(format-time-string org-journal-time-format)%^{Title}\n%i%?" :empty-lines 1)))
+        "** %(format-time-string org-journal-time-format)%^{Title}\n%i%?" :empty-lines 1)
+
+       ("v" "Paste from clipboard" entry (file+headline org-default-backlog-file "Captures")
+        "** %^{Title} %^G\n%?\n%c")))
 
     ;; Org Babel languages
     (org-babel-do-load-languages
