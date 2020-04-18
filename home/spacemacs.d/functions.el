@@ -429,7 +429,9 @@ If not in a project, return the current `default-dir'."
   (let ((msg-window (get-buffer-window "*Messages*")))
     (if msg-window
         (popwin:close-popup-window)
-      (popwin:messages))))
+      (progn
+        (popwin:messages)
+        (popwin:stick-popup-window)))))
 
 (defun toggle-home-layout ()
   "Toggle the home layout."
