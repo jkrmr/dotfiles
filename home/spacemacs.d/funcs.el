@@ -144,18 +144,32 @@ Do not request confirmation for buffers outside the current perspective."
   "Set up dotfiles layout."
   (interactive)
   (let ((dotfiles "dotfiles")
+        (today "today")
         (dotfiles-dir "~/.spacemacs.d/"))
     (persp-switch dotfiles)
     (find-file dotfiles-dir)
-    (delete-other-windows)
-    (split-window-right-and-focus)
-    (org-projectile/goto-todos)
-    (rename-buffer (format "[%s]" dotfiles))
-    (purpose-toggle-window-buffer-dedicated)
-    (split-window-below-and-focus)
-    (find-file org-default-notes-file)
-    (purpose-toggle-window-buffer-dedicated)
-    (enlarge-window-horizontally (-  (/ (window-body-width) 2) (window-body-width)))))
+    (set-up-drawer-windows dotfiles today)))
+
+(defun set-up-drawer-windows (&optional top-name bottom-name)
+  "Open 'todo' drawer windows on right hand side top and bottom.
+If passed, name them TOP-NAME and BOTTOM-NAME, respectively."
+ (interactive)
+ (delete-other-windows)
+ (split-window-right-and-focus)
+ (org-projectile/goto-todos)
+ (purpose-toggle-window-buffer-dedicated)
+ (when top-name
+   (rename-buffer (format "[%s]" top-name)))
+ (goto-line 1)
+
+ (split-window-below-and-focus)
+ (find-file org-default-notes-file)
+ (purpose-toggle-window-buffer-dedicated)
+ (goto-line 1)
+ (when bottom-name
+   (rename-buffer (format "[%s]" bottom-name)))
+
+ (enlarge-window-horizontally (-  (/ (window-body-width) 2) (window-body-width))))
 
 (defun message-banner (msg)
   "Print MSG banner to the messages buffer."
@@ -546,4 +560,4 @@ If not in a project, return the current `default-dir'."
           (org-mode)))))
 
 (provide 'funcs)
-;;; functions.el ends here
+;;; funcs.el ends here
