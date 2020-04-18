@@ -392,6 +392,7 @@ This function should only modify configuration layer settings."
                       auto-completion-tab-key-behavior 'complete
                       auto-completion-use-company-box t
                       company-box-doc-delay 0.5
+                      company-idle-delay 0.0
                       company-minimum-prefix-length 1
                       company-selection-wrap-around t
                       company-show-numbers t
@@ -490,9 +491,12 @@ This function should only modify configuration layer settings."
             latex-enable-auto-fill t
             latex-enable-folding t)
      (lsp :variables
+          read-process-output-max (* 1024 1024)
+          lsp-idle-delay 0.500
           lsp-navigation 'both
-          lsp-ui-remap-xref-keybindings t
+          lsp-prefer-capf t
           lsp-ui-doc-enable t
+          lsp-ui-remap-xref-keybindings t
           lsp-ui-doc-include-signature t
           lsp-ui-sideline-enable t
           lsp-ui-sideline-ignore-duplicate t
@@ -668,8 +672,9 @@ This function should only modify configuration layer settings."
    '()
    dotspacemacs-excluded-packages
    '(
-     importmagic
-     )
+     company-lsp
+     importmagic)
+
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
