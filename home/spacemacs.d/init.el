@@ -762,6 +762,8 @@ This function is called only while dumping Spacemacs configuration.")
   "Configuration for user code:
 This function is called at the very end of Spacemacs startup, after layer
 configuration."
+  (require 'window-purpose) ;; TEMP: workaround for Emacs 28
+
   ;; define interactive functions
   (load "functions")
 
