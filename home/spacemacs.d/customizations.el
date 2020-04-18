@@ -136,27 +136,6 @@
         (define-key evil-hybrid-state-map (kbd "C-j") nil))
     (error "Failed setting evil hybrid maps")))
 
-(defun org-insert-heading-above ()
-  "Insert heading above the current one."
-  (interactive)
-  (move-beginning-of-line 1)
-  (org-insert-heading)
-  (evil-insert 1))
-
-(defun org-insert-heading-below ()
-  "Insert heading below the current one."
-  (interactive)
-  (move-end-of-line 1)
-  (org-insert-heading)
-  (evil-insert 1))
-
-(defun org-insert-subheading-below ()
-  "Insert subheading below the current one."
-  (interactive)
-  (move-end-of-line 1)
-  (org-insert-subheading 1)
-  (evil-insert 1))
-
 ;; org mode
 (with-eval-after-load 'org
   (if (boundp 'org-mode-map)
@@ -168,6 +147,16 @@
         (define-key org-mode-map (kbd "s-<return>") #'org-insert-subheading-below)
         (define-key org-mode-map (kbd "s-S-<return>") #'org-insert-heading-below))
     (error "Failed setting org mode super-key keybindings")))
+
+;; capture / notes
+(spacemacs/set-leader-keys
+  "C RET" #'org-capture
+  "C n" #'spacemacs/deft
+  "C f" #'deft-find-file
+  "C s" #'org-notes-open-sprint
+  "C b" #'org-notes-open-backlog)
+(spacemacs/set-leader-keys-for-major-mode 'deft-mode
+  "g" #'deft-refresh)
 
 ;; cycle theme
 (spacemacs/set-leader-keys "T n" 'r/cycle-theme)

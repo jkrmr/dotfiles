@@ -194,6 +194,27 @@ Do not request confirmation for buffers outside the current perspective."
       (find-file org-default-backlog-file)
     (error "No `org-default-backlog-file' set")))
 
+(defun org-insert-heading-above ()
+  "Insert heading above the current one."
+  (interactive)
+  (move-beginning-of-line 1)
+  (org-insert-heading)
+  (evil-insert 1))
+
+(defun org-insert-heading-below ()
+  "Insert heading below the current one."
+  (interactive)
+  (move-end-of-line 1)
+  (org-insert-heading)
+  (evil-insert 1))
+
+(defun org-insert-subheading-below ()
+  "Insert subheading below the current one."
+  (interactive)
+  (move-end-of-line 1)
+  (org-insert-subheading 1)
+  (evil-insert 1))
+
 ;; Hugo
 
 (defun hugo-timestamp ()
