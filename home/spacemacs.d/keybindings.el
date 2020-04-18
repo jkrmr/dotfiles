@@ -40,8 +40,8 @@
         (define-key org-mode-map (kbd "s-F") #'avy-org-goto-heading-timer)
         (define-key org-mode-map (kbd "s-r") #'avy-org-refile-as-child)
         (define-key org-mode-map (kbd "s-C-<return>") 'org-insert-heading-above)
-        (define-key org-mode-map (kbd "s-<return>") #'org-insert-subheading-below)
-        (define-key org-mode-map (kbd "s-S-<return>") #'org-insert-heading-below))
+        (define-key org-mode-map (kbd "s-S-<return>") #'org-insert-subheading-below)
+        (define-key org-mode-map (kbd "s-<return>") #'org-insert-heading-below))
     (error "Failed setting org mode super-key keybindings")))
 
 ;; capture / notes
