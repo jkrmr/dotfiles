@@ -289,9 +289,9 @@ It should only modify the values of Spacemacs settings."
    ;; When used in a plist, `visual' takes precedence over `relative'.
    ;; (default nil)
    dotspacemacs-line-numbers '(:relative t
-                                         :enabled-for-modes prog-mode
-                                         :disabled-for-modes pdf-view-mode org-mode doc-view-mode dired-mode
-                                         :size-limit-kb 1024)
+                               :enabled-for-modes prog-mode
+                               :disabled-for-modes pdf-view-mode org-mode doc-view-mode dired-mode
+                               :size-limit-kb 1024)
 
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)

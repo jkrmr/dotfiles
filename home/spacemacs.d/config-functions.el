@@ -18,33 +18,6 @@
       (progn
         (define-key evil-normal-state-map (kbd ",:") #'amx/amx-major-mode-commands))))
 
-(defun config/code-folding ()
-  "Configure code folding settings."
-  (if (and (boundp 'evil-visual-state-map)
-           (boundp 'evil-normal-state-map)
-           (boundp 'evil-fold-list))
-      (progn
-        ;; Toggle folds with TAB
-        (define-key evil-normal-state-map (kbd "TAB") #'evil-toggle-fold)
-        ;; Set up vimish-fold
-        (add-to-list 'evil-fold-list '((vimish-fold-mode)
-                                       :open-all   vimish-fold-unfold-all
-                                       :close-all  nil
-                                       :toggle     vimish-fold-toggle
-                                       :open       vimish-fold-unfold
-                                       :open-rec   nil
-                                       :close      vimish-fold))
-        (define-key evil-visual-state-map (kbd "zf") #'vimish-fold)
-        (define-key evil-normal-state-map (kbd "zf") nil)
-        (define-key evil-normal-state-map (kbd "zfd") #'vimish-fold-delete)
-        (define-key evil-normal-state-map (kbd "zfj") #'vimish-fold-next-fold)
-        (define-key evil-normal-state-map (kbd "zfk") #'vimish-fold-previous-fold)
-        (define-key evil-normal-state-map (kbd "zfm") #'vimish-fold-refold-all)
-        (define-key evil-normal-state-map (kbd "zfr") #'vimish-fold-unfold-all)
-        (define-key evil-normal-state-map (kbd "zft") #'vimish-fold-toggle-all)
-        (define-key evil-normal-state-map (kbd "zfa") #'vimish-fold-toggle))
-    (error "Failed setting up vimish-fold")))
-
 (defun config/company ()
   "Configure company auto-completion mode."
   (with-eval-after-load 'company

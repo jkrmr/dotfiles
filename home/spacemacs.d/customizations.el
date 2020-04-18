@@ -48,7 +48,6 @@
 (config/frames)
 
 (config/amx)
-(config/code-folding)
 (config/compilation-buffers)
 (config/copy-as-format)
 (config/deft)
@@ -212,6 +211,9 @@
 ;; Transparency
 (setq-default dotspacemacs-active-transparency 95
               dotspacemacs-inactive-transparency 85)
+
+;; folding
+(define-key evil-normal-state-map (kbd "TAB") #'evil-toggle-fold)
 
 (spacemacs/enable-transparency)
 (add-hook 'after-make-frame-functions #'spacemacs/enable-transparency)
