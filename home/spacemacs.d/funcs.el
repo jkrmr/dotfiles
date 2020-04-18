@@ -429,6 +429,12 @@ If not in a project, return the current `default-dir'."
   (let ((proj-root (projectile-project-root)))
     (or proj-root default-directory)))
 
+(defmacro no-message (&rest body)
+  "Eval BODY, with `message' doing nothing."
+  `(cl-letf (((symbol-function 'message)
+              (lambda (&rest args) nil)))
+     (progn ,@body)))
+
 (defun toggle-messages-window ()
   "Toggle the messages popup window."
   (interactive)
@@ -437,7 +443,7 @@ If not in a project, return the current `default-dir'."
         (popwin:close-popup-window)
       (progn
         (popwin:messages)
-        (popwin:stick-popup-window)))))
+        (no-message (popwin:stick-popup-window))))))
 
 (defun toggle-home-layout ()
   "Toggle the home layout."
