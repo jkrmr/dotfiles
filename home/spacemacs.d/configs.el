@@ -1,7 +1,7 @@
-;;; config-functions.el --- Emacs configuration functions.
+;;; configs.el --- Emacs configuration functions.
 
 ;;; Commentary:
-;; Functions invoked from customizations.el
+;; Functions invoked from setup.el
 ;; Defined separately to facilitate isolated and granular debugging.
 
 ;;; Code:
@@ -887,5 +887,5 @@ Provides facilities for yanking formatted code snippets."
         (define-key evil-hybrid-state-map (kbd "C-;") #'yas-expand-from-trigger-key))
     (error "Could not set yasnippet keybindings")))
 
-(provide 'config-functions)
-;;; config-functions.el ends here
+(provide 'configs)
+;;; config.el ends here

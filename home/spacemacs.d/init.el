@@ -667,15 +667,15 @@ This function should only modify configuration layer settings."
      (yankee :location (recipe :fetcher github :repo "jmromer/yankee.el" :branch "develop"))
      )
 
-
    dotspacemacs-frozen-packages
-   '()
+   '(
+     )
+
    dotspacemacs-excluded-packages
    '(
      company-lsp
      importmagic
      )
-
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
@@ -702,8 +702,8 @@ It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (add-to-load-path "~/.spacemacs.d")
 
-  ;; color scheme definitions
-  (load "colors")
+  ;; theme definitions
+  (load "themes")
 
   ;; exec-path
   (setq-default
@@ -742,11 +742,10 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (when (not window-system)
     (setq-default server-socket-dir (getenv "EMACS_SOCKET_DIR")))
 
-  ;; set these before loading evil
-  (setq-default evil-want-integration t
-                evil-want-keybinding nil)
-
   (setq-default
+   ;; set evil vars before loading evil
+   evil-want-integration t
+   evil-want-keybinding nil
    ;; don't create lockfiles
    create-lockfiles nil
    ;; don't soft-wrap lines
@@ -765,17 +764,16 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration."
   (require 'window-purpose) ;; TEMP: workaround for Emacs 28
 
-  ;; define interactive functions
-  (load "functions")
-
-  ;; define package configurations
-  (load "config-functions")
-
-  ;; define overrides of package methods
+  ;; interactive functions
+  (load "funcs")
+  ;; package config functions
+  (load "configs")
+  ;; setup config
+  (load "setup")
+  ;; setup keybindings
+  (load "keybindings")
+  ;; overrides of package methods
   (load "overrides")
-
-  ;; set customizations, invoke customization functions
-  (load "customizations")
 
   (message-banner "done configuring emacs"))
 

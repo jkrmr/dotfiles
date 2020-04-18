@@ -1,4 +1,4 @@
-;;; config.el --- rogue Layer config File for Spacemacs
+;;; themes.el --- rogue themes
 ;;; Commentary:
 ;;; Code:
 
@@ -812,5 +812,5 @@ FACES-ALIST has the actual faces like:
   ;; Parentheses colors
   (setq hl-paren-colors '("#88C0D0" "#D08770" "#A3BE8C" "#EBCB8B")))
 
-(provide 'colors)
-;;; colors.el ends here
+(provide 'themes)
+;;; themes.el ends here

@@ -1,8 +1,7 @@
-;;; functions.el --- Summary
+;;; funcs.el --- Summary
 
 ;;; Commentary:
-
-;; Custom functions used interactively or as auxiliaries
+;;  Custom functions used interactively or as auxiliaries
 
 ;;; Code:
 
@@ -38,6 +37,7 @@
         (indent-according-to-mode)))))
 
 ;; kill other buffers
+
 (defun kob-deletable-buffer-list ()
   "Return a list of all open buffers, excluding current one.
 Also exclude any buffers with names matching the pattern in
@@ -379,8 +379,6 @@ See `org-capture-templates' for more information."
   (interactive)
   (helm-resume 10))
 
-(spacemacs/set-leader-keys "r L" #'helm-select-session)
-
 (defun display-and-copy-file-path ()
   "Print the path of the current buffer's file.
 Depends on yankee.el."
@@ -530,5 +528,5 @@ If not in a project, return the current `default-dir'."
       (if (string-equal "org-mode" major-mode)
           (org-mode)))))
 
-(provide 'functions)
+(provide 'funcs)
 ;;; functions.el ends here
