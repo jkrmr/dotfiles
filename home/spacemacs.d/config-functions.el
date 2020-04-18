@@ -80,18 +80,6 @@
   (spacemacs/set-leader-keys-for-major-mode 'deft-mode
     "g" #'deft-refresh))
 
-(defun config/diminish ()
-  "Configure diminish glyphs for various minor modes."
-  (with-eval-after-load 'diminish
-    (diminish 'alchemist-mode "⊛")
-    (diminish 'alchemist-phoenix-mode "⊙")
-    (diminish 'elm-indent-mode "⨕")
-    (diminish 'minitest-mode "⨷")
-    (diminish 'rubocop-mode "℞")
-    (diminish 'ruby-refactor-mode "RR")
-    (diminish 'seeing-is-believing "S")
-    (diminish 'tern-mode "₸")))
-
 (defun config/elixir ()
   "Configure Elixir mode."
   (projectile-register-project-type 'elixir-mix '("mix.exs")
