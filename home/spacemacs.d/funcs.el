@@ -462,8 +462,8 @@ If not in a project, return the current `default-dir'."
 (defun toggle-home-layout ()
   "Toggle the home layout."
   (interactive)
-  (if (eq dotspacemacs-default-layout-name
-          (safe-persp-name (get-current-persp)))
+  (if (string= dotspacemacs-default-layout-name
+               (safe-persp-name (get-current-persp)))
       (spacemacs/jump-to-last-layout)
     (spacemacs/layout-goto-default)))
 
