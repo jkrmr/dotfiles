@@ -473,6 +473,17 @@ If not in a project, return the current `default-dir'."
       (magit-mode-bury-buffer)
     (magit-status-setup-buffer)))
 
+(defun toggle-todos ()
+  "Display project TODOS if in a project, else show today buffer."
+  (interactive)
+  (if (string= (file-name-nondirectory (buffer-file-name)) "TODOS.org")
+      (popwin:close-popup-window)
+    (let* ((proj-root (projectile-project-root))
+           (todos (if proj-root
+                      (format "%s/%s" proj-root org-projectile-per-project-filepath)
+                    org-default-notes-file)))
+      (popwin:find-file todos))))
+
 (defun rerun-term-command-right ()
    "Re-issue previously issued command in terminal split to the right."
    (interactive)
