@@ -451,7 +451,7 @@
        ("m" "Marginalia" entry (file+headline "blog/marginalia.org" "Marginalia")
         (function org-hugo-new-marginalia-capture-template) :empty-lines 1 :prepend t)
 
-       ("s" "Standup" plain (file+olp+datetree "~/Dropbox/org/journal-standup.org")
+       ("s" "Standup" plain (file+olp+datetree "~/Dropbox/org/STANDUP.org")
         "     %?")
 
        ("r" "Reference" entry (file+headline org-default-backlog-file "Captures")
@@ -463,7 +463,7 @@
        ("p" "Blog Post" entry (file+headline "blog/blog.org" "Blog")
         (function org-hugo-new-blog-capture-template) :empty-lines 1 :prepend t)
 
-       ("h" "Health / Diet journal" entry (file+olp+datetree "~/Dropbox/org/journal-health.org")
+       ("h" "Health journal" entry (file+olp+datetree "~/Dropbox/org/HEALTH.org")
         "**** [%<%l:%M %p>] %^{Entry} %^g" :immediate-finish t)
 
        ("j" "Journal entry" plain (function org-journal-find-location)

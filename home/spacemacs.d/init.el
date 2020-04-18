@@ -510,10 +510,10 @@ This function should only modify configuration layer settings."
      (org :variables
           org-agenda-files '("~/Dropbox/org")
           org-agenda-window-setup 'current-window
-          org-archive-location "~/Dropbox/org/archive.org::* %s"
-          org-default-backlog-file "~/Dropbox/org/sprint-backlog.org"
+          org-archive-location "~/Dropbox/org/ARCHIVE.org::* %s"
+          org-default-backlog-file "~/Dropbox/org/BACKLOG.org"
           org-default-blog-file "~/Dropbox/org/blog/blog.org"
-          org-default-notes-file "~/Dropbox/org/sprint-today.org"
+          org-default-notes-file "~/Dropbox/org/TODOS.org"
           org-directory "~/Dropbox/org"
           org-enable-bootstrap-support t
           org-enable-github-support t
@@ -529,8 +529,8 @@ This function should only modify configuration layer settings."
           org-outline-path-complete-in-steps nil
           org-projectile-file "TODOS.org"
           org-refile-allow-creating-parent-nodes 'confirm
-          org-refile-targets '(("~/Dropbox/org/sprint-today.org" :maxlevel . 1)
-                               ("~/Dropbox/org/sprint-backlog.org" :maxlevel . 1))
+          org-refile-targets '(("~/Dropbox/org/TODOS.org" :maxlevel . 1)
+                               ("~/Dropbox/org/BACKLOG.org" :maxlevel . 1))
           org-refile-use-outline-path 'file)
      (osx :variables
           osx-command-as 'hyper
