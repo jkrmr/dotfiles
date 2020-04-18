@@ -5,7 +5,6 @@ dockerfile-language-server-nodejs
 eslint
 eslint-plugin-react
 git-pending
-javascript-typescript-langserver
 js-beautify
 markdownlint-cli
 neovim
@@ -16,4 +15,5 @@ react-native-cli
 standard
 tern
 typescript
+typescript-language-server
 vmd
