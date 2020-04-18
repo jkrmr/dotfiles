@@ -597,7 +597,6 @@ This function should only modify configuration layer settings."
           sql-auto-indent t)
      (syntax-checking :variables
                       flycheck-disabled-checkers '(javascript-jshint
-                                                   ruby-reek
                                                    markdown-mdl)
                       syntax-checking-enable-by-default t
                       syntax-checking-enable-tooltips t)

@@ -665,6 +665,15 @@ Only equations at the beginning of a line are justified."
     (setq-default conda-anaconda-home conda-path
                   exec-path (cons python-path exec-path)))
 
+  ;; flycheck checkers
+  (defun set-python-flycheck-checkers ()
+    "Set Flycheck checkers."
+    (setq-default flycheck-checker 'lsp)
+    (flycheck-add-next-checker 'lsp 'python-flake8)
+    (flycheck-add-next-checker 'python-flake8 'python-mypy)
+    (flycheck-add-next-checker 'python-mypy 'python-pylint))
+  (add-hook 'python-mode-hook #'set-python-flycheck-checkers)
+
   ;; (add-hook 'python-mode-hook #'elpy-enable)
   (add-hook 'python-mode-hook #'anaconda-mode)
   (add-hook 'python-mode-hook #'anaconda-eldoc-mode)
@@ -733,6 +742,14 @@ Fall back to controller spec."
 
   (eval-after-load 'evil-mode
     (require 'evil-rails))
+
+  ;; flycheck checkers
+  (defun set-ruby-flycheck-checkers ()
+    "Set Flycheck checkers."
+    (setq-default flycheck-checker 'lsp)
+    (flycheck-add-next-checker 'lsp 'ruby-rubocop)
+    (flycheck-add-next-checker 'ruby-rubocop 'ruby-reek))
+  (add-hook 'ruby-mode-hook #'set-ruby-flycheck-checkers)
 
   ;; Enable pry in test runs
   (add-hook 'compilation-filter-hook 'inf-ruby-auto-enter)
