@@ -760,9 +760,6 @@ Fall back to controller spec."
   (eval-after-load 'evil-mode
     (require 'evil-rails))
 
-  ;; Robe mode for additional completions
-  (add-hook 'ruby-mode-hook #'robe-mode)
-
   ;; Enable pry in test runs
   (add-hook 'compilation-filter-hook 'inf-ruby-auto-enter)
 
@@ -799,9 +796,6 @@ Fall back to controller spec."
 
 (defun config/ruby-folding ()
   "Configure ruby folding."
-  (add-hook 'ruby-mode-hook
-            (lambda () (hs-minor-mode)))
-
   (eval-after-load "hideshow"
     '(add-to-list 'hs-special-modes-alist
                   `(ruby-mode
