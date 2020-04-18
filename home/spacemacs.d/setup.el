@@ -1,7 +1,6 @@
 ;;; setup.el --- Emacs configuration customizations.
 
 ;;; Commentary:
-;; Motify init.el minimally in order to update it easily.
 
 ;;; Code:
 (require 'funcs)
@@ -138,6 +137,9 @@
 (add-hook 'after-make-frame-functions #'spacemacs/enable-transparency)
 (beacon-mode +1)
 (editorconfig-mode 1)
+
+;; webkit
+(setq-default browse-url-browser-function 'xwidget-webkit-browse-url)
 
 ;; Post-config
 (config/prettify-symbols)
