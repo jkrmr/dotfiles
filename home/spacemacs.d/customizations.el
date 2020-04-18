@@ -126,6 +126,7 @@
 (global-set-key (kbd "s-p") #'spacemacs/helm-persp-switch-project)
 (global-set-key (kbd "s-q") #'kill-buffer-and-window)
 (global-set-key (kbd "s-s") #'save-buffer)
+(global-set-key (kbd "s-S") #'save-some-buffers)
 (global-set-key (kbd "s-t") #'shell-below-full-span)
 (global-set-key (kbd "s-w") #'spacemacs/delete-window)
 
