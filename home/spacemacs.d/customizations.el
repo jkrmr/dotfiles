@@ -145,8 +145,15 @@
   (org-insert-heading)
   (evil-insert 1))
 
+(defun org-insert-heading-below ()
+  "Insert heading below the current one."
+  (interactive)
+  (move-end-of-line 1)
+  (org-insert-heading)
+  (evil-insert 1))
+
 (defun org-insert-subheading-below ()
-  "Insert heading above the current one."
+  "Insert subheading below the current one."
   (interactive)
   (move-end-of-line 1)
   (org-insert-subheading 1)
@@ -161,7 +168,7 @@
         (define-key org-mode-map (kbd "s-r") #'avy-org-refile-as-child)
         (define-key org-mode-map (kbd "s-C-<return>") 'org-insert-heading-above)
         (define-key org-mode-map (kbd "s-<return>") #'org-insert-subheading-below)
-        (define-key org-mode-map (kbd "s-S-<return>") #'org-insert-heading-respect-content))
+        (define-key org-mode-map (kbd "s-S-<return>") #'org-insert-heading-below))
     (error "Failed setting org mode super-key keybindings")))
 
 ;; cycle theme
