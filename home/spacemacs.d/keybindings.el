@@ -97,5 +97,14 @@
 ;; select from helm sessions
 (spacemacs/set-leader-keys "r L" #'helm-select-session)
 
+;; spacemacs buffer
+(defun add-spacemacs-buffer-keybindings ()
+  "Set keybindings for spacemacs buffer."
+  (define-key spacemacs-buffer-mode-map (kbd "gr") #'(lambda () (interactive) (search-forward "Recent Files:")))
+  (define-key spacemacs-buffer-mode-map (kbd "gp") #'(lambda () (interactive) (search-forward "Projects:")))
+  (define-key spacemacs-buffer-mode-map (kbd "gb") #'(lambda () (interactive) (search-forward "Bookmarks:")))
+  (define-key spacemacs-buffer-mode-map (kbd "ga") #'(lambda () (interactive) (search-forward "Agenda:"))))
+(add-hook 'spacemacs-buffer-mode-hook #'add-spacemacs-buffer-keybindings)
+
 (provide 'keybindings)
 ;;; keybindings.el ends here
