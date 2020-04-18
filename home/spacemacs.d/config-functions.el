@@ -801,17 +801,6 @@ Fall back to controller spec."
         (define-key ruby-mode-map (kbd "C-c s") 'hs-show-block))
     (error "Failed setting up ruby-folding keybindings")))
 
-(defun config/semantic ()
-  "Remove semantic mode hooks."
-  (defun config/semantic-remove-hooks ()
-    (remove-hook 'completion-at-point-functions
-                 'semantic-analyze-completion-at-point-function)
-    (remove-hook 'completion-at-point-functions
-                 'semantic-analyze-notc-completion-at-point-function)
-    (remove-hook 'completion-at-point-functions
-                 'semantic-analyze-nolongprefix-completion-at-point-function))
-  (add-hook 'semantic-mode-hook #'config/semantic-remove-hooks))
-
 (defun config/set-terminal-emacs-theme ()
   "Set theme for terminal session."
   (if (not (display-graphic-p))

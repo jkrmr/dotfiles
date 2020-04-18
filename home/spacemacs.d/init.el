@@ -584,7 +584,6 @@ This function should only modify configuration layer settings."
      ruby-on-rails
      rust
      search-engine
-     semantic
      (shell :variables
             multi-term-program "zsh"
             shell-default-full-span t
@@ -673,7 +672,8 @@ This function should only modify configuration layer settings."
    dotspacemacs-excluded-packages
    '(
      company-lsp
-     importmagic)
+     importmagic
+     )
 
 
    ;; Defines the behaviour of Spacemacs when installing packages.

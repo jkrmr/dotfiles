@@ -75,7 +75,6 @@
 (config/ruby)
 (config/ruby-in-buffer-eval)
 (config/ruby-folding)
-(config/semantic)
 (config/set-terminal-emacs-theme)
 (config/shell-buffers)
 (config/smartparens)
