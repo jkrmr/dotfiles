@@ -180,6 +180,20 @@
 (spacemacs/set-leader-keys "T g" #'golden-ratio)
 
 ;; display emoji as emoji
+(defun --set-emoji-font (frame)
+  "Adjust the font settings of FRAME so Emacs can display emoji properly."
+  (if (eq system-type 'darwin)
+      ;; For NS/Cocoa
+      (set-fontset-font t 'symbol (font-spec :family "Apple Color Emoji") frame 'prepend)
+    ;; For Linux
+    (set-fontset-font t 'symbol (font-spec :family "Symbola") frame 'prepend)))
+
+;; For when Emacs is started in GUI mode:
+(--set-emoji-font nil)
+
+;; Hook for when a frame is created with emacsclient
+(add-hook 'after-make-frame-functions '--set-emoji-font)
+
 (add-hook 'after-init-hook #'global-emojify-mode)
 (set-fontset-font t 'unicode "Apple Color Emoji" nil 'prepend)
 
