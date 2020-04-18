@@ -53,6 +53,17 @@
 (spacemacs/set-leader-keys-for-major-mode 'deft-mode
   "g" #'deft-refresh)
 
+;; hide-and-show mode
+(spacemacs/declare-prefix "H" "Hide/Show")
+(spacemacs/set-leader-keys
+  "H a" #'hs-hide-all
+  "H A" #'hs-show-all
+  "H b" #'hs-hide-block
+  "H B" #'hs-show-block
+  "H l" #'hs-hide-level
+  "H L" #'hs-show-level
+  "H r" #'hs-hide-level-recursive)
+
 ;; cycle theme
 (spacemacs/set-leader-keys "T n" 'r/cycle-theme)
 
