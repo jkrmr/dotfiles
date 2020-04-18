@@ -547,7 +547,7 @@ This function should only modify configuration layer settings."
      prettier
      prodigy
      (python :variables
-             python-backend 'lsp
+             python-backend 'lsp ;; 'anaconda
              python-fill-docstring-style 'django
              python-format-on-save t
              python-formatter 'yapf
@@ -570,7 +570,7 @@ This function should only modify configuration layer settings."
            rspec-use-bundler-when-possible t
            rspec-use-opts-file-when-available nil
            rspec-use-spring-when-possible nil
-           ruby-backend 'robe
+           ruby-backend 'lsp ;; 'robe
            ruby-current-line nil
            ruby-enable-enh-ruby-mode nil
            ruby-format-on-save nil
