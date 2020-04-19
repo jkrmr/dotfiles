@@ -281,9 +281,6 @@
 
 (defun config/org-mode ()
   "Configure and enable org mode."
-  (add-to-list 'after-change-functions
-               #'org-capture-marginalia-display-char-countdown)
-
   (with-eval-after-load 'org-agenda
     (require 'org-projectile)
     (if (boundp 'org-agenda-files)
