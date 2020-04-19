@@ -780,16 +780,19 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration."
   (require 'window-purpose) ;; TEMP: workaround for Emacs 28
 
-  ;; interactive functions
-  (load "funcs")
-  ;; package config functions
-  (load "configs")
-  ;; setup config
-  (load "setup")
-  ;; setup keybindings
-  (load "keybindings")
-  ;; overrides of package methods
-  (load "overrides")
+  (setq-default lsp-ui-doc-use-webkit t)
+  ;; postpone garbage collection during startup
+  (let ((gc-cons-threshold most-positive-fixnum))
+    ;; interactive functions
+    (load "funcs")
+    ;; package config functions
+    (load "configs")
+    ;; setup config
+    (load "setup")
+    ;; setup keybindings
+    (load "keybindings")
+    ;; overrides of package methods
+    (load "overrides"))
 
   (message-banner "done configuring emacs"))
 
