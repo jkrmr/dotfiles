@@ -534,12 +534,13 @@ This function should only modify configuration layer settings."
           org-refile-use-outline-path 'file)
      (osx :variables
           osx-command-as 'hyper
+          osx-option-as 'meta
           osx-control-as 'control
           osx-function-as nil
-          osx-option-as 'meta
           osx-right-command-as 'left
+          osx-right-option-as 'none
           osx-right-control-as 'left
-          osx-right-option-as 'none)
+          osx-swap-option-and-command nil)
      (parinfer :variables
                parinfer-extensions '(defaults
                                       pretty-parens
