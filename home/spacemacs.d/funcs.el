@@ -89,7 +89,7 @@ Do not request confirmation for buffers outside the current perspective."
   "Set up org layout."
   (interactive)
   (progn
-    (spacemacs/layout-goto-default)
+    (persp-switch "org")
     (delete-other-windows)
 
     (let ((journal "[journal]")
