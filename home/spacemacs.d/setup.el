@@ -17,7 +17,6 @@
 (config/highlight-lines-at-length 80)
 (config/javascript-modes)
 (config/latex-mode)
-(config/ligatures)
 (config/lisps)
 (config/org-latex-preview)
 (config/org-mode)
