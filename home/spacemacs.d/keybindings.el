@@ -78,10 +78,8 @@
   "f p" #'find-file-at-point)
 
 ;; Display and copy buffer-file's path
-(spacemacs/declare-prefix "f d" "files/display")
-(spacemacs/set-leader-keys
-  "f d" nil
-  "f d p" #'display-and-copy-file-path)
+;; Relative to project root, home directory, or root
+(spacemacs/set-leader-keys "f y Y" #'display-and-copy-file-path)
 
 (spacemacs/declare-prefix "L" "layouts")
 (spacemacs/set-leader-keys
