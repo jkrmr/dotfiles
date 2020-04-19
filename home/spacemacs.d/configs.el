@@ -299,8 +299,10 @@
     (add-hook 'org-mode-hook #'variable-pitch-mode)
     (add-hook 'org-journal-mode-hook #'org-mode)
     (add-hook 'org-capture-mode-hook #'org-align-tags)
+
     ;; Save clocks
     (org-clock-persistence-insinuate)
+
     ;; Journal
     (spacemacs|define-transient-state org-journal
       :title "Org Journal Transient State"
@@ -318,44 +320,27 @@
       ("S" org-journal-search)
       ("q" nil :exit t))
 
-    ;; mode hooks
-    (add-hook 'org-journal-mode-hook #'org-mode)
-    (add-hook 'org-capture-mode-hook #'org-align-tags)
-
-    (add-to-list 'after-change-functions
-                 #'org-capture-marginalia-display-char-countdown)
-
-    ;; Org capture templates
+    ;; Capture templates
     (setq-default
      org-capture-templates
-     '(
-       ("t" "Todo" entry (file+headline org-default-backlog-file "Captures")
+     '(("t" "Todo" entry (file+headline org-default-backlog-file "Captures")
         "** %?\n%U" :empty-lines 1)
-
        ("c" "Commonplace" entry (file+headline "blog/commonplaces.org" "Commonplaces")
         (function org-hugo-new-commonplace-capture-template) :empty-lines 1 :prepend t)
-
        ("m" "Marginalia" entry (file+headline "blog/marginalia.org" "Marginalia")
         (function org-hugo-new-marginalia-capture-template) :empty-lines 1 :prepend t)
-
        ("s" "Standup" plain (file+olp+datetree "~/Dropbox/org/STANDUP.org")
         "     %?")
-
        ("r" "Reference" entry (file+headline org-default-backlog-file "Captures")
         "** %?\n%a\n%U" :empty-lines 1)
-
        ("n" "Notes" entry (file+headline "blog/notes.org" "Notes")
         (function org-hugo-new-blog-capture-template) :empty-lines 1 :prepend t)
-
        ("p" "Blog Post" entry (file+headline "blog/blog.org" "Blog")
         (function org-hugo-new-blog-capture-template) :empty-lines 1 :prepend t)
-
        ("h" "Health journal" entry (file+olp+datetree "~/Dropbox/org/HEALTH.org")
         "**** [%<%l:%M %p>] %^{Entry} %^g" :immediate-finish t)
-
        ("j" "Journal entry" plain (function org-journal-find-location)
         "** %(format-time-string org-journal-time-format)%^{Title}\n%i%?" :empty-lines 1)
-
        ("v" "Paste from clipboard" entry (file+headline org-default-backlog-file "Captures")
         "** %^{Title} %^G\n%?\n%c")))
 
