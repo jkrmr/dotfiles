@@ -24,15 +24,12 @@
 (global-set-key (kbd "s-T") #'toggle-todos)
 (global-set-key (kbd "s-w") #'spacemacs/delete-window)
 
-(with-eval-after-load 'evil
-  (if (boundp 'evil-hybrid-state-map)
-      (progn
-        (define-key evil-hybrid-state-map (kbd "s-v") #'evil-paste-after)
-        ;; disable which-key keybinding
-        (define-key evil-hybrid-state-map (kbd "C-j") nil))
-    (error "Failed setting evil hybrid maps")))
+(define-key evil-hybrid-state-map (kbd "s-v") #'evil-paste-after)
+(defun tab-to-fold-in-normal-state ()
+  "Bind toggle-fold function to the <tab> key."
+  (evil-local-set-key 'normal (kbd "<tab>") #'evil-toggle-fold))
+(add-hook 'prog-mode-hook #'tab-to-fold-in-normal-state)
 
-;; org mode
 (with-eval-after-load 'org
   (if (boundp 'org-mode-map)
       (progn
@@ -88,9 +85,6 @@
   "L b" #'layouts-blog
   "L o" #'layouts-org
   "L d" #'layouts-dotfiles)
-
-;; folding
-(define-key evil-normal-state-map (kbd "TAB") #'evil-toggle-fold)
 
 ;; select from helm sessions
 (spacemacs/set-leader-keys "r L" #'helm-select-session)
