@@ -240,16 +240,6 @@
 
 (defun config/modeline ()
   "Configure the modeline."
-  ;; evil mode indicators
-  (setq-default
-   evil-normal-state-tag   (propertize "[Normal]" 'face '((:background "green" :foreground "black")))
-   evil-emacs-state-tag    (propertize "[Emacs]" 'face '((:background "orange" :foreground "black")))
-   evil-insert-state-tag   (propertize "[Insert]" 'face '((:background "red") :foreground "white"))
-   evil-hybrid-state-tag   (propertize "[Hybrid]" 'face '((:background "red") :foreground "white"))
-   evil-motion-state-tag   (propertize "[Motion]" 'face '((:background "blue") :foreground "white"))
-   evil-visual-state-tag   (propertize "[Visual]" 'face '((:background "grey80" :foreground "black")))
-   evil-operator-state-tag (propertize "[Operator]" 'face '((:background "purple"))))
-
   ;; doom-modeline
   (setq-default
    doom-modeline-buffer-file-name-style 'truncate-with-project
