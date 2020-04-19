@@ -877,16 +877,5 @@ Provides facilities for yanking formatted code snippets."
         (define-key evil-visual-state-map (kbd "C-\\") #'yankee-yank))
     (error "Failed setting up yankee.el keybinding")))
 
-(defun config/yasnippet ()
-  "Define yasnippet keybindings."
-  (with-eval-after-load 'lispy
-    (when (boundp 'lispy-mode-map)
-        (define-key lispy-mode-map (kbd "C-j") nil)))
-  (if (boundp 'evil-hybrid-state-map)
-      (progn
-        (define-key evil-hybrid-state-map (kbd "C-;") #'company-yasnippet)
-        (define-key evil-hybrid-state-map (kbd "TAB") #'yas-expand-from-trigger-key))
-    (error "Could not set yasnippet keybindings")))
-
 (provide 'configs)
 ;;; config.el ends here

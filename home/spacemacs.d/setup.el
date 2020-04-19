@@ -84,7 +84,6 @@
 (config/web-mode)
 (config/window-splitting)
 (config/yankee)
-(config/yasnippet)
 
 ;; compilation buffer
 (setq-default compilation-scroll-output 'first-error)
