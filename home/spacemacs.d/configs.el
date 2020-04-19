@@ -434,8 +434,7 @@ Only equations at the beginning of a line are justified."
   (let* ((conda-path (format "%s/.anaconda" (getenv "HOME")))
          (python-path (format "%s/bin" conda-path)))
     (setenv "WORKON_HOME" (format "%s/envs" conda-path))
-    (setq-default conda-anaconda-home conda-path
-                  exec-path (cons python-path exec-path)))
+    (setq-default conda-anaconda-home conda-path))
 
   ;; (add-hook 'python-mode-hook #'elpy-enable)
   (add-hook 'python-mode-hook #'anaconda-mode)
