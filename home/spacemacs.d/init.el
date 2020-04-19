@@ -543,7 +543,7 @@ This function should only modify configuration layer settings."
           org-journal-find-file #'find-file
           org-list-use-circular-motion t
           org-md-headline-style 'setext
-          org-modules '(org-bibtex org-docview org-habit org-info)
+          org-modules '(ol-bibtex ol-docview org-habit ol-info)
           org-outline-path-complete-in-steps nil
           org-pretty-entities t
           org-projectile-file "TODOS.org"
