@@ -683,18 +683,13 @@ This function should only modify configuration layer settings."
      (rufo :location (recipe :fetcher github :repo "aleandros/emacs-rufo" :branch "master"))
      toc-org
      writeroom-mode
-     (yankee :location (recipe :fetcher github :repo "jmromer/yankee.el" :branch "develop"))
-     )
+     (yankee :location (recipe :fetcher github :repo "jmromer/yankee.el" :branch "develop")))
 
    dotspacemacs-frozen-packages
-   '(
-     )
+   '()
 
    dotspacemacs-excluded-packages
-   '(
-     company-lsp
-     importmagic
-     )
+   '()
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.

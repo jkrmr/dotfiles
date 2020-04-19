@@ -457,8 +457,8 @@ Only equations at the beginning of a line are justified."
     (when (and python-format-on-save
                (eq major-mode 'python-mode))
       (progn
-        ;; (spacemacs/python-remove-unused-imports)
-        ;; (importmagic-fix-imports)
+        (spacemacs/python-remove-unused-imports)
+        (importmagic-fix-imports)
         (py-isort-buffer)
         (yapfify-buffer))))
 

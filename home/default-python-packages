@@ -2,6 +2,7 @@ autoflake
 epc
 flake8
 hy
+importmagic
 ipdb
 ipython
 isort
