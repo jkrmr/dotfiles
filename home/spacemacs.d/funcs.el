@@ -559,5 +559,14 @@ If not in a project, return the current `default-dir'."
       (if (string-equal "org-mode" major-mode)
           (org-mode)))))
 
+(defun xmpfilter-eval-current-line ()
+  (interactive)
+  (seeing-is-believing-mark-current-line-for-xmpfilter)
+  (seeing-is-believing-run-as-xmpfilter))
+
+(defun XeLaTeX-compile ()
+  (interactive)
+  (async-shell-command (format "xelatex %s" (buffer-file-name))))
+
 (provide 'funcs)
 ;;; funcs.el ends here

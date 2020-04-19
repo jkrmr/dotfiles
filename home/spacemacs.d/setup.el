@@ -6,8 +6,10 @@
 (require 'funcs)
 (require 'editorconfig)
 
-(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
-(add-to-list 'default-frame-alist '(ns-appearance . dark))
+;; macOS frames
+(when window-system
+  (add-to-list 'default-frame-alist '(ns-appearance . dark))
+  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t)))
 
 (setq-default projectile-completion-system 'helm
               projectile-enable-caching t
@@ -45,35 +47,28 @@
    org-startup-indented t
    spaceline-org-clock-p t))
 
-;; Pre-config
-(config/frames)
+;;; Setup
 
-(config/amx)
 (config/compilation-buffers)
 (config/copy-as-format)
 (config/elixir)
 (config/elm)
 (config/evil-collection)
 (config/evil-goggles)
-(config/evil-in-ex-buffer)
-(config/evil-lion)
 (config/flycheck)
 (config/google-translate)
 (config/gtags)
-(config/helpful)
 (config/highlight-lines-at-length 80)
 (config/ido)
 (config/javascript-modes)
 (config/latex-mode)
 (config/ligatures)
 (config/lisps)
-(config/markdown-mode)
 (config/org-latex-preview)
 (config/org-mode)
 (config/projectile)
 (config/python)
 (config/ruby)
-(config/ruby-in-buffer-eval)
 (config/ruby-folding)
 (config/set-terminal-emacs-theme)
 (config/shell-buffers)
@@ -82,8 +77,6 @@
 (config/version-control)
 (config/web-beautify)
 (config/web-mode)
-(config/window-splitting)
-(config/yankee)
 
 ;; compilation buffer
 (setq-default compilation-scroll-output 'first-error)

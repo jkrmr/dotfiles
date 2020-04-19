@@ -9,15 +9,6 @@
   "Load local configuration overrides."
   (load "~/.init.local.el"))
 
-(defun config/amx ()
-  "Configure amx keybindings."
-  (if (boundp 'evil-visual-state-map)
-      (progn
-        (define-key evil-visual-state-map (kbd ",:") #'amx/amx-major-mode-commands)))
-  (if (boundp 'evil-normal-state-map)
-      (progn
-        (define-key evil-normal-state-map (kbd ",:") #'amx/amx-major-mode-commands))))
-
 (defun config/company ()
   "Configure company auto-completion mode."
   (with-eval-after-load 'company
@@ -102,43 +93,32 @@
   (when (require 'evil-collection nil t)
     (evil-collection-init)))
 
-(defun config/evil-in-ex-buffer ()
-  "Emacs bindings in Evil ex minibuffer."
-  (if (boundp 'evil-ex-completion-map)
-      (progn
-        (define-key evil-ex-completion-map (kbd "C-b") 'backward-char)
-        (define-key evil-ex-completion-map (kbd "C-k") 'kill-line)
-        (define-key evil-ex-completion-map (kbd "C-a") 'beginning-of-line))
-    (error "Failed setting up ex mode keybindings")))
-
 (defun config/evil-goggles ()
   "Configure evil-goggles."
   (setq-default evil-goggles-pulse nil
                 evil-goggles-duration 0.7)
-
   (evil-goggles-mode)
   (evil-goggles-use-diff-refine-faces))
 
-(defun config/evil-lion ()
-  "Configure evil-lion alignment text objects."
-  ;; align (e.g.: gaip=, gaip/)
-  (if (and (boundp 'evil-normal-state-map)
-           (boundp 'evil-visual-state-map))
-      (progn
-        (define-key evil-normal-state-map (kbd "ga") #'evil-lion-left)
-        (define-key evil-normal-state-map (kbd "gA") #'evil-lion-right)
-        (define-key evil-visual-state-map (kbd "ga") #'evil-lion-left)
-        (define-key evil-visual-state-map (kbd "gA") #'evil-lion-right))
-    (error "Failed setting up evil-lion alignment keybindings")))
-
-(defun config/frames ()
-  "Configure GUI Emacs frames."
-  (when window-system
-    (add-to-list 'default-frame-alist '(ns-appearance . dark))
-    (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))))
-
 (defun config/flycheck ()
   "Configure and enable Flycheck."
+  ;; Ruby
+  (defun set-ruby-flycheck-checkers ()
+    "Set Flycheck checkers for Ruby."
+    (flycheck-add-next-checker 'lsp 'ruby-rubocop)
+    (flycheck-add-next-checker 'ruby-rubocop 'ruby-reek))
+
+  ;; Python
+  (defun set-python-flycheck-checkers ()
+    "Set Flycheck checkers for Python."
+    (flycheck-add-next-checker 'lsp 'python-flake8)
+    (flycheck-add-next-checker 'python-flake8 'python-mypy)
+    (flycheck-add-next-checker 'python-mypy 'python-pylint))
+
+  (with-eval-after-load 'lsp-mode
+    (add-hook 'ruby-mode-hook #'set-ruby-flycheck-checkers)
+    (add-hook 'python-mode-hook #'set-python-flycheck-checkers))
+
   (add-hook 'after-init-hook #'global-flycheck-mode))
 
 (defun config/google-translate ()
@@ -149,39 +129,12 @@
                 google-translate-pop-up-buffer-set-focus t
                 google-translate-translation-directions-alist '(("en" . "es")
                                                                 ("en" . "fr")
-                                                                ("en" . "nl")))
-  (spacemacs/set-leader-keys
-    "x g t" #'google-translate-smooth-translate))
+                                                                ("en" . "nl"))))
 
 (defun config/gtags ()
   "Configure GNU Global tag backend."
   ;; Enable direnv-mode, so bundler-gtags-produced .envrc is activated
   (direnv-mode))
-
-(defun config/helpful ()
-  "Configure Helpful."
-  ;; Note that the built-in `describe-function' includes both functions
-  ;; and macros. `helpful-function' is functions only, so we provide
-  ;; `helpful-callable' as a drop-in replacement.
-  (global-set-key (kbd "C-h f") #'helpful-callable)
-  (global-set-key (kbd "C-h v") #'helpful-variable)
-  (global-set-key (kbd "C-h k") #'helpful-key)
-  ;; Lookup the current symbol at point. C-c C-d is a common keybinding
-  ;; for this in lisp modes.
-  (global-set-key (kbd "C-h SPC") #'helpful-at-point)
-
-  ;; Look up *F*unctions (excludes macros).
-  ;;
-  ;; By default, C-h F is bound to `Info-goto-emacs-command-node'. Helpful
-  ;; already links to the manual, if a function is referenced there.
-  (global-set-key (kbd "C-h F") #'helpful-function)
-
-  ;; Look up *C*ommands.
-  ;;
-  ;; By default, C-h C is bound to describe `describe-coding-system'. I
-  ;; don't find this very useful, but it's frequently useful to only
-  ;; look at interactive functions.
-  (global-set-key (kbd "C-h C") #'helpful-command))
 
 (defun config/highlight-lines-at-length (chars)
   "Configure and enable whitespace mode to color text after CHARS chars."
@@ -199,45 +152,20 @@
 (defun config/ido ()
   "Enable and configure ido mode."
   (add-hook 'after-init-hook #'ido-mode)
-  (add-hook 'after-init-hook #'flx-ido-mode)
-  (spacemacs/set-leader-keys "a d" #'ido-dired))
+  (add-hook 'after-init-hook #'flx-ido-mode))
 
 (defun config/javascript-modes ()
   "Configure JavaScript modes: js, js2, react."
-  (defun json-mode-hooks ()
-    (progn
-      (setq tab-width 2)
-      (spacemacs/set-leader-keys-for-major-mode
-        'json-mode "=" #'json-pretty-print-buffer)))
-  (add-hook 'json-mode-hook #'json-mode-hooks)
-
   (with-eval-after-load 'web-mode
     (if (boundp 'web-mode-indentation-params)
         (progn
           (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
           (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
           (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil)))
-      (error "Failed setting up js-modes indentation params")))
-
-  (defun rjsx-hybrid-keybindings ()
-    "Bind C-d to `rjsx-delete-creates-full-tag'."
-    (if (bound-and-true-p evil-hybrid-state-map)
-        (define-key evil-hybrid-state-map (kbd "C-d") #'rjsx-delete-creates-full-tag)
-      (error "Failed defining RJSX hybrid state keybindings")))
-  (add-hook 'rjsx-mode-hook #'rjsx-hybrid-keybindings))
+      (error "Failed setting up js-modes indentation params"))))
 
 (defun config/latex-mode ()
   "Configure LaTeX mode."
-  (defun XeLaTeX-compile ()
-    (interactive)
-    (async-shell-command (format "xelatex %s" (buffer-file-name))))
-
-  (spacemacs/declare-prefix-for-mode 'latex-mode "SPC" "compile")
-  (spacemacs/set-leader-keys-for-major-mode 'latex-mode "SPC SPC" #'XeLaTeX-compile)
-
-  ;; Compile resume: Defined in local config
-  (spacemacs/set-leader-keys-for-major-mode 'latex-mode "SPC r" #'XeLaTeX-compile-resume)
-
   ;; Update preview when file changes
   (add-hook 'doc-view-mode-hook 'auto-revert-mode)
 
@@ -304,21 +232,11 @@
   (defun lisp-packages ()
     "Enable Lisp minor modes, in the correct sequence."
     (progn
-      ;; (lispy-mode +1)
       (parinfer-mode)
       (evil-cleverparens-mode)))
 
   (remove-hook 'emacs-lisp-mode-hook #'parinfer-mode)
   (add-lisp-modes-hook #'lisp-packages))
-
-(defun config/markdown-mode ()
-  "Configure Markdown mode."
-  (with-eval-after-load 'markdown-mode
-    (if (boundp 'markdown-mode-map)
-        (progn
-          (define-key markdown-mode-map (kbd "C-j") #'markdown-next-visible-heading)
-          (define-key markdown-mode-map (kbd "C-k") #'markdown-previous-visible-heading))
-      (error "Failed setting markdown mode super-key keybindings"))))
 
 (defun config/modeline ()
   "Configure the modeline."
@@ -389,11 +307,6 @@
     (org-clock-persistence-insinuate)
 
     ;; Journal
-    (spacemacs/set-leader-keys-for-major-mode
-      'org-journal-mode
-      "s" 'org-journal-search
-      "t" 'org-journal-today)
-
     (spacemacs|define-transient-state org-journal
       :title "Org Journal Transient State"
       :hint nil
@@ -410,20 +323,9 @@
       ("S" org-journal-search)
       ("q" nil :exit t))
 
-    (spacemacs/set-leader-keys
-      "a j" nil
-      "a j ." #'spacemacs/org-journal-transient-state/body
-      "a j RET" #'org-journal-new-entry
-      "a j t" #'org-journal-today
-      "a j s" #'org-journal-search
-      "a j f" #'org-journal-search-forever
-      "a j d" #'org-journal-new-date-entry)
-    (spacemacs/declare-prefix "a j" "org-journal")
-
     ;; mode hooks
     (add-hook 'org-journal-mode-hook #'org-mode)
     (add-hook 'org-capture-mode-hook #'org-align-tags)
-
 
     (defun org-capture-marginalia-display-char-countdown (change-beg change-end prev-len)
       "Display character countdown in the messages buffer if in org-capture mode."
@@ -629,15 +531,6 @@ Only equations at the beginning of a line are justified."
     (setq-default conda-anaconda-home conda-path
                   exec-path (cons python-path exec-path)))
 
-  ;; flycheck checkers
-  (defun set-python-flycheck-checkers ()
-    "Set Flycheck checkers."
-    (setq-default flycheck-checker 'lsp)
-    (flycheck-add-next-checker 'lsp 'python-flake8)
-    (flycheck-add-next-checker 'python-flake8 'python-mypy)
-    (flycheck-add-next-checker 'python-mypy 'python-pylint))
-  (add-hook 'python-mode-hook #'set-python-flycheck-checkers)
-
   ;; (add-hook 'python-mode-hook #'elpy-enable)
   (add-hook 'python-mode-hook #'anaconda-mode)
   (add-hook 'python-mode-hook #'anaconda-eldoc-mode)
@@ -663,7 +556,8 @@ Only equations at the beginning of a line are justified."
         (py-isort-buffer)
         (yapfify-buffer))))
 
-  (add-hook 'before-save-hook #'python-before-save-hooks))
+  (add-hook 'before-save-hook #'python-before-save-hooks)
+  nil)
 
 (defun config/ruby ()
   "Configure packages for Ruby mode."
@@ -707,47 +601,8 @@ Fall back to controller spec."
   (eval-after-load 'evil-mode
     (require 'evil-rails))
 
-  ;; flycheck checkers
-  (defun set-ruby-flycheck-checkers ()
-    "Set Flycheck checkers."
-    (setq-default flycheck-checker 'lsp)
-    (flycheck-add-next-checker 'lsp 'ruby-rubocop)
-    (flycheck-add-next-checker 'ruby-rubocop 'ruby-reek))
-  (add-hook 'ruby-mode-hook #'set-ruby-flycheck-checkers)
-
   ;; Enable pry in test runs
-  (add-hook 'compilation-filter-hook 'inf-ruby-auto-enter)
-
-  ;; Toggle breakpoint
-  (spacemacs/set-leader-keys-for-major-mode 'ruby-mode "d b" #'spacemacs/ruby-toggle-breakpoint)
-  ;; (spacemacs/set-leader-keys-for-major-mode 'ruby-mode "d p" #'(lambda () (interactive) (spacemacs/ruby-toggle-breakpoint t)))
-
-  ;; Define keybinding to manually trigger autoformat
-  (spacemacs/set-leader-keys-for-major-mode
-    'ruby-mode "=" nil)
-  (spacemacs/declare-prefix-for-mode
-    'ruby-mode "=" "format")
-  (spacemacs/set-leader-keys-for-major-mode
-    'ruby-mode "==" #'rufo-format-buffer))
-
-(defun config/ruby-in-buffer-eval ()
-  "Configure and enable seeing-is-believing and xmpfilter for Ruby."
-  (defun xmpfilter-eval-current-line ()
-    (interactive)
-    (seeing-is-believing-mark-current-line-for-xmpfilter)
-    (seeing-is-believing-run-as-xmpfilter))
-
-  (cond
-   ((boundp 'ruby-mode-map)
-    (progn
-      (define-key ruby-mode-map (kbd "C-c C-c") 'xmpfilter-eval-current-line)
-      (define-key ruby-mode-map (kbd "C-c C-v") 'seeing-is-believing-clear)
-      (define-key ruby-mode-map (kbd "C-c C-f") 'seeing-is-believing-run)))
-   ((boundp 'enh-ruby-mode-map)
-    (progn
-      (define-key enh-ruby-mode-map (kbd "C-c C-c") 'xmpfilter-eval-current-line)
-      (define-key enh-ruby-mode-map (kbd "C-c C-v") 'seeing-is-believing-clear)
-      (define-key enh-ruby-mode-map (kbd "C-c C-f") 'seeing-is-believing-run)))))
+  (add-hook 'compilation-filter-hook 'inf-ruby-auto-enter))
 
 (defun config/ruby-folding ()
   "Configure ruby folding."
@@ -757,13 +612,7 @@ Fall back to controller spec."
                     ,(rx (or "def" "class" "module" "do" "{" "[")) ; Block start
                     ,(rx (or "}" "]" "end"))                       ; Block end
                     ,(rx (or "#" "=begin")) ; Comment start
-                    ruby-forward-sexp nil)))
-
-  (if (boundp 'ruby-mode-map)
-      (progn
-        (define-key ruby-mode-map (kbd "C-c h") 'hs-hide-block)
-        (define-key ruby-mode-map (kbd "C-c s") 'hs-show-block))
-    (error "Failed setting up ruby-folding keybindings")))
+                    ruby-forward-sexp nil))))
 
 (defun config/set-terminal-emacs-theme ()
   "Set theme for terminal session."
@@ -772,18 +621,6 @@ Fall back to controller spec."
 
 (defun config/shell-buffers ()
   "Configure shell buffers."
-  (with-eval-after-load 'vterm
-    (if (boundp 'vterm-mode-map)
-        (progn
-          (define-key vterm-mode-map (kbd "C-y") #'vterm-send-C-y)
-          (define-key vterm-mode-map (kbd "C-d") #'vterm-send-C-d))
-      (error "Failed setting vterm keybindings")))
-
-  (spacemacs/set-leader-keys "a s f" #'shell-full)
-  (spacemacs/set-leader-keys "a s r" #'shell-right)
-  (spacemacs/set-leader-keys "a s b" #'shell-below)
-  (spacemacs/set-leader-keys "\'" #'shell-below-full-span)
-
   ;; Use utf8
   (defun term-use-utf8 ()
     (set-process-coding-system 'utf-8-unix 'utf-8-unix))
@@ -820,13 +657,7 @@ Fall back to controller spec."
   "Configure version-control-related settings."
   (setq-default
    magit-repository-directories '(("~/Projects/" . 2)
-                                  ("~/Documents/". 2)))
-
-  ;; leader gb to display branching controls
-  (spacemacs/set-leader-keys "gb" #'magit-branch-or-checkout)
-
-  ;; leader gB to display Git blame
-  (spacemacs/set-leader-keys "gB" #'spacemacs/git-blame-micro-state))
+                                  ("~/Documents/". 2))))
 
 (defun config/web-beautify ()
   "Configure web-beautify hooks."
@@ -859,23 +690,6 @@ Fall back to controller spec."
           (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
           (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil)))
       (error "Failed setting up web-mode indentation params"))))
-
-(defun config/window-splitting ()
-  "Make focus window commands primary."
-  (spacemacs/set-leader-keys "ws" #'split-window-below-and-focus)
-  (spacemacs/set-leader-keys "wS" #'split-window-below)
-  (spacemacs/set-leader-keys "wv" #'split-window-right-and-focus)
-  (spacemacs/set-leader-keys "wV" #'split-window-right))
-
-(defun config/yankee ()
-  "Load and configure yankee.el.
-Provides facilities for yanking formatted code snippets."
-  (require 'yankee)
-  (if (boundp 'evil-visual-state-map)
-      (progn
-        (define-key evil-visual-state-map (kbd "g y") #'yankee-yank)
-        (define-key evil-visual-state-map (kbd "C-\\") #'yankee-yank))
-    (error "Failed setting up yankee.el keybinding")))
 
 (provide 'configs)
 ;;; config.el ends here
