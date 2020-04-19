@@ -98,5 +98,9 @@
   (define-key spacemacs-buffer-mode-map (kbd "ga") #'(lambda () (interactive) (search-forward "Agenda:"))))
 (add-hook 'spacemacs-buffer-mode-hook #'add-spacemacs-buffer-keybindings)
 
+(with-eval-after-load 'yasnippet
+  (define-key evil-hybrid-state-map (kbd "C-;") #'company-yasnippet)
+  (define-key evil-hybrid-state-map (kbd "TAB") yas-maybe-expand))
+
 (provide 'keybindings)
 ;;; keybindings.el ends here
