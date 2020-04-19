@@ -144,6 +144,7 @@
 ;; Post-config
 (config/prettify-symbols)
 (config/company)
+(config/load-local-config)
 
 (provide 'setup)
 ;;; setup.el ends here
