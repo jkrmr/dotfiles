@@ -131,11 +131,6 @@
                                                                 ("en" . "fr")
                                                                 ("en" . "nl"))))
 
-(defun config/gtags ()
-  "Configure GNU Global tag backend."
-  ;; Enable direnv-mode, so bundler-gtags-produced .envrc is activated
-  (direnv-mode))
-
 (defun config/highlight-lines-at-length (chars)
   "Configure and enable whitespace mode to color text after CHARS chars."
   (setq-default whitespace-line-column chars
@@ -148,11 +143,6 @@
   ;; (workaround, since the preceding breaks whitespace-cleanup,
   ;; which `dotspacemacs-whitespace-cleanup 'all' uses.)
   (add-hook 'before-save-hook #'delete-trailing-whitespace))
-
-(defun config/ido ()
-  "Enable and configure ido mode."
-  (add-hook 'after-init-hook #'ido-mode)
-  (add-hook 'after-init-hook #'flx-ido-mode))
 
 (defun config/javascript-modes ()
   "Configure JavaScript modes: js, js2, react."

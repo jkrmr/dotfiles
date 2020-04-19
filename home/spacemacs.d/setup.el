@@ -6,18 +6,6 @@
 (require 'funcs)
 (require 'editorconfig)
 
-;; macOS frames
-(when window-system
-  (add-to-list 'default-frame-alist '(ns-appearance . dark))
-  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t)))
-
-(setq-default projectile-completion-system 'helm
-              projectile-enable-caching t
-              projectile-find-dir-includes-top-level t
-              projectile-project-search-path '("~/Projects" "~/Work" "~/Resources" "~/Exercism"))
-
-;;; Setup
-
 (config/compilation-buffers)
 (config/copy-as-format)
 (config/elixir)
@@ -26,9 +14,7 @@
 (config/evil-goggles)
 (config/flycheck)
 (config/google-translate)
-(config/gtags)
 (config/highlight-lines-at-length 80)
-(config/ido)
 (config/javascript-modes)
 (config/latex-mode)
 (config/ligatures)
@@ -47,62 +33,67 @@
 (config/web-beautify)
 (config/web-mode)
 
-;; compilation buffer
-(setq-default compilation-scroll-output 'first-error)
+;; misc settings
+(setq-default
+ browse-url-browser-function 'xwidget-webkit-browse-url
+ compilation-scroll-output 'first-error
+ ispell-program-name "ispell"
+ mac-command-modifier 'super
+ projectile-completion-system 'helm
+ projectile-enable-caching t
+ projectile-find-dir-includes-top-level t
+ projectile-project-search-path '("~/Projects" "~/Work" "~/Resources" "~/Exercism")
+ tramp-default-method "ssh")
 
-;; lsp
+;; misc hooks
 (add-hook 'elixir-mode-hook #'lsp)
-
-;; tramp
-(setq-default tramp-default-method "ssh")
-
-;; ledger
 (add-hook 'ledger-mode-hook #'evil-ledger-mode)
 
-;; treemacs
+;; Appearance: treemacs icons
 (treemacs-resize-icons 15)
 
-(setq-default ispell-program-name "ispell")
+;; Appearance: Enable transparency
+(setq-default
+ dotspacemacs-active-transparency 95
+ dotspacemacs-inactive-transparency 85)
+(add-hook 'after-make-frame-functions #'spacemacs/enable-transparency)
 
-;; Mac-like keybindings
-(setq-default mac-command-modifier 'super)
+;; Appearance: Natural titlebar
+(when window-system
+  (add-to-list 'default-frame-alist '(ns-appearance . dark))
+  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t)))
 
-;; display emoji as emoji
-(defun --set-emoji-font (frame)
-  "Adjust the font settings of FRAME so Emacs can display emoji properly."
+;; Appearance: Render emoji
+(defun set-emoji-font (frame)
+  "Adjust the font settings of FRAME so Emacs can render emoji codes as emoji."
   (if (eq system-type 'darwin)
-      ;; For NS/Cocoa
-      (set-fontset-font t 'symbol (font-spec :family "Apple Color Emoji") frame 'prepend)
-    ;; For Linux
-    (set-fontset-font t 'symbol (font-spec :family "Symbola") frame 'prepend)))
+      (set-fontset-font t 'unicode (font-spec :family "Apple Color Emoji") frame 'prepend)
+    (set-fontset-font t 'unicode (font-spec :family "Symbola") frame 'prepend)))
 
-;; For when Emacs is started in GUI mode:
-(--set-emoji-font nil)
-
-;; Hook for when a frame is created with emacsclient
-(add-hook 'after-make-frame-functions '--set-emoji-font)
-
-(add-hook 'after-init-hook #'global-emojify-mode)
-(set-fontset-font t 'unicode "Apple Color Emoji" nil 'prepend)
+(if window-system (set-emoji-font nil)
+  (add-hook 'after-make-frame-functions #'set-emoji-font))
 
 ;; globally enabled minor modes
-(add-hook 'after-init-hook #'visual-line-mode)
-(global-evil-quickscope-mode 1)
-(global-evil-matchit-mode 1)
-(global-company-mode)
+(beacon-mode)
+(editorconfig-mode)
+(global-evil-matchit-mode)
+(global-evil-quickscope-mode)
+(direnv-mode)
 (smartparens-global-strict-mode)
+(global-visual-line-mode)
 
-;; Transparency
-(setq-default dotspacemacs-active-transparency 95
-              dotspacemacs-inactive-transparency 85)
+;; ido (for amx, ido-dired)
+(ido-mode)
+(flx-ido-mode 1)
+(setq-default
+ ido-enable-flex-matching t
+ ;; disable ido faces to see flx highlights
+ ido-use-faces nil)
 
-(spacemacs/enable-transparency)
-(add-hook 'after-make-frame-functions #'spacemacs/enable-transparency)
-(beacon-mode +1)
-(editorconfig-mode 1)
-
-;; webkit
-(setq-default browse-url-browser-function 'xwidget-webkit-browse-url)
+;; after-init hooks
+(add-hook 'after-init-hook #'global-emojify-mode)
+(add-hook 'after-init-hook #'global-company-mode)
+(add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; Post-config
 (config/prettify-symbols)
