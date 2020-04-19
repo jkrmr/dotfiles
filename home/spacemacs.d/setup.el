@@ -80,6 +80,8 @@
 (direnv-mode)
 (smartparens-global-strict-mode)
 (global-visual-line-mode)
+(company-prescient-mode)
+(prescient-persist-mode)
 
 ;; ido (for amx, ido-dired)
 (ido-mode)

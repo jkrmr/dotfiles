@@ -385,8 +385,8 @@ This function should only modify configuration layer settings."
                       auto-completion-complete-with-key-sequence-delay nil
                       auto-completion-enable-help-tooltip t
                       auto-completion-enable-snippets-in-popup t
-                      auto-completion-enable-sort-by-usage t
                       auto-completion-idle-delay 0.3
+                      auto-completion-enable-sort-by-usage nil ;; let prescient handle this
                       auto-completion-private-snippets-directory "~/.spacemacs.d/snippets"
                       auto-completion-return-key-behavior 'complete
                       auto-completion-tab-key-behavior 'complete
@@ -659,6 +659,7 @@ This function should only modify configuration layer settings."
      (beacon :location (recipe :fetcher github :repo "Malabarba/beacon"))
      coffee-mode
      company-jedi
+     company-prescient
      csv-mode
      direnv
      (doom-modeline :location (recipe :fetcher github :repo "jmromer/doom-modeline"))
@@ -678,6 +679,7 @@ This function should only modify configuration layer settings."
      (org-books :location (recipe :fetcher github :repo "lepisma/org-books"))
      (org-expand :location (recipe :fetcher github :repo "lepisma/org-expand"))
      ov
+     prescient
      pretty-mode
      rjsx-mode
      (rufo :location (recipe :fetcher github :repo "aleandros/emacs-rufo" :branch "master"))
