@@ -160,12 +160,12 @@ If passed, name them TOP-NAME and BOTTOM-NAME, respectively."
  (purpose-toggle-window-buffer-dedicated)
  (when top-name
    (rename-buffer (format "[%s]" top-name)))
- (goto-line 1)
+ (goto-char (point-min))
 
  (split-window-below-and-focus)
  (find-file org-default-notes-file)
  (purpose-toggle-window-buffer-dedicated)
- (goto-line 1)
+ (goto-char (point-min))
  (when bottom-name
    (rename-buffer (format "[%s]" bottom-name)))
 
