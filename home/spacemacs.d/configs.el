@@ -281,6 +281,9 @@
 
 (defun config/org-mode ()
   "Configure and enable org mode."
+  (add-to-list 'after-change-functions
+               #'org-capture-marginalia-display-char-countdown)
+
   (with-eval-after-load 'org-agenda
     (require 'org-projectile)
     (if (boundp 'org-agenda-files)
@@ -292,20 +295,12 @@
       (error "Failed: 'org-agenda-files not bound")))
 
   (with-eval-after-load 'org
-    (setq-default
-     org-todo-keywords
-     '((sequence "TODO(t)"
-                 "NEXT(n)"
-                 "INPROGRESS(i)"
-                 "BLOCKED(b)"
-                 "QUESTION(q)"
-                 "|"
-                 "DONE(d)"
-                 "CANCELLED(c)")))
+    ;; mode hooks
+    (add-hook 'org-mode-hook #'variable-pitch-mode)
+    (add-hook 'org-journal-mode-hook #'org-mode)
+    (add-hook 'org-capture-mode-hook #'org-align-tags)
     ;; Save clocks
-    (setq-default org-clock-persist t)
     (org-clock-persistence-insinuate)
-
     ;; Journal
     (spacemacs|define-transient-state org-journal
       :title "Org Journal Transient State"

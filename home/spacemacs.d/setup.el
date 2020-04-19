@@ -16,37 +16,6 @@
               projectile-find-dir-includes-top-level t
               projectile-project-search-path '("~/Projects" "~/Work" "~/Resources" "~/Exercism"))
 
-(with-eval-after-load 'org
-  (add-hook 'org-mode-hook #'variable-pitch-mode)
-  (setq-default
-   org-adapt-indentation t
-   org-agenda-block-separator ""
-   org-babel-python-command "python3"
-   org-blank-before-new-entry '((heading . auto) (plain-list-item . auto))
-   org-bullets-bullet-list '("› ")
-   org-catch-invisible-edits 'show-and-error
-   org-clock-idle-time 5
-   org-confirm-babel-evaluate nil
-   org-cycle-separator-lines 2
-   org-edit-src-content-indentation 0
-   org-list-use-circular-motion t
-   org-ellipsis " ▾ "
-   org-export-coding-system 'utf-8
-   org-export-with-sub-superscripts nil
-   org-fontify-done-headline t
-   org-fontify-quote-and-verse-blocks t
-   org-fontify-whole-heading-line t
-   org-hide-emphasis-markers t
-   org-image-actual-width 500
-   org-md-headline-style 'setext
-   org-modules '(org-bibtex org-docview org-habit org-info)
-   org-pretty-entities t
-   org-src-ask-before-returning-to-edit-buffer nil
-   org-src-window-setup 'current-window
-   org-src-tab-acts-natively t
-   org-startup-indented t
-   spaceline-org-clock-p t))
-
 ;;; Setup
 
 (config/compilation-buffers)

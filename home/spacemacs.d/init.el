@@ -504,30 +504,58 @@ This function should only modify configuration layer settings."
      multiple-cursors
      nginx
      (org :variables
+          org-adapt-indentation t
+          org-agenda-block-separator ""
           org-agenda-files '("~/Dropbox/org")
           org-agenda-window-setup 'current-window
           org-archive-location "~/Dropbox/org/ARCHIVE.org::* %s"
+          org-babel-python-command "python3"
+          org-blank-before-new-entry '((heading . auto) (plain-list-item . auto))
+          org-bullets-bullet-list '("› ")
+          org-catch-invisible-edits 'show-and-error
+          org-clock-idle-time 5
+          org-clock-persist t
+          org-confirm-babel-evaluate nil
+          org-cycle-separator-lines 2
           org-default-backlog-file "~/Dropbox/org/BACKLOG.org"
           org-default-blog-file "~/Dropbox/org/blog/blog.org"
           org-default-notes-file "~/Dropbox/org/TODOS.org"
           org-directory "~/Dropbox/org"
+          org-edit-src-content-indentation 0
+          org-ellipsis " ▾ "
           org-enable-bootstrap-support t
           org-enable-github-support t
           org-enable-hugo-support t
           org-enable-org-journal-support t
           org-enable-reveal-js-support t
+          org-export-coding-system 'utf-8
+          org-export-with-sub-superscripts nil
+          org-fontify-done-headline t
+          org-fontify-quote-and-verse-blocks t
+          org-fontify-whole-heading-line t
+          org-hide-emphasis-markers t
           org-hugo-export-with-section-numbers nil
           org-hugo-export-with-toc nil
+          org-image-actual-width 500
           org-journal-dir "~/Dropbox/org/journal"
           org-journal-file-format "%Y%m%d"
           org-journal-file-type 'monthly
           org-journal-find-file #'find-file
+          org-list-use-circular-motion t
+          org-md-headline-style 'setext
+          org-modules '(org-bibtex org-docview org-habit org-info)
           org-outline-path-complete-in-steps nil
+          org-pretty-entities t
           org-projectile-file "TODOS.org"
           org-refile-allow-creating-parent-nodes 'confirm
-          org-refile-targets '(("~/Dropbox/org/TODOS.org" :maxlevel . 1)
-                               ("~/Dropbox/org/BACKLOG.org" :maxlevel . 1))
-          org-refile-use-outline-path 'file)
+          org-refile-targets '(("~/Dropbox/org/TODOS.org" :maxlevel . 1) ("~/Dropbox/org/BACKLOG.org" :maxlevel . 1))
+          org-refile-use-outline-path 'file
+          org-src-ask-before-returning-to-edit-buffer nil
+          org-src-tab-acts-natively t
+          org-src-window-setup 'current-window
+          org-startup-indented t
+          org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "INPROGRESS(i)" "BLOCKED(b)" "QUESTION(q)" "|" "DONE(d)" "CANCELLED(c)"))
+          spaceline-org-clock-p t)
      (osx :variables
           osx-command-as 'hyper
           osx-option-as 'meta
