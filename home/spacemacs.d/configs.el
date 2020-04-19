@@ -119,7 +119,8 @@
     (add-hook 'ruby-mode-hook #'set-ruby-flycheck-checkers)
     (add-hook 'python-mode-hook #'set-python-flycheck-checkers))
 
-  (add-hook 'after-init-hook #'global-flycheck-mode))
+  ;; Enable eagerly in all programming buffers
+  (add-hook 'prog-mode-hook #'flycheck-mode))
 
 (defun config/google-translate ()
   "Configure google-translate."
