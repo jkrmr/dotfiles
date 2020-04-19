@@ -322,16 +322,6 @@
     (add-hook 'org-journal-mode-hook #'org-mode)
     (add-hook 'org-capture-mode-hook #'org-align-tags)
 
-    (defun org-capture-marginalia-display-char-countdown (change-beg change-end prev-len)
-      "Display character countdown in the messages buffer if in org-capture mode."
-      (when (and (eq major-mode 'org-mode)
-                 (string-match-p "CAPTURE-marginalia.org" (format "%s" (current-buffer))))
-        (let ((chars-present (- (point-max) (point-min)))
-              (prefilled-chars 133)
-              (max-chars 240))
-          (message "%s characters left"
-                   (- (+ max-chars prefilled-chars) chars-present)))))
-
     (add-to-list 'after-change-functions
                  #'org-capture-marginalia-display-char-countdown)
 

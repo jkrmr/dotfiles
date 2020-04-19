@@ -179,6 +179,17 @@ If passed, name them TOP-NAME and BOTTOM-NAME, respectively."
 
 ;; Org mode
 
+(defun org-capture-marginalia-display-char-countdown (change-beg change-end prev-len)
+  "Display character countdown in the messages buffer if in org-capture mode."
+  ;; TODO: Assess performance hit?
+  (when (and (eq major-mode 'org-mode)
+             (string-match-p "CAPTURE-marginalia.org" (format "%s" (current-buffer))))
+    (let ((chars-present (- (point-max) (point-min)))
+          (prefilled-chars 133)
+          (max-chars 240))
+      (message "%s characters left"
+               (- (+ max-chars prefilled-chars) chars-present)))))
+
 (defun org-journal-find-location ()
   "Open today's journal entry."
   ;; Open today's journal, but specify a non-nil prefix argument in order to
