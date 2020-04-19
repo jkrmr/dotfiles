@@ -409,21 +409,21 @@ This function should only modify configuration layer settings."
      (dash :variables
            dash-docs-docset-newpath "~/Library/Application Support/Dash/DocSets/")
      (deft :variables
-       deft-auto-save-interval 10
-       deft-default-extension "org"
-       deft-directory "~/Dropbox/deft"
-       deft-extensions '("txt" "text" "tex" "md" "markdown" "org")
-       deft-recursive t
-       deft-use-filter-string-for-filename t)
+           deft-auto-save-interval 10
+           deft-default-extension "org"
+           deft-directory "~/Dropbox/deft"
+           deft-extensions '("txt" "text" "tex" "md" "markdown" "org")
+           deft-recursive t
+           deft-use-filter-string-for-filename t)
      django
      (docker :variables
              docker-dockerfile-backend 'lsp)
      (elixir :variables
              flycheck-elixir-credo-strict t)
      (elm :variables
-          elm-sort-imports-on-save t
+          elm-format-command "elm-format"
           elm-format-on-save t
-          elm-format-command "elm-format")
+          elm-sort-imports-on-save t)
      emacs-lisp
      emoji
      epub
@@ -436,19 +436,15 @@ This function should only modify configuration layer settings."
      (go :variables
          go-backend 'lsp
          go-format-before-save t
+         go-tab-width 4
          go-use-golangci-lint t
          go-use-gometalinter t
-         go-tab-width 4
          godoc-at-point-function 'godoc-gogetdoc
          gofmt-command "goimports")
      graphviz
      (gtags :variables
             gtags-enable-by-default t
-            ;; Add GNU Global as an xref-backend
-            xref-backend-functions '(ggtags--xref-backend
-                                     elisp--xref-backend
-                                     gxref-xref-backend
-                                     etags--xref-backend))
+            xref-backend-functions '(ggtags--xref-backend elisp--xref-backend gxref-xref-backend etags--xref-backend))
      haskell
      (helm :variables
            completion-styles '(flex)
@@ -542,18 +538,13 @@ This function should only modify configuration layer settings."
           osx-right-control-as 'left
           osx-swap-option-and-command nil)
      (parinfer :variables
-               parinfer-extensions '(defaults
-                                      pretty-parens
-                                      evil
-                                      paredit
-                                      smart-tab
-                                      smart-yank))
+               parinfer-extensions '(defaults pretty-parens evil paredit smart-tab smart-yank))
      pdf
      phoenix
      prettier
      prodigy
      (python :variables
-             python-backend 'lsp ;; 'anaconda
+             python-backend 'lsp
              python-fill-docstring-style 'django
              python-format-on-save t
              python-formatter 'yapf
@@ -576,7 +567,7 @@ This function should only modify configuration layer settings."
            rspec-use-bundler-when-possible t
            rspec-use-opts-file-when-available nil
            rspec-use-spring-when-possible nil
-           ruby-backend 'lsp ;; 'robe
+           ruby-backend 'lsp
            ruby-current-line nil
            ruby-enable-enh-ruby-mode nil
            ruby-format-on-save nil
@@ -598,32 +589,31 @@ This function should only modify configuration layer settings."
      speed-reading
      spell-checking
      (sql :variables
-          sql-capitalize-keywords t
-          sql-auto-indent t)
+          sql-auto-indent t
+          sql-capitalize-keywords t)
      (syntax-checking :variables
-                      flycheck-disabled-checkers '(javascript-jshint
-                                                   markdown-mdl)
+                      flycheck-disabled-checkers '(javascript-jshint markdown-mdl)
                       syntax-checking-enable-by-default t
                       syntax-checking-enable-tooltips t)
      theming
      (treemacs :variables
-               treemacs-follow-after-init nil
-               treemacs-use-git-mode 'simple
                treemacs-collapse-dirs 3
+               treemacs-follow-after-init nil
                treemacs-lock-width t
                treemacs-use-filewatch-mode t
-               treemacs-use-follow-mode t)
+               treemacs-use-follow-mode t
+               treemacs-use-git-mode 'simple)
      (typescript :variables
                  typescript-backend 'tide
-                 typescript-lsp-linter nil
+                 typescript-fmt-on-save t
                  typescript-fmt-tool 'typescript-formatter
                  typescript-linter 'tslint
-                 typescript-fmt-on-save t)
+                 typescript-lsp-linter t)
      typography
      (version-control :variables
+                      version-control-diff-side 'left
                       version-control-diff-tool 'git-gutter
-                      version-control-global-margin t
-                      version-control-diff-side 'left)
+                      version-control-global-margin t)
      vimscript
      vinegar
      yaml)
