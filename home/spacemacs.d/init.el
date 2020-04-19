@@ -498,7 +498,6 @@ This function should only modify configuration layer settings."
           lsp-ui-doc-include-signature t
           lsp-ui-doc-position 'at-point
           lsp-ui-doc-use-childframe t
-          lsp-ui-doc-use-webkit nil
           lsp-ui-remap-xref-keybindings t
           lsp-ui-sideline-enable nil
           lsp-ui-sideline-ignore-duplicate t
