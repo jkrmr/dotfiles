@@ -579,5 +579,40 @@ If not in a project, return the current `default-dir'."
   (interactive)
   (async-shell-command (format "xelatex %s" (buffer-file-name))))
 
+;; Spacemacs buffer
+
+(defun goto-spacemacs-buffer-section (name)
+  "Go to the section NAME of the Spacemacs buffer."
+  (interactive)
+  (let ((string (cond ((eq name 'recents)
+                       "Recent Files:")
+                      ((eq name 'projects)
+                       "Projects:")
+                      ((eq name 'bookmarks)
+                       "Bookmarks:")
+                      ((eq name 'agenda)
+                       "Agenda:"))))
+    (unless (eq 'spacemacs-buffer-mode
+                (buffer-local-value 'major-mode (current-buffer)))
+      (spacemacs/home))
+    (goto-char (point-min))
+    (search-forward string)))
+
+(defun spacemacs-buffer-recents ()
+  (interactive)
+  (goto-spacemacs-buffer-section 'recents))
+
+(defun spacemacs-buffer-projects ()
+  (interactive)
+  (goto-spacemacs-buffer-section 'projects))
+
+(defun spacemacs-buffer-bookmarks ()
+  (interactive)
+  (goto-spacemacs-buffer-section 'bookmarks))
+
+(defun spacemacs-buffer-agenda ()
+  (interactive)
+  (goto-spacemacs-buffer-section 'agenda))
+
 (provide 'funcs)
 ;;; funcs.el ends here

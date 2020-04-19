@@ -209,13 +209,10 @@
 
 ;;; Spacemacs buffer
 
-(defun add-spacemacs-buffer-keybindings ()
-  "Set keybindings for spacemacs buffer."
-  (define-key spacemacs-buffer-mode-map (kbd "gr") #'(lambda () (interactive) (search-forward "Recent Files:")))
-  (define-key spacemacs-buffer-mode-map (kbd "gp") #'(lambda () (interactive) (search-forward "Projects:")))
-  (define-key spacemacs-buffer-mode-map (kbd "gb") #'(lambda () (interactive) (search-forward "Bookmarks:")))
-  (define-key spacemacs-buffer-mode-map (kbd "ga") #'(lambda () (interactive) (search-forward "Agenda:"))))
-(add-hook 'spacemacs-buffer-mode-hook #'add-spacemacs-buffer-keybindings)
+(define-key spacemacs-buffer-mode-map (kbd "g r") #'spacemacs-buffer-recents)
+(define-key spacemacs-buffer-mode-map (kbd "g p") #'spacemacs-buffer-projects)
+(define-key spacemacs-buffer-mode-map (kbd "g b") #'spacemacs-buffer-bookmarks)
+(define-key spacemacs-buffer-mode-map (kbd "g a") #'spacemacs-buffer-agenda)
 
 
 
