@@ -39,6 +39,8 @@
    org-md-headline-style 'setext
    org-modules '(org-bibtex org-docview org-habit org-info)
    org-pretty-entities t
+   org-src-ask-before-returning-to-edit-buffer nil
+   org-src-window-setup 'current-window
    org-src-tab-acts-natively t
    org-startup-indented t
    spaceline-org-clock-p t))
