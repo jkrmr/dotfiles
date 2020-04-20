@@ -96,6 +96,8 @@
   "g B" #'spacemacs/git-blame-micro-state
   ;; Helpful for interactive functions
   "h d i" #'helpful-command
+  ;; insert emoji as unicode
+  "i e" #'emojify-insert-emoji
   ;; helm: select search from across all sessions
   "r L" #'helm-select-session
   ;; toggles
