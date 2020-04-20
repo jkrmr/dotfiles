@@ -499,6 +499,7 @@ This function should only modify configuration layer settings."
           lsp-ui-doc-include-signature t
           lsp-ui-doc-position 'at-point
           lsp-ui-doc-use-childframe t
+          lsp-ui-doc-use-webkit nil
           lsp-ui-remap-xref-keybindings t
           lsp-ui-sideline-enable nil
           lsp-ui-sideline-ignore-duplicate t
@@ -785,8 +786,6 @@ This function is called only while dumping Spacemacs configuration.")
 This function is called at the very end of Spacemacs startup, after layer
 configuration."
   (require 'window-purpose) ;; TEMP: workaround for Emacs 28
-
-  (setq-default lsp-ui-doc-use-webkit t)
   ;; postpone garbage collection during startup
   (let ((gc-cons-threshold most-positive-fixnum))
     ;; interactive functions
@@ -799,7 +798,6 @@ configuration."
     (load "keybindings")
     ;; overrides of package methods
     (load "overrides"))
-
   (message-banner "done configuring emacs"))
 
 ;; Do not write anything past this comment. This is where Emacs will

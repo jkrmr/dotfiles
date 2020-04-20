@@ -35,7 +35,6 @@
  compilation-scroll-output 'first-error
  ispell-program-name "ispell"
  lsp-signature-auto-activate nil  ;; lsp: don't auto-activate signature hints
- lsp-ui-doc-use-webkit nil  ;; lsp: don't use webkit (must be set here)
  mac-command-modifier 'super
  projectile-completion-system 'helm
  projectile-enable-caching t
