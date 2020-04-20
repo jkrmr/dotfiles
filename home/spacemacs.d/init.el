@@ -252,7 +252,7 @@ It should only modify the values of Spacemacs settings."
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's inactive or deselected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
-   dotspacemacs-inactive-transparency 90
+   dotspacemacs-inactive-transparency 85
 
    ;; If non-nil show the titles of transient states. (default t)
    dotspacemacs-show-transient-state-title t
@@ -766,8 +766,6 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
     (setq-default server-socket-dir (getenv "EMACS_SOCKET_DIR")))
 
   (setq-default
-   dotspacemacs-active-transparency 95
-   dotspacemacs-inactive-transparency 90
    ;; set evil vars before loading evil
    evil-want-integration t
    evil-want-keybinding nil
