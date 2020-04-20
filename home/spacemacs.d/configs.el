@@ -416,19 +416,6 @@ Only equations at the beginning of a line are justified."
           '(("function" .  #x0192))))
   (add-hook 'js2-mode-hook #'prettify-symbols-javascript))
 
-(defun config/projectile ()
-  "Configure Projectile."
-  (setq-default projectile-completion-system 'helm
-                projectile-enable-caching t
-                projectile-find-dir-includes-top-level t
-                projectile-project-search-path '("~/Projects" "~/Work" "~/Resources" "~/Exercism"))
-
-  (if (bound-and-true-p projectile-globally-ignored-directories)
-      (setq-default projectile-globally-ignored-directories
-                    (append projectile-globally-ignored-directories
-                            '("node_modules")))
-    (error "Failed appending to projectile-globally-ignored-directories")))
-
 (defun config/python ()
   "Configure python and related modes."
   (let* ((conda-path (format "%s/.anaconda" (getenv "HOME")))
@@ -518,20 +505,10 @@ Fall back to controller spec."
   (defun term-use-utf8 ()
     (set-process-coding-system 'utf-8-unix 'utf-8-unix))
   (add-hook 'term-exec-hook #'term-use-utf8)
-
   ;; ansi-term: always use default shell
   (defadvice ansi-term (before force-bash)
     (interactive (list shell-default-term-shell)))
   (ad-activate #'ansi-term))
-
-(defun config/smartparens ()
-  "Configure smartparens."
-  (setq-default sp-ignore-modes-list
-                '(minibuffer-inactive-mode
-                  rjsx-mode
-                  js2-mode
-                  typescript-mode
-                  typescript-tsx-mode)))
 
 (defun config/underscore-to-word-char-list ()
   "Add underscore to word char list in prog and other modes."
@@ -545,12 +522,6 @@ Fall back to controller spec."
   (add-hook 'python-mode-hook #'add-underscore-to-word-chars)
   (add-hook 'restclient-mode-hook #'add-underscore-to-word-chars)
   (add-hook 'text-mode-hook #'add-underscore-to-word-chars))
-
-(defun config/version-control ()
-  "Configure version-control-related settings."
-  (setq-default
-   magit-repository-directories '(("~/Projects/" . 2)
-                                  ("~/Documents/". 2))))
 
 (defun config/web-beautify ()
   "Configure web-beautify hooks."
