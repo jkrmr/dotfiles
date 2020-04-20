@@ -53,10 +53,10 @@
 (treemacs-resize-icons 15)
 
 ;; Appearance: Enable transparency
-(setq-default
- dotspacemacs-active-transparency 95
- dotspacemacs-inactive-transparency 85)
+;; ensure new frames are created transparent
 (add-hook 'after-make-frame-functions #'spacemacs/enable-transparency)
+;; make the current one transparent
+(spacemacs/enable-transparency)
 
 ;; Appearance: Natural titlebar
 (when window-system

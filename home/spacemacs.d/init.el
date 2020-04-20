@@ -766,6 +766,8 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
     (setq-default server-socket-dir (getenv "EMACS_SOCKET_DIR")))
 
   (setq-default
+   dotspacemacs-active-transparency 95
+   dotspacemacs-inactive-transparency 90
    ;; set evil vars before loading evil
    evil-want-integration t
    evil-want-keybinding nil
