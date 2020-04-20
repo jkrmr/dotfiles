@@ -431,7 +431,8 @@ This function should only modify configuration layer settings."
      evil-commentary
      finance
      (git :variables
-          git-magit-status-fullscreen t)
+          git-magit-status-fullscreen t
+          magit-repository-directories '(("~/Projects" . 2) ("~/Work" . 2) ("~/Resources" . 2)))
      github
      (go :variables
          go-backend 'lsp
