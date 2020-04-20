@@ -42,16 +42,6 @@
           (message-banner "company map set"))
       (error "Could not define `company-active-map' keybindings"))))
 
-(defun config/compilation-buffers ()
-  "Configure compilation buffer settings."
-  (defun compilation-mode-settings ()
-    ;; wrap lines in compilation buffer
-    ;; (setq truncate-lines t)
-    (add-hook 'compilation-mode-hook
-              (lambda () (font-lock-mode -1)))
-    (set (make-local-variable 'truncate-partial-width-windows) nil))
-  (add-hook 'compilation-mode-hook #'compilation-mode-settings))
-
 (defun config/copy-as-format ()
   "Configure copy-as-format."
   (setq-default

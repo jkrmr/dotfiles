@@ -6,7 +6,6 @@
 (require 'funcs)
 (require 'editorconfig)
 
-(config/compilation-buffers)
 (config/copy-as-format)
 (config/elixir)
 (config/elm)
