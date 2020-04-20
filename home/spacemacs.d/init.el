@@ -684,6 +684,7 @@ This function should only modify configuration layer settings."
      (org-books :location (recipe :fetcher github :repo "lepisma/org-books"))
      (org-expand :location (recipe :fetcher github :repo "lepisma/org-expand"))
      ov
+     pomidor
      prescient
      pretty-mode
      rjsx-mode
