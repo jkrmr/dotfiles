@@ -445,6 +445,7 @@ This function should only modify configuration layer settings."
          gofmt-command "goimports")
      graphviz
      (gtags :variables
+            ggtags-highlight-tag nil  ;; disable tag highlighting
             gtags-enable-by-default t
             xref-backend-functions '(ggtags--xref-backend elisp--xref-backend gxref-xref-backend etags--xref-backend))
      haskell
