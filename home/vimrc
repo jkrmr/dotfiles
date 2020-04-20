@@ -252,7 +252,6 @@ set winheight=999
 set previewheight=15
 
 " Make it obvious where 80 characters is
-set textwidth=80
 set colorcolumn=+0
 
 " keep context lines you would like to see above and below the cursor
