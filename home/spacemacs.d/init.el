@@ -772,7 +772,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
    create-lockfiles nil
    ;; don't soft-wrap lines
    truncate-lines t
-   truncate-partial-width-windows t
+   truncate-partial-width-windows 80
    ;; don't warn about large files
    large-file-warning-threshold nil))
 
