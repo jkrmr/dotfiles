@@ -494,7 +494,7 @@ This function should only modify configuration layer settings."
           lsp-prefer-capf t
           lsp-ui-doc-alignment 'frame
           lsp-ui-doc-delay 0.2
-          lsp-ui-doc-enable t
+          lsp-ui-doc-enable nil
           lsp-ui-doc-header nil
           lsp-ui-doc-include-signature t
           lsp-ui-doc-position 'at-point
