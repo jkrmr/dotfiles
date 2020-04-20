@@ -92,23 +92,16 @@
 
 (defun config/flycheck ()
   "Configure and enable Flycheck."
-  ;; Ruby
-  (defun set-ruby-flycheck-checkers ()
-    "Set Flycheck checkers for Ruby."
-    (flycheck-add-next-checker 'lsp 'ruby-rubocop)
-    (flycheck-add-next-checker 'ruby-rubocop 'ruby-reek))
-
-  ;; Python
-  (defun set-python-flycheck-checkers ()
-    "Set Flycheck checkers for Python."
-    (flycheck-add-next-checker 'lsp 'python-flake8)
-    (flycheck-add-next-checker 'python-flake8 'python-mypy)
-    (flycheck-add-next-checker 'python-mypy 'python-pylint))
-
   (with-eval-after-load 'lsp-mode
-    (add-hook 'ruby-mode-hook #'set-ruby-flycheck-checkers)
-    (add-hook 'python-mode-hook #'set-python-flycheck-checkers))
-
+    ;; Flycheck: Python
+    (flycheck-add-next-checker 'lsp 'python-flake8)
+    (flycheck-add-next-checker 'lsp 'python-mypy)
+    (flycheck-add-next-checker 'lsp 'python-pylint)
+    ;; Flycheck: JavaScript, TypeScript
+    (flycheck-add-next-checker 'lsp 'javascript-standard)
+    ;; Flycheck: Ruby
+    (flycheck-add-next-checker 'lsp 'ruby-rubocop)
+    (flycheck-add-next-checker 'lsp 'ruby-reek))
   ;; Enable eagerly in all programming buffers
   (add-hook 'prog-mode-hook #'flycheck-mode))
 
