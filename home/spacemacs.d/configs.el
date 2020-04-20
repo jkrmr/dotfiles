@@ -206,6 +206,13 @@
   "Configure and enable org mode."
   (with-eval-after-load 'org-agenda
     (require 'org-projectile)
+    ;; Place tags close to the right-hand side of the window
+    (defun place-agenda-tags ()
+      "Put the agenda tags by the right border of the agenda window."
+      (setq org-agenda-tags-column (- 4 (window-width)))
+      (org-agenda-align-tags))
+    (add-hook 'org-finalize-agenda-hook #'place-agenda-tags)
+
     (if (boundp 'org-agenda-files)
         (mapc
          #'(lambda (file)
