@@ -40,8 +40,6 @@
  projectile-find-dir-includes-top-level t
  projectile-globally-ignored-directories (append projectile-globally-ignored-directories '("node_modules"))
  projectile-project-search-path '("~/Projects" "~/Work" "~/Resources" "~/Exercism" "~/Tutorials")
- ;; smartparens: ignore in modes where unmatched parens are common
- sp-ignore-modes-list '(minibuffer-inactive-mode rjsx-mode js2-mode typescript-mode typescript-tsx-mode)
  tramp-default-method "ssh")
 
 ;; misc hooks
