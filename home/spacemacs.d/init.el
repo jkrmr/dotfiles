@@ -484,8 +484,6 @@ This function should only modify configuration layer settings."
                  js2-mode-show-parse-errors nil
                  js2-mode-show-strict-warnings nil
                  js2-strict-missing-semi-warning nil
-                 prettier-js-command "prettier-standard"
-                 prettier-js-show-errors 'echo
                  node-add-modules-path t)
      (latex :variables
             latex-enable-auto-fill t
@@ -579,7 +577,10 @@ This function should only modify configuration layer settings."
                parinfer-extensions '(defaults pretty-parens evil paredit smart-tab smart-yank))
      pdf
      phoenix
-     prettier
+     (prettier :variables
+               json-fmt-tool 'prettier
+               prettier-js-command "prettier-standard"
+               prettier-js-show-errors 'echo)
      prodigy
      (python :variables
              python-backend 'lsp
@@ -697,6 +698,8 @@ This function should only modify configuration layer settings."
    '(
      treemacs
      treemacs-icons-dired
+     json-reformat
+     web-beautify
      )
 
    ;; Defines the behaviour of Spacemacs when installing packages.

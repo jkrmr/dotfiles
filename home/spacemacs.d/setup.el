@@ -25,7 +25,6 @@
 (config/set-terminal-emacs-theme)
 (config/shell-buffers)
 (config/underscore-to-word-char-list)
-(config/web-beautify)
 (config/web-mode)
 
 ;; misc settings

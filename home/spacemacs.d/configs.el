@@ -514,28 +514,6 @@ Fall back to controller spec."
   (add-hook 'restclient-mode-hook #'add-underscore-to-word-chars)
   (add-hook 'text-mode-hook #'add-underscore-to-word-chars))
 
-(defun config/web-beautify ()
-  "Configure web-beautify hooks."
-  (setq-default web-beautify-format-on-save nil)
-
-  (with-eval-after-load 'web-beautify
-    (defconst web-beautify-args '("-")))
-
-  (defun web-beautify-format-html ()
-    "Format the buffer if in an HTML mode."
-    (when (and web-beautify-format-on-save
-               (or (eq major-mode 'html-mode)
-                   (eq major-mode 'web-mode)))
-      (web-beautify-html-buffer)))
-  (add-hook 'before-save-hook #'web-beautify-format-html)
-
-  (defun web-beautify-format-css ()
-    "Format the buffer if in a CSS mode."
-    (when (and web-beautify-format-on-save
-               (eq major-mode 'css-mode))
-      (web-beautify-css-buffer)))
-  (add-hook 'before-save-hook #'web-beautify-format-css))
-
 (defun config/web-mode ()
   "Configure web-mode (for CSS, HTML)."
   (with-eval-after-load 'web-mode
