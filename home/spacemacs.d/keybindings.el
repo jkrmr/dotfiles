@@ -86,16 +86,16 @@
   "C f" #'deft-find-file
   "C s" #'org-notes-open-sprint
   "C b" #'org-notes-open-backlog
-  ;; Helpful for interactive functions
-  "d i" #'helpful-command
   ;; leader-fp to open file at point
   "f p" #'find-file-at-point
   ;; replace projectile-copy-file-path
   "f y Y" #'display-and-copy-file-path
   ;; magit: changes or create branch
-  "gb" #'magit-branch-or-checkout
+  "g b" #'magit-branch-or-checkout
   ;; magit: git blame
-  "gB" #'spacemacs/git-blame-micro-state
+  "g B" #'spacemacs/git-blame-micro-state
+  ;; Helpful for interactive functions
+  "h d i" #'helpful-command
   ;; helm: select search from across all sessions
   "r L" #'helm-select-session
   ;; toggles
