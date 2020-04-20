@@ -34,18 +34,16 @@
 # Please refer to gtags.conf(5) for details.
 #
 default:\
-	:tc=native:
+	:tc=native-pygments:
 native:\
 	:tc=gtags:tc=htags:
 user:\
 	:tc=user-custom:tc=htags:
 ctags:\
-	# :tc=exuberant-ctags:tc=htags:
-	:tc=universal-ctags:tc=htags:
-new-ctags:\
 	:tc=universal-ctags:tc=htags:
 pygments:\
 	:tc=pygments-parser:tc=htags:
+
 #
 # [How to merge two or more parsers?]
 #
@@ -62,7 +60,7 @@ native-pygments:\
 # See gtags(1).
 #---------------------------------------------------------------------
 common:\
-	:skip=.sass-cache/,node_modules/,public/,tmp/,data/,HTML/,HTML.pub/,tags,TAGS,ID,y.tab.c,y.tab.h,gtags.files,cscope.files,cscope.out,cscope.po.out,cscope.in.out,SCCS/,RCS/,CVS/,CVSROOT/,{arch}/,autom4te.cache/,*.orig,*.rej,*.bak,*~,#*#,*.swp,*.tmp,*_flymake.*,*_flymake,*.o,*.a,*.so,*.lo,*.zip,*.gz,*.bz2,*.xz,*.lzh,*.Z,*.tgz,*.min.js,*min.css:
+	:skip=.sass-cache/,node_modules/,public/,tmp/,data/,HTML/,HTML.pub/,tags,TAGS,ID,y.tab.c,y.tab.h,gtags.files,cscope.files,cscope.out,cscope.po.out,cscope.in.out,SCCS/,RCS/,CVS/,CVSROOT/,{arch}/,autom4te.cache/,*.orig,*.rej,*.bak,*~,#*#,*.swp,*.tmp,*_flymake.*,*_flymake,*.o,*.a,*.so,*.lo,*.zip,*.gz,*.bz2,*.xz,*.lzh,*.Z,*.tgz,*.min.js,*min.css,home/vim/plugged/:
 #
 # Built-in parsers.
 #
@@ -370,7 +368,7 @@ universal-ctags|setting to use Universal Ctags plug-in parser:\
 #
 pygments-parser|Pygments plug-in parser:\
 	:tc=common:\
-	:ctagscom=/usr/local/opt/ctags/bin/ctags:\
+	:ctagscom=/usr/local/bin/ctags:\
 	:pygmentslib=$libdir/gtags/pygments-parser.la:\
 	:langmap=ABAP\:.abap:\
 	:langmap=ANTLR\:.G.g:\
