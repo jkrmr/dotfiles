@@ -41,7 +41,7 @@ brew install shellcheck
 brew install source-highlight
 brew install the_silver_searcher
 brew install tree
-brew install universal-ctags --HEAD
+brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 brew install zlib
 brew install zsh
 brew install zsh-completions
