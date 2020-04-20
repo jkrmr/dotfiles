@@ -50,7 +50,7 @@
 (add-hook 'ledger-mode-hook #'evil-ledger-mode)
 
 ;; Appearance: treemacs icons
-(treemacs-resize-icons 15)
+(treemacs-resize-icons 17)
 
 ;; Appearance: Enable transparency
 ;; ensure new frames are created transparent
