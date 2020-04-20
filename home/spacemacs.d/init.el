@@ -992,7 +992,7 @@ This function is called at the very end of Spacemacs initialization."
  '(org-scheduled-today ((t (:foreground "#ECEFF4"))))
  '(org-special-keyword ((t (:height 0.9 :foreground "#505a6f"))))
  '(org-table ((t (:inherit fixed-pitch :background nil :foreground "#7b87a0"))))
- '(org-tag ((t (:foreground "#7b87a0"))))
+ '(org-tag ((t (:inherit fixed-pitch :foreground "#7b87a0" :height 0.85))))
  '(org-time-grid ((t (:foreground "#505a6f"))))
  '(org-todo ((t (:foreground "#8FBCBB" :background nil))))
  '(org-upcoming-deadline ((t (:foreground "#81A1C1"))))
