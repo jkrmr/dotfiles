@@ -49,9 +49,6 @@
 (add-hook 'elixir-mode-hook #'lsp)
 (add-hook 'ledger-mode-hook #'evil-ledger-mode)
 
-;; Appearance: treemacs icons
-(treemacs-resize-icons 17)
-
 ;; Appearance: Enable transparency
 ;; ensure new frames are created transparent
 (add-hook 'after-make-frame-functions #'spacemacs/enable-transparency)
