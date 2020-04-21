@@ -38,9 +38,11 @@
  projectile-completion-system 'helm
  projectile-enable-caching t
  projectile-find-dir-includes-top-level t
- projectile-globally-ignored-directories (append projectile-globally-ignored-directories '("node_modules"))
  projectile-project-search-path '("~/Projects" "~/Work" "~/Resources" "~/Exercism" "~/Tutorials")
  tramp-default-method "ssh")
+
+;; projectile
+(add-to-list 'projectile-globally-ignored-directories "node_modules" t)
 
 ;; misc hooks
 (add-hook 'elixir-mode-hook #'lsp)
