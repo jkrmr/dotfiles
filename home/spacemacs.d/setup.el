@@ -29,6 +29,7 @@
 
 ;; misc settings
 (setq-default
+ persp-restore-window-conf-method #'no-op
  browse-url-browser-function 'xwidget-webkit-browse-url
  compilation-scroll-output 'first-error
  ispell-program-name "ispell"
