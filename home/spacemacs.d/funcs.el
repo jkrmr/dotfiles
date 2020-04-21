@@ -70,6 +70,14 @@ Do not request confirmation for buffers outside the current perspective."
 
 ;; layout
 
+(defun persp-switch-to-default-layout ()
+  "Switch to the default layout."
+  (interactive)
+  (defvar dotspacemacs-default-layout-name nil
+    "The default layout name.")
+  (when dotspacemacs-default-layout-name
+    (persp-switch dotspacemacs-default-layout-name)))
+
 (defun layouts-reset ()
   "Reset to the default set of layouts."
   (interactive)
@@ -81,15 +89,16 @@ Do not request confirmation for buffers outside the current perspective."
     (layouts-dotfiles)
     (sleep-for delay)
     (layouts-blog)
-    (spacemacs/layout-goto-default)))
+    (persp-switch-to-default-layout)))
 
 (defun layouts-org ()
   "Set up org layout."
   (interactive)
-  (progn
-    (persp-switch "org")
+  (defvar org-default-notes-file nil "Full path to the default notes file.")
+  (defvar org-default-backlog-file nil "Full path to the default capture file.")
+  (when (and org-default-notes-file org-default-backlog-file)
+    (persp-switch-to-default-layout)
     (delete-other-windows)
-
     (let ((journal "[journal]")
           (today "[today]")
           (backlog "[backlog]"))
