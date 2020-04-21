@@ -622,5 +622,37 @@ If not in a project, return the current `default-dir'."
   "Jump to the 'Agenda' section of the Spacemacs buffer."
   (goto-spacemacs-buffer-section 'agenda))
 
+(defun evil-sort-inner (textobj &optional desc)
+  "Sort inside the TEXTOBJ surrounding the point.
+When DESC is non-nil, sort in descending order.
+TEXTOBJ should be a symbol corresponding to `x' in the `evil-inner-x' functions."
+  (interactive)
+  (let ((evil-textobj (intern (format "evil-inner-%s" textobj)))
+        (start-pos (point)))
+    (save-excursion
+      (let* ((bounds (call-interactively evil-textobj))
+             (beg (first bounds))
+             (end (second bounds)))
+        (sort-lines desc beg end)))
+    (goto-char start-pos)))
+
+(defun evil-sort-inner-paragraph (desc)
+  "Sort inside the paragraph under the point.
+When called with a prefix argument DESC, sort in descending order."
+  (interactive "P")
+  (evil-sort-inner 'paragraph desc))
+
+(defun evil-sort-inner-buffer(desc)
+  "Sort inside the current buffer.
+When called with a prefix argument DESC, sort in descending order."
+  (interactive "P")
+  (evil-sort-inner 'buffer desc))
+
+(defun evil-sort-inner-curly(desc)
+  "Sort inside the current curly braces.
+When called with a prefix argument DESC, sort in descending order."
+  (interactive "P")
+  (evil-sort-inner 'curly desc))
+
 (provide 'funcs)
 ;;; funcs.el ends here

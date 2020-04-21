@@ -185,6 +185,11 @@
 (define-key evil-visual-state-map (kbd "g a") #'evil-lion-left)
 (define-key evil-visual-state-map (kbd "g A") #'evil-lion-right)
 
+;; sort motions
+(define-key evil-normal-state-map (kbd "g s i p") #'evil-sort-inner-paragraph)
+(define-key evil-normal-state-map (kbd "g s i g") #'evil-sort-inner-buffer)
+(define-key evil-normal-state-map (kbd "g s i {") #'evil-sort-inner-curly)
+
 ;; yankee.el
 (require 'yankee)
 (define-key evil-visual-state-map (kbd "g y") #'yankee-yank)
