@@ -164,7 +164,7 @@ Do not request confirmation for buffers outside the current perspective."
     (persp-switch dotfiles)
     (delete-other-windows)
     (find-file dotfiles-dir)
-    (make-drawer-column-right dotfiles today)))
+    (make-todos-column-right)))
 
 (defun shrink-by-half-to-the-right ()
   "Resize the current column to half the current width, pushing it to the rhs."
@@ -172,23 +172,22 @@ Do not request confirmation for buffers outside the current perspective."
   (let ((half-current-width (/ (window-body-width) 2)))
     (enlarge-window-horizontally (- half-current-width (window-body-width)))))
 
-(defun make-drawer-column-right (&optional top-name bottom-name)
+(defun make-todos-column-right ()
   "Open 'todo' drawer windows on right hand side top and bottom.
 If passed, name them TOP-NAME and BOTTOM-NAME, respectively."
  (interactive)
  (defvar org-default-notes-file nil "The full path to the default notes file.")
  (when org-default-notes-file
-   (delete-other-windows)
    (split-window-right-and-focus)
+   ;; top
    (org-projectile/goto-todos)
-   (when top-name
-     (rename-buffer (format "[%s]" top-name)))
    (goto-char (point-min))
+   (purpose-toggle-window-buffer-dedicated)
    (split-window-below-and-focus)
+   ;; bottom
    (find-file org-default-notes-file)
    (goto-char (point-min))
-   (when bottom-name
-     (rename-buffer (format "[%s]" bottom-name)))
+   (purpose-toggle-window-buffer-dedicated)
    (shrink-by-half-to-the-right)))
 
 (defun message-banner (msg)
