@@ -117,21 +117,16 @@ Do not request confirmation for buffers outside the current perspective."
       (delete-other-windows)
 
       (switch-to-buffer today)
-      (purpose-toggle-window-buffer-dedicated)
-
       (split-window-right-and-focus)
       (switch-to-buffer backlog)
-      (purpose-toggle-window-buffer-dedicated)
 
       (split-window-below-and-focus)
       (switch-to-buffer journal)
-      (purpose-toggle-window-buffer-dedicated)
       (save-buffer)
 
       (select-window (get-buffer-window today))
       (split-window-below-and-focus)
       (org-agenda-list)
-      (purpose-toggle-window-buffer-dedicated)
 
       (select-window (get-buffer-window today)))))
 
@@ -175,13 +170,11 @@ If passed, name them TOP-NAME and BOTTOM-NAME, respectively."
    (delete-other-windows)
    (split-window-right-and-focus)
    (org-projectile/goto-todos)
-   (purpose-toggle-window-buffer-dedicated)
    (when top-name
      (rename-buffer (format "[%s]" top-name)))
    (goto-char (point-min))
    (split-window-below-and-focus)
    (find-file org-default-notes-file)
-   (purpose-toggle-window-buffer-dedicated)
    (goto-char (point-min))
    (when bottom-name
      (rename-buffer (format "[%s]" bottom-name)))
