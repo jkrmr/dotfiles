@@ -506,7 +506,10 @@ Fall back to controller spec."
   (defun add-underscore-to-word-chars ()
     "Adds underscore to the word chars syntax entry list."
     (modify-syntax-entry ?_ "w"))
-
+  (defun add-dash-to-word-chars ()
+    "Adds underscore to the word chars syntax entry list."
+    (modify-syntax-entry ?- "w"))
+  (add-hook 'emacs-lisp-mode-hook #'add-dash-to-word-chars)
   (add-hook 'markdown-mode-hook #'add-underscore-to-word-chars)
   (add-hook 'org-mode-hook #'add-underscore-to-word-chars)
   (add-hook 'prog-mode-hook #'add-underscore-to-word-chars)
