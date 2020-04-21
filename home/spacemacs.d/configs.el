@@ -205,7 +205,7 @@
     ;; Place tags close to the right-hand side of the window
     (defun place-agenda-tags ()
       "Put the agenda tags by the right border of the agenda window."
-      (setq org-agenda-tags-column (- 4 (window-width)))
+      (setq-default org-agenda-tags-column (- 4 (window-width)))
       (org-agenda-align-tags))
     (add-hook 'org-finalize-agenda-hook #'place-agenda-tags)
 
@@ -524,4 +524,4 @@ Fall back to controller spec."
       (error "Failed setting up web-mode indentation params"))))
 
 (provide 'configs)
-;;; config.el ends here
+;;; configs.el ends here
