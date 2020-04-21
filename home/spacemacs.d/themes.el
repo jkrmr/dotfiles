@@ -674,7 +674,7 @@ FACES-ALIST has the actual faces like:
    (:inherit fixed-pitch :height 0.9 :background ,bg-white))
   (org-tag
    (:inherit fixed-pitch :foreground ,doc :height 0.85)
-   (:inherit fixed-pitch :foreground ,doc :height 0.85))
+   (:foreground ,doc :height 0.85))
   (org-time-grid
    (:foreground ,comment)
    nil)
