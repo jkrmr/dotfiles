@@ -138,45 +138,54 @@ Do not request confirmation for buffers outside the current perspective."
 (defun layouts-blog ()
   "Set up blog layout."
   (interactive)
-  (let ((blog "blog"))
-    (persp-switch blog)
-    (delete-other-windows)
-    (if (and (boundp 'org-default-blog-file) org-default-blog-file)
-        (dired (file-name-directory (expand-file-name org-default-blog-file)))
-      (error "Org blog path `org-default-blog-file' not set"))
-    (rename-buffer (format "[%s]" blog))
-    (writeroom-mode)))
+  (defvar org-default-blog-file nil "Full path to the default blog file.")
+  (when org-default-blog-file
+    (let ((blog "blog")
+          (blog-dir (file-name-directory
+                     (expand-file-name org-default-blog-file))))
+      (persp-switch blog)
+      (delete-other-windows)
+      (find-file blog-dir)
+      (rename-buffer (format "[%s]" blog))
+      (writeroom-mode))))
 
 (defun layouts-dotfiles ()
   "Set up dotfiles layout."
   (interactive)
-  (let ((dotfiles "dotfiles")
-        (today "today")
+  (let ((today "today")
+        (dotfiles "dotfiles")
         (dotfiles-dir "~/.spacemacs.d/"))
     (persp-switch dotfiles)
+    (delete-other-windows)
     (find-file dotfiles-dir)
-    (set-up-drawer-windows dotfiles today)))
+    (make-drawer-column-right dotfiles today)))
 
-(defun set-up-drawer-windows (&optional top-name bottom-name)
+(defun shrink-by-half-to-the-right ()
+  "Resize the current column to half the current width, pushing it to the rhs."
+  (interactive)
+  (let ((half-current-width (/ (window-body-width) 2)))
+    (enlarge-window-horizontally (- half-current-width (window-body-width)))))
+
+(defun make-drawer-column-right (&optional top-name bottom-name)
   "Open 'todo' drawer windows on right hand side top and bottom.
 If passed, name them TOP-NAME and BOTTOM-NAME, respectively."
  (interactive)
- (delete-other-windows)
- (split-window-right-and-focus)
- (org-projectile/goto-todos)
- (purpose-toggle-window-buffer-dedicated)
- (when top-name
-   (rename-buffer (format "[%s]" top-name)))
- (goto-char (point-min))
-
- (split-window-below-and-focus)
- (find-file org-default-notes-file)
- (purpose-toggle-window-buffer-dedicated)
- (goto-char (point-min))
- (when bottom-name
-   (rename-buffer (format "[%s]" bottom-name)))
-
- (enlarge-window-horizontally (-  (/ (window-body-width) 2) (window-body-width))))
+ (defvar org-default-notes-file nil "The full path to the default notes file.")
+ (when org-default-notes-file
+   (delete-other-windows)
+   (split-window-right-and-focus)
+   (org-projectile/goto-todos)
+   (purpose-toggle-window-buffer-dedicated)
+   (when top-name
+     (rename-buffer (format "[%s]" top-name)))
+   (goto-char (point-min))
+   (split-window-below-and-focus)
+   (find-file org-default-notes-file)
+   (purpose-toggle-window-buffer-dedicated)
+   (goto-char (point-min))
+   (when bottom-name
+     (rename-buffer (format "[%s]" bottom-name)))
+   (shrink-by-half-to-the-right)))
 
 (defun message-banner (msg)
   "Print MSG banner to the messages buffer."
@@ -469,10 +478,11 @@ If not in a project, return the current `default-dir'."
 (defun toggle-home-layout ()
   "Toggle the home layout."
   (interactive)
-  (if (string= dotspacemacs-default-layout-name
-               (safe-persp-name (get-current-persp)))
-      (spacemacs/jump-to-last-layout)
-    (spacemacs/layout-goto-default)))
+  (when dotspacemacs-default-layout-name
+    (if (string= dotspacemacs-default-layout-name
+                 (safe-persp-name (get-current-persp)))
+        (spacemacs/jump-to-last-layout)
+      (persp-switch dotspacemacs-default-layout-name))))
 
 (defun toggle-notes-window ()
   "Toggle notes in the current window."
@@ -503,6 +513,10 @@ If not in a project, return the current `default-dir'."
 (defun toggle-todos ()
   "Display project TODOS if in a project, else show today buffer."
   (interactive)
+  (defvar org-default-notes-file nil
+    "The full path to the default notes file.")
+  (defvar org-projectile-per-project-filepath nil
+    "The naming pattern for project-based todo files. Relative to project root.")
   (let* ((current-todo (file-name-nondirectory (or (buffer-file-name) "")))
          (in-todo-file-p (string= "TODOS.org" current-todo)))
     (if in-todo-file-p
@@ -570,11 +584,14 @@ If not in a project, return the current `default-dir'."
           (org-mode)))))
 
 (defun xmpfilter-eval-current-line ()
+  "Mark the current line for evaluation and evaluate."
   (interactive)
+  (require 'seeing-is-believing)
   (seeing-is-believing-mark-current-line-for-xmpfilter)
   (seeing-is-believing-run-as-xmpfilter))
 
 (defun XeLaTeX-compile ()
+  "Compile the current TeX file with `xelatex'."
   (interactive)
   (async-shell-command (format "xelatex %s" (buffer-file-name))))
 
@@ -583,14 +600,10 @@ If not in a project, return the current `default-dir'."
 (defun goto-spacemacs-buffer-section (name)
   "Go to the section NAME of the Spacemacs buffer."
   (interactive)
-  (let ((string (cond ((eq name 'recents)
-                       "Recent Files:")
-                      ((eq name 'projects)
-                       "Projects:")
-                      ((eq name 'bookmarks)
-                       "Bookmarks:")
-                      ((eq name 'agenda)
-                       "Agenda:"))))
+  (let ((string (cond ((eq name 'recents) "Recent Files:")
+                      ((eq name 'projects) "Projects:")
+                      ((eq name 'bookmarks) "Bookmarks:")
+                      ((eq name 'agenda) "Agenda:"))))
     (unless (eq 'spacemacs-buffer-mode
                 (buffer-local-value 'major-mode (current-buffer)))
       (spacemacs/home))
@@ -598,19 +611,19 @@ If not in a project, return the current `default-dir'."
     (search-forward string)))
 
 (defun spacemacs-buffer-recents ()
-  (interactive)
+  "Jump to the 'Recent Files' section of the Spacemacs buffer."
   (goto-spacemacs-buffer-section 'recents))
 
 (defun spacemacs-buffer-projects ()
-  (interactive)
+  "Jump to the 'Projects' section of the Spacemacs buffer."
   (goto-spacemacs-buffer-section 'projects))
 
 (defun spacemacs-buffer-bookmarks ()
-  (interactive)
+  "Jump to the 'Bookmarks' section of the Spacemacs buffer."
   (goto-spacemacs-buffer-section 'bookmarks))
 
 (defun spacemacs-buffer-agenda ()
-  (interactive)
+  "Jump to the 'Agenda' section of the Spacemacs buffer."
   (goto-spacemacs-buffer-section 'agenda))
 
 (provide 'funcs)
