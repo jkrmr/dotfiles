@@ -19,11 +19,9 @@
   (let ((amx-prompt-string (format "%s commands: " major-mode)))
     (amx-major-mode-commands)))
 
-(defun spacemacs/ruby-toggle-breakpoint (&optional in-pipeline)
+(defun ruby/toggle-breakpoint (&optional in-pipeline)
   "Add a break point, highlight it. Pass IN-PIPELINE to add using tap."
-  (interactive (cond
-                ((equal current-prefix-arg nil) (list nil))
-                ((equal current-prefix-arg '(4)) (list t))))
+  (interactive "P")
   (let ((trace (cond (in-pipeline ".tap { |result| require \"pry\"; binding.pry }")
                      (t "require \"pry\"; binding.pry")))
         (line (thing-at-point 'line)))
