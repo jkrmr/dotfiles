@@ -455,14 +455,18 @@ If not in a project, return the current `default-dir'."
   (let ((proj-root (projectile-project-root)))
     (or proj-root default-directory)))
 
-(defun no-op (&rest args)
-  "Does nothing at all with ARGS."
+(defadvice message (around quiet (&optional args))
+  "Silence messages."
   nil)
 
-(defmacro no-message (&rest body)
-  "Eval BODY, with `message' doing nothing."
-  `(cl-letf (((symbol-function 'message) #'no-op))
-     (progn ,@body)))
+(defmacro with-no-messages (&rest body)
+  "Evaluate BODY, with any output to the messages buffer suppressed."
+  `(progn
+     (ad-enable-advice 'message 'around 'quiet)
+     (ad-activate 'message)
+     ,@body
+     (ad-disable-advice 'message 'around 'quiet)
+     (ad-activate 'message)))
 
 (defun toggle-messages-window ()
   "Toggle the messages popup window."
@@ -470,9 +474,9 @@ If not in a project, return the current `default-dir'."
   (let ((msg-window (get-buffer-window "*Messages*")))
     (if msg-window
         (popwin:close-popup-window)
-      (progn
+      (with-no-messages
         (popwin:messages)
-        (no-message (popwin:stick-popup-window))))))
+        (popwin:stick-popup-window)))))
 
 (defun toggle-home-layout ()
   "Toggle the home layout."
