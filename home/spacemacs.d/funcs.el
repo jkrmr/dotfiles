@@ -36,7 +36,18 @@
         (insert "\n")
         (indent-according-to-mode)))))
 
-;; kill other buffers
+;; kill other buffers / windows
+
+(defun kill-modal-windows ()
+  "Close windows with ephemeral buffers.
+compile log, backtrace, test runs, messages, etc."
+  ;; '("*Compile-Log*" "*Messages*" "*rspec-compilation*")
+  (interactive)
+  (mapc #'delete-window
+        (seq-filter
+         '(lambda (x)
+            (string-match-p "^\*.+\*$" (buffer-name (window-buffer x))))
+         (window-list))))
 
 (defun kob-deletable-buffer-list ()
   "Return a list of all open buffers, excluding current one.
