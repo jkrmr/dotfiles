@@ -477,6 +477,8 @@ If not in a project, return the current `default-dir'."
 (defun toggle-home-layout ()
   "Toggle the home layout."
   (interactive)
+  (defvar dotspacemacs-default-layout-name nil
+    "The default layout name.")
   (when dotspacemacs-default-layout-name
     (if (string= dotspacemacs-default-layout-name
                  (safe-persp-name (get-current-persp)))
@@ -548,10 +550,13 @@ If not in a project, return the current `default-dir'."
 (defun r/cycle-theme ()
   "Cycle between dark and light scheme."
   (interactive)
+  (defvar r-current-theme nil "The currently selected theme (dark or light).")
+  (defvar r-dark-theme nil "The dark theme.")
+  (defvar r-light-theme nil "The light theme.")
   (if (eq r-current-theme r-dark-theme)
       (progn
         (r/light)
-        (setq r-current-theme r-light-theme))
+        (setq-default r-current-theme r-light-theme))
     (progn
       (r/dark)
       (setq r-current-theme r-dark-theme))))
@@ -559,18 +564,22 @@ If not in a project, return the current `default-dir'."
 (defun r/light ()
   "Switch to light theme."
   (interactive)
+  (defvar r-dark-theme nil "The dark theme.")
+  (defvar r-light-theme nil "The light theme.")
   (disable-theme r-dark-theme)
   (spacemacs/load-theme r-light-theme)
-  (setq org-bullets-bullet-list '(" "))
+  (setq-default org-bullets-bullet-list '(" "))
   (r-org/reset-buffers)
   (beacon-mode -1))
 
 (defun r/dark ()
   "Switch to dark theme."
   (interactive)
+  (defvar r-dark-theme nil "The dark theme.")
+  (defvar r-light-theme nil "The light theme.")
   (disable-theme r-light-theme)
   (spacemacs/load-theme r-dark-theme)
-  (setq org-bullets-bullet-list '("› "))
+  (setq-default org-bullets-bullet-list '("› "))
   (r-org/reset-buffers)
   (beacon-mode +1))
 
@@ -595,6 +604,7 @@ If not in a project, return the current `default-dir'."
   (async-shell-command (format "xelatex %s" (buffer-file-name))))
 
 ;; Spacemacs buffer
+
 
 (defun goto-spacemacs-buffer-section (name)
   "Go to the section NAME of the Spacemacs buffer."
