@@ -85,6 +85,16 @@
  ;; disable ido faces to see flx highlights
  ido-use-faces nil)
 
+;; garbage collection optimizations
+(defun disable-garbage-collection ()
+  "Disable GC by setting threshold to max num."
+  (setq-default gc-cons-threshold most-positive-fixnum))
+(defun enable-garbage-collection ()
+  "Re-enable GC collection. Set threshold to init.el value."
+  (setq-default gc-cons-threshold (car dotspacemacs-gc-cons)))
+(add-hook 'minibuffer-setup-hook #'disable-garbage-collection)
+(add-hook 'minibuffer-exit-hook #'enable-garbage-collection)
+
 ;; after-init hooks
 (add-hook 'after-init-hook #'global-emojify-mode)
 (add-hook 'after-init-hook #'global-company-mode)

@@ -46,8 +46,15 @@ It should only modify the values of Spacemacs settings."
    ;; Set `gc-cons-threshold' and `gc-cons-percentage' when startup finishes.
    ;; This is an advanced option and should not be changed unless you suspect
    ;; performance issues due to garbage collection operations.
-   ;; (default '(100000000 0.1))
-   dotspacemacs-gc-cons '(10000 0.1)
+   ;;   1MB: 1000000    <---
+   ;;  10MB: 10000000
+   ;; 100MB: 100000000
+   ;;   1GB: 1000000000
+   ;; (default 100MB '(100000000 0.1))
+   dotspacemacs-gc-cons '(1000000 0.1)
+
+   ;; display a minibuffer message each time gc collection runs
+   garbage-collection-messages nil
 
    ;; If non-nil then Spacelpa repository is the primary source to install
    ;; a locked version of packages. If nil then Spacemacs will install the
@@ -728,10 +735,6 @@ configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (add-to-load-path "~/.spacemacs.d")
-
-  ;; TEMP: display gc collection messages
-  (setq-default garbage-collection-messages t)
-
   ;; theme definitions
   (load "themes")
 
