@@ -180,7 +180,8 @@ If passed, name them TOP-NAME and BOTTOM-NAME, respectively."
    (find-file org-default-notes-file)
    (goto-char (point-min))
    (purpose-toggle-window-buffer-dedicated)
-   (shrink-by-half-to-the-right)))
+   (shrink-by-half-to-the-right)
+   (windmove-left)))
 
 (defun message-banner (msg)
   "Print MSG banner to the messages buffer."
