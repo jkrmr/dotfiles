@@ -49,34 +49,34 @@ compile log, backtrace, test runs, messages, etc."
             (string-match-p "^\*.+\*$" (buffer-name (window-buffer x))))
          (window-list))))
 
-(defun kob-deletable-buffer-list ()
+(defun killable-buffers-list ()
   "Return a list of all open buffers, excluding current one.
 Also exclude any buffers with names matching the pattern in
-`kob-buffer-to-keep-name-pattern'."
+`keep-buffers-match-pattern'."
   (interactive)
-  (defvar kob-keep-buffers-named-pattern
+  (defvar keep-buffers-match-pattern
     "company\\|scratch"
     "When deleting all buffers, keep buffers with names that match this
     pattern.")
   (seq-filter
    #'(lambda (x)
        (not (or
-             (string-match-p kob-keep-buffers-named-pattern (buffer-name x))
+             (string-match-p keep-buffers-match-pattern (buffer-name x))
              (eq x (current-buffer)))))
    (buffer-list)))
 
-(defun kob-rudely ()
+(defun kill-other-buffers-rudely ()
   "Kill other buffers, including those in other layouts.
 Do not request confirmation for buffers outside the current perspective."
   (interactive)
   (if (boundp 'persp-kill-foreign-buffer-behaviour)
       (let ((original-behavior persp-kill-foreign-buffer-behaviour))
         (setq persp-kill-foreign-buffer-behaviour 'kill)
-        (mapc 'kill-buffer (kob-deletable-buffer-list))
+        (mapc 'kill-buffer (killable-buffers-list))
         (delete-other-windows)
         (setq persp-kill-foreign-buffer-behaviour original-behavior))
     (progn
-      (mapc 'kill-buffer (kob-deletable-buffer-list))
+      (mapc 'kill-buffer (killable-buffers-list))
       (delete-other-windows))))
 
 ;; layout
@@ -93,7 +93,7 @@ Do not request confirmation for buffers outside the current perspective."
   "Reset to the default set of layouts."
   (interactive)
   (let ((delay 1))
-    (kob-rudely)
+    (kill-other-buffers-rudely)
     (sleep-for delay)
     (layouts-org)
     (sleep-for delay)
