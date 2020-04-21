@@ -44,7 +44,7 @@ Examples: *Compile-Log* *Messages* *rspec-compilation*"
   (interactive)
   (defun special-buffer-p (name)
     (string-match-p "^\*.+\*$" (buffer-name (window-buffer name))))
-  (mapc #'delete-window (seq-filter #'special-buffer-p (window-list))))
+  (seq-do #'delete-window (seq-filter #'special-buffer-p (window-list))))
 
 (defun killable-buffers-list ()
   "Return a list of all open buffers, excluding current one.
@@ -66,11 +66,11 @@ Do not request confirmation for buffers outside the current perspective."
   (if (boundp 'persp-kill-foreign-buffer-behaviour)
       (let ((original-behavior persp-kill-foreign-buffer-behaviour))
         (setq persp-kill-foreign-buffer-behaviour 'kill)
-        (mapc 'kill-buffer (killable-buffers-list))
+        (seq-do 'kill-buffer (killable-buffers-list))
         (delete-other-windows)
         (setq persp-kill-foreign-buffer-behaviour original-behavior))
     (progn
-      (mapc 'kill-buffer (killable-buffers-list))
+      (seq-do 'kill-buffer (killable-buffers-list))
       (delete-other-windows))))
 
 ;; layout
