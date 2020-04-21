@@ -492,6 +492,7 @@ This function should only modify configuration layer settings."
                  js2-mode-show-strict-warnings nil
                  js2-strict-missing-semi-warning nil
                  node-add-modules-path t)
+     json
      (latex :variables
             latex-enable-auto-fill t
             latex-enable-folding t)
@@ -707,7 +708,6 @@ This function should only modify configuration layer settings."
    '(
      treemacs
      treemacs-icons-dired
-     json-reformat
      web-beautify
      )
 

@@ -34,6 +34,8 @@
  compilation-scroll-output 'first-error
  ispell-program-name "ispell"
  lsp-signature-auto-activate nil  ;; lsp: don't auto-activate signature hints
+ json-fmt-on-save nil
+ json-fmt-tool 'prettier
  mac-command-modifier 'super
  projectile-completion-system 'helm
  projectile-enable-caching t
@@ -43,10 +45,6 @@
 
 ;; projectile
 (add-to-list 'projectile-globally-ignored-directories "node_modules" t)
-
-;; misc hooks
-(add-hook 'elixir-mode-hook #'lsp)
-(add-hook 'ledger-mode-hook #'evil-ledger-mode)
 
 ;; Appearance: Enable transparency
 ;; ensure new frames are created transparent
@@ -97,6 +95,10 @@
   (setq-default gc-cons-threshold (car dotspacemacs-gc-cons)))
 (add-hook 'minibuffer-setup-hook #'disable-garbage-collection)
 (add-hook 'minibuffer-exit-hook #'enable-garbage-collection)
+
+;; misc hooks
+(add-hook 'elixir-mode-hook #'lsp)
+(add-hook 'ledger-mode-hook #'evil-ledger-mode)
 
 ;; after-init hooks
 (add-hook 'after-init-hook #'global-emojify-mode)
