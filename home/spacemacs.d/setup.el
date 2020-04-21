@@ -108,7 +108,8 @@
 ;; Post-config
 (config/prettify-symbols)
 (config/company)
-(config/load-local-config)
+
+(load "~/.init.local.el")
 
 (provide 'setup)
 ;;; setup.el ends here

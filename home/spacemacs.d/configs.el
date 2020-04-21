@@ -5,10 +5,6 @@
 ;; Defined separately to facilitate isolated and granular debugging.
 
 ;;; Code:
-(defun config/load-local-config ()
-  "Load local configuration overrides."
-  (load "~/.init.local.el"))
-
 (defun config/company ()
   "Configure company auto-completion mode."
   (with-eval-after-load 'company
