@@ -211,7 +211,7 @@
 
     (if (boundp 'org-agenda-files)
         (mapc
-         #'(lambda (file)
+         (lambda (file)
              (when (file-exists-p file)
                (push file org-agenda-files)))
          (org-projectile-todo-files))
