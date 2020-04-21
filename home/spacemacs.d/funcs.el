@@ -40,30 +40,24 @@
 
 (defun kill-modal-windows ()
   "Close windows with ephemeral buffers.
-compile log, backtrace, test runs, messages, etc."
-  ;; '("*Compile-Log*" "*Messages*" "*rspec-compilation*")
+Examples: *Compile-Log* *Messages* *rspec-compilation*"
   (interactive)
-  (mapc #'delete-window
-        (seq-filter
-         '(lambda (x)
-            (string-match-p "^\*.+\*$" (buffer-name (window-buffer x))))
-         (window-list))))
+  (defun special-buffer-p (name)
+    (string-match-p "^\*.+\*$" (buffer-name (window-buffer name))))
+  (mapc #'delete-window (seq-filter #'special-buffer-p (window-list))))
 
 (defun killable-buffers-list ()
   "Return a list of all open buffers, excluding current one.
 Also exclude any buffers with names matching the pattern in
 `keep-buffers-match-pattern'."
-  (interactive)
-  (defvar keep-buffers-match-pattern
-    "company\\|scratch"
-    "When deleting all buffers, keep buffers with names that match this
-    pattern.")
-  (seq-filter
-   #'(lambda (x)
-       (not (or
-             (string-match-p keep-buffers-match-pattern (buffer-name x))
-             (eq x (current-buffer)))))
-   (buffer-list)))
+  (defun other-buffers-not-matching-keep-pattern-p (buffer)
+    (defvar keep-buffers-match-pattern
+      "company\\|scratch"
+      "Keep other buffers with names that match this pattern.")
+    (and
+     (not (eq buffer (current-buffer)))
+     (not (string-match-p keep-buffers-match-pattern (buffer-name buffer)))))
+  (seq-filter #'other-buffers-not-matching-keep-pattern-p (buffer-list)))
 
 (defun kill-other-buffers-rudely ()
   "Kill other buffers, including those in other layouts.
