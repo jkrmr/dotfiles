@@ -43,17 +43,15 @@
 Also exclude any buffers with names matching the pattern in
 `kob-buffer-to-keep-name-pattern'."
   (interactive)
-
   (defvar kob-keep-buffers-named-pattern
     "company\\|scratch"
     "When deleting all buffers, keep buffers with names that match this
     pattern.")
-
-  (remove-if
+  (seq-filter
    #'(lambda (x)
-       (or
-        (string-match-p kob-keep-buffers-named-pattern (buffer-name x))
-        (eq x (current-buffer))))
+       (not (or
+             (string-match-p kob-keep-buffers-named-pattern (buffer-name x))
+             (eq x (current-buffer)))))
    (buffer-list)))
 
 (defun kob-rudely ()
