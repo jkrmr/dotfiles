@@ -103,6 +103,7 @@
   "i e" #'emojify-insert-emoji
   ;; helm: select search from across all sessions
   "r L" #'helm-select-session
+  "r D" #'purpose-toggle-window-buffer-dedicated
   ;; toggles
   "T n" #'r/cycle-theme
   "T D" #'spacemacs/toggle-debug-on-error
