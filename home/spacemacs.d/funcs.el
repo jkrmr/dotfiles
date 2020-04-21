@@ -452,10 +452,13 @@ If not in a project, return the current `default-dir'."
   (let ((proj-root (projectile-project-root)))
     (or proj-root default-directory)))
 
+(defun no-op (&rest args)
+  "Does nothing at all with ARGS."
+  nil)
+
 (defmacro no-message (&rest body)
   "Eval BODY, with `message' doing nothing."
-  `(cl-letf (((symbol-function 'message)
-              (lambda (&rest args) nil)))
+  `(cl-letf (((symbol-function 'message) #'no-op))
      (progn ,@body)))
 
 (defun toggle-messages-window ()
