@@ -688,6 +688,7 @@ This function should only modify configuration layer settings."
      graphql-mode
      gxref
      ido-completing-read+ ;; dependency of amx
+     multi-vterm
      (org-pretty-table :location (recipe :fetcher github :repo "Fuco1/org-pretty-table"))
      (org-books :location (recipe :fetcher github :repo "lepisma/org-books"))
      (org-expand :location (recipe :fetcher github :repo "lepisma/org-expand"))
