@@ -146,6 +146,7 @@
 	bi       = bisect-helper
 	br       = !hub browse
 	ca       = commit-amend
+	cap      = commit --no-verify --amend --no-edit
 	cm       = commit-quick
 	cmm      = commit-quick-force
 	cmf      = commit-fixup
@@ -199,7 +200,7 @@
 	prco     = checkout-pull-request
 	prop     = open-pull-request
 	prc      = pull-request
-	r        = rebase
+	r        = rebase --ignore-date
 	ri       = rebase-interactive
 	ra       = rebase --abort
 	rc       = rebase --continue

@@ -10,5 +10,5 @@
 commit_sha="$(git-select-sha --no-multi)"
 
 if [[ ! -z "$commit_sha" ]]; then
-  git rebase -i "$commit_sha"^
+  git rebase --ignore-date -i "$commit_sha"^
 fi
