@@ -637,12 +637,15 @@ When called with a prefix argument DESC, sort in descending order."
   (interactive "P")
   (evil-sort-inner 'curly desc))
 
-(defun org-projectile-project-todo-file-name (proj-root)
-  "Generate the todo file name for the project at PROJ-ROOT.
+(defun org-projectile-project-todo-file-name (&optional root-path)
+  "Generate the todo file name for the project at ROOT-PATH.
+Note: ROOT-PATH defaults to the current project root. Return nil if not in a
+project root and no ROOT-PATH is given.
 Strip any leading non-alnum chars from the given directory name."
   (interactive)
-  (let* ((dir-name (car (last (split-string proj-root "/") 2)))
-         (proj-name (replace-regexp-in-string "^[^[:alnum:]]+" "" dir-name)))
+  (when-let* ((proj-root (or root-path (projectile-project-root)))
+              (dir-name (car (last (split-string proj-root "/") 2)))
+              (proj-name (replace-regexp-in-string "^[^[:alnum:]]+" "" dir-name)))
     (format "%s.org" proj-name)))
 
 ;; (defun org-capture-without-deleting-other-windows (oldfun &optional args)
