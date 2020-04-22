@@ -207,15 +207,11 @@
       "Put the agenda tags by the right border of the agenda window."
       (setq-default org-agenda-tags-column (- 4 (window-width)))
       (org-agenda-align-tags))
-    (add-hook 'org-finalize-agenda-hook #'place-agenda-tags)
+    (add-hook 'org-finalize-agenda-hook #'place-agenda-tags))
 
-    (if (boundp 'org-agenda-files)
-        (mapc
-         (lambda (file)
-             (when (file-exists-p file)
-               (push file org-agenda-files)))
-         (org-projectile-todo-files))
-      (error "Failed: 'org-agenda-files not bound")))
+  (with-eval-after-load 'org-projectile
+    (push (org-projectile-project-todo-entry)
+          org-capture-templates))
 
   (with-eval-after-load 'org
     ;; mode hooks
