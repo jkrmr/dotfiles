@@ -210,8 +210,9 @@
     (add-hook 'org-finalize-agenda-hook #'place-agenda-tags))
 
   (with-eval-after-load 'org-projectile
-    (setq-default org-projectile-per-project-filepath #'org-projectile-project-todo-file-name)
-    (push (org-projectile-project-todo-entry) org-capture-templates))
+    ;; programmatically determine the todo-file name for the current project.
+    (setq-default org-projectile-per-project-filepath
+                  #'org-projectile-project-todo-file-name))
 
   (with-eval-after-load 'org
     ;; mode hooks
