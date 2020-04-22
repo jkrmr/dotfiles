@@ -129,7 +129,7 @@ Do not request confirmation for buffers outside the current perspective."
 
       (select-window (get-buffer-window today))
       (split-window-below-and-focus)
-      (org-agenda-list)
+      (org-todo-list)
 
       (select-window (get-buffer-window today)))))
 
