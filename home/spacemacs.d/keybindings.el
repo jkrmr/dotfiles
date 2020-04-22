@@ -89,6 +89,7 @@
   "C f" #'deft-find-file
   "C s" #'org-notes-open-sprint
   "C b" #'org-notes-open-backlog
+  "C p" #'org-projectile-project-todo-completing-read
   ;; leader-fp to open file at point
   "f p" #'find-file-at-point
   ;; replace projectile-copy-file-path
