@@ -109,6 +109,8 @@
   "T D" #'spacemacs/toggle-debug-on-error
   "T g" #'golden-ratio
   ;; window splitting: swap these around to change defaults
+  "w p s" #'popwin:stick-popup-window
+  ;; window splitting: swap these around to change defaults
   "w s" #'split-window-below-and-focus
   "w S" #'split-window-below
   "w v" #'split-window-right-and-focus
