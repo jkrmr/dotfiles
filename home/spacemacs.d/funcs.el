@@ -462,29 +462,6 @@ If not in a project, return the current `default-dir'."
   (let ((proj-root (projectile-project-root)))
     (or proj-root default-directory)))
 
-(defadvice message (around quiet (&optional args))
-  "Silence messages."
-  nil)
-
-(defmacro with-no-messages (&rest body)
-  "Evaluate BODY, with any output to the messages buffer suppressed."
-  `(progn
-     (ad-enable-advice 'message 'around 'quiet)
-     (ad-activate 'message)
-     ,@body
-     (ad-disable-advice 'message 'around 'quiet)
-     (ad-activate 'message)))
-
-(defun toggle-messages-window ()
-  "Toggle the messages popup window."
-  (interactive)
-  (let ((msg-window (get-buffer-window "*Messages*")))
-    (if msg-window
-        (popwin:close-popup-window)
-      (with-no-messages
-        (popwin:messages)
-        (popwin:stick-popup-window)))))
-
 (defun toggle-home-layout ()
   "Toggle the home layout."
   (interactive)
