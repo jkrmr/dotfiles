@@ -522,7 +522,7 @@ This function should only modify configuration layer settings."
      (org :variables
           org-adapt-indentation t
           org-agenda-block-separator ""
-          org-agenda-files '("~/Dropbox/org")
+          org-agenda-files '("~/Dropbox/org/")
           org-agenda-window-setup 'current-window
           org-archive-location "~/Dropbox/org/ARCHIVE.org::* %s"
           org-babel-python-command "python3"
@@ -536,7 +536,7 @@ This function should only modify configuration layer settings."
           org-default-backlog-file "~/Dropbox/org/BACKLOG.org"
           org-default-blog-file "~/Dropbox/org/blog/blog.org"
           org-default-notes-file "~/Dropbox/org/TODOS.org"
-          org-directory "~/Dropbox/org"
+          org-directory "~/Dropbox/org/"
           org-edit-src-content-indentation 0
           org-ellipsis " ▾ "
           org-enable-bootstrap-support t
@@ -553,7 +553,7 @@ This function should only modify configuration layer settings."
           org-hugo-export-with-section-numbers nil
           org-hugo-export-with-toc nil
           org-image-actual-width 500
-          org-journal-dir "~/Dropbox/org/journal"
+          org-journal-dir "~/Dropbox/org/journal/"
           org-journal-file-format "%Y%m%d"
           org-journal-file-type 'monthly
           org-journal-find-file #'find-file
