@@ -209,9 +209,12 @@
       (org-agenda-align-tags))
     (add-hook 'org-finalize-agenda-hook #'place-agenda-tags))
 
+  (with-eval-after-load 'org-capture
+    (advice-add 'org-capture-place-template :around 'org-capture-without-deleting-other-windows))
+
   (with-eval-after-load 'org-projectile
-    (push (org-projectile-project-todo-entry)
-          org-capture-templates))
+    (setq-default org-projectile-per-project-filepath #'org-projectile-project-todo-file-name)
+    (push (org-projectile-project-todo-entry) org-capture-templates))
 
   (with-eval-after-load 'org
     ;; mode hooks

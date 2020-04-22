@@ -562,7 +562,7 @@ This function should only modify configuration layer settings."
           org-modules '(ol-bibtex ol-docview org-habit ol-info)
           org-outline-path-complete-in-steps nil
           org-pretty-entities t
-          org-projectile-file "TODOS.org"
+          org-projectile-projects-directory "~/Dropbox/org/"
           org-refile-allow-creating-parent-nodes 'confirm
           org-refile-targets '(("~/Dropbox/org/TODOS.org" :maxlevel . 1) ("~/Dropbox/org/BACKLOG.org" :maxlevel . 1))
           org-refile-use-outline-path 'file

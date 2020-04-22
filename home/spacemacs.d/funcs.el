@@ -671,5 +671,13 @@ When called with a prefix argument DESC, sort in descending order."
   (interactive "P")
   (evil-sort-inner 'curly desc))
 
+(defun org-projectile-project-todo-file-name (proj-root)
+  "Generate the todo file name for the project at PROJ-ROOT.
+Strip any leading non-alnum chars from the given directory name."
+  (interactive)
+  (let* ((dir-name (car (last (split-string proj-root "/") 2)))
+         (proj-name (replace-regexp-in-string "^[^[:alnum:]]+" "" dir-name)))
+    (format "%s.org" proj-name)))
+
 (provide 'funcs)
 ;;; funcs.el ends here
