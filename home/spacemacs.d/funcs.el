@@ -648,13 +648,16 @@ Strip any leading non-alnum chars from the given directory name."
               (proj-name (replace-regexp-in-string "^[^[:alnum:]]+" "" dir-name)))
     (format "%s.org" proj-name)))
 
-;; (defun org-capture-without-deleting-other-windows (oldfun &optional args)
-;;   "Execute function OLDFUN with ARGS, temporarily disabling `delete-other-windows'."
-;;   (cl-letf (((symbol-function 'delete-other-windows) 'ignore))
-;;     (funcall oldfun)))
-;;
-;; (with-eval-after-load 'org-capture
-;;   (advice-add 'org-capture-place-template :around 'org-capture-without-deleting-other-windows))
+(defun org-projectile-project-capture ()
+  "Visit the correct file for a project capture and place the point."
+  (defvar org-projectile-projects-directory)
+  (when-let ((section-name "Captures")
+             (proj-todo (org-projectile-project-todo-file-name)))
+    (find-file (concat org-projectile-projects-directory proj-todo))
+    (goto-char (point-min))
+    (when (not (search-forward section-name nil t))
+      (goto-char (point-max))
+      (insert (format "* %s" section-name)))))
 
 (provide 'funcs)
 ;;; funcs.el ends here
