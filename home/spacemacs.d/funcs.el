@@ -573,8 +573,31 @@ If not in a project, return the current `default-dir'."
   (interactive)
   (async-shell-command (format "xelatex %s" (buffer-file-name))))
 
-;; Spacemacs buffer
+(defun rails--find-related-file (path)
+  "Toggle between controller implementation at PATH and its request spec.
+Look for a controller spec if there's no request spec."
+  (if (string-match
+       (rx (group (or "app" "spec"))
+           (group "/" (or "controllers" "requests"))
+           (group "/" (1+ anything))
+           (group (or "_controller" "_request"))
+           (group (or ".rb" "_spec.rb")))
+       path)
+      (let ((dir (match-string 1 path))
+            (subdir (match-string 2 path))
+            (file-name (match-string 3 path)))
+        (let ((implementation (concat "app/controllers" file-name "_controller.rb"))
+              (request-spec (concat "spec/requests" file-name "_request_spec.rb"))
+              (controller-spec (concat "spec/controllers" file-name "_controller_spec.rb")))
+          (if (equal dir "spec")
+              (list :impl implementation)
+            (list :test (if (file-exists-p (concat (projectile-project-root) request-spec))
+                            request-spec
+                          controller-spec)
+                  :request-spec request-spec
+                  :controller-spec controller-spec))))))
 
+;; Spacemacs buffer
 
 (defun goto-spacemacs-buffer-section (name)
   "Go to the section NAME of the Spacemacs buffer."
