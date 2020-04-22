@@ -29,7 +29,6 @@
 (global-set-key (kbd "s-s") #'save-buffer)
 (global-set-key (kbd "s-S") #'save-some-buffers)
 (global-set-key (kbd "s-t") #'shell-below-full-span)
-(global-set-key (kbd "s-T") #'toggle-todos)
 (global-set-key (kbd "s-w") #'spacemacs/delete-window)
 
 
