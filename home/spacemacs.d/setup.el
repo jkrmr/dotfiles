@@ -7,8 +7,6 @@
 (require 'editorconfig)
 
 (config/copy-as-format)
-(config/elixir)
-(config/elm)
 (config/evil-collection)
 (config/evil-goggles)
 (config/flycheck)

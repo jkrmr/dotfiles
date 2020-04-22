@@ -44,29 +44,6 @@
    copy-as-format-asciidoc-include-file-name t
    copy-as-format-default "github"))
 
-(defun config/elixir ()
-  "Configure Elixir mode."
-  (projectile-register-project-type 'elixir-mix '("mix.exs")
-                                    :compile "mix compile"
-                                    :test "mix test"
-                                    :test-suffix "_test")
-  (defun elixir-format-buffer ()
-    (interactive)
-    (shell-command-on-region
-     (point-min) (point-max)
-     (format "mix format %s" (buffer-file-name))))
-
-  ;; mix-format interface
-  (defun elixir-after-save-hooks ()
-    (if (eq major-mode 'elixir-mode)
-        (elixir-format-buffer)))
-  (add-hook 'after-save-hook #'elixir-after-save-hooks))
-
-(defun config/elm ()
-  "Configure Elm."
-  (with-eval-after-load 'elm-mode
-    (remove-hook 'elm-mode-hook 'elm-indent-mode)))
-
 (defun config/evil-collection ()
   "Enable evil keybindings everywhere."
   (setq-default
