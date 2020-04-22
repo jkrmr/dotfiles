@@ -38,11 +38,18 @@
 
 (defun kill-modal-windows ()
   "Close windows with ephemeral buffers.
-Examples: *Compile-Log* *Messages* *rspec-compilation*"
+Examples: *Compile-Log* *Messages* *rspec-compilation*
+Exclude: webkit windows."
   (interactive)
-  (defun special-buffer-p (name)
-    (string-match-p "^\*.+\*$" (buffer-name (window-buffer name))))
-  (seq-do #'delete-window (seq-filter #'special-buffer-p (window-list))))
+  (defun special-buffer-p (buf-name)
+    (string-match-p "^\*.+\*$" buf-name))
+  (defun excludable-buffer-p (buf-name)
+    (string-match-p "webkit" buf-name))
+  (defun killable-window-p (win-name)
+    (let ((buf-name (buffer-name (window-buffer win-name))))
+      (and (special-buffer-p buf-name)
+           (not (excludable-buffer-p buf-name)))))
+  (seq-do #'delete-window (seq-filter #'killable-window-p (window-list))))
 
 (defun killable-buffers-list ()
   "Return a list of all open buffers, excluding current one.
