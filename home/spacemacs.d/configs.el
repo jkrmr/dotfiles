@@ -243,7 +243,11 @@
     ;; Capture templates
     (setq-default
      org-capture-templates
-     '(("t" "Todo" entry (file+headline org-default-backlog-file "Captures")
+     '(("t" "Todo (general)" entry (file+headline org-default-notes-file "Captures")
+        "** TODO %?\n%U" :empty-lines 0 :prepend t)
+       ("d" "Todo (for development environment)" entry (file+headline "dotfiles.org" "Captures")
+        "** TODO %?\n%U" :empty-lines 0 :prepend t)
+       ("p" "Todo (for a project)" entry (function org-projectile-project-capture)
         "** TODO %?\n%U" :empty-lines 0 :prepend t)
        ("c" "Commonplace" entry (file+headline "blog/commonplaces.org" "Commonplaces")
         (function org-hugo-new-commonplace-capture-template) :empty-lines 1 :prepend t)
@@ -255,7 +259,7 @@
         "** %?\n%a\n%U" :empty-lines 1)
        ("n" "Notes" entry (file+headline "blog/notes.org" "Notes")
         (function org-hugo-new-blog-capture-template) :empty-lines 1 :prepend t)
-       ("p" "Blog Post" entry (file+headline "blog/blog.org" "Blog")
+       ("b" "Blog Post" entry (file+headline "blog/blog.org" "Blog")
         (function org-hugo-new-blog-capture-template) :empty-lines 1 :prepend t)
        ("h" "Health journal" entry (file+olp+datetree "HEALTH.org")
         "**** [%<%l:%M %p>] %^{Entry} %^g" :immediate-finish t)
