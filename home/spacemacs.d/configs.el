@@ -246,7 +246,7 @@
     (setq-default
      org-capture-templates
      '(("t" "Todo" entry (file+headline org-default-backlog-file "Captures")
-        "** %?\n%U" :empty-lines 1)
+        "** TODO %?\n%U" :empty-lines 0 :prepend t)
        ("c" "Commonplace" entry (file+headline "blog/commonplaces.org" "Commonplaces")
         (function org-hugo-new-commonplace-capture-template) :empty-lines 1 :prepend t)
        ("m" "Marginalia" entry (file+headline "blog/marginalia.org" "Marginalia")
