@@ -679,5 +679,12 @@ Strip any leading non-alnum chars from the given directory name."
          (proj-name (replace-regexp-in-string "^[^[:alnum:]]+" "" dir-name)))
     (format "%s.org" proj-name)))
 
+(defun org-capture-without-deleting-other-windows (oldfun &optional args)
+  "Execute function OLDFUN with ARGS, temporarily disabling `delete-other-windows'."
+  (cl-letf (((symbol-function 'delete-other-windows) 'ignore))
+    (if args
+        (apply oldfun args)
+      (funcall oldfun))))
+
 (provide 'funcs)
 ;;; funcs.el ends here
