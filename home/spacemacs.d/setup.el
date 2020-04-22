@@ -109,7 +109,5 @@
 (config/prettify-symbols)
 (config/company)
 
-(load "~/.init.local.el")
-
 (provide 'setup)
 ;;; setup.el ends here

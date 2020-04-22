@@ -807,7 +807,10 @@ configuration."
     ;; setup keybindings
     (load "keybindings")
     ;; overrides of package methods
-    (load "overrides"))
+    (load "overrides")
+    ;; load local config
+    (load "~/.init.local"))
+
   (message-banner "done configuring emacs"))
 
 ;; Do not write anything past this comment. This is where Emacs will
