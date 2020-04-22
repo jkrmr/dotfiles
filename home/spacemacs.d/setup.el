@@ -41,8 +41,30 @@
  projectile-project-search-path '("~/Projects" "~/Work" "~/Resources" "~/Exercism" "~/Tutorials")
  tramp-default-method "ssh")
 
-;; projectile
-(add-to-list 'projectile-globally-ignored-directories "node_modules" t)
+
+;;; Projectile
+
+(with-eval-after-load 'projectile
+  (projectile-register-project-type
+   'elixir-mix '("mix.exs"
+                 :compile "mix compile"
+                 :test "mix test"
+                 :test-suffix "_test"))
+  (projectile-register-project-type
+   'python-pipenv '("Pipfile"
+                    :compile "pipenv run compile"
+                    :test "pipenv run test"
+                    :test-suffix "_test"))
+  (projectile-register-project-type
+   'python-pytest '(".pytest_cache"
+                    :compile ""
+                    :test "pytest"
+                    :test-prefix "test_"
+                    :test-suffix "_test"))
+
+  (if (boundp 'projectile-globally-ignored-directories)
+      (add-to-list 'projectile-globally-ignored-directories "node_modules" t)))
+
 
 ;; Appearance: Enable transparency
 ;; ensure new frames are created transparent
@@ -56,6 +78,7 @@
   (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t)))
 
 ;; Appearance: Render emoji
+
 (defun set-emoji-font (frame)
   "Adjust the font settings of FRAME so Emacs can render emoji codes as emoji."
   (if (eq system-type 'darwin)

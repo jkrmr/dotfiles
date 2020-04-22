@@ -188,6 +188,7 @@
 
   (with-eval-after-load 'org-projectile
     ;; programmatically determine the todo-file name for the current project.
+    ;; `org-projectile-per-project-filepath' must be set here
     (setq-default org-projectile-per-project-filepath
                   #'org-projectile-project-todo-file-name))
 
@@ -391,18 +392,7 @@ Only equations at the beginning of a line are justified."
   ;; (add-hook 'python-mode-hook #'elpy-enable)
   (add-hook 'python-mode-hook #'anaconda-mode)
   (add-hook 'python-mode-hook #'anaconda-eldoc-mode)
-  (add-hook 'python-mode-hook #'evil-text-object-python-add-bindings)
-
-  ;; Register Pipenv project type with projectile
-  (projectile-register-project-type 'python-pipenv '("Pipfile")
-                                    :compile "pipenv run compile"
-                                    :test "pipenv run test"
-                                    :test-suffix "_test")
-  (projectile-register-project-type 'python-pytest '(".pytest_cache")
-                                    :compile ""
-                                    :test "pytest"
-                                    :test-prefix "test_"
-                                    :test-suffix "_test"))
+  (add-hook 'python-mode-hook #'evil-text-object-python-add-bindings))
 
 (defun config/ruby ()
   "Configure packages for Ruby mode."
