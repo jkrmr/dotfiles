@@ -84,6 +84,8 @@
   "a s r" #'shell-right
   "a s b" #'shell-below
   "\'" #'shell-below-full-span
+  ;; current layout's buffers
+  "b l" #'spacemacs/persp-helm-mini
   ;; capture / notes additions
   "C RET" #'org-capture
   "C n" #'spacemacs/deft
