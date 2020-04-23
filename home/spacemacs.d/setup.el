@@ -30,16 +30,20 @@
  compilation-scroll-output 'first-error
  copy-as-format-asciidoc-include-file-name t
  copy-as-format-default "github"
- doom-modeline-buffer-file-name-style 'truncate-with-project
+ doom-modeline-buffer-encoding nil
+ doom-modeline-buffer-file-name-style 'relative-to-project  ;; 'truncate-with-project
  doom-modeline-buffer-modification-icon t
  doom-modeline-buffer-state-icon t
+ doom-modeline-display-default-persp-name nil
  doom-modeline-enable-word-count t
  doom-modeline-env-command nil
  doom-modeline-evil-state-icon t
  doom-modeline-github t
+ doom-modeline-height 20
  doom-modeline-icon (display-graphic-p)
+ doom-modeline-indent-info nil
  doom-modeline-lsp t
- doom-modeline-major-mode-color-icon t
+ doom-modeline-major-mode-color-icon nil
  doom-modeline-major-mode-icon t
  doom-modeline-minor-modes nil
  doom-modeline-persp-name t
@@ -56,7 +60,10 @@
  google-translate-pop-up-buffer-set-focus t
  google-translate-translation-directions-alist '(("en" . "es") ("en" . "fr"))
  ido-enable-flex-matching t
- ido-use-faces nil  ;; disable ido faces to see flx highlights
+ ;; disable ido faces to see flx highlights
+ ido-use-faces nil
+ ;; Don’t compact font caches during GC
+ inhibit-compacting-font-caches t
  ispell-program-name "ispell"
  json-fmt-on-save nil
  json-fmt-tool 'prettier
@@ -66,7 +73,9 @@
  projectile-enable-caching t
  projectile-find-dir-includes-top-level t
  projectile-project-search-path '("~/Projects" "~/Work" "~/Resources" "~/Exercism" "~/Tutorials")
- tramp-default-method "ssh")
+ tramp-default-method "ssh"
+ ;; when visiting a link under VC, follow to the real file
+ vc-follow-symlinks t)
 
 
 ;;; Projectile
