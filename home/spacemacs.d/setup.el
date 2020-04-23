@@ -93,6 +93,10 @@
   (add-to-list 'default-frame-alist '(ns-appearance . dark))
   (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t)))
 
+;; Ensure dark theme in terminal
+(when (not window-system)
+  (spacemacs/load-theme 'spacemacs-dark))
+
 
 
 ;;; Emoji
