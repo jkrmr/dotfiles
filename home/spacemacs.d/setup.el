@@ -159,6 +159,8 @@
   (spacemacs/load-theme 'spacemacs-dark))
 
 ;; doom-modeline
+(set-face-attribute 'doom-modeline-persp-name nil :inherit '(font-lock-doc-face italic mode-line-emphasis))
+(set-face-attribute 'doom-modeline-persp-buffer-not-in-persp nil :inherit '(font-lock-doc-face mode-line-emphasis))
 (doom-modeline-set-modeline 'main t)
 (doom-modeline-mode)
 
