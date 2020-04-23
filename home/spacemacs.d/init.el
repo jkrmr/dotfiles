@@ -452,7 +452,7 @@ This function should only modify configuration layer settings."
      graphviz
      (gtags :variables
             ggtags-highlight-tag nil  ;; disable tag highlighting
-            gtags-enable-by-default t
+            gtags-enable-by-default nil
             xref-backend-functions '(ggtags--xref-backend elisp--xref-backend gxref-xref-backend etags--xref-backend))
      haskell
      (helm :variables
