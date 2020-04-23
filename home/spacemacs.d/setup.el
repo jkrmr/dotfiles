@@ -34,7 +34,7 @@
  doom-modeline-buffer-file-name-style 'relative-to-project  ;; 'truncate-with-project
  doom-modeline-buffer-modification-icon t
  doom-modeline-buffer-state-icon t
- doom-modeline-display-default-persp-name nil
+ doom-modeline-display-default-persp-name t
  doom-modeline-enable-word-count t
  doom-modeline-env-command nil
  doom-modeline-evil-state-icon t
