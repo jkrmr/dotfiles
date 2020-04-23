@@ -35,7 +35,6 @@
  doom-modeline-buffer-modification-icon t
  doom-modeline-buffer-state-icon t
  doom-modeline-display-default-persp-name t
- doom-modeline-persp-icon nil
  doom-modeline-enable-word-count t
  doom-modeline-evil-state-icon t
  doom-modeline-github t
@@ -46,6 +45,8 @@
  doom-modeline-major-mode-color-icon nil
  doom-modeline-major-mode-icon t
  doom-modeline-minor-modes nil
+ doom-modeline-modal-icon nil
+ doom-modeline-persp-icon nil
  doom-modeline-persp-name t
  doom-modeline-project-detection 'project
  evil-collection-outline-bind-tab-p t
@@ -167,6 +168,20 @@
   (spacemacs/load-theme 'spacemacs-dark))
 
 ;; doom-modeline
+(setq-default
+ evil-emacs-state-tag        (propertize "[E]" 'face '(:background "SkyBlue2" :foreground "black"))
+ evil-evilified-state-tag    (propertize "<E>" 'face '(:background "green" :foreground "black"))
+ evil-hybrid-state-tag       (propertize "[H]" 'face '(:background "chartreuse3" :foreground "white"))
+ evil-iedit-insert-state-tag (propertize "<I>" 'face '(:background "green" :foreground "black"))
+ evil-iedit-state-tag        (propertize "<N>" 'face '(:background "green" :foreground "black"))
+ evil-insert-state-tag       (propertize "[I]" 'face '(:background "chartreuse3" :foreground "white"))
+ evil-lisp-state-tag         (propertize "[L]" 'face '(:background "green" :foreground "black"))
+ evil-motion-state-tag       (propertize "[M]" 'face '(:background "plum3" :foreground "white"))
+ evil-normal-state-tag       (propertize "[N]" 'face '(:background "DarkGoldenrod2" :foreground "black"))
+ evil-operator-state-tag     (propertize "[O]" 'face '(:background "purple" :foreground "black"))
+ evil-replace-state-tag      (propertize "[R]" 'face '(:background "green" :foreground "black"))
+ evil-visual-state-tag       (propertize "[V]" 'face '(:background "gray" :foreground "black")))
+
 (set-face-attribute 'doom-modeline-persp-name nil :inherit '(font-lock-doc-face italic mode-line-emphasis))
 (set-face-attribute 'doom-modeline-persp-buffer-not-in-persp nil :inherit '(font-lock-doc-face mode-line-emphasis))
 (doom-modeline-set-modeline 'main t)
