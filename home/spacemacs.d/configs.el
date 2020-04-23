@@ -38,31 +38,6 @@
           (message-banner "company map set"))
       (error "Could not define `company-active-map' keybindings"))))
 
-(defun config/copy-as-format ()
-  "Configure copy-as-format."
-  (setq-default
-   copy-as-format-asciidoc-include-file-name t
-   copy-as-format-default "github"))
-
-(defun config/evil-collection ()
-  "Enable evil keybindings everywhere."
-  (setq-default
-   evil-collection-outline-bind-tab-p t
-   evil-collection-term-sync-state-and-mode-p t
-   evil-collection-setup-minibuffer t
-   evil-collection-setup-debugger-keys t)
-
-  ;; load init evil-collection after loading evil
-  (when (require 'evil-collection nil t)
-    (evil-collection-init)))
-
-(defun config/evil-goggles ()
-  "Configure evil-goggles."
-  (setq-default evil-goggles-pulse nil
-                evil-goggles-duration 0.7)
-  (evil-goggles-mode)
-  (evil-goggles-use-diff-refine-faces))
-
 (defun config/flycheck ()
   "Configure and enable Flycheck."
   (with-eval-after-load 'flycheck
@@ -78,16 +53,6 @@
       (flycheck-add-next-checker 'lsp 'ruby-reek)))
   ;; Enable eagerly in all programming buffers
   (add-hook 'prog-mode-hook #'flycheck-mode))
-
-(defun config/google-translate ()
-  "Configure google-translate."
-  (setq-default google-translate-backend-method 'curl
-                ;; 'popup 'kill-ring 'current-buffer
-                google-translate-output-destination 'current-buffer
-                google-translate-pop-up-buffer-set-focus t
-                google-translate-translation-directions-alist '(("en" . "es")
-                                                                ("en" . "fr")
-                                                                ("en" . "nl"))))
 
 (defun config/highlight-lines-at-length (chars)
   "Configure and enable whitespace mode to color text after CHARS chars."
@@ -116,7 +81,6 @@
   "Configure LaTeX mode."
   ;; Update preview when file changes
   (add-hook 'doc-view-mode-hook 'auto-revert-mode)
-
   ;; Detect xelatex files
   (add-to-list 'auto-mode-alist '("\\.xtx\\'" . LaTeX-mode)))
 

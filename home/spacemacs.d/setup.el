@@ -9,11 +9,7 @@
 
 ;;; Package configs
 
-(config/copy-as-format)
-(config/evil-collection)
-(config/evil-goggles)
 (config/flycheck)
-(config/google-translate)
 (config/highlight-lines-at-length 80)
 (config/javascript-modes)
 (config/latex-mode)
