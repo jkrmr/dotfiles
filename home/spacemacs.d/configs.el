@@ -406,21 +406,6 @@ Only equations at the beginning of a line are justified."
   ;; Enable pry in test runs
   (add-hook 'compilation-filter-hook 'inf-ruby-auto-enter))
 
-(defun config/ruby-folding ()
-  "Configure ruby folding."
-  (eval-after-load "hideshow"
-    '(add-to-list 'hs-special-modes-alist
-                  `(ruby-mode
-                    ,(rx (or "def" "class" "module" "do" "{" "[")) ; Block start
-                    ,(rx (or "}" "]" "end"))                       ; Block end
-                    ,(rx (or "#" "=begin")) ; Comment start
-                    ruby-forward-sexp nil))))
-
-(defun config/set-terminal-emacs-theme ()
-  "Set theme for terminal session."
-  (if (not (display-graphic-p))
-      (spacemacs/load-theme 'spacemacs-dark)))
-
 (defun config/shell-buffers ()
   "Configure shell buffers."
   ;; Use utf8

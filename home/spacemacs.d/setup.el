@@ -22,8 +22,6 @@
 (config/org-mode)
 (config/python)
 (config/ruby)
-(config/ruby-folding)
-(config/set-terminal-emacs-theme)
 (config/shell-buffers)
 (config/underscore-to-word-char-list)
 (config/web-mode)
