@@ -58,6 +58,9 @@
  google-translate-output-destination 'current-buffer ;; 'popup 'kill-ring 'current-buffer
  google-translate-pop-up-buffer-set-focus t
  google-translate-translation-directions-alist '(("en" . "es") ("en" . "fr"))
+ ;; Used by helm to de-dupe history entries (or not)
+ history-delete-duplicates t
+ ;; history-length 1000
  ido-enable-flex-matching t
  ;; disable ido faces to see flx highlights
  ido-use-faces nil
