@@ -808,9 +808,6 @@ FACES-ALIST has the actual faces like:
    (:foreground ,string)
    nil)))
 
-(with-eval-after-load 'highlight-parentheses
-  ;; Parentheses colors
-  (setq hl-paren-colors '("#88C0D0" "#D08770" "#A3BE8C" "#EBCB8B")))
 
 (provide 'themes)
 ;;; themes.el ends here
