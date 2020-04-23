@@ -185,6 +185,7 @@ Adjust the font settings of the given FRAME to do this."
 (beacon-mode)
 (company-prescient-mode)
 (direnv-mode)
+(display-battery-mode 1)
 (editorconfig-mode)
 (evil-goggles-mode)
 (evil-goggles-use-diff-refine-faces)
