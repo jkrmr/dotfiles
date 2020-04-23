@@ -35,6 +35,7 @@
  doom-modeline-buffer-modification-icon t
  doom-modeline-buffer-state-icon t
  doom-modeline-display-default-persp-name t
+ doom-modeline-display-persp-icon nil
  doom-modeline-enable-word-count t
  doom-modeline-evil-state-icon t
  doom-modeline-github t
