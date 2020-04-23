@@ -706,6 +706,7 @@ This function should only modify configuration layer settings."
 
    dotspacemacs-excluded-packages
    '(
+     fancy-battery
      treemacs
      treemacs-icons-dired
      web-beautify
