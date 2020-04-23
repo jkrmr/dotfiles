@@ -31,6 +31,7 @@
 (global-set-key (kbd "s-S") #'save-some-buffers)
 (global-set-key (kbd "s-t") #'shell-below-full-span)
 (global-set-key (kbd "s-w") #'spacemacs/delete-window)
+(global-set-key (kbd "s-W") #'open-web-browser)
 
 
 
