@@ -408,7 +408,6 @@ This function should only modify configuration layer settings."
      bm
      (c-c++ :variables
             c-c++-enable-clang-support t)
-     colors
      command-log
      copy-as-format
      csv
