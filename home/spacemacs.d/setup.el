@@ -36,7 +36,6 @@
  doom-modeline-buffer-state-icon t
  doom-modeline-display-default-persp-name t
  doom-modeline-enable-word-count t
- doom-modeline-env-command nil
  doom-modeline-evil-state-icon t
  doom-modeline-github t
  doom-modeline-height 20
@@ -48,7 +47,6 @@
  doom-modeline-minor-modes nil
  doom-modeline-persp-name t
  doom-modeline-project-detection 'project
- doom-modeline-version t
  evil-collection-outline-bind-tab-p t
  evil-collection-setup-debugger-keys t
  evil-collection-setup-minibuffer t
