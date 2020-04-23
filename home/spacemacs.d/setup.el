@@ -23,7 +23,7 @@
 (config/python)
 (config/ruby)
 (config/shell-buffers)
-(config/underscore-to-word-char-list)
+(config/add-to-word-char-list)
 (config/web-mode)
 
 

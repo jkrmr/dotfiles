@@ -417,7 +417,7 @@ Only equations at the beginning of a line are justified."
     (interactive (list shell-default-term-shell)))
   (ad-activate #'ansi-term))
 
-(defun config/underscore-to-word-char-list ()
+(defun config/add-to-word-char-list ()
   "Add underscore to word char list in prog and other modes."
   (defun add-underscore-to-word-chars ()
     "Adds underscore to the word chars syntax entry list."
