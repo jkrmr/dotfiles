@@ -98,17 +98,6 @@
   (add-hook 'clojure-mode-hook #'lisp-minor-modes)
   (add-hook 'emacs-lisp-mode-hook #'lisp-minor-modes))
 
-(defun config/modeline ()
-  "Configure the modeline."
-  (defun enable-doom-modeline-in-messages ()
-    "Enable doom-modeline in messages buffer."
-    (when-let ((msg-window (get-buffer-window "*Messages*")))
-      (with-current-buffer (window-buffer msg-window)
-         (doom-modeline-set-main-modeline))))
-  ;; (add-hook 'post-command-hook #'enable-doom-modeline-in-messages)
-  (doom-modeline-set-modeline 'main t)
-  (doom-modeline-mode))
-
 (defun config/org-mode ()
   "Configure and enable org mode."
   (with-eval-after-load 'org-agenda

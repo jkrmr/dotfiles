@@ -151,6 +151,10 @@
 (when (not window-system)
   (spacemacs/load-theme 'spacemacs-dark))
 
+;; doom-modeline
+(doom-modeline-set-modeline 'main t)
+(doom-modeline-mode)
+
 
 
 ;;; Emoji
