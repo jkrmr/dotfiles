@@ -5,22 +5,47 @@
 
 ;;; Code:
 
+(setq-default doom-modeline-display-persp-icon nil)
 (with-eval-after-load 'doom-modeline-segments
   (defun doom-modeline-update-persp-name (&rest _)
     "Update perspective name in mode-line.
-Overwrites doom-modeline's version to display on default layout and simplify."
+Overwrites doom-modeline's version to remove icon and background coloring."
     (setq doom-modeline--persp-name
           ;; Support `persp-mode', while not support `perspective'
           (when (and doom-modeline-persp-name
+                     (not doom-modeline--limited-width-p)
                      (bound-and-true-p persp-mode)
                      (fboundp 'safe-persp-name)
                      (fboundp 'get-current-persp))
             (let* ((persp (get-current-persp))
                    (name (safe-persp-name persp))
-                   (face 'doom-modeline-persp-buffer-not-in-persp))
-              (concat (doom-modeline-spc)
-                      (propertize name 'face face)
-                      (doom-modeline-spc)))))))
+                   (face (if (and persp
+                                  (not (persp-contain-buffer-p (current-buffer) persp)))
+                             'doom-modeline-persp-buffer-not-in-persp
+                           'doom-modeline-persp-name))
+                   (icon (doom-modeline-icon 'material "folder" "🖿" "#"
+                                             :face `(:inherit ,face :slant normal)
+                                             :height 1.1
+                                             :v-adjust -0.225)))
+              (when (or doom-modeline-display-default-persp-name
+                        (not (string-equal persp-nil-name name)))
+                (concat (doom-modeline-spc)
+                        (propertize (concat (and doom-modeline-display-persp-icon icon)
+                                            (doom-modeline-vspc)
+                                            (propertize name 'face face))
+
+                                    'help-echo "mouse-1: Switch perspective
+mouse-2: Show help for minor mode"
+                                    'mouse-face 'mode-line-highlight
+                                    'local-map (let ((map (make-sparse-keymap)))
+                                                 (define-key map [mode-line mouse-1]
+                                                   #'persp-switch)
+                                                 (define-key map [mode-line mouse-2]
+                                                   (lambda ()
+                                                     (interactive)
+                                                     (describe-function 'persp-mode)))
+                                                 map))
+                        (doom-modeline-spc))))))))
 
 (with-eval-after-load 'ox-hugo
   ;; TODO: submit upstream
