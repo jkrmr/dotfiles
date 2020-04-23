@@ -81,29 +81,33 @@
 
 (with-eval-after-load 'projectile
   (projectile-register-project-type
-   'elixir-mix '("mix.exs"
-                 :compile "mix compile"
-                 :test "mix test"
-                 :test-suffix "_test"))
+   'elixir-mix
+   '("mix.exs")
+   :compile "mix compile"
+   :test "mix test"
+   :test-suffix "_test")
   (projectile-register-project-type
-   'python-pipenv '("Pipfile"
-                    :compile "pipenv run compile"
-                    :test "pipenv run test"
-                    :test-suffix "_test"))
+   'python-pipenv
+   '("Pipfile")
+   :compile "pipenv run compile"
+   :test "pipenv run test"
+   :test-suffix "_test")
   (projectile-register-project-type
-   'python-pytest '(".pytest_cache"
-                    :compile ""
-                    :test "pytest"
-                    :test-prefix "test_"
-                    :test-suffix "_test"))
+   'python-pytest
+   '(".pytest_cache")
+   :compile ""
+   :test "pytest"
+   :test-prefix "test_"
+   :test-suffix "_test")
   (projectile-register-project-type
-   'rails-rspec '("Gemfile" "app" "lib" "db" "config" "spec"
-                  :compile "bin/rails server"
-                  :src-dir "lib/"
-                  :test "bin/rspec --no-profile --format progress"
-                  :test-dir "spec/"
-                  :test-suffix "_spec"
-                  :related-files-fn #'rails--find-related-file))
+   'rails-rspec
+   '("Gemfile" "app" "lib" "db" "config" "spec")
+   :compile "bin/rails server"
+   :src-dir "lib/"
+   :test "bin/rspec --no-profile --format progress"
+   :test-dir "spec/"
+   :test-suffix "_spec"
+   :related-files-fn #'rails--find-related-file)
 
   (if (boundp 'projectile-globally-ignored-directories)
       (add-to-list 'projectile-globally-ignored-directories "node_modules" t)))
