@@ -39,12 +39,12 @@
 (defun kill-modal-windows ()
   "Close windows with ephemeral buffers.
 Examples: *Compile-Log* *Messages* *rspec-compilation*
-Exclude: webkit windows."
+Exclude: xwidget-webkit browser windows."
   (interactive)
   (defun special-buffer-p (buf-name)
     (string-match-p "^\*.+\*$" buf-name))
   (defun excludable-buffer-p (buf-name)
-    (string-match-p "webkit" buf-name))
+    (string-match-p "^\*xwidget" buf-name))
   (defun killable-window-p (win-name)
     (let ((buf-name (buffer-name (window-buffer win-name))))
       (and (special-buffer-p buf-name)
