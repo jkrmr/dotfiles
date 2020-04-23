@@ -90,52 +90,22 @@
   (require 'evil-cleverparens-text-objects)
   (spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hooks)
 
-  ;; Lisp modes
-  (defun add-lisp-modes-hook (func)
-    "Add FUNC as a hook to each of the major Lisp major modes."
-    (progn
-      (add-hook 'clojure-mode-hook func)
-      (add-hook 'scheme-mode-hook func)
-      (add-hook 'emacs-lisp-mode-hook func)))
-
-  ;; Lisp minor modes
-  (defun lisp-packages ()
+  (defun lisp-minor-modes ()
     "Enable Lisp minor modes, in the correct sequence."
-    (progn
-      (parinfer-mode)
-      (evil-cleverparens-mode)))
-
+    (parinfer-mode)
+    (evil-cleverparens-mode))
   (remove-hook 'emacs-lisp-mode-hook #'parinfer-mode)
-  (add-lisp-modes-hook #'lisp-packages))
+  (add-hook 'clojure-mode-hook #'lisp-minor-modes)
+  (add-hook 'emacs-lisp-mode-hook #'lisp-minor-modes))
 
 (defun config/modeline ()
   "Configure the modeline."
-  ;; doom-modeline
-  (setq-default
-   doom-modeline-buffer-file-name-style 'truncate-with-project
-   doom-modeline-buffer-modification-icon t
-   doom-modeline-buffer-state-icon t
-   doom-modeline-enable-word-count t
-   doom-modeline-env-command nil
-   doom-modeline-evil-state-icon t
-   doom-modeline-github t
-   doom-modeline-icon (display-graphic-p)
-   doom-modeline-lsp t
-   doom-modeline-major-mode-color-icon t
-   doom-modeline-major-mode-icon t
-   doom-modeline-minor-modes nil
-   doom-modeline-persp-name t
-   doom-modeline-project-detection 'project
-   doom-modeline-version t)
-
   (defun enable-doom-modeline-in-messages ()
     "Enable doom-modeline in messages buffer."
-    (let ((msg-window (get-buffer-window "*Messages*")))
-      (if msg-window
-          (with-current-buffer (window-buffer msg-window)
-            (doom-modeline-set-main-modeline)))))
-  (add-hook 'post-command-hook #'enable-doom-modeline-in-messages)
-
+    (when-let ((msg-window (get-buffer-window "*Messages*")))
+      (with-current-buffer (window-buffer msg-window)
+         (doom-modeline-set-main-modeline))))
+  ;; (add-hook 'post-command-hook #'enable-doom-modeline-in-messages)
   (doom-modeline-set-modeline 'main t)
   (doom-modeline-mode))
 
@@ -156,31 +126,30 @@
     (setq-default org-projectile-per-project-filepath
                   #'org-projectile-project-todo-file-name))
 
+  ;; Org Journal transient state
+  (spacemacs|define-transient-state org-journal
+    :title "Org Journal Transient State"
+    :hint nil
+    :foreign-keys run
+    :doc
+    "\n[_p_/_N_] previous [_n_] next [_c_] current [_s_] search all [_f_] search future [_S_] search range [_q_] quit"
+    :bindings
+    ("p" org-journal-open-previous-entry)
+    ("N" org-journal-open-previous-entry)
+    ("n" org-journal-open-next-entry)
+    ("c" org-journal-today)
+    ("s" org-journal-search-forever)
+    ("f" org-journal-search-future)
+    ("S" org-journal-search)
+    ("q" nil :exit t))
+
   (with-eval-after-load 'org
     ;; mode hooks
     (add-hook 'org-mode-hook #'variable-pitch-mode)
     (add-hook 'org-journal-mode-hook #'org-mode)
     (add-hook 'org-capture-mode-hook #'org-align-tags)
-
-    ;; Save clocks
+    ;; save clocks
     (org-clock-persistence-insinuate)
-
-    ;; Journal
-    (spacemacs|define-transient-state org-journal
-      :title "Org Journal Transient State"
-      :hint nil
-      :foreign-keys run
-      :doc
-      "\n[_p_/_N_] previous [_n_] next [_c_] current [_s_] search all [_f_] search future [_S_] search range [_q_] quit"
-      :bindings
-      ("p" org-journal-open-previous-entry)
-      ("N" org-journal-open-previous-entry)
-      ("n" org-journal-open-next-entry)
-      ("c" org-journal-today)
-      ("s" org-journal-search-forever)
-      ("f" org-journal-search-future)
-      ("S" org-journal-search)
-      ("q" nil :exit t))
 
     ;; Capture templates
     (setq-default

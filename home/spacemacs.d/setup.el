@@ -26,15 +26,41 @@
 ;;; Misc settings
 
 (setq-default
- persp-restore-window-conf-method #'no-op
  browse-url-browser-function 'xwidget-webkit-browse-url
  compilation-scroll-output 'first-error
+ copy-as-format-asciidoc-include-file-name t
+ copy-as-format-default "github"
+ doom-modeline-buffer-file-name-style 'truncate-with-project
+ doom-modeline-buffer-modification-icon t
+ doom-modeline-buffer-state-icon t
+ doom-modeline-enable-word-count t
+ doom-modeline-env-command nil
+ doom-modeline-evil-state-icon t
+ doom-modeline-github t
+ doom-modeline-icon (display-graphic-p)
+ doom-modeline-lsp t
+ doom-modeline-major-mode-color-icon t
+ doom-modeline-major-mode-icon t
+ doom-modeline-minor-modes nil
+ doom-modeline-persp-name t
+ doom-modeline-project-detection 'project
+ doom-modeline-version t
+ evil-collection-outline-bind-tab-p t
+ evil-collection-setup-debugger-keys t
+ evil-collection-setup-minibuffer t
+ evil-collection-term-sync-state-and-mode-p t
+ evil-goggles-duration 0.7
+ evil-goggles-pulse nil
+ google-translate-backend-method 'curl
+ google-translate-output-destination 'current-buffer ;; 'popup 'kill-ring 'current-buffer
+ google-translate-pop-up-buffer-set-focus t
+ google-translate-translation-directions-alist '(("en" . "es") ("en" . "fr"))
  ido-enable-flex-matching t
  ido-use-faces nil  ;; disable ido faces to see flx highlights
  ispell-program-name "ispell"
- lsp-signature-auto-activate nil  ;; lsp: don't auto-activate signature hints
  json-fmt-on-save nil
  json-fmt-tool 'prettier
+ lsp-signature-auto-activate nil  ;; lsp: don't auto-activate signature hints
  mac-command-modifier 'super
  projectile-completion-system 'helm
  projectile-enable-caching t
@@ -126,16 +152,18 @@ Adjust the font settings of the given FRAME to do this."
 ;;; Globally enabled minor modes
 
 (beacon-mode)
+(company-prescient-mode)
+(direnv-mode)
 (editorconfig-mode)
+(evil-goggles-mode)
+(evil-goggles-use-diff-refine-faces)
 (global-evil-matchit-mode)
 (global-evil-quickscope-mode)
+(global-visual-line-mode)
 (ido-mode)  ;; ido (for amx, ido-dired)
 (flx-ido-mode 1)
-(direnv-mode)
-(smartparens-global-strict-mode)
-(global-visual-line-mode)
-(company-prescient-mode)
 (prescient-persist-mode)
+(smartparens-global-strict-mode)
 
 
 
@@ -152,6 +180,10 @@ Adjust the font settings of the given FRAME to do this."
 
 (with-eval-after-load 'elm-mode
   (remove-hook 'elm-mode-hook 'elm-indent-mode))
+
+(with-eval-after-load 'evil
+  (when (require 'evil-collection nil t)
+    (evil-collection-init)))
 
 
 
