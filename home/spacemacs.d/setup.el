@@ -102,6 +102,26 @@
 
 
 
+;;; Org Journal
+
+(spacemacs|define-transient-state org-journal
+  :title "Org Journal Transient State"
+  :hint nil
+  :foreign-keys run
+  :doc
+  "\n[_p_/_N_] previous [_n_] next [_c_] current [_s_] search all [_f_] search future [_S_] search range [_q_] quit"
+  :bindings
+  ("p" org-journal-open-previous-entry)
+  ("N" org-journal-open-previous-entry)
+  ("n" org-journal-open-next-entry)
+  ("c" org-journal-today)
+  ("s" org-journal-search-forever)
+  ("f" org-journal-search-future)
+  ("S" org-journal-search)
+  ("q" nil :exit t))
+
+
+
 ;;; Hide-Show (code folding)
 
 (with-eval-after-load 'hideshow
