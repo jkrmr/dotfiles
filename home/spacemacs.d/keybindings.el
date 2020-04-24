@@ -246,5 +246,39 @@
         (define-key org-mode-map (kbd "s-<return>") #'org-insert-heading-below))
     (error "Failed setting org mode super-key keybindings")))
 
+
+
+;;; xwidget-webkit
+
+(defun config/xwidget-webkit ()
+  "Configure xwidget keybindings."
+  (evil-define-key*
+   'normal xwidget-webkit-mode-map
+   (kbd "s-\[") #'xwidget-webkit-back
+   (kbd "s-\]") #'xwidget-webkit-forward
+   "-" #'xwidget-webkit-zoom-out
+   "=" #'xwidget-webkit-zoom-in
+   "?" #'isearch-backward
+   "/" #'isearch-forward
+   "|" #'xwidget-webkit-cx3
+   "_" #'xwidget-webkit-cx2
+   "g" nil
+   "gf" #'xwidget-webkit-browse-url
+   "gg" #'xwidget-webkit-scroll-top
+   "G" #'xwidget-webkit-scroll-bottom
+   "j" #'xwidget-webkit-scroll-up-line
+   "J" #'xwidget-webkit-scroll-up
+   "k" #'xwidget-webkit-scroll-down-line
+   "K" #'xwidget-webkit-scroll-down
+   "h" #'xwidget-webkit-scroll-backward
+   "l" #'xwidget-webkit-scroll-forward
+   "r" #'xwidget-webkit-reload
+   "y" #'xwidget-webkit-copy-selection-as-kill
+   "Y" #'xwidget-webkit-current-url-message-kill))
+
+(evil-set-initial-state 'xwidget-webkit-mode 'normal)
+(add-hook 'xwidget-webkit-mode-hook #'config/xwidget-webkit)
+
+
 (provide 'keybindings)
 ;;; keybindings.el ends here

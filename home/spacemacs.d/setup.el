@@ -240,6 +240,7 @@ Adjust the font settings of the given FRAME to do this."
 
 (with-eval-after-load 'evil
   (when (require 'evil-collection nil t)
+    (delete 'xwidget evil-collection-mode-list)
     (evil-collection-init)))
 
 
