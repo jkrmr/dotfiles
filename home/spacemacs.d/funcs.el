@@ -686,9 +686,9 @@ Strip any leading non-alnum chars from the given directory name."
   "Open a web browser to a new url (prompt for it).
 If prefix arg NEW-SESSION is passed, create a new session."
   (interactive "P")
-  (when-let* ((hist '("google.com" "github.com" "exercism.com"))
-              (addr (read-from-minibuffer "https://" nil nil nil 'hist))
-              (url (unless (string= addr "") (format "https://%s" addr))))
+  (when-let* ((hist '("https://google.com" "https://github.com" "https://exercism.com"))
+              (addr (read-from-minibuffer "url: " "https://" nil nil 'hist))
+              (url (unless (string= addr "") addr)))
     (message (format "Requesting %s ..." url))
     (xwidget-webkit-browse-url url new-session)))
 
