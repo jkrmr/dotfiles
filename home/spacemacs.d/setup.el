@@ -76,6 +76,8 @@
  projectile-enable-caching t
  projectile-find-dir-includes-top-level t
  projectile-project-search-path '("~/Projects" "~/Work" "~/Resources" "~/Exercism" "~/Tutorials")
+ ;; restrict alternate-buffer switching to current layout
+ spacemacs-layouts-restrict-spc-tab t
  tramp-default-method "ssh"
  ;; when visiting a link under VC, follow to the real file
  vc-follow-symlinks t)
