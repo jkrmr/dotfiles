@@ -674,7 +674,7 @@ This function should only modify configuration layer settings."
      company-prescient
      csv-mode
      direnv
-     (doom-modeline :location (recipe :fetcher github :repo "jmromer/doom-modeline" :branch "make-layout-icon-toggleable"))
+     (doom-modeline :location (recipe :fetcher github :repo "jmromer/doom-modeline"))
      editorconfig
      elpy
      emmet-mode
