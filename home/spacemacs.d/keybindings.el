@@ -233,6 +233,7 @@
 (define-key spacemacs-buffer-mode-map (kbd "g p") #'spacemacs-buffer-projects)
 (define-key spacemacs-buffer-mode-map (kbd "g b") #'spacemacs-buffer-bookmarks)
 (define-key spacemacs-buffer-mode-map (kbd "g a") #'spacemacs-buffer-agenda)
+(define-key spacemacs-buffer-mode-map (kbd "g t") #'spacemacs-buffer-todos)
 
 
 

@@ -605,7 +605,8 @@ Look for a controller spec if there's no request spec."
   (let ((string (cond ((eq name 'recents) "Recent Files:")
                       ((eq name 'projects) "Projects:")
                       ((eq name 'bookmarks) "Bookmarks:")
-                      ((eq name 'agenda) "Agenda:"))))
+                      ((eq name 'agenda) "Agenda:")
+                      ((eq name 'todos) "ToDo:"))))
     (unless (eq 'spacemacs-buffer-mode
                 (buffer-local-value 'major-mode (current-buffer)))
       (spacemacs/home))
@@ -614,19 +615,28 @@ Look for a controller spec if there's no request spec."
 
 (defun spacemacs-buffer-recents ()
   "Jump to the 'Recent Files' section of the Spacemacs buffer."
+  (interactive)
   (goto-spacemacs-buffer-section 'recents))
 
 (defun spacemacs-buffer-projects ()
   "Jump to the 'Projects' section of the Spacemacs buffer."
+  (interactive)
   (goto-spacemacs-buffer-section 'projects))
 
 (defun spacemacs-buffer-bookmarks ()
   "Jump to the 'Bookmarks' section of the Spacemacs buffer."
+  (interactive)
   (goto-spacemacs-buffer-section 'bookmarks))
 
 (defun spacemacs-buffer-agenda ()
   "Jump to the 'Agenda' section of the Spacemacs buffer."
+  (interactive)
   (goto-spacemacs-buffer-section 'agenda))
+
+(defun spacemacs-buffer-todos ()
+  "Jump to the 'ToDo' section of the Spacemacs buffer."
+  (interactive)
+  (goto-spacemacs-buffer-section 'todos))
 
 (defun evil-sort-inner (textobj &optional desc)
   "Sort inside the TEXTOBJ surrounding the point.
