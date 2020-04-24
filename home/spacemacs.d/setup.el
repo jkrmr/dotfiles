@@ -222,6 +222,7 @@ Adjust the font settings of the given FRAME to do this."
 (ido-mode)  ;; ido (for amx, ido-dired)
 (flx-ido-mode 1)
 (prescient-persist-mode)
+(smartparens-global-mode)
 (smartparens-global-strict-mode)
 
 
