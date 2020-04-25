@@ -109,9 +109,9 @@ Do not request confirmation for buffers outside the current perspective."
   (when (and org-default-notes-file org-default-backlog-file)
     (persp-switch-to-default-layout)
     (delete-other-windows)
-    (let ((journal "[journal]")
-          (today "[today]")
-          (backlog "[backlog]"))
+    (let ((journal "*journal*")
+          (today "*today*")
+          (backlog "*backlog*"))
 
       ;; Kill the journal buffer, since it might need to visit a new file
       (when (get-buffer journal)
@@ -151,7 +151,7 @@ Do not request confirmation for buffers outside the current perspective."
       (persp-switch blog)
       (delete-other-windows)
       (find-file blog-dir)
-      (rename-buffer (format "[%s]" blog))
+      (rename-buffer (format "*%s*" blog))
       (writeroom-mode))))
 
 (defun layouts-dotfiles ()
@@ -180,11 +180,13 @@ If passed, name them TOP-NAME and BOTTOM-NAME, respectively."
    (split-window-right-and-focus)
    ;; top
    (org-projectile/goto-todos)
+   (rename-buffer "*project*" t)
    (goto-char (point-min))
    (purpose-toggle-window-buffer-dedicated)
    (split-window-below-and-focus)
    ;; bottom
    (find-file org-default-notes-file)
+   (rename-buffer "*today*" t)
    (goto-char (point-min))
    (purpose-toggle-window-buffer-dedicated)
    (shrink-by-half-to-the-right)
