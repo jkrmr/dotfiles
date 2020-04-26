@@ -2,9 +2,6 @@ set vb                    " no audible bell
 set guioptions-=T         " no toolbar
 set guioptions+=c         " use console dialogs
 set transparency=1        " enable transparency
-set lines=50 columns=110  " size of window
-
-set guifont=DejaVu\ Sans\ Mono:h15   " fallback if powerline font n/a
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h15 " fallback if primary n/a
-
-colorscheme solarized
+set lines=50 columns=80   " size of window
+set guifont=Source\ Code\ Pro:h15
+colorscheme space-vim-dark
