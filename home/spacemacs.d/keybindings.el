@@ -267,7 +267,8 @@
    "|" #'xwidget-webkit-cx3
    "_" #'xwidget-webkit-cx2
    "g" nil
-   "gf" #'xwidget-webkit-browse-url
+   "gf" #'open-web-browser
+   "gF" #'open-web-browser-in-new-session
    "gg" #'xwidget-webkit-scroll-top
    "G" #'xwidget-webkit-scroll-bottom
    "j" #'xwidget-webkit-scroll-up-line
