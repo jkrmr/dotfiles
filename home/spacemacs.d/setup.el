@@ -234,6 +234,16 @@ Adjust the font settings of the given FRAME to do this."
 
 
 
+;; JSX/web-mode-derived-mode Fixes
+
+(defun disable-emmet ()
+  "Disable emmet mode in JSX modes."
+  (emmet-mode -1))
+(add-hook 'typescript-tsx-mode-hook #'disable-emmet)
+(add-hook 'rjsx-mode-hook #'disable-emmet)
+
+
+
 ;; Hooks
 
 ;; after-init hooks
