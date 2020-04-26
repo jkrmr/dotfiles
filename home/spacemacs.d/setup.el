@@ -225,6 +225,12 @@ Adjust the font settings of the given FRAME to do this."
 (smartparens-global-mode)
 (smartparens-global-strict-mode)
 
+;; dimmer mode
+(setq-default dimmer-fraction 0.25)
+(dimmer-configure-which-key)
+(dimmer-configure-helm)
+(dimmer-mode t)
+
 
 
 ;; Hooks

@@ -673,6 +673,7 @@ This function should only modify configuration layer settings."
      company-jedi
      company-prescient
      csv-mode
+     dimmer
      direnv
      (doom-modeline :location (recipe :fetcher github :repo "jmromer/doom-modeline"))
      editorconfig
