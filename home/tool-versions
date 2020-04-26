@@ -11,3 +11,4 @@ postgres 11.5
 java adopt-openjdk-12.0.2+10
 gohugo 0.58.3
 tmux 3.0
+rust 1.43.0
