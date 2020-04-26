@@ -16,8 +16,8 @@ let g:solarized_italic = 0
 "-------------------------------------------------------------
 " Python interpreters
 "-------------------------------------------------------------
-let g:python_host_prog = expand('$HOMEBREW_PREFIX/bin/python2')
-let g:python3_host_prog = expand('~/.asdf/shims/python')
+let g:python_host_prog = expand('/usr/local/bin/python2.7')
+let g:python3_host_prog = expand('/usr/local/bin/python3.7')
 
 "-------------------------------------------------------------
 " Elixir
@@ -689,4 +689,3 @@ endif
 call plug#begin('~/.vim/plugged')
   source $HOME/.vim/manifest.vim
 call plug#end()
-
