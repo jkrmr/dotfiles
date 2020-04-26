@@ -399,7 +399,7 @@ This function should only modify configuration layer settings."
                       auto-completion-tab-key-behavior 'complete
                       auto-completion-use-company-box t
                       company-backend t
-                      company-box-doc-delay 0.1
+                      company-box-doc-delay 0
                       company-minimum-prefix-length 1
                       company-selection-wrap-around t
                       company-show-numbers t
