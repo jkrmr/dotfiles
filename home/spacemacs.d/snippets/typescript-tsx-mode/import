@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: import
+# key: impo
+# --
+import ${2:{$0}} from '$1'
