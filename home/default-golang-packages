@@ -1,8 +1,3 @@
-golang.org/x/tools/cmd/godoc
-golang.org/x/lint/golint
-golang.org/x/tools/cmd/goimports
-golang.org/x/tools/cmd/gorename
-golang.org/x/tools/cmd/guru
 github.com/cweill/gotests/...
 github.com/davidrjenni/reftools/cmd/fillstruct
 github.com/fatih/gomodifytags
@@ -10,7 +5,13 @@ github.com/godoctor/godoctor
 github.com/haya14busa/gopkgs/cmd/gopkgs
 github.com/josharian/impl
 github.com/mdempsky/gocode
-github.com/rogpeppe/godef
-github.com/zmb3/gogetdoc
 github.com/nsf/gocode
+github.com/rogpeppe/godef
 github.com/sourcegraph/go-langserver
+github.com/stretchr/testify
+github.com/zmb3/gogetdoc
+golang.org/x/lint/golint
+golang.org/x/tools/cmd/godoc
+golang.org/x/tools/cmd/goimports
+golang.org/x/tools/cmd/gorename
+golang.org/x/tools/cmd/guru

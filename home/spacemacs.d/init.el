@@ -447,6 +447,9 @@ This function should only modify configuration layer settings."
          go-tab-width 4
          go-use-golangci-lint t
          go-use-gometalinter t
+         go-use-gocheck-for-testing nil
+         go-use-testify-for-testing t
+         go-use-test-args "-v --bench --benchmem"
          godoc-at-point-function 'godoc-gogetdoc
          gofmt-command "goimports")
      graphviz
