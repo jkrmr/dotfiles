@@ -223,9 +223,10 @@ Adjust the font settings of the given FRAME to do this."
 (flx-ido-mode 1)
 (prescient-persist-mode)
 (smartparens-global-mode)
-(smartparens-global-strict-mode)
 
-;; dimmer mode
+
+;; Dimmer mode
+
 (setq-default dimmer-fraction 0.25)
 (dimmer-configure-which-key)
 (dimmer-configure-helm)
