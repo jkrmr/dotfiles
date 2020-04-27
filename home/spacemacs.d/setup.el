@@ -26,7 +26,7 @@
 ;;; Misc settings
 
 (setq-default
- browse-url-browser-function 'xwidget-webkit-browse-url
+ browse-url-browser-function (lambda (url _) (xwidget-webkit-browse-url url t))
  compilation-scroll-output 'first-error
  copy-as-format-asciidoc-include-file-name t
  copy-as-format-default "github"
