@@ -234,13 +234,19 @@ Adjust the font settings of the given FRAME to do this."
 
 
 
-;; JSX/web-mode-derived-mode Fixes
+;; JSX/web-mode-derived-mode fixes
 
 (defun disable-emmet ()
-  "Disable emmet mode in JSX modes."
+  "Disable emmet mode, which is enabled in `web-mode', in JSX modes."
   (emmet-mode -1))
 (add-hook 'typescript-tsx-mode-hook #'disable-emmet)
 (add-hook 'rjsx-mode-hook #'disable-emmet)
+
+;; Don't disable smartparens to expand snippets.
+;; If snippet expansion is interrupted or otherwise left incomplete, smartparens
+;; will be left disabled.
+(remove-hook 'yas-before-expand-snippet-hook #'spacemacs//smartparens-disable-before-expand-snippet)
+(remove-hook 'yas-after-exit-snippet-hook #'spacemacs//smartparens-restore-after-exit-snippet)
 
 
 
