@@ -119,7 +119,6 @@ alias ln='ln -iv' # display error if link exists; link verbosely
 #-------------------------------------------------------------
 # ALIASES: MISC
 #-------------------------------------------------------------
-alias diff='colordiff'        # compare files, colorize output
 alias hide='setfile -a V'     # hide a file
 alias unhide='setfile -a v'   # unhide a file
 alias npmls='npm ls -depth=0'
@@ -198,6 +197,10 @@ del() {
   else
     echo "Canceling with no changes made."
   fi
+}
+
+diff() {
+  /usr/local/bin/diff -u "${1}" "${2}" | delta
 }
 
 binstubs() {

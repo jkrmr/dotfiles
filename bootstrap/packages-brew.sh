@@ -16,6 +16,7 @@ brew install editorconfig
 brew install exa
 brew install fd
 brew install fzf
+brew install git-delta
 brew install gpg2
 brew install hadolint
 brew install hub

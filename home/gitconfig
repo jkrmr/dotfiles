@@ -17,7 +17,7 @@
 	autocrlf     = input
 	editor       = nvim
 	excludesfile = ~/.gitignore
-	pager        = diff-highlight | less
+	pager        = delta --plus-color="#012800" --minus-color="#340001" 
 
 [color "diff"]
 	commit     = green
@@ -81,7 +81,8 @@
 	templatedir = ~/.dotfiles/git
 
 [interactive]
-	singlekey = true
+	diffFilter = delta --color-only
+	singlekey  = true
 
 [log]
 	date = short
