@@ -49,7 +49,7 @@ fi
 export ANACONDA_PREFIX="$HOME/.anaconda"
 export ANACONDA_HOME="$HOME/.anaconda"
 export ELM_HOME="$HOME/.elm"
-export KERL_CONFIGURE_OPTIONS="--disable-debug --without-javac"
+export KERL_CONFIGURE_OPTIONS="--disable-debug --without-javac --disable-hipe"
 export KERL_BUILD_DOCS=no
 export ERL_AFLAGS="-kernel shell_history enabled"
 unset GOPATH
