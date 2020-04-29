@@ -425,6 +425,7 @@ This function should only modify configuration layer settings."
      (docker :variables
              docker-dockerfile-backend 'lsp)
      (elixir :variables
+             elixir-backend 'alchemist
              flycheck-elixir-credo-strict t)
      (elm :variables
           elm-format-command "elm-format"
