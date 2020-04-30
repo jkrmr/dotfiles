@@ -154,11 +154,13 @@
 
 ;;; Appearance
 
-;; ensure new frames are created transparent
-(add-hook 'after-make-frame-functions #'spacemacs/enable-transparency)
-
-;; make the current one transparent
-(spacemacs/enable-transparency)
+(setq-default dotspacemacs-make-frames-transparent nil)
+(when (and window-system dotspacemacs-make-frames-transparent)
+    (progn
+      ;; ensure new frames are created transparent
+      (add-hook 'after-make-frame-functions #'spacemacs/enable-transparency)
+      ;; make the current one transparent
+      (spacemacs/enable-transparency)))
 
 ;; Natural titlebar in GUI
 (when window-system
