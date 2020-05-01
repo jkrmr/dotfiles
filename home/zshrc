@@ -12,19 +12,19 @@ alias vim=nvim
 alias vim0='vim -u NONE'
 alias vim1='vim -u ~/.vim/minimal.vim'
 alias vimplug='vim +PlugInstall +PlugUpgrade +PlugUpdate +qall'
-alias pp=pretty-print-path
 
 # vim
-alias vi=vim
+alias vi='mvim -v'
 alias vi0='vi -u NONE'
 alias vi1='vi -u ~/.vim/minimal.vim'
 alias viplug='vi +PlugInstall +PlugUpgrade +PlugUpdate +qall'
 
-alias cat=bat
-alias git=hub
-alias dc='docker-compose'
 alias b=bundle
+alias cat=bat
+alias dc='docker-compose'
+alias git=hub
 alias music=mpsyt
+alias pp=pretty-print-path
 
 cd () {
     if [[ $# -eq 0 ]] || [[ $1 == "~" ]]; then
