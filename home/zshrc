@@ -98,13 +98,7 @@ alias ...='\cd ../..; l' # go to grandparent dir and list contents
 alias mkdir='mkdir -p'   # create subdirectories as necessary
 alias h='history'        # show history
 alias d='dirs -v'        # show directory stack
-
-if [[ -n "${INSIDE_EMACS}" ]]; then
-    alias ls='gls'
-else
-    alias ls='exa'
-fi
-
+alias ls='exa'
 alias l='ls'
 alias lla='ls -al'
 
