@@ -24,7 +24,6 @@ export HOMEBREW_PREFIX
 #-------------------------------------------------------------
 if [ -n "$INSIDE_EMACS" ]; then
   export EDITOR=emacs
-  alias ls=gls
 fi
 
 #-------------------------------------------------------------
