@@ -41,18 +41,32 @@ export PYTHONDONTWRITEBYTECODE=1
 if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
   source "${VIRTUAL_ENV}/bin/activate"
 fi
+
 #-------------------------------------------------------------
-# N/Node, Anaconda, Golang, Elm
+# Elm
+#-------------------------------------------------------------
+export ELM_HOME="$HOME/.elm"
+
+#-------------------------------------------------------------
+# Erlang
+#-------------------------------------------------------------
+export ERL_AFLAGS="-kernel shell_history enabled"
+export KERL_BUILD_DOCS=no
+export KERL_CONFIGURE_OPTIONS="--disable-debug --without-javac --disable-hipe"
+
+#-------------------------------------------------------------
+# Anaconda
+# (symlink to asdf install directory)
 #-------------------------------------------------------------
 export ANACONDA_PREFIX="$HOME/.anaconda"
 export ANACONDA_HOME="$HOME/.anaconda"
-export ELM_HOME="$HOME/.elm"
-export KERL_CONFIGURE_OPTIONS="--disable-debug --without-javac --disable-hipe"
-export KERL_BUILD_DOCS=no
-export ERL_AFLAGS="-kernel shell_history enabled"
-export GOPATH=~/Projects/go
-go_version="$(asdf current golang | awk '{print $1}')"
-export GOROOT=~/.asdf/installs/golang/${go_version}/go/
+
+#-------------------------------------------------------------
+# Go
+#-------------------------------------------------------------
+export GO_VERSION_DEFAULT=1.14.1
+export GOROOT=~/.asdf/installs/golang/${GO_VERSION:-$GO_VERSION_DEFAULT}/go/
+export GOPATH=~/.go
 
 #-------------------------------------------------------------
 # Use Ripgrep for FZF instead of find
