@@ -31,6 +31,7 @@ PATH+=":$HOME/.gem/ruby/2.6.0/bin"
 PATH+=":./node_modules/.bin"         # Project-local node binaries
 PATH+=":$FZF_DIR/bin"
 PATH+=":$HOME/.cargo/bin"            # Rust binary path
+PATH+=":$GOPATH/bin"                 # Go binary path
 PATH+=":$HOMEBREW_PREFIX/heroku/bin"
 PATH+=":$HOMEBREW_PREFIX/bin"
 PATH+=":$HOMEBREW_PREFIX/sbin"
