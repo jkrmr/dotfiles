@@ -19,9 +19,9 @@
 set -e
 
 setup_golang() {
-  GO111MODULE=on CGO_ENABLED=0 \
-    go get -v -trimpath -ldflags '-s -w' \
-    github.com/golangci/golangci-lint/cmd/golangci-lint
+  # GO111MODULE=on CGO_ENABLED=0 \
+    # go get -v -trimpath -ldflags '-s -w' \
+    # github.com/golangci/golangci-lint/cmd/golangci-lint
 
   while read -r package; do
     go get -u -v "${package}"

@@ -446,7 +446,7 @@ This function should only modify configuration layer settings."
          go-backend 'lsp
          go-format-before-save t
          go-tab-width 4
-         go-use-golangci-lint t
+         go-use-golangci-lint nil
          go-use-gometalinter t
          go-use-gocheck-for-testing nil
          go-use-testify-for-testing t
@@ -643,7 +643,7 @@ This function should only modify configuration layer settings."
           sql-auto-indent t
           sql-capitalize-keywords t)
      (syntax-checking :variables
-                      flycheck-disabled-checkers '(javascript-jshint markdown-mdl)
+                      flycheck-disabled-checkers '(javascript-jshint markdown-mdl go-golangci-lint)
                       syntax-checking-enable-by-default t
                       syntax-checking-enable-tooltips t)
      theming
