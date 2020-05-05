@@ -2,12 +2,15 @@ github.com/cweill/gotests/...
 github.com/davidrjenni/reftools/cmd/fillstruct
 github.com/fatih/gomodifytags
 github.com/godoctor/godoctor
+github.com/golang/dep/cmd/dep
 github.com/haya14busa/gopkgs/cmd/gopkgs
 github.com/josharian/impl
+github.com/logrusorgru/aurora
 github.com/mdempsky/gocode
 github.com/nsf/gocode
 github.com/rogpeppe/godef
 github.com/sourcegraph/go-langserver
+github.com/spf13/cobra/cobra
 github.com/stretchr/testify
 github.com/zmb3/gogetdoc
 golang.org/x/lint/golint
