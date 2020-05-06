@@ -288,6 +288,10 @@ Adjust the font settings of the given FRAME to do this."
 
 
 
+
+;; Golang
+(add-to-list 'auto-mode-alist '("\\.gohtml\\'" . web-mode))
+
 ;;; "Tail" settings (should be run last)
 
 (config/prettify-symbols)
