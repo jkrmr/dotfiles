@@ -656,15 +656,6 @@ set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr
 
 " Deoplete: enable at startup
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#ternjs#docs = 1
-
-" Deoplete: GitHub source
-let g:deoplete#sources = {}
-let g:deoplete#sources.gitcommit=['github']
-let g:deoplete#keyword_patterns = {}
-let g:deoplete#keyword_patterns.gitcommit = '.+'
-let g:deoplete#omni#input_patterns = {}
-let g:deoplete#omni#input_patterns.gitcommit = '.+'
 
 " EasyAlign
 " Start interactive EasyAlign in visual mode (e.g. vipga)
