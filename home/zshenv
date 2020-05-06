@@ -4,7 +4,7 @@
 source "$HOME/.dotfiles/shell/env.sh"
 source "$HOME/.env.secure.sh"
 
-[[ -f "$HOMEBREW_PREFIX/opt/asdf/asdf.sh" ]] && \
-    . "$HOMEBREW_PREFIX/opt/asdf/asdf.sh"
+# [[ -f "$HOMEBREW_PREFIX/opt/asdf/asdf.sh" ]] && \
+#     . "$HOMEBREW_PREFIX/opt/asdf/asdf.sh"
 
 source "$HOME/.dotfiles/shell/path.sh"
