@@ -26,68 +26,22 @@ alias git=hub
 alias music=mpsyt
 alias pp=pretty-print-path
 
-cd () {
-    if [[ $# -eq 0 ]] || [[ $1 == "~" ]]; then
-        builtin cd && return
-    fi
-
-    if [[ $1 =~ ^\-[0-9]*$ ]]; then
-        builtin cd "$1" || return
-        return
-    fi
-
+cd() {
     local target
-    local abbreviated
-
-    target="$(readlink -f "$*")"
-
-    if [[ ! -d "$target" ]] && [[ -f "$target" ]]; then
-        target="$(dirname "$target")"
+    if [[ "$1" =~ ^\-[0-9]*$ ]]; then
+        target="$1"
+    else
+        target="$(pd cd "$1")"
     fi
-
-    if [[ ! -d "$target" ]]; then
-        echo "Not a directory: $target"
-        return
-    fi
-
-    cd-dispatch save_entry "$target"
-
-    abbreviated="${target/$HOME/~}"
-    echo "$abbreviated"
-
     builtin cd "$target" || return
 }
 
-cdd () {
-    if [[ $1 == "sync" ]]; then
-        cd-dispatch sync  || return
-        return
-    fi
-
-    local selection
+cdd() {
     local target
-
-    candidates="$(cat ~/.cddlog | awk -F, '{ print $3 }')"
-
-    selection="$(
-      echo $candidates |\
-        fzf --ansi \
-        --cycle \
-        --no-sort \
-        --reverse \
-        --tiebreak=index \
-        --bind 'ctrl-f:preview-down' \
-        --bind 'ctrl-b:preview-up' \
-        --preview='cd-dispatch-fzf-preview {+}')"
-
-    [[ -z "$selection" ]] && return
-
-    target="$(cd-dispatch change_to $selection)"
-
-    abbreviated="${target/$HOME/~}"
-    echo "$abbreviated"
-
-    builtin cd "$target" || return
+    target="$(pd)"
+    if [[ -n "$target" ]]; then
+        cd "$target" || return
+    fi
 }
 
 #-------------------------------------------------------------
