@@ -20,6 +20,7 @@ alias vi1='vi -u ~/.vim/minimal.vim'
 alias viplug='vi +PlugInstall +PlugUpgrade +PlugUpdate +qall'
 
 alias b=bundle
+alias be='bundle exec'
 alias cat=bat
 alias dc='docker-compose'
 alias git=hub
