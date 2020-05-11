@@ -106,6 +106,15 @@
    :test-prefix "test_"
    :test-suffix "_test")
   (projectile-register-project-type
+   'ruby-rspec
+   '("Gemfile")
+   :compile ""
+   :src-dir "app/"
+   :test "bundle exec rspec --no-profile --format progress"
+   :test-dir "spec/"
+   :test-suffix "_spec"
+   :related-files-fn #'rails--find-related-file)
+  (projectile-register-project-type
    'rails-rspec
    '("Gemfile" "app" "lib" "db" "config" "spec")
    :compile "bin/rails server"
