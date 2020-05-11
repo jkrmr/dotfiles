@@ -49,8 +49,7 @@
       ;; Flycheck: JavaScript, TypeScript
       (flycheck-add-next-checker 'lsp 'javascript-standard)
       ;; Flycheck: Ruby
-      (flycheck-add-next-checker 'lsp 'ruby-rubocop)
-      (flycheck-add-next-checker 'lsp 'ruby-reek)))
+      (flycheck-add-next-checker 'lsp 'ruby-rubocop)))
   ;; Enable eagerly in all programming buffers
   (add-hook 'prog-mode-hook #'flycheck-mode))
 
