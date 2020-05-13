@@ -45,5 +45,6 @@ PATH+=":/bin"
 PATH+=":/sbin"
 PATH+=":/opt/X11/bin"                # added by OSX
 PATH+=":$HOME/Library/Android/sdk/tools/bin" # Android SDK CLT binaries
+PATH+=":$HOMEBREW_PREFIX/share/git-core/contrib/diff-highlight"
 PATH+=":/Library/TeX/texbin"
 export PATH
