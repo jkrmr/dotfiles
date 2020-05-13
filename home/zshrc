@@ -29,20 +29,18 @@ alias pp=pretty-print-path
 
 cd() {
     local target
-    if [[ "$1" =~ ^\-[0-9]*$ ]]; then
-        target="$1"
-    else
-        target="$(pd cd "$1")"
-    fi
+    case "$*" in
+        "")
+            target="$(pd)"
+            ;;
+        ^[-+][0-9]+$)
+            target="$1"
+            ;;
+        *)
+            target="$(pd cd "$1")"
+            ;;
+    esac
     builtin cd "$target" || return
-}
-
-cdd() {
-    local target
-    target="$(pd)"
-    if [[ -n "$target" ]]; then
-        cd "$target" || return
-    fi
 }
 
 #-------------------------------------------------------------
