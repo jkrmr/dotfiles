@@ -136,13 +136,13 @@ hidden_files() {
 }
 
 del() {
-  echo "sudo mv -t ~/.Trash/ $*"
-  echo -n "del: Delete the selected files/directories? "
+  echo -n "del: trash the selected files/directories? "
+  # shellcheck disable=SC2162
   read dir
 
   if [[ $dir =~ ^[yY](es)?$ ]]; then
-    echo "Trashing: $*"
-    sudo mv -t ~/.Trash/ "$@"
+    echo "mv -t ~/.Trash/ $*"
+    mv -t ~/.Trash/ "$@"
   else
     echo "Canceling with no changes made."
   fi
