@@ -17,7 +17,7 @@
 	autocrlf     = input
 	editor       = nvim
 	excludesfile = ~/.gitignore
-	pager        = diff-highlight | less
+	pager        = diff-highlight | delta
 
 [color "diff"]
 	commit     = green
