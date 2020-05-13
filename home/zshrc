@@ -29,7 +29,7 @@ alias pp=pretty-print-path
 
 cd() {
     local target
-    case "$*" in
+    case "$1" in
         "")
             target="$(pd)"
             ;;
@@ -40,6 +40,8 @@ cd() {
             target="$(pd cd "$1")"
             ;;
     esac
+
+    [[ -z "$target" ]] && return
     builtin cd "$target" || return
 }
 
