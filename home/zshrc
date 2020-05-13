@@ -147,7 +147,8 @@ del() {
 }
 
 diff() {
-  /usr/local/bin/diff -u "${1}" "${2}" | delta
+    [[ -n "${1}" ]] && [[ -n "${2}" ]] || return
+    /usr/local/bin/diff -u "${1}" "${2}" | delta
 }
 
 binstubs() {
