@@ -350,43 +350,34 @@ PS1+='$(color reset)%# '  # reset color, add %
 export PS1
 
 #-------------------------------------------------------------
-# Use Vim mode in Zsh
+# Use vi mode, unless in emacs
 #-------------------------------------------------------------
-
 if [ -n "$INSIDE_EMACS" ]; then
   # set emacs keybindings
   bindkey -e
 else
-  # set vi keybindings
-  bindkey -v
+  # Change cursor shape for different vi modes.
+  function zle-keymap-select {
+      if [[ ${KEYMAP} == vicmd ]] ||
+             [[ $1 = 'block' ]]; then
+          echo -ne '\e[1 q'
+      elif [[ ${KEYMAP} == main ]] ||
+               [[ ${KEYMAP} == viins ]] ||
+               [[ ${KEYMAP} = '' ]] ||
+               [[ $1 = 'beam' ]]; then
+          echo -ne '\e[5 q'
+      fi
+  }
+  zle -N zle-keymap-select
 
   # no lag after pressing ESC to enter normal mode
   export KEYTIMEOUT=1
 
-  # RHS prompt
-  # ----------
-  # Don't display RHS prompts from previous lines
-  setopt transient_rprompt
+  # set vi keybindings
+  bindkey -v
 
-  vim_ins_mode='[insert]'
-  vim_cmd_mode='[normal]'
-  vim_mode=$vim_ins_mode
-
-  function zle-keymap-select {
-    vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
-    zle reset-prompt
-  }
-
-  function zle-line-init {
-    vim_mode=$vim_ins_mode
-    zle reset-prompt
-  }
-
-  zle -N zle-keymap-select
-  zle -N zle-line-init
-
-  RPROMPT='$(color yellow)${vim_mode}$(color reset)'
-  RPROMPT2='$(color yellow)${vim_mode}$(color reset)'
+  echo -ne '\e[5 q' # Use beam shape cursor on startup.
+  preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 fi
 
 #-------------------------------------------------------------
