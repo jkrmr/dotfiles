@@ -387,6 +387,21 @@ else
 fi
 
 #-------------------------------------------------------------
+# Use ctrl-z as a toggle
+#-------------------------------------------------------------
+
+ctrlz() {
+    if [[ $#BUFFER -eq 0 ]]; then
+        fg >/dev/null 2>&1 && zle redisplay
+    else
+        zle push-input
+    fi
+}
+
+zle -N ctrlz
+bindkey '^Z' ctrlz
+
+#-------------------------------------------------------------
 # UNDO (DISABLE ZSH DEFAULTS)
 #-------------------------------------------------------------
 disable r # disable zsh's r
