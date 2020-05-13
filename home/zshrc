@@ -377,7 +377,7 @@ else
   zle -N zle-keymap-select
 
   # no lag after pressing ESC to enter normal mode
-  export KEYTIMEOUT=1
+  export KEYTIMEOUT=5
 
   # set vi keybindings
   bindkey -v
