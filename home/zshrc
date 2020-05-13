@@ -329,14 +329,14 @@ setopt complete_in_word
 autoload -U colors && colors
 
 function color {
-  if   [[ $1 == 'red'    ]]; then echo -n %{$fg_no_bold[red]%}
-  elif [[ $1 == 'yellow' ]]; then echo -n %{$fg_no_bold[yellow]%}
-  elif [[ $1 == 'green'  ]]; then echo -n %{$fg_no_bold[green]%}
-  elif [[ $1 == 'violet' ]]; then echo -n %{$fg_no_bold[magenta]%}
-  elif [[ $1 == 'blue'   ]]; then echo -n %{$fg_no_bold[blue]%}
-  elif [[ $1 == 'white'  ]]; then echo -n %{$fg_no_bold[white]%}
-  elif [[ $1 == 'reset'  ]]; then echo -n %{$reset_color%}
-  fi
+    if   [[ $1 == 'red'    ]]; then echo -n "${fg_no_bold[red]}"
+    elif [[ $1 == 'yellow' ]]; then echo -n "${fg_no_bold[yellow]}"
+    elif [[ $1 == 'green'  ]]; then echo -n "${fg_no_bold[green]}"
+    elif [[ $1 == 'violet' ]]; then echo -n "${fg_no_bold[magenta]}"
+    elif [[ $1 == 'blue'   ]]; then echo -n "${fg_no_bold[blue]}"
+    elif [[ $1 == 'white'  ]]; then echo -n "${fg_no_bold[white]}"
+    elif [[ $1 == 'reset'  ]]; then echo -n "${reset_color}"
+    fi
 }
 
 #-------------------------------------------------------------
@@ -344,7 +344,8 @@ function color {
 #-------------------------------------------------------------
 setopt prompt_subst       # enables command substitution
 
-PS1=$'\n$(color blue)%c ' # basename of pwd after a newline
+# should be single-quoted
+PS1='$(color blue)%c '    # basename of pwd
 PS1+='$(git_branch)'      # current branch or commit name, with color
 PS1+='$(color reset)%# '  # reset color, add %
 export PS1
