@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+#
+# Usage:
+#   random-phrase
+#
+# Generate a two-word phrase of random words
+#
+
+is_installed="$(gem list | grep spicy-proton)"
+
+if [[ -z "$is_installed" ]]; then
+  gem install spicy-proton >/dev/null
+fi
+
+ruby -e "require 'spicy-proton'; puts Spicy::Proton.pair"

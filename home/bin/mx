@@ -217,7 +217,7 @@ while [ $# -gt -1 ]; do
             if [[ -n "$name" ]]; then
                 tmux-attach-or-create "$name"
             else
-                tmux-attach-or-create "$(random_phrase)"
+                tmux-attach-or-create "$(random-phrase)"
             fi
 
             exit 0
