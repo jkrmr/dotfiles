@@ -28,21 +28,7 @@ alias music=mpsyt
 alias pp=pretty-print-path
 
 cd() {
-    local target
-    case "$1" in
-        "")
-            target="$(pd)"
-            ;;
-        ^[-+][0-9]+$)
-            target="$1"
-            ;;
-        *)
-            target="$(pd cd "$1")"
-            ;;
-    esac
-
-    [[ -z "$target" ]] && return
-    builtin cd "$target" || return
+    builtin cd "$(pd "$1")" || return
 }
 
 #-------------------------------------------------------------
