@@ -643,7 +643,7 @@ This function should only modify configuration layer settings."
           sql-auto-indent t
           sql-capitalize-keywords t)
      (syntax-checking :variables
-                      flycheck-disabled-checkers '(javascript-jshint markdown-mdl go-golangci-lint)
+                      flycheck-disabled-checkers '(javascript-jshint go-golangci-lint markdown-mdl ruby-reek)
                       syntax-checking-enable-by-default t
                       syntax-checking-enable-tooltips t)
      theming
