@@ -228,6 +228,8 @@ autoload -U zmv     # rename files like zmv '(*).txt' '$1.html'
 # COMMAND COMPLETION
 #-------------------------------------------------------------
 shared="$HOMEBREW_PREFIX/share"
+
+# shellcheck disable=SC2206
 fpath=(
   "$HOME/.zsh/completion"
   "$shared/zsh-completions"
@@ -331,6 +333,7 @@ setopt complete_in_word
 autoload -U colors && colors
 
 function color {
+    # shellcheck disable=SC2154
     if   [[ $1 == 'red'    ]]; then echo -n "${fg_no_bold[red]}"
     elif [[ $1 == 'yellow' ]]; then echo -n "${fg_no_bold[yellow]}"
     elif [[ $1 == 'green'  ]]; then echo -n "${fg_no_bold[green]}"
