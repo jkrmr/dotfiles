@@ -284,6 +284,9 @@ bindkey -M viins "^p" history-beginning-search-forward-end
 # ^t Invoke FZF file finder
 bindkey '^t' fzf-file-widget
 
+# ^c Invoke project fuzzy-switcher
+bindkey -s '^o' 'cd\n'
+
 # bindkey "^[[3"  prefix-2     # ensure delete backwards deletes
 bindkey "^[[3~" delete-char  # ensure delete forwards deletes
 
