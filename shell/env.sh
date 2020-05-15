@@ -109,8 +109,8 @@ export GTAGSCONF=~/.globalrc
 #-------------------------------------------------------------
 # Compilation flags
 #-------------------------------------------------------------
-export CC=gcc
-export CXX=g++
+export CC=gcc-4.9
+export CXX=g++-4.9
 
 LDFLAGS="-L/usr/local/opt/gettext/lib"
 LDFLAGS+=" -L/usr/local/opt/libffi/lib"
