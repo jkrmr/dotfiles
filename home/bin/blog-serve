@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-set -e
+set -ex
+
+rm -f /tmp/jmromer.blog-serve.*.log
 
 cd ~/Projects/blogs/jmromer
 
-open http://localhost:1313 &
-
-hugo server -D --navigateToChanged
+~/.asdf/shims/hugo server --buildDrafts --watch

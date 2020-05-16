@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>jmromer.blog-serve</string>
+
+    <key>ProgramArguments</key>
+    <array>
+      <string>/Users/jmromer/.bin/blog-serve</string>
+    </array>
+
+    <key>Nice</key>
+    <integer>1</integer>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>KeepAlive</key>
+    <true/>
+
+    <key>StandardOutPath</key>
+    <string>/tmp/jmromer.blog-serve.stdout.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/tmp/jmromer.blog-serve.stderr.log</string>
+  </dict>
+</plist>

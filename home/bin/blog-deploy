@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -ex
+
+printf "\n[Deploy: %s]\n " "$(date)"
+rm -f /tmp/jmromer.blog-deploy.*.log
+
+cd ~/Projects/blogs/jmromer
+./bin/deploy && printf "\nDeployed.\n" || printf "\nError.\n"
