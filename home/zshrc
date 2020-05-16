@@ -363,13 +363,15 @@ bindkey -s '\eOB' '\e[B'
 autoload -U colors && colors
 
 color() {
-    [[ $1 == 'red'    ]] && echo -n %{$fg_no_bold[red]%}
-    [[ $1 == 'yellow' ]] && echo -n %{$fg_no_bold[yellow]%}
-    [[ $1 == 'green'  ]] && echo -n %{$fg_no_bold[green]%}
-    [[ $1 == 'violet' ]] && echo -n %{$fg_no_bold[magenta]%}
-    [[ $1 == 'blue'   ]] && echo -n %{$fg_no_bold[blue]%}
-    [[ $1 == 'white'  ]] && echo -n %{$fg_no_bold[white]%}
-    [[ $1 == 'reset'  ]] && echo -n %{$reset_color%}
+    # shellcheck disable=SC2154
+    [[ $1 == 'red'    ]] && printf "%s" "%{${fg_no_bold[red]}%}"
+    [[ $1 == 'yellow' ]] && printf "%s" "%{${fg_no_bold[yellow]}%}"
+    [[ $1 == 'green'  ]] && printf "%s" "%{${fg_no_bold[green]}%}"
+    [[ $1 == 'violet' ]] && printf "%s" "%{${fg_no_bold[magenta]}%}"
+    [[ $1 == 'blue'   ]] && printf "%s" "%{${fg_no_bold[blue]}%}"
+    [[ $1 == 'white'  ]] && printf "%s" "%{${fg_no_bold[white]}%}"
+    # shellcheck disable=SC2154
+    [[ $1 == 'reset'  ]] && printf "%s" "%{${reset_color}%}"
 }
 
 #-------------------------------------------------------------
