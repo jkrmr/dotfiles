@@ -269,11 +269,11 @@ zle -N up-line-or-beginning-search
 setopt complete_in_word
 
 # all modes
-bindkey "^[[3"  prefix-2        # ensure delete backwards deletes
-bindkey "^[[3~" delete-char     # ensure delete forwards deletes
-bindkey '^t'    fzf-file-widget # ^t Invoke FZF file finder
-bindkey '^x'    after-first-word
-bindkey -s '^g' 'cd\n'          # ^g cd with pd
+bindkey "^[[3"  prefix-2         # ensure delete backwards deletes
+bindkey "^[[3~" delete-char      # ensure delete forwards deletes
+bindkey '^t'    fzf-file-widget  # ^t Invoke FZF file finder
+bindkey '^x'    after-first-word # ^x move cursor to flag-insert position
+bindkey -s '^[' 'cd\n'           # ^[ cd with pd
 
 # emacs mode
 bindkey -M emacs '^y' accept-and-hold
