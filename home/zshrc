@@ -203,7 +203,7 @@ git_branch() {
 #-------------------------------------------------------------
 # ZSH
 #-------------------------------------------------------------
-# ZSH GENERAL
+# GENERAL
 #-------------------------------------------------------------
 alias reload!="source ~/.zshenv"
 setopt extendedglob # Enable extended globbing
@@ -246,7 +246,7 @@ export HISTSIZE=4096
 export SAVEHIST=4096
 
 #-------------------------------------------------------------
-# COMMAND-LINE AND HISTORY NAVIGATION
+# CURSOR POSITIONING
 #-------------------------------------------------------------
 # Position cursor after ARG[0] (for argument/flag entry)
 after-first-word() {
@@ -254,115 +254,47 @@ after-first-word() {
     zle forward-word
 }
 
-autoload -U down-line-or-beginning-search
-autoload -U history-search-end
-autoload -U up-line-or-beginning-search
-
-zle -N cd
 zle -N after-first-word
-zle -N down-line-or-beginning-search
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-zle -N up-line-or-beginning-search
 
-# back-i-search begins with current word
+#-------------------------------------------------------------
+# vi / emacs modes
+#-------------------------------------------------------------
+if [[ -z "$INSIDE_EMACS" ]]; then
+    # Change cursor shape for different vi modes.
+    zle-keymap-select() {
+        if [[ ${KEYMAP} == vicmd ]] ||
+            [[ $1 = 'block' ]]; then
+            echo -ne '\e[1 q'
+        elif [[ ${KEYMAP} == main ]] ||
+                [[ ${KEYMAP} == viins ]] ||
+                [[ ${KEYMAP} = '' ]] ||
+                [[ $1 = 'beam' ]]; then
+            echo -ne '\e[5 q'
+        fi
+    }
+
+    zle -N zle-keymap-select
+
+    # no lag after pressing ESC to enter normal mode
+    export KEYTIMEOUT=5
+
+    # set vi keybindings
+    bindkey -v
+
+    echo -ne '\e[5 q' # Use beam shape cursor on startup.
+    preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+fi
+
+#-------------------------------------------------------------
+# HISTORY SEARCH
+#-------------------------------------------------------------
+# back-i-search should begin with the current word
 setopt complete_in_word
 
-# all modes
-bindkey "^[[3"  prefix-2         # ensure delete backwards deletes
-bindkey "^[[3~" delete-char      # ensure delete forwards deletes
-bindkey '^t'    fzf-file-widget  # ^t Invoke FZF file finder
-bindkey '^x'    after-first-word # ^x move cursor to flag-insert position
-bindkey -s '^[' 'cd\n'           # ^[ cd with pd
-
-# emacs mode
-bindkey -M emacs '^y' accept-and-hold
-bindkey -M emacs '^o' push-line-or-edit
-
-# vi insert mode
-bindkey -M viins "^n" history-beginning-search-backward-end
-bindkey -M viins "^p" history-beginning-search-forward-end
-bindkey -M viins '^a' beginning-of-line
-bindkey -M viins '^b' backward-char
-bindkey -M viins '^d' delete-char
-bindkey -M viins '^e' end-of-line
-bindkey -M viins '^f' forward-char
-bindkey -M viins '^k' kill-line
-bindkey -M viins '^o' push-line-or-edit  # stash command, issue another, restore stash
-bindkey -M viins '^y' accept-and-hold    # issue the command, but keep it at the prompt
-bindkey -M viins '^r' history-incremental-search-backward
-
-# vi command mode
-bindkey -M vicmd "^n" history-beginning-search-backward-end
-bindkey -M vicmd "^p" history-beginning-search-forward-end
-bindkey -M vicmd '^r' history-incremental-search-backward
-
-bindkey '\e[A' up-line-or-beginning-search
-bindkey '\e[B' down-line-or-beginning-search
-bindkey -s '\eOA' '\e[A'
-bindkey -s '\eOB' '\e[B'
-
-bindkey -M viins '^p' up-line-or-beginning-search
-bindkey -M vicmd '^p' up-line-or-beginning-search
-bindkey -M viins '^n' down-line-or-beginning-search
-bindkey -M vicmd '^n' down-line-or-beginning-search
-
-#-------------------------------------------------------------
-# COLORS
-#-------------------------------------------------------------
-autoload -U colors && colors
-
-function color {
-  if   [[ $1 == 'red'    ]]; then echo -n %{$fg_no_bold[red]%}
-  elif [[ $1 == 'yellow' ]]; then echo -n %{$fg_no_bold[yellow]%}
-  elif [[ $1 == 'green'  ]]; then echo -n %{$fg_no_bold[green]%}
-  elif [[ $1 == 'violet' ]]; then echo -n %{$fg_no_bold[magenta]%}
-  elif [[ $1 == 'blue'   ]]; then echo -n %{$fg_no_bold[blue]%}
-  elif [[ $1 == 'white'  ]]; then echo -n %{$fg_no_bold[white]%}
-  elif [[ $1 == 'reset'  ]]; then echo -n %{$reset_color%}
-  fi
-}
-
-#-------------------------------------------------------------
-# PROMPT WITH SHORT PWD, COLORIZED GIT INFO
-#-------------------------------------------------------------
-setopt prompt_subst       # enables command substitution
-
-PS1=$'\n$(color blue)%c ' # basename of pwd after a newline
-PS1+='$(git_branch)'      # current branch or commit name, with color
-PS1+='$(color reset)%# '  # reset color, add %
-export PS1
-
-#-------------------------------------------------------------
-# Use vi mode, unless in emacs
-#-------------------------------------------------------------
-if [ -n "$INSIDE_EMACS" ]; then
-  # set emacs keybindings
-  bindkey -e
-else
-  # Change cursor shape for different vi modes.
-  function zle-keymap-select {
-      if [[ ${KEYMAP} == vicmd ]] ||
-             [[ $1 = 'block' ]]; then
-          echo -ne '\e[1 q'
-      elif [[ ${KEYMAP} == main ]] ||
-               [[ ${KEYMAP} == viins ]] ||
-               [[ ${KEYMAP} = '' ]] ||
-               [[ $1 = 'beam' ]]; then
-          echo -ne '\e[5 q'
-      fi
-  }
-  zle -N zle-keymap-select
-
-  # no lag after pressing ESC to enter normal mode
-  export KEYTIMEOUT=5
-
-  # set vi keybindings
-  bindkey -v
-
-  echo -ne '\e[5 q' # Use beam shape cursor on startup.
-  preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
-fi
+autoload -U down-line-or-beginning-search
+autoload -U up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+zle -N up-line-or-beginning-search
 
 #-------------------------------------------------------------
 # Use ctrl-z as a toggle
@@ -377,7 +309,78 @@ ctrlz() {
 }
 
 zle -N ctrlz
-bindkey '^Z' ctrlz
+
+#-------------------------------------------------------------
+# KEY MAPS
+#-------------------------------------------------------------
+# all modes
+
+bindkey "^[[3"  prefix-2         # ensure delete backwards deletes
+bindkey "^[[3~" delete-char      # ensure delete forwards deletes
+bindkey '^t'    fzf-file-widget  # invoke FZF file finder
+bindkey '^x'    after-first-word # move cursor to flag-insert position
+bindkey '^z'    ctrlz
+
+# string-based
+
+bindkey -s '^h' 'cd\n' # cd with pd
+
+# emacs mode
+
+bindkey -M emacs '^y' accept-and-hold
+bindkey -M emacs '^o' push-line-or-edit
+
+# vi insert mode
+
+bindkey -M viins '^a' beginning-of-line
+bindkey -M viins '^b' backward-char
+bindkey -M viins '^d' delete-char
+bindkey -M viins '^e' end-of-line
+bindkey -M viins '^f' forward-char
+bindkey -M viins '^k' kill-line
+bindkey -M viins '^n' down-line-or-beginning-search
+bindkey -M viins '^o' push-line-or-edit  # stash command, issue another, restore stash
+bindkey -M viins '^p' up-line-or-beginning-search
+bindkey -M viins '^r' history-incremental-search-backward
+bindkey -M viins '^y' accept-and-hold    # issue the command, but keep it at the prompt
+
+# vi command mode
+
+bindkey -M vicmd '^n' down-line-or-beginning-search
+bindkey -M vicmd '^p' up-line-or-beginning-search
+bindkey -M vicmd '^r' history-incremental-search-backward
+
+# arrow keys trigger history searching
+
+bindkey '\e[A' up-line-or-beginning-search
+bindkey '\e[B' down-line-or-beginning-search
+bindkey -s '\eOA' '\e[A'
+bindkey -s '\eOB' '\e[B'
+
+#-------------------------------------------------------------
+# COLORS
+#-------------------------------------------------------------
+autoload -U colors && colors
+
+color() {
+    [[ $1 == 'red'    ]] && echo -n %{$fg_no_bold[red]%}
+    [[ $1 == 'yellow' ]] && echo -n %{$fg_no_bold[yellow]%}
+    [[ $1 == 'green'  ]] && echo -n %{$fg_no_bold[green]%}
+    [[ $1 == 'violet' ]] && echo -n %{$fg_no_bold[magenta]%}
+    [[ $1 == 'blue'   ]] && echo -n %{$fg_no_bold[blue]%}
+    [[ $1 == 'white'  ]] && echo -n %{$fg_no_bold[white]%}
+    [[ $1 == 'reset'  ]] && echo -n %{$reset_color%}
+}
+
+#-------------------------------------------------------------
+# PROMPT WITH SHORT PWD, COLORIZED GIT INFO
+#-------------------------------------------------------------
+setopt prompt_subst       # enables command substitution
+
+PS1=$'\n$(color blue)%c ' # basename of pwd after a newline
+PS1+='$(git_branch)'      # current branch or commit name, with color
+PS1+='$(color reset)%# '  # reset color, add %
+export PS1
 
 #-------------------------------------------------------------
 # UNDO (DISABLE ZSH DEFAULTS)
