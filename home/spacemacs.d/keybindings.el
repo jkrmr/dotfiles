@@ -156,7 +156,7 @@
   ;; add rufo to formatting keybindings
   "= =" #'rufo-format-buffer
   ;; toggle breakpoint: C-u to insert in pipeline style
-  "d b" #'ruby/toggle-breakpoint)
+  "D b" #'ruby/toggle-breakpoint)
 
 
 
