@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+set -e
+
+# TODO:
+# - Add arg / flag handling
+# - Add dwim wrt relative or centralized location
+# - Pass -p for private ~/.local/bin
+# - Add user feedback
+
+[[ -z "$1" ]] && exit 1
+
+filename=$(readlink -f "${1}")
+
+if [[ ! -f "${filename}" ]]; then
+    touch "${filename}"
+    chmod u+x "${filename}"
+    printf "#!/usr/bin/env bash\n\nset -e\n\n" >> "${filename}"
+fi
+if [[ -z "$INSIDE_EMACS" ]]; then
+    vim "${filename}"
+else
+    echo "${filename}" | pbcopy
+fi
