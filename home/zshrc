@@ -248,57 +248,54 @@ export SAVEHIST=4096
 #-------------------------------------------------------------
 # COMMAND-LINE AND HISTORY NAVIGATION
 #-------------------------------------------------------------
-bindkey -M viins '^a' beginning-of-line
-bindkey -M viins '^e' end-of-line
-bindkey -M viins '^b' backward-char
-bindkey -M viins '^f' forward-char
-bindkey -M viins '^d' delete-char
+# Position cursor after ARG[0] (for argument/flag entry)
+after-first-word() {
+    zle beginning-of-line
+    zle forward-word
+}
 
-bindkey -M viins '^k' kill-line
+autoload -U down-line-or-beginning-search
+autoload -U history-search-end
+autoload -U up-line-or-beginning-search
 
-# issue the command, but keep it at the prompt
-bindkey -M viins '^y' accept-and-hold
-bindkey -M viins '^o' push-line-or-edit
+zle -N cd
+zle -N after-first-word
+zle -N down-line-or-beginning-search
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+zle -N up-line-or-beginning-search
 
+# back-i-search begins with current word
+setopt complete_in_word
+
+# all modes
+bindkey "^[[3"  prefix-2        # ensure delete backwards deletes
+bindkey "^[[3~" delete-char     # ensure delete forwards deletes
+bindkey '^t'    fzf-file-widget # ^t Invoke FZF file finder
+bindkey '^x'    after-first-word
+bindkey -s '^g' 'cd\n'          # ^g cd with pd
+
+# emacs mode
 bindkey -M emacs '^y' accept-and-hold
 bindkey -M emacs '^o' push-line-or-edit
 
-# enable ctrl-p/n for history search
-autoload -U history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey -M vicmd "^n" history-beginning-search-backward-end
-bindkey -M vicmd "^p" history-beginning-search-forward-end
+# vi insert mode
 bindkey -M viins "^n" history-beginning-search-backward-end
 bindkey -M viins "^p" history-beginning-search-forward-end
-
-# ^t Invoke FZF file finder
-bindkey '^t' fzf-file-widget
-
-# ^c Invoke project fuzzy-switcher
-bindkey -s '^o' 'cd\n'
-
-# bindkey "^[[3"  prefix-2     # ensure delete backwards deletes
-bindkey "^[[3~" delete-char  # ensure delete forwards deletes
-
-# Position cursor after ARG[0] (for argument/flag entry)
-function after-first-word() {
-  zle beginning-of-line
-  zle forward-word
-}
-zle -N after-first-word
-bindkey '^x' after-first-word
-
-#-------------------------------------------------------------
-# COMMAND-LINE HISTORY SEARCHING AND NAVIGATION
-#-------------------------------------------------------------
+bindkey -M viins '^a' beginning-of-line
+bindkey -M viins '^b' backward-char
+bindkey -M viins '^d' delete-char
+bindkey -M viins '^e' end-of-line
+bindkey -M viins '^f' forward-char
+bindkey -M viins '^k' kill-line
+bindkey -M viins '^o' push-line-or-edit  # stash command, issue another, restore stash
+bindkey -M viins '^y' accept-and-hold    # issue the command, but keep it at the prompt
 bindkey -M viins '^r' history-incremental-search-backward
-bindkey -M vicmd '^r' history-incremental-search-backward
 
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
+# vi command mode
+bindkey -M vicmd "^n" history-beginning-search-backward-end
+bindkey -M vicmd "^p" history-beginning-search-forward-end
+bindkey -M vicmd '^r' history-incremental-search-backward
 
 bindkey '\e[A' up-line-or-beginning-search
 bindkey '\e[B' down-line-or-beginning-search
@@ -309,9 +306,6 @@ bindkey -M viins '^p' up-line-or-beginning-search
 bindkey -M vicmd '^p' up-line-or-beginning-search
 bindkey -M viins '^n' down-line-or-beginning-search
 bindkey -M vicmd '^n' down-line-or-beginning-search
-
-# back-i-search begins with current word
-setopt complete_in_word
 
 #-------------------------------------------------------------
 # COLORS
