@@ -136,7 +136,8 @@
 	a        = stage-files
 	aa       = add --all
 	ap       = add --patch
-	b        = branch -vv
+	b        = checkout-branch
+	bb       = branch -vv
 	bc       = create-branch-with-remote
 	bcl      = create-branch
 	bcc      = create-branch-continuation
@@ -145,15 +146,14 @@
 	bdo      = clear-deleted-branches
 	bi       = bisect-helper
 	br       = !hub browse
+	c        = checkout
+	cc       = checkout-commit
 	ca       = commit-amend
 	cap      = commit --no-verify --amend --no-edit
 	cm       = commit-quick
 	cmm      = commit-quick-force
 	cmf      = commit-fixup
 	cms      = commit-squash
-	co       = checkout
-	cob      = checkout-branch
-	coc      = checkout-commit
 	comp     = !git checkout master && git pull
 	cp       = cherry-pick
 	cours    = checkout --ours
