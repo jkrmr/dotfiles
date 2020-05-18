@@ -325,12 +325,12 @@ See `org-capture-templates' for more information."
           (type (car (cdr  (read-multiple-choice
                             "Source Type: "
                             '((?b "book" "Book / Magazine / Film / Album")
-                              (?a "article" "Article / Essay")
+                              (?a "article" "Blog post / Article / Essay")
                               (?p "poem" "Poem")
                               (?t "tweet" "Tweet")))))))
       (mapconcat #'identity
                  `(
-                   ,(concat "* DRAFT " title)
+                   ,(concat "* " title)
                    ":PROPERTIES:"
                    ,(concat ":EXPORT_FILE_NAME: " (org-hugo-slug title))
                    ,(concat ":EXPORT_AUTHOR: " author)
