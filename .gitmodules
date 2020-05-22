@@ -6,3 +6,6 @@
 	path = home/vim/vim-plug
 	url = https://github.com/junegunn/vim-plug.git
 	branch = master
+[submodule "home/spacemacs.d/local/xwwp"]
+	path = home/spacemacs.d/local/xwwp
+	url = https://github.com/canatella/xwwp.git
