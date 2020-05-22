@@ -740,6 +740,7 @@ configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (add-to-load-path "~/.spacemacs.d")
+  (add-to-load-path "~/.spacemacs.d/local")
   ;; theme definitions
   (load "themes")
 
@@ -805,6 +806,9 @@ configuration."
   (require 'window-purpose) ;; TEMP: workaround for Emacs 28
   ;; postpone garbage collection during startup
   (let ((gc-cons-threshold most-positive-fixnum))
+    (load "xwwp/xwwp.el")
+    (require 'xwwp)
+
     ;; interactive functions
     (load "funcs")
     ;; package config functions
