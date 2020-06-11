@@ -540,7 +540,7 @@ If not in a project, return the current `default-dir'."
   (defvar r-light-theme nil "The light theme.")
   (disable-theme r-dark-theme)
   (spacemacs/load-theme r-light-theme)
-  (setq-default org-bullets-bullet-list '(" "))
+  (setq-default org-superstar-headline-bullets-list '(" "))
   (r-org/reset-buffers)
   (beacon-mode -1))
 
@@ -551,7 +551,7 @@ If not in a project, return the current `default-dir'."
   (defvar r-light-theme nil "The light theme.")
   (disable-theme r-light-theme)
   (spacemacs/load-theme r-dark-theme)
-  (setq-default org-bullets-bullet-list '("› "))
+  (setq-default org-superstar-headline-bullets-list '("› "))
   (r-org/reset-buffers)
   (beacon-mode +1))
 

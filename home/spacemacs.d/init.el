@@ -530,7 +530,7 @@ This function should only modify configuration layer settings."
           org-archive-location "~/Dropbox/org/ARCHIVE.org::* %s"
           org-babel-python-command "python3"
           org-blank-before-new-entry '((heading . auto) (plain-list-item . auto))
-          org-bullets-bullet-list '("› ")
+          org-superstar-headline-bullets-list '("› ")
           org-catch-invisible-edits 'show-and-error
           org-clock-idle-time 5
           org-clock-persist t
