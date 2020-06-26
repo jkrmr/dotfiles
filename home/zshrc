@@ -323,7 +323,7 @@ bindkey '^z'    ctrlz
 
 # string-based
 
-bindkey -s '^h' 'cd\n' # cd with pd
+bindkey -s '^\' 'cd\n' # cd with pd
 
 # emacs mode
 
