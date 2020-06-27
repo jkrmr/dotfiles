@@ -3,7 +3,7 @@ nodejs 13.6.0
 elixir 1.10.3-otp-22
 erlang 22.3.2
 mongodb 3.6.6
-python anaconda3-2019.07
+python anaconda3-2020.02
 golang 1.14.1
 redis 5.0.5
 elm 0.19.0
