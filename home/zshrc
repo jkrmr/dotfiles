@@ -311,19 +311,30 @@ ctrlz() {
 zle -N ctrlz
 
 #-------------------------------------------------------------
+# Use FZF to set versions with ASDF
+#-------------------------------------------------------------
+# asdf keybinding
+asdf-fzf() {
+    BUFFER=$(asdf-select)
+    zle end-of-line
+}
+
+zle -N asdf-fzf
+
+#-------------------------------------------------------------
 # KEY MAPS
 #-------------------------------------------------------------
 # all modes
 
 bindkey "^[[3"  prefix-2         # ensure delete backwards deletes
 bindkey "^[[3~" delete-char      # ensure delete forwards deletes
-bindkey '^t'    fzf-file-widget  # invoke FZF file finder
-bindkey '^x'    after-first-word # move cursor to flag-insert position
-bindkey '^z'    ctrlz
+bindkey "^h"    asdf-fzf
+bindkey "^t"    fzf-file-widget  # invoke FZF file finder
+bindkey "^x"    after-first-word # move cursor to flag-insert position
+bindkey "^z"    ctrlz
 
 # string-based
-
-bindkey -s '^\' 'cd\n' # cd with pd
+bindkey -s "^\\" "cd\n" # cd with pd
 
 # emacs mode
 

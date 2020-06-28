@@ -1,0 +1,72 @@
+#!/usr/bin/env zsh
+
+set -e
+
+SUBCOMMANDS="
+plugin-add     Add a plugin from the plugin repo
+plugin-remove  Remove plugin and package versions
+plugin-update  Update a plugin to latest commit
+install        Install a specific version of a package
+uninstall      Remove a specific version of a package
+shell          Set the package version in the current shell
+local          Set the package local version
+global         Set the package global version
+reshim         Recreate shims for version of a package
+freeze         Write a .tool-versions file in the current directory
+"
+
+FZF_DEFAULT_OPTS="--ansi --layout=reverse --no-multi"
+
+select-subcommand() {
+    echo "$SUBCOMMANDS" | grep -E '[a-z]' | fzf | awk '{ print $1 }'
+}
+
+select-language() {
+    if [[ "$1" == plugin-add ]]; then
+        asdf plugin list all | awk '{ print $1 }' | fzf
+    else
+        asdf plugin list | fzf
+    fi
+}
+
+select-language-version() {
+    [[ -z "$2" ]] && exit 0
+
+    if [[ "$1" == install ]]; then
+        asdf list all "$2" | fzf
+    else
+        asdf list "$2" | fzf
+    fi
+}
+
+freeze() {
+    local temp
+    temp=$(mktemp)
+
+    asdf current 2> "$temp"
+
+    sed -E 's/\(set.+//g' "$temp" |
+        fzf --multi |
+        awk '{ print $1, $2 }' > .tool-versions
+
+    rm -f "$temp"
+}
+
+subcommand=$(select-subcommand)
+[[ -z "$subcommand" ]] && exit 0
+
+if [[ $subcommand =~ ^plugin ]]; then
+    selection=$(select-language "$subcommand")
+    [[ -n "$selection" ]] && echo "asdf $subcommand $selection" && exit 0
+fi
+
+if [[ "$subcommand" == freeze ]]; then
+    freeze
+    exit 0
+fi
+
+language=$(select-language)
+selection=$(select-language-version "$subcommand" "$language")
+
+[[ -z "$selection" ]] && exit 0
+echo "asdf $subcommand $language $selection" | sed -E 's/ +/ /g'
