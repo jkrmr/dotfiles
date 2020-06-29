@@ -6,6 +6,7 @@ dockerfile-language-server-nodejs
 eslint
 eslint-plugin-react
 git-pending
+import-js
 js-beautify
 markdownlint-cli
 neovim
