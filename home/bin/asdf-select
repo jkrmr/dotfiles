@@ -33,9 +33,9 @@ select-language-version() {
     [[ -z "$2" ]] && exit 0
 
     if [[ "$1" == install ]]; then
-        asdf list all "$2" | fzf
+        asdf list all "$2" | fzf --tac --cycle
     else
-        asdf list "$2" | fzf
+        asdf list "$2" | fzf --tac --cycle
     fi
 }
 
