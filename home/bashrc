@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 
+# loaded from non-login shells
+
 # shellcheck source=/dev/null
-source ~/.bash_profile
+# source ~/.bash_profile
