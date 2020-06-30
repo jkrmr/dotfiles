@@ -27,10 +27,6 @@ alias git=hub
 alias music=mpsyt
 alias pp=pretty-print-path
 
-cd() {
-    builtin cd "$(pd "$1")" || return
-}
-
 #-------------------------------------------------------------
 # ALIASES: FILE MANAGEMENT, SHELL NAVIGATION
 #-------------------------------------------------------------
@@ -309,6 +305,13 @@ ctrlz() {
 }
 
 zle -N ctrlz
+
+#-------------------------------------------------------------
+# Use cd with pd
+#-------------------------------------------------------------
+cd() {
+    builtin cd "$(pd "$1")" || return
+}
 
 #-------------------------------------------------------------
 # Use FZF to set versions with ASDF
