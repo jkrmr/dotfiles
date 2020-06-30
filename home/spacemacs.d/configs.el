@@ -19,7 +19,6 @@
           (add-to-list 'company-backends '(company-capf :with company-keywords company-yasnippet))
           (add-to-list 'company-backends '(company-robe :with company-keywords company-gtags company-capf company-yasnippet))
           (add-to-list 'company-backends '(company-anaconda :with company-keywords company-jedi company-capf company-yasnippet))
-          (add-to-list 'company-backends '(company-tern :with company-keywords company-capf company-yasnippet))
           (add-to-list 'company-backends '(company-gtags :with company-keywords company-capf company-yasnippet))
           (message-banner "backends added"))
       (error "Could not add to `company-backends'"))
