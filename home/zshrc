@@ -330,7 +330,7 @@ zle -N asdf-fzf
 
 bindkey "^[[3"  prefix-2         # ensure delete backwards deletes
 bindkey "^[[3~" delete-char      # ensure delete forwards deletes
-bindkey "^g"    asdf-fzf
+bindkey "^\\"   asdf-fzf
 bindkey "^t"    fzf-file-widget  # invoke FZF file finder
 bindkey "^x"    after-first-word # move cursor to flag-insert position
 bindkey "^z"    ctrlz
