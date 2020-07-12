@@ -29,8 +29,6 @@ brew cask install keyboard-maestro
 brew cask install launchbar
 # batch file renamer
 brew cask install name-mangler
-# PDF article manager
-brew cask install papers
 
 # Docker Desktop
 brew cask install docker
