@@ -7,22 +7,16 @@
 brew tap caskroom/versions
 # terminal emulator
 brew cask install iterm2-nightly
-# password manager 6 (NB: don't use the app store version or v7)
-brew cask install 1password6
+# password manager
+brew cask install 1password
 # removes apps and related files
 brew cask install appcleaner
 # vpn
 brew cask install protonvpn
 # email
 brew cask install protonmail-bridge
-# web browser
-brew cask install firefox
 # controls screen brightness
 brew cask install flux
-# web browser
-brew cask install google-chrome
-# web browser
-brew cask install google-chrome-canary
 # SQL UI for MySQL, Postgres, MSSQL, SQLite
 brew cask install sqlpro-studio
 # trackpad gestures
@@ -46,10 +40,15 @@ brew cask install kitematic
 brew cask install gitter
 # lightweight PDF reader with auto-update
 brew cask install skim
-# video conferencing
+
+# video conferencing / streaming / messaging
+brew cask install discord
+brew cask install skype
+brew cask install slack
+brew cask install streamlabs-obs
+brew cask install whatsapp
 brew cask install zoomus
-# instant messaging
-brew cask install ripcord
+
 # torrent machine
 brew cask install transmission
 # video player
@@ -65,6 +64,13 @@ brew cask install dash
 # finder shortcut
 brew cask install openinterminal
 
+# web browsers
+brew cask install dissenter-browser
+brew cask install firefox
+brew cask install google-chrome
+brew cask install google-chrome-canary
+brew cask install responsively
+
 brew cask install 4k-stogram
 brew cask install 4k-video-downloader
 brew cask install 4k-youtube-to-mp3
@@ -75,10 +81,13 @@ brew cask install divvy
 brew cask install keycastr
 brew cask install kindle
 brew cask install nvalt
-brew cask install slack
+brew cask install dropbox
+brew cask install evernote
+brew cask install pandora
+brew cask install spotify
+brew cask install licecap
+brew cask install macvim
 
-# Quick Look viewers: Zip files
-brew cask install betterzipql
 # Quick Look viewers: Syntax highlighting
 brew cask install qlcolorcode
 # Quick Look viewers: Display image size and res
