@@ -10,7 +10,7 @@ branches="$(git branch | cut -c 3- | $FZF)"
 test -z "$branches" && exit 0
 
 for branch in $branches; do
-  if [[ "$branch" =~ ^master|^develop ]]; then
+  if [[ "$branch" =~ ^master$|^develop$|^main$ ]]; then
     echo "Skipping branch '$branch'"
     continue
   fi
