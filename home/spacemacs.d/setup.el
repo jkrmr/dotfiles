@@ -275,9 +275,10 @@ Adjust the font settings of the given FRAME to do this."
 (with-eval-after-load 'elm-mode
   (remove-hook 'elm-mode-hook 'elm-indent-mode))
 
-(with-eval-after-load 'evil
-  (when (require 'evil-collection nil t)
-    (evil-collection-init)))
+;; TEMP: Disable, breaks company
+;; (with-eval-after-load 'evil
+;;   (when (require 'evil-collection nil t)
+;;     (evil-collection-init)))
 
 
 
