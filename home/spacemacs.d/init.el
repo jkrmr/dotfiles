@@ -392,7 +392,7 @@ This function should only modify configuration layer settings."
                       auto-completion-complete-with-key-sequence-delay nil
                       auto-completion-enable-help-tooltip t
                       auto-completion-enable-snippets-in-popup t
-                      auto-completion-idle-delay 0.3
+                      auto-completion-idle-delay 0
                       auto-completion-enable-sort-by-usage nil ;; let prescient handle this
                       auto-completion-private-snippets-directory "~/.spacemacs.d/snippets"
                       auto-completion-return-key-behavior 'complete
