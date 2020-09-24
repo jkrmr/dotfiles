@@ -601,7 +601,7 @@ This function should only modify configuration layer settings."
              python-formatter 'yapf
              python-guess-indent nil
              python-indent-offset 4
-             python-lsp-server 'mspyls
+             python-lsp-server 'pyls
              python-save-before-test t
              python-shell-completion-native-enable t
              python-shell-interpreter "ipython"
