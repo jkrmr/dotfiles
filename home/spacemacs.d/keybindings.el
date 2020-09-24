@@ -49,6 +49,10 @@
 
 ;;; Leaders: Global
 
+;; documentation
+(spacemacs/set-leader-keys
+  "h D" #'dash-at-point)
+
 ;; hide-and-show mode
 (spacemacs/declare-prefix "H" "Hide/Show")
 (spacemacs/set-leader-keys
