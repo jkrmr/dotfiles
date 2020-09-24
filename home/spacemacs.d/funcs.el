@@ -174,23 +174,23 @@ Do not request confirmation for buffers outside the current perspective."
 (defun make-todos-column-right ()
   "Open 'todo' drawer windows on right hand side top and bottom.
 If passed, name them TOP-NAME and BOTTOM-NAME, respectively."
- (interactive)
- (defvar org-default-notes-file nil "The full path to the default notes file.")
- (when org-default-notes-file
-   (split-window-right-and-focus)
-   ;; top
-   (org-projectile/goto-todos)
-   (rename-buffer "*project*" t)
-   (goto-char (point-min))
-   (purpose-toggle-window-buffer-dedicated)
-   (split-window-below-and-focus)
-   ;; bottom
-   (find-file org-default-notes-file)
-   (rename-buffer "*today*" t)
-   (goto-char (point-min))
-   (purpose-toggle-window-buffer-dedicated)
-   (shrink-by-half-to-the-right)
-   (windmove-left)))
+  (interactive)
+  (defvar org-default-notes-file nil "The full path to the default notes file.")
+  (when org-default-notes-file
+    (split-window-right-and-focus)
+    ;; top
+    (org-projectile/goto-todos)
+    (rename-buffer "*project*" t)
+    (goto-char (point-min))
+    (purpose-toggle-window-buffer-dedicated)
+    (split-window-below-and-focus)
+    ;; bottom
+    (find-file org-default-notes-file)
+    (rename-buffer "*today*" t)
+    (goto-char (point-min))
+    (purpose-toggle-window-buffer-dedicated)
+    (shrink-by-half-to-the-right)
+    (windmove-left)))
 
 
 ;; Org mode
