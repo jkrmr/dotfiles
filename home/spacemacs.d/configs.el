@@ -90,11 +90,11 @@
 
   (defun lisp-minor-modes ()
     "Enable Lisp minor modes, in the correct sequence."
-    (parinfer-mode)
+    ;; (parinfer-mode)
     (evil-cleverparens-mode))
   (remove-hook 'emacs-lisp-mode-hook #'parinfer-mode)
-  (add-hook 'clojure-mode-hook #'lisp-minor-modes)
-  (add-hook 'emacs-lisp-mode-hook #'lisp-minor-modes))
+  (add-hook 'emacs-lisp-mode-hook #'lisp-minor-modes)
+  (add-hook 'clojure-mode-hook #'lisp-minor-modes))
 
 (defun config/org-mode ()
   "Configure and enable org mode."
