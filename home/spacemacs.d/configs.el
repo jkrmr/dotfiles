@@ -38,7 +38,7 @@
 (defun config/flycheck ()
   "Configure and enable Flycheck."
   (with-eval-after-load 'flycheck
-    (with-eval-after-load 'lsp-ui-flycheck
+    (with-eval-after-load 'lsp
       ;; Flycheck: Python
       (flycheck-add-next-checker 'lsp 'python-flake8)
       (flycheck-add-next-checker 'lsp 'python-mypy)
