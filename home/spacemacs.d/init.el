@@ -409,6 +409,8 @@ This function should only modify configuration layer settings."
      (c-c++ :variables
             c-c++-enable-clang-support t)
      command-log
+     (conda :variables
+            conda-anaconda-home "~/.anaconda")
      copy-as-format
      csv
      dap
