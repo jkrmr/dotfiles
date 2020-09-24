@@ -192,11 +192,6 @@ If passed, name them TOP-NAME and BOTTOM-NAME, respectively."
    (shrink-by-half-to-the-right)
    (windmove-left)))
 
-(defun message-banner (msg)
-  "Print MSG banner to the messages buffer."
-  (let ((template "%s [%s] %s")
-        (dashes (make-string 25 ?-)))
-    (message (format template dashes msg dashes))))
 
 ;; Org mode
 

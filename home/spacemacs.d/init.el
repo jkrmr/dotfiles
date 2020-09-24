@@ -804,7 +804,12 @@ This function is called only while dumping Spacemacs configuration.")
   "Configuration for user code:
 This function is called at the very end of Spacemacs startup, after layer
 configuration."
-  (require 'window-purpose) ;; TEMP: workaround for Emacs 28
+  (defun message-banner (msg)
+    "Print MSG banner to the messages buffer."
+    (let ((template "%s [%s] %s")
+          (dashes (make-string 25 ?-)))
+      (message (format template dashes msg dashes))))
+
   ;; postpone garbage collection during startup
   (let ((gc-cons-threshold most-positive-fixnum))
     (load "xwwp/xwwp.el")
