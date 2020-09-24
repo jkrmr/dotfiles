@@ -295,6 +295,9 @@ Only equations at the beginning of a line are justified."
     (setenv "WORKON_HOME" (format "%s/envs" conda-path))
     (setq-default conda-anaconda-home conda-path))
 
+  (with-eval-after-load 'pytest
+    (add-to-list 'pytest-project-root-files "manage.py"))
+
   ;; (add-hook 'python-mode-hook #'elpy-enable)
   (add-hook 'python-mode-hook #'anaconda-mode)
   (add-hook 'python-mode-hook #'anaconda-eldoc-mode)
