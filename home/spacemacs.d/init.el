@@ -714,6 +714,7 @@ This function should only modify configuration layer settings."
      treemacs
      treemacs-icons-dired
      web-beautify
+     json-reformat
      )
 
    ;; Defines the behaviour of Spacemacs when installing packages.
