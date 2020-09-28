@@ -652,7 +652,7 @@ This function should only modify configuration layer settings."
      (typescript :variables
                  typescript-backend 'tide
                  typescript-fmt-on-save t
-                 typescript-fmt-tool 'typescript-formatter
+                 typescript-fmt-tool 'tide
                  typescript-linter 'tslint
                  typescript-lsp-linter t)
      typography
