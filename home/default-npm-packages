@@ -17,5 +17,6 @@ react-native-cli
 standard
 tern
 typescript
+typescript-formatter
 typescript-language-server
 vmd
