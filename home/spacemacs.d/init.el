@@ -604,6 +604,7 @@ This function should only modify configuration layer settings."
              python-guess-indent nil
              python-indent-offset 4
              python-lsp-server 'pyls
+             lsp-disabled-clients '(mspyls)
              python-save-before-test t
              python-shell-completion-native-enable t
              python-shell-interpreter "ipython"
