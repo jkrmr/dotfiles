@@ -25,6 +25,8 @@ export MANPATH
 PATH="$HOME/.bin"
 PATH+=":$HOME/.local/bin"
 PATH+=":$HOMEBREW_PREFIX/opt/gettext/bin"
+PATH+=":$HOMEBREW_PREFIX/opt/rg/bin"
+PATH+=":$HOMEBREW_PREFIX/opt/curl/bin"
 PATH+=$GNUTOOLS_PATHS
 PATH+=":$HOME/.asdf/shims"
 PATH+=":$HOME/.gem/ruby/2.6.0/bin"
