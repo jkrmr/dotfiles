@@ -54,7 +54,7 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-gc-cons '(100000000 0.1)
 
    ;; display a minibuffer message each time gc collection runs
-   garbage-collection-messages t
+   garbage-collection-messages nil
 
    ;; If non-nil then Spacelpa repository is the primary source to install
    ;; a locked version of packages. If nil then Spacemacs will install the
