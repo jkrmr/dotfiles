@@ -7,12 +7,13 @@
 
 ;;; Super/Hyper: Global
 
+(global-set-key (kbd "<s-escape>") #'evil-escape)
 (global-set-key (kbd "s--") #'spacemacs/scale-down-font)
 (global-set-key (kbd "s-0") #'spacemacs/reset-font-size)
+(global-set-key (kbd "s-:") #'eyebrowse-last-window-config)
 (global-set-key (kbd "s-;") #'spacemacs/jump-to-last-layout)
 (global-set-key (kbd "s-=") #'spacemacs/scale-up-font)
 (global-set-key (kbd "s-b") #'spacemacs/alternate-buffer)
-(global-set-key (kbd "s-B") #'eyebrowse-last-window-config)
 (global-set-key (kbd "s-c") #'org-clock-in)
 (global-set-key (kbd "s-C") #'org-clock-out)
 (global-set-key (kbd "s-d") #'kill-modal-windows)
@@ -20,10 +21,10 @@
 (global-set-key (kbd "s-f") #'avy-goto-char-2)
 (global-set-key (kbd "s-F") #'avy-goto-char-timer)
 (global-set-key (kbd "s-g") #'toggle-magit-status)
-(global-set-key (kbd "s-k") #'spacemacs/kill-this-buffer)
 (global-set-key (kbd "s-K") #'kill-buffer-and-window)
-(global-set-key (kbd "s-l") #'spacemacs/persp-perspectives)
+(global-set-key (kbd "s-k") #'spacemacs/kill-this-buffer)
 (global-set-key (kbd "s-L") #'eyebrowse-switch-to-window-config)
+(global-set-key (kbd "s-l") #'spacemacs/persp-perspectives)
 (global-set-key (kbd "s-m") #'popwin:messages)
 (global-set-key (kbd "s-n") #'org-capture)
 (global-set-key (kbd "s-N") #'toggle-notes-window)
@@ -32,9 +33,8 @@
 (global-set-key (kbd "s-s") #'save-buffer)
 (global-set-key (kbd "s-S") #'save-some-buffers)
 (global-set-key (kbd "s-t") #'shell-below-full-span)
-(global-set-key (kbd "s-w") #'spacemacs/delete-window)
 (global-set-key (kbd "s-W") #'open-web-browser)
-(global-set-key (kbd "<s-escape>") #'evil-escape)
+(global-set-key (kbd "s-w") #'spacemacs/delete-window)
 
 
 
