@@ -1,4 +1,3 @@
-# coding: utf-8
 # -*- mode: ruby -*-
 # vi:syntax=ruby
 # frozen_string_literal: true
@@ -7,6 +6,8 @@
 
 # Return only the methods not present on basic objects
 # alternatively, use `ls <object> -m`
+
+Pry.editor = "/usr/local/bin/vim -u ~/.vim/minimal.vim"
 
 unless defined?(Rails) && Rails.env
   begin
@@ -68,14 +69,56 @@ if defined?(Hirb)
   extend Hirb::Console
 end
 
-if defined?(JazzFingers) && !defined?(Rails)
+if defined?(JazzFingers)
   JazzFingers.configure do |config|
     config.colored_prompt = true
-    config.application_name = "😌"
+    config.application_name = "😌" unless defined?(Rails)
+  end
+
+  PRINT_CONFIG = {
+    indent: -2, # Number of spaces for indenting.
+    index: true, # Display array indices.
+    html: false, # Use ANSI color codes rather than HTML.
+    multiline: true, # Display in multiple lines.
+    plain: false, # Use colors.
+    raw: false, # Do not recursively format instance variables.
+    sort_keys: false, # Do not sort hash keys.
+    sort_vars: true, # Sort instance variables.
+    limit: false, # Limit arrays & hashes. Accepts bool or int.
+    ruby19_syntax: true, # Use Ruby 1.9 hash syntax in output.
+    class_name: :class, # Method called to report the instance class name. (e.g. :to_s)
+    object_id: true, # Show object id.
+    color: {
+      args: :whiteish,
+      array: :white,
+      bigdecimal: :blue,
+      class: :yellow,
+      date: :greenish,
+      falseclass: :red,
+      integer: :blue,
+      float: :blue,
+      hash: :whiteish,
+      keyword: :cyan,
+      method: :purpleish,
+      nilclass: :red,
+      rational: :blue,
+      string: :yellowish,
+      struct: :whiteish,
+      symbol: :cyanish,
+      time: :greenish,
+      trueclass: :green,
+      variable: :cyanish,
+    },
+  }
+
+  if defined?(AmazingPrint)
+    AmazingPrint.defaults = PRINT_CONFIG
+    AmazingPrint.pry!
   end
 
   if defined?(AwesomePrint)
-    AwesomePrint.defaults = { indent: -2 }
+    color = PRINT_CONFIG[:color].merge(args: :pale, hash: :pale, struct: :pale)
+    AwesomePrint.defaults = PRINT_CONFIG.merge(color: color)
     AwesomePrint.pry!
   end
 
@@ -116,7 +159,6 @@ def timeit
   ending = Process.clock_gettime(Process::CLOCK_MONOTONIC)
   (ending - starting).round(4)
 end
-
 
 pryrc_local = File.expand_path("~/.pryrc.local")
 load(pryrc_local) if File.exist?(pryrc_local)
