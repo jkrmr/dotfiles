@@ -9,3 +9,6 @@
 [submodule "home/spacemacs.d/local/xwwp"]
 	path = home/spacemacs.d/local/xwwp
 	url = https://github.com/canatella/xwwp.git
+[submodule "home/zsh/zsh-vim-mode"]
+	path = home/zsh/zsh-vim-mode
+	url = https://github.com/softmoth/zsh-vim-mode.git
