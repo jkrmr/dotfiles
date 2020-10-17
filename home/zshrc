@@ -241,6 +241,12 @@ export HISTSIZE=4096
 export SAVEHIST=4096
 
 #-------------------------------------------------------------
+# Zsh Plugins (load last)
+#-------------------------------------------------------------
+. "$HOME/.zsh/zsh-vim-mode/zsh-vim-mode.plugin.zsh"
+. "$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+#-------------------------------------------------------------
 # CURSOR POSITIONING
 #-------------------------------------------------------------
 # Position cursor after ARG[0] (for argument/flag entry)
@@ -325,6 +331,11 @@ zle -N asdf-fzf
 #-------------------------------------------------------------
 # KEY MAPS
 #-------------------------------------------------------------
+# zle defs
+
+zle -N fzf-file-widget
+zle -N prefix-2
+
 # all modes
 
 bindkey "^[[3"  prefix-2         # ensure delete backwards deletes
@@ -335,6 +346,7 @@ bindkey "^x"    after-first-word # move cursor to flag-insert position
 bindkey "^z"    ctrlz
 
 # string-based
+
 bindkey -s "^h" "cd\n" # cd with pd
 
 # emacs mode
@@ -404,6 +416,7 @@ disable r # disable zsh's r
 #-------------------------------------------------------------
 # Autocompletion setup scripts
 #-------------------------------------------------------------
+
 [[ -f "$HOME/Library/Caches/heroku/autocomplete/zsh_setup" ]] && \
     . "$HOME/Library/Caches/heroku/autocomplete/zsh_setup"
 
