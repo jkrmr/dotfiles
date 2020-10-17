@@ -1,30 +1,23 @@
 #!/usr/bin/env bash
 
-set -e
+set -x
 
-echo
-echo Updating Homebrew packages
-echo --------------------------
-echo brew update
-brew update
-echo brew upgrade
-brew upgrade
-echo brew cleanup
-brew cleanup
-
-echo
-echo Updating Dotfiles
-echo ---------------------
+# Update Dotfiles
+# ---------------------
 (cd ~/.dotfiles && git pull --rebase --autostash)
+(cd ~/.dotfiles && git submodule foreach 'git pull origin')
 
-echo
-echo Updating Emacs config
-echo ---------------------
+# Update Emacs config
+# ---------------------
 rm -f ~/.emacs.d/elpa/28.0/develop/window-purpose-*/*.elc
 (cd ~/.emacs.d && git pull origin develop --rebase --autostash)
 
-echo
-echo Updating Vim packages
-echo ---------------------
-echo nvim +PlugInstall +PlugUpgrade +PlugUpdate +qall
+# Update Vim packages
+# ---------------------
 nvim +PlugInstall +PlugUpgrade +PlugUpdate +qall
+
+# Update Homebrew packages
+# --------------------------
+brew update
+brew upgrade
+brew cleanup
