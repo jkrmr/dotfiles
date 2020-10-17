@@ -46,7 +46,6 @@ brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 brew install zlib
 brew install zsh
 brew install zsh-completions
-brew install zsh-syntax-highlighting
 
 brew install curl
 brew install git
