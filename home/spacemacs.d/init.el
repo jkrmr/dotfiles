@@ -417,12 +417,13 @@ This function should only modify configuration layer settings."
      (dash :variables
            dash-docs-docset-newpath "~/Library/Application Support/Dash/DocSets/")
      (deft :variables
-           deft-auto-save-interval 10
-           deft-default-extension "org"
-           deft-directory "~/Dropbox/deft"
-           deft-extensions '("txt" "text" "tex" "md" "markdown" "org")
-           deft-recursive t
-           deft-use-filter-string-for-filename t)
+       deft-auto-save-interval 10
+       deft-default-extension "org"
+       deft-directory "~/Dropbox/deft"
+       deft-extensions '("txt" "text" "tex" "md" "markdown" "org")
+       deft-recursive t
+       deft-use-filter-string-for-filename t
+       deft-zetteldeft t)
      django
      (docker :variables
              docker-dockerfile-backend 'lsp)
