@@ -426,6 +426,11 @@ This function should only modify configuration layer settings."
      django
      (docker :variables
              docker-dockerfile-backend 'lsp)
+     (elfeed :variables
+             elfeed-enable-goodies t
+             elfeed-enable-web-interface t
+             rmh-elfeed-org-files '("~/Dropbox/org/feeds.org")
+             url-queue-timeout 10)
      (elixir :variables
              elixir-backend 'alchemist
              flycheck-elixir-credo-strict t)
