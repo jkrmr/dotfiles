@@ -3,5 +3,5 @@ set guioptions-=T         " no toolbar
 set guioptions+=c         " use console dialogs
 set transparency=1        " enable transparency
 set lines=50 columns=80   " size of window
-set guifont=Source\ Code\ Pro:h15
+set guifont=JuliaMono:h16
 colorscheme space-vim-dark
