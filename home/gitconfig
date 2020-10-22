@@ -136,8 +136,8 @@
 	a        = stage-files
 	aa       = add --all
 	ap       = add --patch
-	b        = checkout-branch
-	bb       = branch -vv
+	b        = branch -vv
+	bb       = checkout-branch
 	bc       = create-branch-with-remote
 	bcl      = create-branch
 	bcc      = create-branch-continuation
