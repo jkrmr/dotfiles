@@ -555,6 +555,7 @@ This function should only modify configuration layer settings."
           org-enable-hugo-support t
           org-enable-org-journal-support t
           org-enable-reveal-js-support t
+          org-enable-verb-support t
           org-export-coding-system 'utf-8
           org-export-with-sub-superscripts nil
           org-fontify-done-headline t
