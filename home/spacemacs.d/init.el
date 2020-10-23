@@ -564,6 +564,7 @@ This function should only modify configuration layer settings."
           org-hugo-export-with-section-numbers nil
           org-hugo-export-with-toc nil
           org-image-actual-width 500
+          org-journal-date-format "%A, %B %d %Y"
           org-journal-dir "~/Dropbox/org/journal/"
           org-journal-file-format "%Y%m%d"
           org-journal-file-type 'monthly
