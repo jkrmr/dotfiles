@@ -8,3 +8,7 @@ source "$HOME/.env.secure.sh"
 #     . "$HOMEBREW_PREFIX/opt/asdf/asdf.sh"
 
 source "$HOME/.dotfiles/shell/path.sh"
+
+if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
+  source "${VIRTUAL_ENV}/bin/activate"
+fi
