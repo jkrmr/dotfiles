@@ -12,3 +12,4 @@ java adopt-openjdk-13.0.2+8
 gohugo 0.58.3
 tmux 3.0
 rust 1.43.0
+mysql 8.0.22
