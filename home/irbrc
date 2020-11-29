@@ -1,3 +1,99 @@
 # frozen_string_literal: true
 
-require "interactive_editor"
+def require_with_catch(library_name)
+  require library_name
+  yield if block_given?
+rescue LoadError => e
+  warn "Couldn't load #{library_name}: #{e}"
+end
+
+PRINT_CONFIG = {
+  indent:        -2,     # Number of spaces for indenting.
+  index:         true,   # Display array indices.
+  html:          false,  # Use ANSI color codes rather than HTML.
+  multiline:     true,   # Display in multiple lines.
+  plain:         false,  # Use colors.
+  raw:           false,  # Do not recursively format instance variables.
+  sort_keys:     false,  # Do not sort hash keys.
+  sort_vars:     true,   # Sort instance variables.
+  limit:         false,  # Limit arrays & hashes. Accepts bool or int.
+  ruby19_syntax: true,   # Use Ruby 1.9 hash syntax in output.
+  class_name:    :class, # Method called to report the instance class name. (e.g. :to_s)
+  object_id:     true,   # Show object id.
+  color: {
+    args:       :whiteish,
+    array:      :white,
+    bigdecimal: :blue,
+    class:      :yellow,
+    date:       :greenish,
+    falseclass: :red,
+    integer:    :blue,
+    float:      :blue,
+    hash:       :whiteish,
+    keyword:    :cyan,
+    method:     :purpleish,
+    nilclass:   :red,
+    rational:   :blue,
+    string:     :yellowish,
+    struct:     :whiteish,
+    symbol:     :cyanish,
+    time:       :greenish,
+    trueclass:  :green,
+    variable:   :cyanish
+  }
+}
+
+def configure_irb_prompt
+  IRB.conf[:PROMPT][:CUSTOM] = {
+    PROMPT_I: "» ".red,
+    PROMPT_C: "» ",
+    PROMPT_S: "%l ".yellowish,
+    RETURN: ["=>".blueish, "%s\n"].join(" "),
+  }
+  IRB.conf[:AUTO_INDENT] = true
+  IRB.conf[:PROMPT_MODE] = ENV.key?("INSIDE_EMACS") ? :INF_RUBY : :CUSTOM
+end
+
+def configure_irb_history
+  IRB.conf[:EVAL_HISTORY] = 1000
+  IRB.conf[:SAVE_HISTORY] = 1000
+  IRB.conf[:HISTORY_FILE] = File.expand_path("~/.irb_history")
+end
+
+def configure_irb_rails(rc_path=File.expand_path("~/.irbrc_rails"))
+  return unless ENV["RAILS_ENV"] || defined?(Rails)
+  return unless File.exist?(rc_path)
+
+  load(rc_path)
+rescue Exception
+  warn "Could not load: #{rc_path}. Error: #{$!.message}"
+end
+
+class Object
+  def method_list
+    ancestor_methods =
+      case self
+      when Class
+        Object.public_methods
+      when Module
+        Module.public_methods
+      else
+        Object.new.public_methods
+      end
+
+    (self.public_methods - ancestor_methods).sort
+  end
+end
+
+
+require_with_catch("ostruct")
+require_with_catch("irb/completion")
+require_with_catch("interactive_editor")
+require_with_catch("amazing_print") do
+  AmazingPrint.defaults = PRINT_CONFIG
+  alias pp ap
+end
+
+configure_irb_prompt
+configure_irb_history
+configure_irb_rails
