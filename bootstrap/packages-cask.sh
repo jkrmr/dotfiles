@@ -111,6 +111,12 @@ brew cask install qlvideo
 # Quick Look Preview: Adobe Illustrator swatches
 brew cask install quicklookase
 
+# Research
+brew cask install manuscripts
+# Studies: https://studiesapp.com
+# Findings: https://findingsapp.com
+# Papers3: https://www.macupdate.com/app/mac/23662/papers
+
 # remove quarantine attributes
 xattr -d -r com.apple.quarantine ~/Library/QuickLook
 # reset quicklookd
