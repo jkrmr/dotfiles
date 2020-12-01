@@ -73,18 +73,19 @@ brew cask install 4k-stogram
 brew cask install 4k-video-downloader
 brew cask install 4k-youtube-to-mp3
 
-brew cask install visual-studio-code
-brew cask install screenflow
 brew cask install divvy
-brew cask install keycastr
-brew cask install kindle
-brew cask install nvalt
 brew cask install dropbox
 brew cask install evernote
-brew cask install pandora
-brew cask install spotify
+brew cask install keycastr
+brew cask install kindle
 brew cask install licecap
 brew cask install macvim
+brew cask install nvalt
+brew cask install pandora
+brew cask install screenflow
+brew cask install spotify
+brew cask install thinkorswim
+brew cask install visual-studio-code
 
 # Quick Look viewers: Syntax highlighting
 brew cask install qlcolorcode
