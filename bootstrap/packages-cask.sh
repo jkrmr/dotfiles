@@ -66,7 +66,7 @@ brew cask install openinterminal
 brew cask install dissenter-browser
 brew cask install firefox
 brew cask install google-chrome
-brew cask install google-chrome-canary
+brew cask install homebrew/cask-versions/google-chrome-canary
 brew cask install responsively
 
 brew cask install 4k-stogram
