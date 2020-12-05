@@ -48,6 +48,7 @@ brew install zsh
 brew install zsh-completions
 
 brew install curl
+brew install httpie
 brew install git
 brew install global
 
