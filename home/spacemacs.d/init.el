@@ -551,10 +551,12 @@ This function should only modify configuration layer settings."
           org-edit-src-content-indentation 0
           org-ellipsis " ▾ "
           org-enable-bootstrap-support t
+          org-enable-epub-support t
           org-enable-github-support t
           org-enable-hugo-support t
           org-enable-org-journal-support t
           org-enable-reveal-js-support t
+          org-enable-sticky-header t
           org-enable-verb-support t
           org-export-coding-system 'utf-8
           org-export-with-sub-superscripts nil
