@@ -490,6 +490,7 @@ This function should only modify configuration layer settings."
               ibuffer-group-buffers-by 'projects)
      imenu-list
      import-js
+     ipython-notebook
      (javascript :variables
                  javascript-backend 'lsp
                  javascript-fmt-on-save t
