@@ -3,27 +3,32 @@
 <plist version="1.0">
   <dict>
     <key>Label</key>
-    <string>jmromer.blog-deploy</string>
+    <string>jmromer.pd-refresh</string>
 
     <key>ProgramArguments</key>
     <array>
-      <string>/Users/jmromer/.bin/blog-deploy</string>
+      <string>/Users/jmromer/.go/bin/pd</string>
+      <string>--pd-refresh</string>
     </array>
 
     <key>Nice</key>
     <integer>1</integer>
 
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>KeepAlive</key>
+    <true/>
+
+    <!-- TODO: is a launchagent needed? -->
     <!-- Run every 15 minutes -->
     <key>StartInterval</key>
     <integer>900</integer>
 
-    <key>RunAtLoad</key>
-    <true/>
-
     <key>StandardOutPath</key>
-    <string>/tmp/jmromer.blog-deploy.stdout.log</string>
+    <string>/tmp/jmromer.pd-refresh.stdout.log</string>
 
     <key>StandardErrorPath</key>
-    <string>/tmp/jmromer.blog-deploy.stderr.log</string>
+    <string>/tmp/jmromer.pd-refresh.stderr.log</string>
   </dict>
 </plist>

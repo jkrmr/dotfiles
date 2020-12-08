@@ -2,8 +2,11 @@
 
 set -ex
 
-printf "\n[Deploy: %s]\n " "$(date)"
 rm -f /tmp/jmromer.blog-deploy.*.log
+touch /tmp/jmromer.blog-deploy.stdout.log
+touch /tmp/jmromer.blog-deploy.stderr.log
+
+printf "\n[Deploy: %s]\n " "$(date)"
 
 cd ~/Projects/blogs/jmromer
 ./bin/deploy && printf "\nDeployed.\n" || printf "\nError.\n"
