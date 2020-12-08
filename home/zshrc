@@ -243,7 +243,11 @@ export SAVEHIST=4096
 #-------------------------------------------------------------
 # Zsh Plugins (load last)
 #-------------------------------------------------------------
-. "$HOME/.zsh/zsh-vim-mode/zsh-vim-mode.plugin.zsh"
+
+if [[ -z "$INSIDE_EMACS" ]]; then
+    . "$HOME/.zsh/zsh-vim-mode/zsh-vim-mode.plugin.zsh"
+fi
+
 . "$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 #-------------------------------------------------------------
