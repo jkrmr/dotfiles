@@ -3,4 +3,5 @@
 # loaded from non-login shells
 
 # shellcheck source=/dev/null
-# source ~/.bash_profile
+source ~/.bash_profile
+# TEMP: re-source bash_profile here to fix prompt
