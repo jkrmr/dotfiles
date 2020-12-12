@@ -87,6 +87,10 @@ brew cask install spotify
 brew cask install thinkorswim
 brew cask install visual-studio-code
 
+# LaTeX
+brew cask install latexit
+brew cask install tex-live-utility
+
 # Quick Look viewers: Syntax highlighting
 brew cask install qlcolorcode
 # Quick Look viewers: Display image size and res
