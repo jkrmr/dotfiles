@@ -64,5 +64,8 @@ brew install rcm parity gitsh
 brew tap isacikgoz/gitin
 brew install gitin
 
+# Docker completions
+brew install docker-completion docker-compose-completion
+
 # Post-installs
 source "$(brew --prefix fzf)/install"
