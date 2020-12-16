@@ -110,8 +110,7 @@ Do not request confirmation for buffers outside the current perspective."
     (persp-switch-to-default-layout)
     (delete-other-windows)
     (let ((journal "*journal*")
-          (today "*today*")
-          (backlog "*backlog*"))
+          (today "*today*"))
 
       ;; Kill the journal buffer, since it might need to visit a new file
       (when (get-buffer journal)
@@ -120,23 +119,18 @@ Do not request confirmation for buffers outside the current perspective."
       ;; create buffers
       (find-file (expand-file-name org-default-notes-file))
       (rename-buffer today)
-      (find-file (expand-file-name org-default-backlog-file))
-      (rename-buffer backlog)
       (org-journal-today)
       (rename-buffer journal)
       (delete-other-windows)
 
       (switch-to-buffer today)
       (split-window-right-and-focus)
-      (switch-to-buffer backlog)
-
-      (split-window-below-and-focus)
       (switch-to-buffer journal)
       (save-buffer)
 
       (select-window (get-buffer-window today))
       (split-window-below-and-focus)
-      (org-todo-list)
+      (org-agenda-list)
 
       (select-window (get-buffer-window today)))))
 
