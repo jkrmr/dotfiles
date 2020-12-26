@@ -586,7 +586,7 @@ This function should only modify configuration layer settings."
           org-src-tab-acts-natively t
           org-src-window-setup 'current-window
           org-startup-indented t
-          org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "INPROGRESS(i)" "BLOCKED(b)" "QUESTION(q)" "|" "DONE(d)" "CANCELLED(c)"))
+          org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "INPROGRESS(i)" "BLOCKED(b)" "QUESTION(q)" "|" "DONE(d)" "CANCELLED(c)" "MISSED(m)"))
           org-tags-column 0
           spaceline-org-clock-p t)
      (osx :variables
