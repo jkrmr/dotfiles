@@ -112,7 +112,7 @@ step() {
   ln -s "$SYNCED/dotfiiles/zshrc.local" "$HOME/.zshrc"
 
   step "Setting up Dropbox (press any key when complete)"
-  brew cask install dropbox
+  brew install --cask dropbox
   open /Applications/Dropbox.app
   getc
 

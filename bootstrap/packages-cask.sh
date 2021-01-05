@@ -4,120 +4,120 @@
 # Apps managed by Homebrew Cask
 #-------------------------------------------------------------
 # for alternate versions (e.g. iterm2-beta)
-brew tap caskroom/versions
+brew tap homebrew/cask-versions
 # terminal emulator
-brew cask install iterm2-nightly
+brew install --cask iterm2-nightly
 # password manager
-brew cask install 1password
+brew install --cask 1password
 # removes apps and related files
-brew cask install appcleaner
+brew install --cask appcleaner
 # vpn
-brew cask install protonvpn
+brew install --cask protonvpn
 # email
-brew cask install protonmail-bridge
+brew install --cask protonmail-bridge
 # controls screen brightness
-brew cask install flux
+brew install --cask flux
 # SQL UI for MySQL, Postgres, MSSQL, SQLite
-brew cask install sqlpro-studio
+brew install --cask sqlpro-studio
 # trackpad gestures
-brew cask install bettertouchtool
+brew install --cask bettertouchtool
 # remap cmd to esc, caps lock to ctrl
-brew cask install karabiner-elements
+brew install --cask karabiner-elements
 # system-wide custom keymappings
-brew cask install keyboard-maestro
+brew install --cask keyboard-maestro
 # cmd + <space> ftw
-brew cask install launchbar
+brew install --cask launchbar
 # batch file renamer
-brew cask install name-mangler
+brew install --cask name-mangler
 
 # Docker Desktop
-brew cask install docker
+brew install --cask docker
 # Docker GUI
-brew cask install kitematic
+brew install --cask kitematic
 # Gitter
-brew cask install gitter
+brew install --cask gitter
 # lightweight PDF reader with auto-update
-brew cask install skim
+brew install --cask skim
 
 # video conferencing / streaming / messaging
-brew cask install discord
-brew cask install skype
-brew cask install slack
-brew cask install streamlabs-obs
-brew cask install whatsapp
-brew cask install zoomus
+brew install --cask discord
+brew install --cask skype
+brew install --cask slack
+brew install --cask streamlabs-obs
+brew install --cask whatsapp
+brew install --cask zoomus
 
 # torrent machine
-brew cask install transmission
+brew install --cask transmission
 # video player
-brew cask install vlc
+brew install --cask vlc
 # for graphical terminal output (R and Octave dependency)
-brew cask install xquartz
+brew install --cask xquartz
 # for mockups
-brew cask install sketch
+brew install --cask sketch
 # window organization
-brew cask install amethyst
+brew install --cask amethyst
 # documentation browser
-brew cask install dash
+brew install --cask dash
 # finder shortcut
-brew cask install openinterminal
+brew install --cask openinterminal
 
 # web browsers
-brew cask install dissenter-browser
-brew cask install firefox
-brew cask install google-chrome
-brew cask install homebrew/cask-versions/google-chrome-canary
-brew cask install responsively
+brew install --cask dissenter-browser
+brew install --cask firefox
+brew install --cask google-chrome
+brew install --cask homebrew/cask-versions/google-chrome-canary
+brew install --cask responsively
 
-brew cask install 4k-stogram
-brew cask install 4k-video-downloader
-brew cask install 4k-youtube-to-mp3
+brew install --cask 4k-stogram
+brew install --cask 4k-video-downloader
+brew install --cask 4k-youtube-to-mp3
 
-brew cask install divvy
-brew cask install dropbox
-brew cask install evernote
-brew cask install keycastr
-brew cask install kindle
-brew cask install licecap
-brew cask install macvim
-brew cask install nvalt
-brew cask install pandora
-brew cask install screenflow
-brew cask install spotify
-brew cask install thinkorswim
-brew cask install visual-studio-code
+brew install --cask divvy
+brew install --cask dropbox
+brew install --cask evernote
+brew install --cask keycastr
+brew install --cask kindle
+brew install --cask licecap
+brew install --cask macvim
+brew install --cask nvalt
+brew install --cask pandora
+brew install --cask screenflow
+brew install --cask spotify
+brew install --cask thinkorswim
+brew install --cask visual-studio-code
 
 # LaTeX
-brew cask install latexit
-brew cask install tex-live-utility
+brew install --cask latexit
+brew install --cask tex-live-utility
 
 # Quick Look viewers: Syntax highlighting
-brew cask install qlcolorcode
+brew install --cask qlcolorcode
 # Quick Look viewers: Display image size and res
-brew cask install qlimagesize
+brew install --cask qlimagesize
 # Quick Look Preview: Markdown
-brew cask install qlmarkdown
+brew install --cask qlmarkdown
 # Quick Look Preview: Patch files
-brew cask install qlprettypatch
+brew install --cask qlprettypatch
 # Quick Look Preview: Extension-less files
-brew cask install qlstephen
+brew install --cask qlstephen
 # Quick Look Preview: CSV files
-brew cask install quicklook-csv
+brew install --cask quicklook-csv
 # Quick Look Preview: JSON files
-brew cask install quicklook-json
+brew install --cask quicklook-json
 # Quick Look Preview: Mac OS X Installer Packages
-brew cask install suspicious-package
+brew install --cask suspicious-package
 # Quick Look Preview: jupyter notebooks
-brew cask install jupyter-notebook-viewer
+brew install --cask jupyter-notebook-viewer
 # Quick Look Preview: webp images
-brew cask install webpquicklook
+brew install --cask webpquicklook
 # Quick Look Preview: video
-brew cask install qlvideo
+brew install --cask qlvideo
 # Quick Look Preview: Adobe Illustrator swatches
-brew cask install quicklookase
+brew install --cask quicklookase
 
 # Research
-brew cask install manuscripts
+brew install --cask manuscripts
 # Studies: https://studiesapp.com
 # Findings: https://findingsapp.com
 # Papers3: https://www.macupdate.com/app/mac/23662/papers
