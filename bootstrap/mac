@@ -144,9 +144,6 @@ step() {
     tic "$file"
   done
 
-  step "Downloading installers"
-  wget -O ~/Desktop/delivery-status.zip https://junecloud.com/get/delivery-status-widget
-
   step "Install ASDF"
   zsh "$LOCAL_DOTFILES/bootstrap/packages-asdf.zsh"
 
