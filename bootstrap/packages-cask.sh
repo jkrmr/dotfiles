@@ -117,7 +117,7 @@ brew install --cask qlvideo
 brew install --cask quicklookase
 
 # Research
-brew install --cask manuscripts
+# brew install --cask manuscripts
 # Studies: https://studiesapp.com
 # Findings: https://findingsapp.com
 # Papers3: https://www.macupdate.com/app/mac/23662/papers
