@@ -86,7 +86,7 @@ export ANDROID_HOME="$ANDROID_SDK_ROOT"
 #-------------------------------------------------------------
 # JAVA
 #-------------------------------------------------------------
-JAVA_VERSION=adopt-openjdk-13.0.2+8
+JAVA_VERSION=openjdk-15.0.1
 JAVA_HOME="$HOME/.asdf/installs/java/${JAVA_VERSION}"
 export JAVA_HOME
 
