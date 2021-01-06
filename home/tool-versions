@@ -1,5 +1,5 @@
-ruby 2.7.1
-nodejs 14.4.0
+ruby 3.0.0
+nodejs 15.5.1
 elixir 1.10.3-otp-22
 erlang 23.1.1
 mongodb 3.6.6
