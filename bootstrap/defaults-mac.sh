@@ -127,9 +127,6 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 #-------------------------------------------------------------
 # SSD-specific tweaks
 #-------------------------------------------------------------
-# Disable local Time Machine snapshots
-sudo tmutil disablelocal
-
 # Disable hibernation (speeds up entering sleep mode)
 sudo pmset -a hibernatemode 0
 
