@@ -36,8 +36,14 @@ echo "Installing Python..."
 asdf plugin-add python
 conda_version="$(asdf list-all python | grep anaconda3 | tail -1)"
 asdf install python "$conda_version"
-pip install pynvim
-pip2 install pynvim
+
+echo "Installing pynvim for system python3"
+/usr/local/bin/python3 -m pip install pynvim
+
+echo "Installing pynvim for system python2"
+curl https://bootstrap.pypa.io/get-pip.py -o ~/Desktop/get-pip.py
+/usr/bin/python2 ~/Desktop/get-pip.py
+/usr/bin/python2 -m pip install pynvim
 
 echo "Installing Java..."
 asdf plugin-add java
