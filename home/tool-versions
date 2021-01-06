@@ -8,7 +8,7 @@ golang 1.14.1
 redis 5.0.5
 elm 0.19.0
 postgres 13.0
-java adopt-openjdk-13.0.2+8
+java openjdk-15.0.1
 gohugo 0.58.3
 tmux 3.0
 rust 1.43.0
