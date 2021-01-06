@@ -40,7 +40,6 @@ brew install ripgrep
 brew install shellcheck
 brew install source-highlight
 brew install the_silver_searcher
-brew install tmux
 brew install tree
 brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 brew install zlib
@@ -63,6 +62,11 @@ brew install rcm parity gitsh
 
 brew tap isacikgoz/gitin
 brew install gitin
+
+# Tmux
+brew install tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+~/.tmux/plugins/tpm/bin/install_plugins
 
 # Docker completions
 brew install docker-completion docker-compose-completion
