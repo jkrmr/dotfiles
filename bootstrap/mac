@@ -34,8 +34,8 @@ step() {
   # see
   # https://stackoverflow.com/a/54492339/2845260
   # https://stackoverflow.com/a/52530212/2845260
+  # open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg
   step "Installing Mac OS X CLI tool headers (press any key when complete)"
-  open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg
   getc
   sudo xcode-select -s /Library/Developer/CommandLineTools
 
@@ -71,7 +71,7 @@ step() {
   source "$HOME/.dotfiles/bootstrap/packages-gnu.sh"
 
   step "Installing Homebrew Cask"
-  brew tap caskroom/cask
+  brew tap homebrew/cask
 
   step "Installing GUI apps with Homebrew Cask"
   source "$HOME/.dotfiles/bootstrap/packages-cask.sh"

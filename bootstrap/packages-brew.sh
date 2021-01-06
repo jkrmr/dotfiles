@@ -32,7 +32,6 @@ brew install ncurses
 brew install openssl
 brew install pgcli
 brew install pkg-config
-brew install python@2
 brew install ranger
 brew install re2
 brew install rcm

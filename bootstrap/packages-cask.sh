@@ -45,7 +45,7 @@ brew install --cask skype
 brew install --cask slack
 brew install --cask streamlabs-obs
 brew install --cask whatsapp
-brew install --cask zoomus
+brew install --cask zoom
 
 # torrent machine
 brew install --cask transmission
@@ -56,7 +56,7 @@ brew install --cask xquartz
 # for mockups
 brew install --cask sketch
 # window organization
-brew install --cask amethyst
+# brew install --cask amethyst
 # documentation browser
 brew install --cask dash
 # finder shortcut
