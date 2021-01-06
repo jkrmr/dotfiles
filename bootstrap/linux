@@ -87,7 +87,7 @@ step() {
   step "Creating ~/.ssh"
   mkdir "$HOME/.ssh"
   cp "${SYNCED}"/ssh/* "$HOME/.ssh"
-  chmod 600 "$HOME"/ssh/*
+  chmod 600 "$HOME"/.ssh/*
 
   step "Creating ~/.gnupg"
   gpg --list-keys
