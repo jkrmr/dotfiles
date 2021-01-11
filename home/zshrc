@@ -206,24 +206,6 @@ setopt extendedglob # Enable extended globbing
 unsetopt nomatch    # Allow [ or ] wherever you want
 autoload -U zmv     # rename files like zmv '(*).txt' '$1.html'
 
-#-------------------------------------------------------------
-# COMMAND COMPLETION
-#-------------------------------------------------------------
-shared="$HOMEBREW_PREFIX/share"
-
-# shellcheck disable=SC2206
-fpath=(
-  "$HOME/.zsh/completion"
-  "$shared/zsh-completions"
-  "$shared/zsh/site-functions"
-  $fpath
-)
-
-autoload -U compinit && compinit
-source "$shared/zsh/site-functions/_aws"
-
-compdef git=hub
-compdef g=git
 
 #-------------------------------------------------------------
 # DIRECTORY STACK  (see http://j.mp/1lOiWio)
@@ -432,6 +414,27 @@ disable r # disable zsh's r
 
 [[ -f "$HOMEBREW_PREFIX/opt/asdf/asdf.sh" ]] && \
     . "$HOMEBREW_PREFIX/opt/asdf/asdf.sh"
+
+#-------------------------------------------------------------
+# COMMAND COMPLETION
+#-------------------------------------------------------------
+shared="$HOMEBREW_PREFIX/share"
+
+# shellcheck disable=SC2206
+fpath=(
+  "$HOME/.zsh/completion"
+  "$shared/zsh-completions"
+  "$shared/zsh/site-functions"
+  $fpath
+)
+
+autoload -U compinit && compinit
+source "$shared/zsh/site-functions/_aws"
+
+compdef git=hub
+compdef g=git
+
+#-------------------------------------------------------------
 
 [[ -f "$HOME/.zshrc.local" ]] && \
     . "$HOME/.zshrc.local"
