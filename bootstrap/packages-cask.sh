@@ -84,6 +84,7 @@ brew install --cask nvalt
 brew install --cask pandora
 brew install --cask screenflow
 brew install --cask spotify
+brew install --cask tastyworks
 brew install --cask thinkorswim
 brew install --cask visual-studio-code
 
@@ -117,8 +118,8 @@ brew install --cask qlvideo
 brew install --cask quicklookase
 
 # Research
-# brew install --cask manuscripts
 # Studies: https://studiesapp.com
+# Manuscripts: https://www.manuscriptsapp.com/
 # Findings: https://findingsapp.com
 # Papers3: https://www.macupdate.com/app/mac/23662/papers
 
