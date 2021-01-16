@@ -74,6 +74,7 @@
  projectile-completion-system 'helm
  projectile-enable-caching t
  projectile-find-dir-includes-top-level t
+ projectile-indexing-method 'hybrid
  projectile-project-search-path '("~/Projects" "~/Work" "~/Resources" "~/Exercism" "~/Tutorials")
  ;; restrict alternate-buffer switching to current layout
  spacemacs-layouts-restrict-spc-tab t
