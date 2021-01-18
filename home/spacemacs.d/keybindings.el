@@ -107,7 +107,7 @@
   ;; magit: changes or create branch
   "g b" #'magit-branch-or-checkout
   ;; magit: git blame
-  "g B" #'spacemacs/git-blame-micro-state
+  "g B" #'spacemacs/git-blame-transient-state/body
   ;; Helpful for interactive functions
   "h d i" #'helpful-command
   ;; insert emoji as unicode
