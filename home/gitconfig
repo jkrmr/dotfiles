@@ -138,6 +138,7 @@
 	ap       = add --patch
 	b        = branch -vv
 	bb       = checkout-branch
+	bba      = bb --all
 	bc       = create-branch-with-remote
 	bcl      = create-branch
 	bcc      = create-branch-continuation
