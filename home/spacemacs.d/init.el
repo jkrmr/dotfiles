@@ -653,6 +653,7 @@ This function should only modify configuration layer settings."
      (sql :variables
           sql-auto-indent t
           sql-capitalize-keywords t)
+     swift
      (syntax-checking :variables
                       flycheck-disabled-checkers '(javascript-jshint go-golangci-lint markdown-mdl ruby-reek)
                       syntax-checking-enable-by-default t
