@@ -356,6 +356,9 @@ nnoremap <C-c><C-k> :q!<CR>
 nnoremap <leader>bd :bdelete<CR>
 nnoremap <leader>bD :bdelete!<CR>
 
+" c: copy visual selection to system clipboard
+vnoremap <leader>c "*y
+
 " x: cut visual selection to system clipboard
 vnoremap <leader>x "*d
 
