@@ -9,7 +9,6 @@ set -x
 
 # Update Emacs config
 # ---------------------
-rm -f ~/.emacs.d/elpa/28.0/develop/window-purpose-*/*.elc
 (cd ~/.emacs.d && git pull origin develop --rebase --autostash)
 
 # Update Vim packages
