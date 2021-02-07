@@ -2,6 +2,8 @@
 
 # frozen_string_literal: true
 
+require "csv"
+require "date"
 require "json"
 require "net/http"
 require "uri"
@@ -27,12 +29,13 @@ def api_url(coin_list)
   [base_url, endpoint, "?", query].join
 end
 
-def print_formatted(prices)
-  max_length = COINS.max_by(&:length).length
+def print_formatted(coin_prices)
+  max_length =
+    COINS.max_by(&:length).length
 
   formatted_prices =
     COINS
-    .map { |coin| prices.fetch(coin) }
+    .map { |coin| coin_prices.fetch(coin) }
     .map { |price| sprintf("%.2f", price) }
     .map { |price| price.reverse.scan(/(\d*\.\d{1,3}|\d{1,3})/).join(",").reverse }
 
@@ -42,16 +45,24 @@ def print_formatted(prices)
     .map { |coin, price| [coin.rjust(max_length), price].join(": $") }
 end
 
-current_prices =
-  JSON
-  .parse(Net::HTTP.get URI(api_url(COINS)))
-  .map { |coin_id, fiats| [coin_id, fiats["usd"]] }
-  .to_h
-  .tap { |prices| print_formatted(prices) }
+def save_to_csv(coin_prices)
+  CSV.open(File.expand_path("~/Desktop/prices.csv"), "w") do |file|
+    file << ["date", *COINS]
+    file << COINS.map { |coin| coin_prices.fetch(coin) }.unshift(Date.today)
+  end
+end
 
-IO.popen("pbcopy", "w") do |file|
-  file.puts \
-    COINS
-    .map { |coin| current_prices.fetch(coin) }
-    .join("\n")
+def copy_to_clipboard(coin_prices)
+  IO.popen("pbcopy", "w") do |file|
+    file.puts COINS.map { |coin| coin_prices.fetch(coin) }.join("\n")
+  end
+end
+
+if $PROGRAM_NAME == __FILE__
+  JSON
+    .parse(Net::HTTP.get URI(api_url(COINS)))
+    .map { |coin_id, fiats| [coin_id, fiats["usd"]] }
+    .to_h
+    .tap { |prices_hash| print_formatted(prices_hash) }
+    .tap { |prices_hash| save_to_csv(prices_hash) }
 end
