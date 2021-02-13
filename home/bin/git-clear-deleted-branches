@@ -8,7 +8,7 @@
 
 set -e
 
-git fetch --all --prune
+git fetch origin --prune
 
 pruned_branches="$(
   git branch --verbose |
