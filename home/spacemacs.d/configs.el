@@ -309,9 +309,6 @@ Only equations at the beginning of a line are justified."
     "Switch to the RSpec compilation buffer."
     (switch-to-buffer "*rspec-compilation*"))
 
-  (eval-after-load 'evil-mode
-    (require 'evil-rails))
-
   ;; Enable pry in test runs
   (add-hook 'compilation-filter-hook 'inf-ruby-auto-enter))
 

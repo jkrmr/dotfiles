@@ -698,7 +698,6 @@ This function should only modify configuration layer settings."
      evil-collection
      evil-lion
      evil-quickscope
-     evil-rails
      evil-text-object-python
      flx
      graphql-mode
