@@ -162,3 +162,8 @@ export RUBY_GC_HEAP_FREE_SLOTS=200000
 # Spring: Enable for parallel_tests
 #-------------------------------------------------------------
 export DISABLE_SPRING=0
+
+#-------------------------------------------------------------
+# ASDF: extra config options for installs
+#-------------------------------------------------------------
+export POSTGRES_EXTRA_CONFIGURE_OPTIONS=--with-uuid=e2fs
