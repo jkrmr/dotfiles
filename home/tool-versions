@@ -13,3 +13,4 @@ gohugo 0.58.3
 tmux 3.0
 rust 1.43.0
 mysql 8.0.22
+sqlite 3.34.1
