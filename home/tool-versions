@@ -9,7 +9,7 @@ redis 5.0.5
 elm 0.19.0
 postgres 13.0
 java openjdk-16
-gohugo 0.58.3
+gohugo extended_0.80.0
 tmux 3.0
 rust 1.43.0
 mysql 8.0.22
