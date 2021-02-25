@@ -54,5 +54,8 @@ a communication channel."
                  (content-str (or (org-string-nw-p contents) "")))
             (format "%s%s" headline-title content-str))))))))
 
+;; Allow remembering risky local variables
+(advice-add 'risky-local-variable-p :override #'ignore)
+
 (provide 'overrides)
 ;;; overrides.el ends here
