@@ -9,7 +9,7 @@ set -x
 
 # Update Emacs config
 # ---------------------
-(cd ~/.emacs.d && git pull origin develop --rebase --autostash)
+(cd ~/.emacs.d && git pull --rebase --autostash)
 
 # Update Vim packages
 # ---------------------
