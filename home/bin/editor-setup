@@ -22,7 +22,7 @@ setup_golang() {
   # GO111MODULE=on CGO_ENABLED=0 \
     # go get -v -trimpath -ldflags '-s -w' \
     # github.com/golangci/golangci-lint/cmd/golangci-lint
-  export CC=gcc CXX=g++
+  export CC=gcc-10 CXX=g++-10
   while read -r package; do
     go get -u -v "${package}"
   done < "${HOME}/.default-golang-packages"
