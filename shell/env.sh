@@ -102,8 +102,7 @@ export DOCKER_HIDE_LEGACY_COMMANDS=true
 #-------------------------------------------------------------
 # GTAGS
 #-------------------------------------------------------------
-# Use default, which globalrc configures to fall back to pygments
-export GTAGSLABEL=default
+export GTAGSLABEL=ctags
 export GTAGSCONF=~/.globalrc
 
 #-------------------------------------------------------------
