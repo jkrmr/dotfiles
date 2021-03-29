@@ -221,7 +221,7 @@ Adjust the font settings of the given FRAME to do this."
 ;;; Globally enabled minor modes
 
 (beacon-mode)
-(company-prescient-mode)
+;; (company-prescient-mode)
 (direnv-mode)
 (display-battery-mode 1)
 (editorconfig-mode)
@@ -232,7 +232,7 @@ Adjust the font settings of the given FRAME to do this."
 (global-visual-line-mode)
 (ido-mode)  ;; ido (for amx, ido-dired)
 (flx-ido-mode 1)
-(prescient-persist-mode)
+;; (prescient-persist-mode)
 (smartparens-global-mode)
 
 
