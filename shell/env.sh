@@ -103,7 +103,7 @@ export DOCKER_HIDE_LEGACY_COMMANDS=true
 # GTAGS
 #-------------------------------------------------------------
 export GTAGSLABEL=ctags
-export GTAGSCONF=~/.globalrc
+export GTAGSCONF="${HOME}/.globalrc"
 
 #-------------------------------------------------------------
 # Compilation flags
