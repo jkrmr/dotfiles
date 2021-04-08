@@ -173,6 +173,9 @@
   (define-key vterm-mode-map (kbd "C-d") #'vterm-send-C-d))
 
 ;; ruby
+(define-key ruby-mode-map (kbd "C-c C-c") #'xmpfilter-eval-current-line)
+(define-key ruby-mode-map (kbd "C-c C-v") #'seeing-is-believing-clear)
+(define-key ruby-mode-map (kbd "C-c C-f") #'seeing-is-believing-run)
 (define-key spacemacs-ruby-mode-map (kbd "C-c C-c") #'xmpfilter-eval-current-line)
 (define-key spacemacs-ruby-mode-map (kbd "C-c C-v") #'seeing-is-believing-clear)
 (define-key spacemacs-ruby-mode-map (kbd "C-c C-f") #'seeing-is-believing-run)
