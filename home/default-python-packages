@@ -13,6 +13,7 @@ msgpack
 mypy
 pip
 ptvsd>=4.2
+pyls-black
 pyls-isort
 pyls-mypy
 pynvim

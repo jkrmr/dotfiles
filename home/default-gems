@@ -23,6 +23,7 @@ rubocop-rails
 rubygems-bundler
 rubygems-update
 rufo
+scss_lint
 seeing_is_believing
 solargraph
 spicy-proton

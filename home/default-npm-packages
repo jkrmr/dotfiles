@@ -20,3 +20,5 @@ typescript
 typescript-formatter
 typescript-language-server
 vmd
+vscode-css-languageserver-bin
+vscode-html-languageserver-bin
