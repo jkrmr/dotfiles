@@ -43,7 +43,7 @@ This function should only modify configuration layer settings."
                       auto-completion-private-snippets-directory "~/.spacemacs.d/snippets"
                       auto-completion-return-key-behavior 'complete
                       auto-completion-tab-key-behavior 'complete
-                      auto-completion-use-company-box nil ;; temp until company-box/issues/158 resolved
+                      auto-completion-use-company-box t
                       company-backend t
                       company-box-doc-delay 0
                       company-minimum-prefix-length 1
