@@ -859,6 +859,8 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
     (setq-default server-socket-dir (getenv "EMACS_SOCKET_DIR")))
 
   (setq-default
+   ;; silence non-critical warnings
+   warning-minimum-level :emergency
    ;; set evil-collection vars before loading evil
    evil-want-integration t
    evil-want-keybinding nil
