@@ -332,7 +332,7 @@ This function should only modify configuration layer settings."
      (beacon :location (recipe :fetcher github :repo "Malabarba/beacon"))
      coffee-mode
      company-jedi
-     ;; company-prescient
+     company-prescient
      csv-mode
      dimmer
      direnv
@@ -353,7 +353,7 @@ This function should only modify configuration layer settings."
      (org-books :location (recipe :fetcher github :repo "lepisma/org-books"))
      (org-expand :location (recipe :fetcher github :repo "lepisma/org-expand"))
      ov
-     ;; prescient
+     prescient
      pretty-mode
      rjsx-mode
      (rufo :location (recipe :fetcher github :repo "aleandros/emacs-rufo" :branch "master"))
