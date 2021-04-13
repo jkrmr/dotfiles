@@ -76,6 +76,10 @@
  projectile-find-dir-includes-top-level t
  projectile-indexing-method 'hybrid
  projectile-project-search-path '("~/Projects")
+ projectile-switch-project-action #'(lambda ()
+                                      (progn
+                                        (projectile-maybe-invalidate-cache t)
+                                        (projectile-find-file)))
  ;; restrict alternate-buffer switching to current layout
  spacemacs-layouts-restrict-spc-tab t
  tramp-default-method "ssh"
