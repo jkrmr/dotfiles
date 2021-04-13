@@ -76,6 +76,7 @@
  projectile-find-dir-includes-top-level t
  projectile-indexing-method 'hybrid
  projectile-project-search-path '("~/Projects")
+ projectile-rails-global-mode t
  projectile-switch-project-action #'(lambda ()
                                       (progn
                                         (projectile-maybe-invalidate-cache t)
