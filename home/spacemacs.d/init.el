@@ -38,15 +38,15 @@ This function should only modify configuration layer settings."
                       auto-completion-complete-with-key-sequence-delay nil
                       auto-completion-enable-help-tooltip t
                       auto-completion-enable-snippets-in-popup t
-                      auto-completion-idle-delay 0
+                      auto-completion-idle-delay 0.1
                       auto-completion-enable-sort-by-usage nil ;; let prescient handle this
                       auto-completion-private-snippets-directory "~/.spacemacs.d/snippets"
                       auto-completion-return-key-behavior 'complete
                       auto-completion-tab-key-behavior 'complete
                       auto-completion-use-company-box t
                       company-backend t
-                      company-box-doc-delay 0
-                      company-minimum-prefix-length 1
+                      company-box-doc-delay 0.1
+                      company-minimum-prefix-length 3
                       company-selection-wrap-around t
                       company-show-numbers t
                       company-tooltip-idle-delay 1)
