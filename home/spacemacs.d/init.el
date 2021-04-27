@@ -103,6 +103,7 @@ This function should only modify configuration layer settings."
          godoc-at-point-function 'godoc-gogetdoc
          gofmt-command "goimports")
      graphviz
+     graphql
      (gtags :variables
             ggtags-highlight-tag nil  ;; disable tag highlighting
             gtags-enable-by-default nil
@@ -345,7 +346,6 @@ This function should only modify configuration layer settings."
      evil-quickscope
      evil-text-object-python
      flx
-     graphql-mode
      gxref
      ido-completing-read+ ;; dependency of amx
      multi-vterm
