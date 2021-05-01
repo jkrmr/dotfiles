@@ -147,6 +147,8 @@
 	br       = !hub browse
 	ca       = commit-amend
 	cap      = commit --no-verify --amend --no-edit
+  cli      = clock-in
+  clo      = clock-out
 	cm       = commit-quick
 	cmf      = commit-fixup
 	cmm      = commit-quick-force
