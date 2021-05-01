@@ -43,7 +43,7 @@ freeze() {
     local temp
     temp=$(mktemp)
 
-    asdf current 2> "$temp"
+    asdf current > "$temp"
 
     sed -E 's/\(set.+//g' "$temp" |
         fzf --multi |
@@ -55,14 +55,14 @@ freeze() {
 subcommand=$(select-subcommand)
 [[ -z "$subcommand" ]] && exit 0
 
-if [[ $subcommand =~ ^plugin ]]; then
-    selection=$(select-language "$subcommand")
-    [[ -n "$selection" ]] && echo "asdf $subcommand $selection" && exit 0
-fi
-
 if [[ "$subcommand" == freeze ]]; then
     freeze
     exit 0
+fi
+
+if [[ $subcommand =~ ^plugin ]]; then
+    selection=$(select-language "$subcommand")
+    [[ -n "$selection" ]] && echo "asdf $subcommand $selection" && exit 0
 fi
 
 language=$(select-language)
