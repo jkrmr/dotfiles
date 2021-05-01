@@ -274,7 +274,7 @@ Adjust the font settings of the given FRAME to do this."
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; mode-specific hooks
-(add-hook 'elixir-mode-hook #'lsp)
+;; (add-hook 'elixir-mode-hook #'lsp)
 (add-hook 'ledger-mode-hook #'evil-ledger-mode)
 
 (with-eval-after-load 'elm-mode
