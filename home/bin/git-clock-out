@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+
+# git clock-out
+#
+# Usage:
+#   git clo
+#
+# Check-in staged work, recording:
+#   1. elapsed time since the current HEAD commit was created
+#   2. total elapsed time across all commits on current branch
+#
+
+set -e
+
+usage() {
+    cat "$0" |
+        head -"$((LINENO - 4))" |
+        grep '^#' |
+        tail -n +2 |
+        cut -c 3-
+}
+
+if [[ "$1" == "help" ]]; then
+    usage
+    exit 2
+fi
+
+duration() {
+    ((hours=${1} / 3600))
+    ((mins=(${1} % 3600) / 60))
+    ((secs=${1} % 60))
+    printf "%02d:%02d:%02d\n" "$hours" "$mins" "$secs"
+}
+
+# Append clock-in and clock-out timestamps (iso and unix)
+CLOCK_IN="$(git show HEAD --no-patch --format=%cD)"
+CLOCK_OUT="$(date +'%a,%e %b %Y %T %z')"
+
+# Calculate elapsed since last clock-in
+PREV="$(git show HEAD --no-patch --format=%ct)"
+CURR="$(date +%s)"
+CLOCK_SECS=$((CURR - PREV))
+
+# Calculate total elapsed time
+PREV_DIFFS="$(
+  git log |
+  grep CLOCK-SECS |
+  sed -E 's/CLOCK-SECS: //' |
+  paste -sd+ - |
+  bc
+)"
+
+TOTAL_SECS=$((PREV_DIFFS + CLOCK_SECS))
+
+CLOCK_ELAPSED="$(duration $CLOCK_SECS)"
+TOTAL_ELAPSED="$(duration $TOTAL_SECS)"
+
+# Revise last commit with given commit message and staged work
+SUBJECT=$(git show HEAD --format='%s')
+
+git commit --amend --message="${SUBJECT}
+
+CLOCK-IN: ${CLOCK_IN}
+CLOCK-OUT: ${CLOCK_OUT}
+
+CLOCK-SECS: ${CLOCK_SECS}
+TOTAL-SECS: ${TOTAL_SECS}
+
+CLOCK-ELAPSED: ${CLOCK_ELAPSED}
+TOTAL-ELAPSED: ${TOTAL_ELAPSED}
+" >/dev/null
+
+git commit --amend
