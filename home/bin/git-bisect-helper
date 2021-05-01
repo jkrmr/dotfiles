@@ -8,7 +8,7 @@
 # If LAST_GOOD_REF is passed, bisects from HEAD to LAST_GOOD_REF.
 # If not, prompts for a fuzzy selection of LAST_GOOD_REF.
 #
-# If a `git bisect` subcommand is passed, delegates to `git bisect`.
+# If a `git bisect` subcommand is passed, delegate to `git bisect`.
 
 set -e
 
@@ -18,15 +18,18 @@ usage() {
 
 subcommands="help|start|bad|good|new|old|terms|skip|next|reset|visualize|replay|log|run"
 
-if [[ "$1" =~ ($subcommands) ]]; then
-  git bisect "$1"
-  exit 0
+if [[ "$1" == "usage" ]]; then
+    usage
+    exit 2
+elif [[ "$1" =~ ($subcommands) ]]; then
+    git bisect "$1"
+    exit 0
 fi
 
 last_good_ref="$1"
 
 if [[ -z "$last_good_ref" ]]; then
-  last_good_ref="$(git select-sha --no-multi)"
+    last_good_ref="$(git select-sha --no-multi)"
 fi
 
 echo git bisect start HEAD "$last_good_ref"
