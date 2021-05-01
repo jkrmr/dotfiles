@@ -1,7 +1,7 @@
-ruby 3.0.0
-nodejs 15.5.1
-elixir 1.10.3-otp-22
-erlang 23.1.1
+ruby 3.0.1
+nodejs 16.0.0
+elixir 1.11.4-otp-23
+erlang 23.3.2
 mongodb 3.6.6
 python anaconda3-2020.11
 golang 1.14.1
@@ -12,5 +12,5 @@ java openjdk-16
 gohugo extended_0.80.0
 tmux 3.0
 rust 1.43.0
-mysql 8.0.22
+mysql 8.0.24
 sqlite 3.34.1
