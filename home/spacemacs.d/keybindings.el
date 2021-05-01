@@ -260,6 +260,27 @@
 
 
 
+;;; Magit
+
+(defun conclave/git-clock-in ()
+  "Clock in with Git."
+  (interactive)
+  (let ((subject-line (read-string "Task: ")))
+    (magit-run-git-with-editor "clock-in" subject-line)))
+
+(defun conclave/git-clock-out ()
+  "Clock in with Git."
+  (interactive)
+  (magit-run-git-with-editor "clock-out"))
+
+(with-eval-after-load 'magit
+  (transient-insert-suffix 'magit-commit "c"
+    '("i" "Clock In" conclave/git-clock-in))
+  (transient-insert-suffix 'magit-commit "c"
+    '("o" "Clock Out" conclave/git-clock-out)))
+
+
+
 ;;; xwidget-webkit
 
 (defun config/xwidget-webkit ()
