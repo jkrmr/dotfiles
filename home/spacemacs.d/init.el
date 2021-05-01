@@ -151,6 +151,7 @@ This function should only modify configuration layer settings."
             latex-enable-auto-fill t
             latex-enable-folding t)
      (lsp :variables
+          lsp-enable-file-watchers nil
           lsp-keymap-prefix nil
           lsp-idle-delay 0.500
           lsp-navigation 'both
