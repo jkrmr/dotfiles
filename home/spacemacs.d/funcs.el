@@ -661,6 +661,18 @@ When called with a prefix argument DESC, sort in descending order."
   (interactive "P")
   (evil-sort-inner 'curly desc))
 
+(defun evil-sort-inner-paren(desc)
+  "Sort inside the current parentheses.
+When called with a prefix argument DESC, sort in descending order."
+  (interactive "P")
+  (evil-sort-inner 'paren desc))
+
+(defun evil-sort-inner-bracket(desc)
+  "Sort inside the current parentheses.
+When called with a prefix argument DESC, sort in descending order."
+  (interactive "P")
+  (evil-sort-inner 'bracket desc))
+
 (defun org-projectile-project-todo-file-name (&optional root-path)
   "Generate the todo file name for the project at ROOT-PATH.
 Note: ROOT-PATH defaults to the current project root. Return nil if not in a

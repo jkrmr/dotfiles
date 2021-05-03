@@ -206,6 +206,11 @@
 (define-key evil-normal-state-map (kbd "g s i p") #'evil-sort-inner-paragraph)
 (define-key evil-normal-state-map (kbd "g s i g") #'evil-sort-inner-buffer)
 (define-key evil-normal-state-map (kbd "g s i {") #'evil-sort-inner-curly)
+(define-key evil-normal-state-map (kbd "g s i }") #'evil-sort-inner-curly)
+(define-key evil-normal-state-map (kbd "g s i [") #'evil-sort-inner-bracket)
+(define-key evil-normal-state-map (kbd "g s i ]") #'evil-sort-inner-bracket)
+(define-key evil-normal-state-map (kbd "g s i (") #'evil-sort-inner-paren)
+(define-key evil-normal-state-map (kbd "g s i )") #'evil-sort-inner-paren)
 
 ;; yankee.el
 (require 'yankee)
