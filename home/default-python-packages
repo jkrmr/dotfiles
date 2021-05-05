@@ -1,5 +1,6 @@
 autoflake
 epc
+fastapi
 flake8
 hy
 importmagic
@@ -12,6 +13,7 @@ kaggle
 msgpack
 mypy
 pip
+poetry
 ptvsd>=4.2
 pyls-black
 pyls-isort
@@ -19,6 +21,7 @@ pyls-mypy
 pynvim
 service_factory>=0.1.5
 solargraph-utils.py
+typer
 vim-vint
 virtualenv
 yapf
