@@ -22,6 +22,18 @@ if [[ -z "$*" ]]; then
     exit 1
 fi
 
+# Check if already clocked in
+CLOCK_IN="$(git show HEAD | grep CLOCK-IN: | awk '{ print $2 }')"
+
+if [[ -n "${CLOCK_IN}" ]]; then
+    echo "Error: Already clocked in. Did you forget to clock out?"
+    exit 1
+fi
+
 SUBJECT="$*"
 
-git commit --allow-empty --message "${SUBJECT}"
+git commit --allow-empty --message "${SUBJECT}
+
+START: $(date +'%a,%e %b %Y %T %z')
+CLOCK-IN: $(date +%s)
+"
