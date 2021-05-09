@@ -14,6 +14,7 @@ npm
 prettier
 prettier-standard
 react-native-cli
+serverless
 standard
 tern
 typescript
