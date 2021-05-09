@@ -415,6 +415,9 @@ disable r # disable zsh's r
 [[ -f "$HOMEBREW_PREFIX/opt/asdf/asdf.sh" ]] && \
     . "$HOMEBREW_PREFIX/opt/asdf/asdf.sh"
 
+[[ -f "$HOME/.config/tabtab/__tabtab.zsh" ]] && \
+    . "$HOME/.config/tabtab/__tabtab.zsh"
+
 #-------------------------------------------------------------
 # COMMAND COMPLETION
 #-------------------------------------------------------------
@@ -443,3 +446,4 @@ compdef g=git
 source "$HOME/.dotfiles/shell/path.sh"
 
 #-------------------------------------------------------------
+
