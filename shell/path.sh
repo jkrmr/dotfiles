@@ -30,6 +30,7 @@ PATH+=":$HOMEBREW_PREFIX/opt/curl/bin"
 PATH+=$GNUTOOLS_PATHS
 PATH+=":$HOME/.asdf/shims"
 PATH+=":$HOME/.gem/ruby/3.0.0/bin"
+PATH+=":$HOME/.gem/ruby/2.6.0/bin"
 PATH+=":./node_modules/.bin"         # Project-local node binaries
 PATH+=":$FZF_DIR/bin"
 PATH+=":$HOME/.cargo/bin"            # Rust binary path
