@@ -152,5 +152,8 @@ step() {
   step "Install Vim Packages"
   vim +PlugUpgrade +PlugUpdate +PlugInstall +UpdateRemotePlugins +qall
 
+  step "Issue prefix-I in tmux to install plugins"
+
+  compaudit | xargs chmod g-w
   step "Setup script is complete"
 ) | tee "$BOOTSTRAP_LOG_PATH"

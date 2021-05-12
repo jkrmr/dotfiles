@@ -11,8 +11,8 @@ brew install reattach-to-user-namespace
 brew install github/gh/gh
 
 # emacs-plus: Emacs 27 or 28 (with jansson)
-# brew tap d12frosted/emacs-plus
-#
+brew tap d12frosted/emacs-plus
+
 # brew install emacs-plus --HEAD --with-no-frame-refocus --with-no-titlebar --with-xwidgets
 brew install emacs-plus@28 --with-no-frame-refocus --with-no-titlebar --with-xwidgets --with-native-comp
 tic -o ~/.terminfo "/usr/local/share/emacs/28.0.50/etc/e/eterm-color.ti"
