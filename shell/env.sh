@@ -108,31 +108,31 @@ export GTAGSCONF="${HOME}/.globalrc"
 #-------------------------------------------------------------
 # Compilation flags
 #-------------------------------------------------------------
-export CC=gcc
-export CXX=g++
-
-LDFLAGS="-L/usr/local/opt/gettext/lib"
-LDFLAGS+=" -L/usr/local/opt/libffi/lib"
-LDFLAGS+=" -L/usr/local/opt/libxml2/lib"
-LDFLAGS+=" -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib"
-LDFLAGS+=" -L/usr/local/opt/ncurses/lib"
-LDFLAGS+=" -L/usr/local/opt/openssl/lib"
-LDFLAGS+=" -L/usr/local/opt/icu4c/lib"
-LDFLAGS+=" -L/usr/local/opt/readline/lib"
-LDFLAGS+=" -L/usr/local/opt/zlib/lib"
-LDFLAGS+=" -L/usr/local/opt/imagemagick@6/lib"
-export LDFLAGS
-
-CPPFLAGS="-I/usr/local/opt/gettext/include"
-CPPFLAGS+=" -I/usr/local/opt/libxml2/include"
-CPPFLAGS+=" -I/usr/local/opt/llvm/include"
-CPPFLAGS+=" -I/usr/local/opt/ncurses/include"
-CPPFLAGS+=" -I/usr/local/opt/openssl/include"
-CPPFLAGS+=" -I/usr/local/opt/icu4c/include"
-CPPFLAGS+=" -I/usr/local/opt/readline/include"
-CPPFLAGS+=" -I/usr/local/opt/zlib/include"
-CPPFLAGS+=" -I/usr/local/opt/imagemagick@6/include"
-export CPPFLAGS
+# export CC=gcc
+# export CXX=g++
+#
+# LDFLAGS="-L/usr/local/opt/gettext/lib"
+# LDFLAGS+=" -L/usr/local/opt/libffi/lib"
+# LDFLAGS+=" -L/usr/local/opt/libxml2/lib"
+# LDFLAGS+=" -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib"
+# LDFLAGS+=" -L/usr/local/opt/ncurses/lib"
+# LDFLAGS+=" -L/usr/local/opt/openssl/lib"
+# LDFLAGS+=" -L/usr/local/opt/icu4c/lib"
+# LDFLAGS+=" -L/usr/local/opt/readline/lib"
+# LDFLAGS+=" -L/usr/local/opt/zlib/lib"
+# LDFLAGS+=" -L/usr/local/opt/imagemagick@6/lib"
+# export LDFLAGS
+#
+# CPPFLAGS="-I/usr/local/opt/gettext/include"
+# CPPFLAGS+=" -I/usr/local/opt/libxml2/include"
+# CPPFLAGS+=" -I/usr/local/opt/llvm/include"
+# CPPFLAGS+=" -I/usr/local/opt/ncurses/include"
+# CPPFLAGS+=" -I/usr/local/opt/openssl/include"
+# CPPFLAGS+=" -I/usr/local/opt/icu4c/include"
+# CPPFLAGS+=" -I/usr/local/opt/readline/include"
+# CPPFLAGS+=" -I/usr/local/opt/zlib/include"
+# CPPFLAGS+=" -I/usr/local/opt/imagemagick@6/include"
+# export CPPFLAGS
 
 PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
 PKG_CONFIG_PATH+=":/usr/local/opt/libxml2/lib/pkgconfig"
