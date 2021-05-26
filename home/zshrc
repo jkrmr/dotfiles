@@ -409,6 +409,9 @@ disable r # disable zsh's r
 [[ -f "$HOME/.anaconda/etc/profile.d/conda.sh" ]] && \
     . "$HOME/.anaconda/etc/profile.d/conda.sh"
 
+[[ -f "$HOME/.local/bin/google-cloud-sdk/completion.zsh.inc" ]] && \
+    . "$HOME/.local/bin/google-cloud-sdk/completion.zsh.inc"
+
 [[ -f "$HOME/.fzf.zsh" ]] && \
     . "$HOME/.fzf.zsh"
 
