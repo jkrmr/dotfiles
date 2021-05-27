@@ -824,6 +824,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;; exec-path
   (setq-default
    exec-path '("/usr/local/opt/gettext/bin"
+               "/usr/local/opt/rg/bin"
                "~/.bin"
                "~/.local/bin"
                "~/.anaconda/bin"
