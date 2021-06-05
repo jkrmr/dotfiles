@@ -1,9 +1,9 @@
 ruby 3.0.1
-nodejs 16.0.0
+nodejs 16.3.0
 elixir 1.11.4-otp-23
 erlang 23.3.2
 mongodb 3.6.6
-python anaconda3-2020.11
+python anaconda3-2021.05
 golang 1.14.1
 redis 5.0.5
 elm 0.19.0
