@@ -33,9 +33,9 @@ bundle config --global jobs "$((number_of_cores - 1))"
 
 echo "Post-install: Python"
 echo "Installing pynvim for system python3"
-/usr/local/bin/python3 -m pip install pynvim
+/usr/local/bin/python3 -m pip install pynvim jedi
 
 echo "Installing pynvim for system python2"
 curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o ~/Desktop/get-pip.py
 /usr/bin/python2 ~/Desktop/get-pip.py
-/usr/bin/python2 -m pip install pynvim
+/usr/bin/python2 -m pip install pynvim jedi
