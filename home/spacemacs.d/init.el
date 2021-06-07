@@ -248,7 +248,7 @@ This function should only modify configuration layer settings."
      phoenix
      (prettier :variables
                json-fmt-tool 'prettier
-               prettier-js-command "prettier-standard"
+               prettier-js-command "prettier"
                prettier-js-show-errors 'echo)
      prodigy
      (python :variables

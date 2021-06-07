@@ -44,6 +44,9 @@
       (flycheck-add-next-checker 'lsp 'python-mypy)
       (flycheck-add-next-checker 'lsp 'python-pylint)
 
+      ;; Flycheck: Elixir
+      (flycheck-add-next-checker 'lsp 'elixir-credo)
+
       ;; Flycheck: JavaScript, TypeScript
       (flycheck-add-next-checker 'lsp 'javascript-standard)
 
