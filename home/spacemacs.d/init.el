@@ -74,7 +74,8 @@ This function should only modify configuration layer settings."
      (docker :variables
              docker-dockerfile-backend 'lsp)
      (elixir :variables
-             elixir-backend 'alchemist
+             elixir-backend 'lsp
+             elixir-ls-path "~/.local/elixir-ls"
              flycheck-elixir-credo-strict t)
      (elm :variables
           elm-format-command "elm-format"
@@ -827,6 +828,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
                "/usr/local/opt/rg/bin"
                "~/.bin"
                "~/.local/bin"
+               "~/.local/elixir-ls"
                "~/.anaconda/bin"
                "~/.asdf/shims"
                "~/.cargo/bin"
