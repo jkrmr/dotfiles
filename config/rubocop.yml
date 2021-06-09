@@ -1,9 +1,12 @@
-# Common configuration.
-require: rubocop-rails
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-performance
 
 AllCops:
-  TargetRubyVersion: 2.5
-  TargetRailsVersion: 5.2
+  TargetRubyVersion: 3.0
+  TargetRailsVersion: 6.1
+  NewCops: enable
 
 Layout/ParameterAlignment:
   # Alignment of parameters in multi-line method calls.
@@ -84,10 +87,10 @@ Layout/EmptyLinesAroundModuleBody:
 Style/AsciiComments:
   Enabled: false
 
-Documentation:
-      Enabled: false
+Style/Documentation:
+  Enabled: false
 
-StringLiterals:
+Style/StringLiterals:
   EnforcedStyle: double_quotes
 
 Style/TrailingCommaInArrayLiteral:
@@ -126,7 +129,7 @@ Layout/SpaceInLambdaLiteral:
 Metrics/BlockLength:
   CountComments: false
   Max: 25
-  ExcludedMethods: ['describe', 'context', 'it']
+  IgnoredMethods: ['describe', 'context', 'it']
 
 Style/TrailingCommaInArguments:
   EnforcedStyleForMultiline: 'comma'
