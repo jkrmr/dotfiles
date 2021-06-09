@@ -1,0 +1,78 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-performance
+
+AllCops:
+  TargetRubyVersion: 3.0
+  TargetRailsVersion: 6.1
+  NewCops: enable
+
+Layout/ParameterAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/SpaceAroundEqualsInParameterDefault:
+  EnforcedStyle: space
+
+Layout/TrailingEmptyLines:
+  EnforcedStyle: final_newline
+
+Layout/EmptyLinesAroundBlockBody:
+  EnforcedStyle: no_empty_lines
+
+Layout/EmptyLinesAroundClassBody:
+  EnforcedStyle: no_empty_lines
+
+Layout/EmptyLinesAroundModuleBody:
+  EnforcedStyle: no_empty_lines
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: space
+
+Layout/SpaceInLambdaLiteral:
+  EnforcedStyle: require_space
+
+Metrics/BlockLength:
+  CountComments: false
+  Max: 25
+  IgnoredMethods: ['describe', 'context', 'it']
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: 'comma'
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: double_quotes
+
+Style/CommandLiteral:
+  EnforcedStyle: mixed
+  # backticks: Always use backticks.
+  # percent_x: Always use %x.
+  # mixed: Use backticks on single-line commands, and %x on multi-line commands.
+
+Style/RegexpLiteral:
+  EnforcedStyle: mixed
+  # slashes: Always use slashes.
+  # percent_r: Always use %r.
+  # mixed: Use slashes on single-line regexes, and %r on multi-line regexes.
+
+# Favor modifier if/unless usage when you have a single-line body. (Disabled)
+Style/IfUnlessModifier:
+  Enabled: false

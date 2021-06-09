@@ -1,0 +1,5 @@
+"{lib,app}/**/*.rb"
+"db/schema.rb"
+--readme README.md
+--markup markdown
+--plugin activerecord - tmp/routes.html

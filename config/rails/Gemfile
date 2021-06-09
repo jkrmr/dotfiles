@@ -1,0 +1,74 @@
+# frozen_string_literal: true
+
+# rails docs: https://api.rubyonrails.org
+
+gem "administrate" # admin dashboards (https://github.com/thoughtbot/administrate)
+gem "aws-sdk-s3" # upload to S3 directly (https://github.com/aws/aws-sdk-ruby)
+gem "devise" # authentication (https://github.com/heartcombo/devise)
+gem "discard" # soft deletes for ActiveRecord (https://github.com/jhawthorn/discard)
+gem "draper" # (https://github.com/arjes/draper)
+gem "flipper" # feature flagging (https://github.com/jnunemaker/flipper)
+gem "flipper-redis" # (https://github.com/jnunemaker/flipper/blob/master/docs/redis/README.md)
+gem "flipper-ui" # (https://github.com/jnunemaker/flipper/blob/master/docs/ui/README.md)
+gem "image_processing" # (https://github.com/janko/image_processing)
+gem "kaminari" # (https://github.com/kaminari/kaminari)
+gem "mini_magick" # (https://github.com/minimagick/minimagick)
+gem "pay" # payments: abstraction layer (https://github.com/pay-rails/pay)
+gem "pretender" # impersonate other users (https://github.com/ankane/pretender)
+gem "pundit" # authorization (https://github.com/varvet/pundit)
+gem "rack-timeout" # (https://github.com/heroku/rack-timeout)
+gem "receipts" # payments: invoice generation (https://github.com/excid3/receipts)
+gem "redis" # (https://github.com/redis/redis-rb)
+gem "rolify" # user roles (https://github.com/RolifyCommunity/rolify)
+gem "searchkick" # search (https://github.com/ankane/searchkick)
+gem "sendgrid-ruby" # email (https://github.com/sendgrid/sendgrid-ruby)
+gem "sidekiq" # background jobs (https://github.com/mperham/sidekiq)
+gem "sidekiq-cron" # cron-like jobs (https://github.com/ondrejbartas/sidekiq-cron)
+gem "sprockets-rails" # (https://github.com/rails/sprockets-rails)
+gem "stripe" # payments: stripe (https://github.com/stripe/stripe-ruby)
+gem "stripe_event" # payments: stripe webhook event handlers (https://github.com/integrallis/stripe_event)
+gem "tailwindcss-rails", "~> 0.3.3" # (https://github.com/rails/tailwindcss-rails)
+gem "terser" # (https://github.com/ahorek/terser-ruby)
+gem "webpacker" # (https://github.com/rails/webpacker)
+
+group :development do
+  gem "better_errors" # (https://github.com/BetterErrors/better_errors)
+  gem "binding_of_caller"
+  gem "bundler-gtags", github: "jmromer/bundler-gtags" # (https://github.com/kayhide/bundler-gtags)
+  gem "letter_opener"
+  gem "org-ruby" # for yard server
+  gem "rufo" # autoformatting (https://github.com/ruby-formatter/rufo)
+  gem "spring-commands-rspec"
+  gem "webrick" # for yard server
+  gem "yard" # docs compilation and server (https://github.com/lsegal/yard)
+  gem "yard-activerecord" # (https://github.com/theodorton/yard-activerecord)
+end
+
+group :development, :test do
+  gem "factory_bot_rails" # (https://github.com/thoughtbot/factory_bot_rails)
+  gem "faker" # (https://github.com/faker-ruby/faker)
+  gem "jazz_fingers" # (https://github.com/plribeiro3000/jazz_fingers)
+  gem "pry" # (https://github.com/pry/pry)
+  gem "pry-byebug"
+  gem "pry-rails"
+  gem "rspec_junit_formatter" # (https://github.com/sj26/rspec_junit_formatter)
+  gem "rspec-rails"
+  gem "rubocop"
+  gem "rubocop-performance"
+  gem "rubocop-rails"
+  gem "rubocop-rspec"
+  gem "vcr" # Record API responses (https://github.com/vcr/vcr)
+  gem "webmock" # HTTP stubbing (https://github.com/bblimke/webmock)
+end
+
+group :test do
+  gem "apparition" # headless chromedriver (https://github.com/twalpole/apparition)
+  gem "capybara" # acceptance testing (https://github.com/teamcapybara/capybara)
+  gem "database_cleaner-active_record" # (https://github.com/DatabaseCleaner/database_cleaner)
+  gem "database_cleaner-redis" # (https://github.com/DatabaseCleaner/database_cleaner-redis)
+  gem "pundit-matchers" # (https://github.com/chrisalley/pundit-matchers)
+  gem "rails-controller-testing" # (https://github.com/rails/rails-controller-testing)
+  gem "rspec-sidekiq" # (https://github.com/philostler/rspec-sidekiq)
+  gem "shoulda-matchers" # (https://github.com/thoughtbot/shoulda-matchers)
+  gem "simplecov", require: false # (https://github.com/simplecov-ruby/simplecov)
+end

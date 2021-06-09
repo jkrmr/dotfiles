@@ -1,11 +1,7 @@
 --database=postgresql
---skip-bundle
 --skip-coffeescript
---skip-git
---skip-javascript
---skip-keeps
 --skip-test
 --skip-test-unit
---skip-turbolinks
+--webpack
+--webpacker=react
 --template=~/.dotfiles/config/rails_template.rb
---webpack=react
