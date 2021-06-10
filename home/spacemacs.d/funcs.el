@@ -447,6 +447,14 @@ Depends on yankee.el."
         (shell-pop-window-size 100))
     (vterm)))
 
+(defun shell-full-current-dir ()
+  "Open a terminal in the current window."
+  (interactive)
+  (let ((shell-pop-full-span nil)
+        (shell-pop-window-position "top")
+        (shell-pop-window-size 100))
+    (vterm)))
+
 (defun project-root-or-default-dir ()
   "Return the projectile project root if in a project.
 If not in a project, return the current `default-dir'."

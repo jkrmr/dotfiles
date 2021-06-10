@@ -32,7 +32,8 @@
 (global-set-key (kbd "s-p") #'spacemacs/helm-persp-switch-project)
 (global-set-key (kbd "s-s") #'save-buffer)
 (global-set-key (kbd "s-S") #'save-some-buffers)
-(global-set-key (kbd "s-t") #'shell-below-full-span)
+(global-set-key (kbd "s-T") #'shell-below-full-span)
+(global-set-key (kbd "s-t") #'shell-full-current-dir)
 (global-set-key (kbd "s-W") #'open-web-browser)
 (global-set-key (kbd "s-w") #'spacemacs/delete-window)
 
