@@ -31,6 +31,13 @@ emacs_server="$HOMEBREW_PREFIX/bin/emacs"
 emacs_client="$HOMEBREW_PREFIX/bin/emacsclient"
 emacs_socket="$EMACS_SOCKET_DIR/$EMACS_SOCKET_NAME"
 
+if [ "$@" == "--version" ]; then
+    "$emacs_server" --version
+    echo
+    "$emacs_client" --version
+    exit 0
+fi
+
 # Start the cli server if it hasn't been already
 if [ ! -S "$emacs_socket" ]; then
     echo "$emacs_server" -nw --bg-daemon="$EMACS_SOCKET_NAME"
