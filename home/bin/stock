@@ -1,0 +1,71 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require 'csv'
+require 'watir'
+require 'tempfile'
+
+FIELDS_LABELS = [
+  /Float/,
+  /Held by Insiders/,
+  /Held by Institutions/,
+  /Short Ratio/,
+  /Avg Vol \(10 day\)/,
+].freeze
+
+HEADERS = [
+  "Ticker",
+  "Float (MM)",
+  "I&I Ownership",
+  "Days to Cover",
+  "10-Day Avg Volume",
+].freeze
+
+def stock_details(ticker)
+  page =
+    Watir::Browser.new.tap do |browser|
+      browser.goto("https://finance.yahoo.com/quote/#{ticker}/key-statistics")
+    end
+
+  values =
+    FIELDS_LABELS
+      .map { |field_label| page.td(text: field_label).siblings.last.text }
+      .map(&:to_f)
+
+  [
+    ticker,
+    values.first,
+    "#{values[1..2].sum.round(2)}%",
+    values[3],
+    values.last.to_f * 1e6,
+  ].join(",")
+end
+
+def write_csv_file(data_table)
+  Tempfile.new(["stock-details", ".csv"])
+    .tap { |f| f.write(HEADERS.join(",")) }
+    .tap { |f| f.write("\n") }
+    .tap { |f| f.write(data_table) }
+    .tap(&:close)
+end
+
+if __FILE__ == $PROGRAM_NAME
+  if ARGV.empty?
+    puts "Usage: stock TICKER [TICKER] [TICKER] [...] [TICKER]"
+    exit(1)
+  end
+
+  details =
+    ARGV
+      .map { |ticker| Thread.new { stock_details(ticker) } }
+      .map(&:value)
+      .join("\n")
+
+  csv_file = write_csv_file(details)
+  puts "opening #{csv_file.path}"
+  %x{open #{csv_file.path}}
+
+  puts details
+  sleep(1) && csv_file.unlink
+end
