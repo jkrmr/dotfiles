@@ -368,7 +368,6 @@ This function should only modify configuration layer settings."
    ;; A list of packages that will not be installed and loaded.
    dotspacemacs-excluded-packages
    '(
-     which-key ;; TEMP: Vendorize which-key. See: https://github.com/syl20bnr/spacemacs/issues/14865
      fancy-battery
      treemacs
      treemacs-icons-dired
@@ -819,9 +818,6 @@ It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (add-to-list 'load-path "~/.spacemacs.d")
   (add-to-list 'load-path "~/.spacemacs.d/local")
-
-  ;; TEMP: Load vendorized which-key
-  (load "which-key")
 
   ;; theme definitions
   (load "themes")
