@@ -20,6 +20,7 @@ HEADERS = [
   "I&I Ownership",
   "Days to Cover",
   "10-Day Avg Volume",
+  "Price",
 ].freeze
 
 def stock_details(ticker)
@@ -27,6 +28,11 @@ def stock_details(ticker)
     Watir::Browser.new.tap do |browser|
       browser.goto("https://finance.yahoo.com/quote/#{ticker}/key-statistics")
     end
+
+  price_section = page.div(class: "quote-header-section").children.last.children.first.children
+  last_price = price_section.first.children.first.text
+  after_hours = price_section.last.children.first.text
+  latest_price = (after_hours.to_s.strip.empty? ? last_price : after_hours).to_f
 
   values =
     FIELDS_LABELS
@@ -39,6 +45,7 @@ def stock_details(ticker)
     "#{values[1..2].sum.round(2)}%",
     values[3],
     values.last.to_f * 1e6,
+    latest_price,
   ].join(",")
 end
 
