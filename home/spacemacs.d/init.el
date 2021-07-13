@@ -173,7 +173,8 @@ This function should only modify configuration layer settings."
      (markdown :variables
                markdown-asymmetric-header t
                markdown-live-preview-engine 'vmd)
-     multiple-cursors
+     (multiple-cursors :variables
+                       multiple-cursors-backend 'evil-mc)
      nginx
      (org :variables
           org-adapt-indentation t
