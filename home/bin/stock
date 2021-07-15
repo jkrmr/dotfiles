@@ -16,12 +16,25 @@ FIELDS_LABELS = [
 
 HEADERS = [
   "Ticker",
-  "Float (MM)",
+  "Float (M)",
   "I&I Ownership",
   "Days to Cover",
-  "10-Day Avg Volume",
+  "10-Day Avg Volume (M)",
   "Price",
 ].freeze
+
+def in_millions(number_string)
+  factor =
+    if number_string.end_with?("B")
+      1e3
+    elsif number_string.end_with?("M")
+      1
+    else
+      1e-3
+    end
+
+  (number_string.to_f * factor).round(2)
+end
 
 def stock_details(ticker)
   page =
@@ -37,14 +50,13 @@ def stock_details(ticker)
   values =
     FIELDS_LABELS
       .map { |field_label| page.td(text: field_label).siblings.last.text }
-      .map(&:to_f)
 
   [
     ticker,
-    values.first,
-    "#{values[1..2].sum.round(2)}%",
+    in_millions(values.first),
+    "#{values[1..2].sum(&:to_f).round(2)}%",
     values[3],
-    values.last.to_f * 1e6,
+    in_millions(values.last),
     latest_price,
   ].join(",")
 end
@@ -71,7 +83,7 @@ if __FILE__ == $PROGRAM_NAME
 
   csv_file = write_csv_file(details)
   puts "opening #{csv_file.path}"
-  %x{open #{csv_file.path}}
+  `open #{csv_file.path}`
 
   puts details
   sleep(1) && csv_file.unlink
